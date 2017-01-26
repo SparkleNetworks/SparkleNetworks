@@ -10,7 +10,7 @@ NetworkRootApi: API keys and making requests
 
 
 USAGE OF THIS API MAY CAUSE SECURITY RISKS  
-READ AND *UNDERSTAND* the [Network ROOT API documentation](6100-NetworkRootApi.ms) before compromising your systems.
+READ AND *UNDERSTAND* the [Network ROOT API documentation](6100-NetworkRootApi.ms) before you compromise your systems.
 
 
 SDKs
@@ -19,6 +19,7 @@ SDKs
 We can provide you base code for C#. If you write a SDK for our API, we would be glad to add a link in this list for others to use.
 
 * C# API client is coming...
+* There are example C# code in the `NetworkRootApiClient` class of the `Sparkle.ApiClients` project.
 
 
 API keys
@@ -26,9 +27,9 @@ API keys
 
 API keys are managed by-network. Open the main website of any network with an admin account. Navigate to /Dashboard/ApiKeys. Create a key.
 
-You should create as many keys as necessary. Imagine a key is compromised, you want to disable it and create a new one. You will then replace the old key by the new one is some applications. It's best if few applications have to be changed.
+You should create as many keys as necessary. Imagine a key is compromised, you want to disable it and create a new one. You will then replace the old key by the new one in some applications. It's best if few applications have to be changed.
 
-DO NOT EVER SAVE THE SECRET KEY IN CLIENT APPLICATIONS.  
+**DO NOT EVER SAVE THE SECRET KEY IN CLIENT APPLICATIONS.**  
 IT WOULD COMPROMISE THE SECRET KEY AND ANYONE WOULD BE ABLE TO MAKE ADMINISTRATIVE CALLS.  
 AS A REMINDER, THIS API IS DESIGNED FOR SERVER-TO-SERVER CALLS WHERE THE SECRET KEY CAN BE KEPT SECRET. 
 
@@ -41,14 +42,14 @@ Here are the basic elements of the request.
     HTTP method HTTP query HTTP/1.1                                    // standard http line
     X-SparkleNetworksApi-NetworkName:       network name               // REQUIRED if NetworkDomainName is not set
     X-SparkleNetworksApi-NetworkDomainName: network domain name        // REQUIRED if NetworkName is not set
-    X-SparkleNetworksApi-Key: API Key (AK)                             // REQUIRED
-    X-SparkleNetworksApi-Identity: Identity Key (IK)                   // optional: authenticated calls
-    X-SparkleNetworksApi-Time: Time (format: yyyyMMdd'T'HHmmssffff'Z') // REQUIRED
-    X-SparkleNetworksApi-Hash: Hash                                    // REQUIRED message signature
-    X-SparkleNetworksApi-ClientRequestId: ClientRequestId              // optional: logging correlation id
-    Accept: desired response content-type                              // REQUIRED
+    X-SparkleNetworksApi-Key:               API Key (AK)               // REQUIRED
+    X-SparkleNetworksApi-Identity:          Identity Key (IK)          // optional: authenticated calls
+    X-SparkleNetworksApi-Time:              Time (format: yyyyMMdd'T'HHmmssffff'Z') // REQUIRED
+    X-SparkleNetworksApi-Hash:              Hash                       // REQUIRED message signature
+    X-SparkleNetworksApi-ClientRequestId:   ClientRequestId            // optional: logging correlation id
+    Accept:          desired response content-type                     // REQUIRED
     Accept-Language: culture                                           // optional
-    Content-Type: application/json                                     // only when posting contents
+    Content-Type:    application/json                                  // only when posting contents
     
     HTTP content
 
@@ -69,14 +70,14 @@ The Time variable is the current **UTC time** with the format `yyyyMMdd'T'HHmmss
 
 Here is how you build the string (UTF 8) to be hashed (pre-hash) for the *Hash* variable.
 
-    pre-hash = Application Key (AK) + "\n"
+    pre-hash = Application Key (AK) +    "\n"
              + Application Secret (AS) + "\n"
-             + Identity Key (IK) + "\n"      // might be empty
-             + Identity Secret (IS) + "\n"   // might be empty
-             + UPPER(HTTP method) + "\n"
-             + HTTP query + "\n"
-             + HTTP content + "\n"           // might be empty
-             + Time
+             + Identity Key (IK) +       "\n"   // might be empty
+             + Identity Secret (IS) +    "\n"   // might be empty
+             + UPPER(HTTP method) +      "\n"
+             + HTTP query +              "\n"
+             + HTTP content +            "\n"   // might be empty
+             + Time                             // format: `yyyyMMdd'T'HHmmssffff'Z'`
 
 Using SHA256, you can hash the `pre-hash` and use the HEX representation. Prefix the `hash` string value with the current protocol hint `$1$`.
 
@@ -114,13 +115,27 @@ Let's compute the pre-hash and Hash. You may try this precise example to verify 
              + "ik_852741963" + "\n"
              + "is_789456132" + "\n"
              + "GET" + "\n"
-             + "/api/Util/Ping" + "\n"
+             + "/api/Util/Ping" + "\n"  // don't forget the starting slash!
              + "" + "\n"                // note the empty string. A GET request does not have a body.
              + "20150201T1444230000Z"   // make sure your machine has a valid time.
 
-    Hash = "$1$" + BytesToHex( SHA256( UTF8_StringToBytes( pre-hash ) ) )
-    // $1$C1BE79D18F0E8CC8299925D17377B68E736C6AF0B9EC73C11AC47DE06F799132
-    
+    Hash = "$1$" + BytesToHex ( SHA256 ( UTF8_StringToBytes ( pre-hash ) ) )
+    // $1$A240F863D8CA367C1724C3788560F489797E7E894B3A9F89192243C7E2CC2CA2
+	
+You need to find the recommended code in your framework that will replace the pseudo-methods. 
+
+* `UTF8_StringToBytes`
+  * C#: `Encoding.UTF8.GetBytes(string)` [[1](https://msdn.microsoft.com/en-us/library/ds4kkd55(v=vs.110).aspx)]
+  * PHP: `unpack('H*', $preHash)` [[1](http://php.net/manual/en/function.unpack.php),[2](http://php.net/manual/en/function.pack.php)]
+  * Java: `byte[] bytes = preHash.getBytes('UTF-8')` [[1](http://docs.oracle.com/javase/7/docs/api/java/lang/String.html#getBytes())]
+* `SHA256`. 
+  * C#: `Encoding.UTF8.GetBytes(string)` [[1](https://msdn.microsoft.com/en-us/library/ds4kkd55(v=vs.110).aspx)]
+  * Java: `MessageDigest md = MessageDigest.getInstance("SHA-256"); md.update(bytes); byte[] hash = md.digest();` [[1](http://docs.oracle.com/javase/8/docs/api/java/security/MessageDigest.html)]
+* `BytesToHex`
+  * C#: `string hexHash = BitConverter.ToString(hash).Replace("-", "")` [[1](https://msdn.microsoft.com/en-us/library/3a733s97%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396)]
+  * Java: `String hexHash = javax.xml.bind.DatatypeConverter.printHexBinary(hash);` [[1](http://docs.oracle.com/javase/6/docs/api/javax/xml/bind/DatatypeConverter.html)]
+
+Note: some languages have built-in functions that will do these 3 steps using only 1 or 2 methods (JS, PHP).
 
 Finally, here is the HTTP query
 
@@ -130,7 +145,7 @@ Finally, here is the HTTP query
     X-SparkleNetworksApi-Key: ak_123456789   
     X-SparkleNetworksApi-Identity: ik_852741963
     X-SparkleNetworksApi-Time: 20150201T1444230000Z
-    X-SparkleNetworksApi-Hash: $1$C1BE79D18F0E8CC8299925D17377B68E736C6AF0B9EC73C11AC47DE06F799132
+    X-SparkleNetworksApi-Hash: $1$A240F863D8CA367C1724C3788560F489797E7E894B3A9F89192243C7E2CC2CA2
 
 
 Error messages
@@ -138,18 +153,19 @@ Error messages
 
 If something is set wrong in your request the server will return errors messages.
 
-Code 	HTTP code 	Resolution  
-InvalidNetworkSpecification 	401 	Verify the specified header is set.  
-MissingApplicationKey 	401 	Verify the specified header is set.  
-MissingTime 	401 	Verify the specified header is set.  
-MissingHash 	401 	Verify the specified header is set.  
-UnknownApplicationKey 	401 	The application key is not valid.  
-UnknownIdentityKey 	401 	The identity key is not valid.  
-DisabledIdentityKey 	401 	The provided identity has expired or has been disabled. You should renew the identity with the user.  
-InvalidTime 	401 	Verify the time is formated correctly and your machine is set to a valid time.  
-InvalidHash 	401 	The hash differs from the server's computed hash.  
-ApplicationKeyIsMissingPermission 	401 	You consumer key does not have the permission to make this call.  
-Unsupported Media Type 	415 	Verify the Content-Type header is set.
+Code 	|HTTP code 	|Resolution  
+--------|-----------|----------------------
+InvalidNetworkSpecification 	|401 	|Verify the specified header is set.  
+MissingApplicationKey 	|401 	|Verify the specified header is set.  
+MissingTime 	|401 	|Verify the specified header is set.  
+MissingHash 	|401 	|Verify the specified header is set.  
+UnknownApplicationKey 	|401 	|The application key is not valid.  
+UnknownIdentityKey 	|401 	|The identity key is not valid.  
+DisabledIdentityKey 	|401 	|The provided identity has expired or has been disabled. You should renew the identity with the user.  
+InvalidTime 	|401 	|Verify the time is formated correctly and your machine is set to a valid time.  
+InvalidHash 	|401 	|The hash differs from the server's computed hash.  
+ApplicationKeyIsMissingPermission 	|401 	|You consumer key does not have the permission to make this call.  
+Unsupported Media Type 	|415 	|Verify the Content-Type header is set.
 
 
 General notes
