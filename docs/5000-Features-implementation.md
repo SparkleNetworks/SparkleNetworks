@@ -7,12 +7,9 @@ Features implementations
 
 Here the various features of Sparkle Networks will be described with a technical point of view.
 
-
-
 * [Apply process](5001-Apply-process.md)
+* [Profile fields](5002-Profile-fields.md)
 * [Network files](5999-Network-Files.md)
-
-
 
 
 ### Features missing documentation
@@ -35,8 +32,7 @@ Here the various features of Sparkle Networks will be described with a technical
 * [Newsletter](0000-Missing-documentation.md)
 
 
- 
-### STALE Features (missing documentation)
+ ### STALE Features (missing documentation)
 
 STALE: abandoned/unfinished features. 
 
@@ -48,7 +44,6 @@ STALE: abandoned/unfinished features.
 * (STALE) [Phone Numbers](0000-Missing-documentation.md): lists the useful phone numbers (when the network is specific to a geographic zone).
 * (STALE) [Jobs](0000-Missing-documentation.md): before we had a tag system, this allowed to have a list of roles (in a company) that people set in their JobId.
 * (STALE) [CoffeeRoulette](0000-Missing-documentation.md): randomly selects someone in the network to share a coffee with.
-
 
  
 ### FUTURE Features
@@ -66,8 +61,4 @@ Obsolete: feature that have been replaced by other features. Any remaining code 
 * (Obsolete) [Quickstart](0000-Missing-documentation.md): a guide for new users to set profile details.
 * (Obsolete) [Partners](0000-Missing-documentation.md): a bridge with another sparkle product that allowed to manage leads/ads and show them in the network.
 * (Obsolete) [Exchange](0000-Missing-documentation.md): the first "company" ad system. Replaces by the Ads feature.
-
-
-
-
 
