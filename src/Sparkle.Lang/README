@@ -1,0 +1,7 @@
+﻿
+Assembly:         Sparkle.Lang
+Business-related: NO
+Stacks:           System, Gettext
+
+Description:
+Contains languages/cultures utilities.
