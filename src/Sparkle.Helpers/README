@@ -1,0 +1,7 @@
+﻿
+Assembly:         Sparkle.Helpers
+Business-related: NO
+Stacks:           System, System.Web, System.Web.Mvc
+
+Description:
+Contains ASP.NET MVC extensions.
