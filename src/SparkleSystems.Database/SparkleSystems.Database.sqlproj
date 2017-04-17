@@ -189,19 +189,10 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_Logs_Errors.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_TrackedLogs_Logs.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_Logs_ApplicationId.index.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_Logs_Type.index.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_TrackedLogs_LogId.index.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_TrackedApplicationTypes.pkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_Hosts.pkey.sql">
@@ -219,9 +210,6 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_Logs.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_TrackedLogs.pkey.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_LogEntryTypes.pkey.sql">
       <SubType>Code</SubType>
     </Build>
@@ -234,16 +222,10 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Logs.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\TrackedLogs.table.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\LogEntryTypes.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Errors.table.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\TrackedApplicationTypes.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Hosts.table.sql">
@@ -327,11 +309,7 @@
     <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\GetUniversesDomainNames.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\BaseData.sql">
-      <SubType>NotInBuild</SubType>
-    </None>
     <None Include="SparkleSystems.SparkleNetworks.publish.xml" />
-    <None Include="SparkleSystems.Mase.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="Scripts\Pre-Deployment\Script.PreDeployment.sql" />

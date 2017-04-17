@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="ef318cf4-364a-43b8-a191-5dca5c758098" ChangeDateTime="04/15/2014 12:08:01">
+    <Property Name="ElementName" Value="[dbo].[InformationNotes].[StartDateLocal]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[InformationNotes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[StartDateUtc]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="da3c4715-da88-47ae-bef9-3f12a66784be" ChangeDateTime="04/15/2014 12:08:14">
+    <Property Name="ElementName" Value="[dbo].[InformationNotes].[EndDateLocal]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[InformationNotes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[EndDateUtc]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="11226689-47a5-4d54-8f83-d12609f5babc" ChangeDateTime="06/21/2014 19:05:58">
+    <Property Name="ElementName" Value="[dbo].[RegisterRequests].[EmailLocalPart]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RegisterRequests]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[EmailAccountPart]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0021c75b-89eb-499f-9417-d48df5775b18" ChangeDateTime="08/12/2014 09:57:55">
+    <Property Name="ElementName" Value="[dbo].[GroupMembers].[CreateDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[GroupMembers]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DateJoined" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="858a499c-1dd4-4007-b2bc-d58c281d7276" ChangeDateTime="09/09/2014 16:23:10">
+    <Property Name="ElementName" Value="[dbo].[Likes].[HasBeenRead]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Likes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[DateReadUtc]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="50c41bbc-5a97-46a8-8f9f-0f3db90d4819" ChangeDateTime="09/09/2014 16:24:23">
+    <Property Name="ElementName" Value="[dbo].[LikeComments].[HasBeenRead]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[LikeComments]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[DateReadUtc]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1b3b6e0b-580d-4a74-af4e-7c892762c672" ChangeDateTime="12/22/2014 13:38:52">
+    <Property Name="ElementName" Value="[dbo].[SubscriptionTemplates].[TextId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SubscriptionTemplates]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ConfirmEmailTextId" />
+  </Operation>
+</Operations>

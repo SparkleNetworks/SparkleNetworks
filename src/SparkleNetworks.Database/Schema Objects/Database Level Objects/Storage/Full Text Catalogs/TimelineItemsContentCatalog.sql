@@ -1,0 +1,9 @@
+﻿
+CREATE FULLTEXT CATALOG [TimelineItemsContentCatalog]
+	WITH ACCENT_SENSITIVITY = OFF
+GO
+
+CREATE FULLTEXT INDEX ON TimelineItems(Text)
+	KEY INDEX PK_eura_wall
+	ON TimelineItemsContentCatalog
+	WITH STOPLIST = SYSTEM, CHANGE_TRACKING AUTO

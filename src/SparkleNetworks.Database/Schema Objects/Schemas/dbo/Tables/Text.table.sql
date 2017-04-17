@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Text]
+(
+    [Id] INT NOT NULL IDENTITY (1, 1)
+
+    CONSTRAINT [PK_dbo_Text] PRIMARY KEY CLUSTERED ([Id])
+)

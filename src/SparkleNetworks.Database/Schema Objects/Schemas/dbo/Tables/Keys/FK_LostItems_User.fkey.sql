@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[LostItems]
+    ADD CONSTRAINT [FK_LostItems_User] FOREIGN KEY ([UserId]) REFERENCES [dbo].[Users] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
