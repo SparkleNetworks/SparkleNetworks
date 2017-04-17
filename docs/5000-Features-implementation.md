@@ -10,6 +10,7 @@ Here the various features of Sparkle Networks will be described with a technical
 
 
 * [Apply process](5001-Apply-process.md)
+* [Network files](5999-Network-Files.md)
 
 
 
@@ -47,6 +48,12 @@ STALE: abandoned/unfinished features.
 * (STALE) [Phone Numbers](0000-Missing-documentation.md): lists the useful phone numbers (when the network is specific to a geographic zone).
 * (STALE) [Jobs](0000-Missing-documentation.md): before we had a tag system, this allowed to have a list of roles (in a company) that people set in their JobId.
 * (STALE) [CoffeeRoulette](0000-Missing-documentation.md): randomly selects someone in the network to share a coffee with.
+
+
+ 
+### FUTURE Features
+
+* [Pages](0000-Missing-documentation.md)
 
 
 ### Obsolete Features (missing documentation)

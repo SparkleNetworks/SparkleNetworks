@@ -12,11 +12,27 @@ The tech stack
 * [Code layers](1001-Code-layers.md)
 
 
+Installation & Maintenance
+-----------------
+
+* [Installation index](2000-Installation-index.md)
+* Requirements
+* Installation
+
+
+Customization
+-----------------
+
+* [Customization index](4000-Customization-index.md)
+
+
+
 Other
 ----------------
 
 * [Features implementation](5000-Features-implementation.md)
 * [The APIs](6000-APIs.md)
+* [Errors and exceptions FAQ](7001-Errors-and-exceptions-FAQ.md)
 
 
 
