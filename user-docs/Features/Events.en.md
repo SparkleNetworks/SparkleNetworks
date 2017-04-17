@@ -112,3 +112,15 @@ Repeat the event
 -----------------------
 
 The event is occurring again? Save some time, use the repeat button in the past event. This will lead you to the create form with all fields copied from the past event. You only need to change the date!
+
+
+Subscribe to the calendar
+-------------------------------------------------
+
+Some software programs and services allow you to subscribe to online calendars. You can synchronize the network's calendar in your personal calendar.
+
+The main events page has a link "Export (iCal)". Make  right click on this button and choose Copy link location". The calendar URL is now copied, you can paste it in your event management software.
+
+Do not share you calendar's URL! It may contain personal data (your participation in the network's events).
+
+

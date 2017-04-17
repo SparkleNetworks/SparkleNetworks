@@ -111,3 +111,13 @@ Répéter l'événement
 L'événement se produit à nouveau ? Gagnez du temps, utilisez le bouton "répéter". Un formulaire de création d'événement va apparaître pré-complété à l'aide des informations de l'événement à répéter. Il ne reste qu'à changer la date...
 
 
+S'abonner aux événements - calendrier personnel
+-------------------------------------------------
+
+Divers logiciels et services en ligne permettent de s'abonner à des calendriers en ligne. Il est possible de synchroniser le calendrier des événements au sein de votre gestionnaire de calendrier personnel.
+
+La page principale de l'agenda du réseau dispose d'un bouton "Exporter (iCal)". Faites un clic droit dessus et choisissez "Copier l'adresse du lien". L'adresse du calendrier étant maintenant copiée, il suffit de l'ajouter dans le logiciel désiré.
+
+Le partagez pas le lien vers votre calendrier ! Le lien peut révéler des informations personnelles comme votre participation aux événements du réseau.
+
+

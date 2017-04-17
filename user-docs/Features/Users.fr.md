@@ -30,6 +30,6 @@ Votre profil fait apparaitre vos activités sur le réseau.
 Entrer en contact
 -------------------------------
 
-Lorsque vous visualisez le profil d'un autre membre, vous avez la possibiliter de l'ajouter en contact (boutton "Ajouter). Cela vous permet de créer une liste de personnes proches qui vous permettra des interactions avancées. Par exemple : "inviter tous mes contacts à cet événement".
+Lorsque vous visualisez le profil d'un autre membre, vous avez la possibiliter de l'ajouter en contact (boutton "Ajouter"). Cela vous permet de créer une liste de personnes proches qui vous permettra des interactions avancées. Par exemple : "inviter tous mes contacts à cet événement".
 
 
