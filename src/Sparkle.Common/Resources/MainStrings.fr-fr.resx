@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Dislike" xml:space="preserve">
+    <value>Je n'aime plus</value>
+  </data>
+  <data name="DurationUnit_Day" xml:space="preserve">
+    <value>jour</value>
+  </data>
+  <data name="DurationUnit_Day_Plural" xml:space="preserve">
+    <value>jours</value>
+  </data>
+  <data name="DurationUnit_Hour" xml:space="preserve">
+    <value>heure</value>
+  </data>
+  <data name="DurationUnit_Hour_Plural" xml:space="preserve">
+    <value>heures</value>
+  </data>
+  <data name="DurationUnit_Millisecond" xml:space="preserve">
+    <value>milliseconde</value>
+  </data>
+  <data name="DurationUnit_Millisecond_Plural" xml:space="preserve">
+    <value>millisecondes</value>
+  </data>
+  <data name="DurationUnit_Minute" xml:space="preserve">
+    <value>minute</value>
+  </data>
+  <data name="DurationUnit_Minute_Plural" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="DurationUnit_Month" xml:space="preserve">
+    <value>mois</value>
+  </data>
+  <data name="DurationUnit_Month_Plural" xml:space="preserve">
+    <value>mois</value>
+  </data>
+  <data name="DurationUnit_Nanosecond" xml:space="preserve">
+    <value>nanoseconde</value>
+  </data>
+  <data name="DurationUnit_Nanosecond_Plural" xml:space="preserve">
+    <value>nanosecondes</value>
+  </data>
+  <data name="DurationUnit_Second" xml:space="preserve">
+    <value>seconde</value>
+  </data>
+  <data name="DurationUnit_Second_Plural" xml:space="preserve">
+    <value>secondes</value>
+  </data>
+  <data name="DurationUnit_Week" xml:space="preserve">
+    <value>semaine</value>
+  </data>
+  <data name="DurationUnit_Week_Plural" xml:space="preserve">
+    <value>semaines</value>
+  </data>
+  <data name="DurationUnit_Year" xml:space="preserve">
+    <value>an</value>
+  </data>
+  <data name="DurationUnit_Year_Plural" xml:space="preserve">
+    <value>ans</value>
+  </data>
+  <data name="Like" xml:space="preserve">
+    <value>J'aime</value>
+  </data>
+  <data name="NiceDateTime_Afternoon" xml:space="preserve">
+    <value>cet après-midi</value>
+  </data>
+  <data name="NiceDateTime_DaysAgo_" xml:space="preserve">
+    <value>il y a {0:0} jours</value>
+  </data>
+  <data name="NiceDateTime_Evening" xml:space="preserve">
+    <value>ce soir</value>
+  </data>
+  <data name="NiceDateTime_HoursAgo_" xml:space="preserve">
+    <value>il y a {0:0} heures</value>
+  </data>
+  <data name="NiceDateTime_InDays_" xml:space="preserve">
+    <value>dans {0:0} jours</value>
+  </data>
+  <data name="NiceDateTime_InHours_" xml:space="preserve">
+    <value>dans {0:0} heures</value>
+  </data>
+  <data name="NiceDateTime_InMinutes_" xml:space="preserve">
+    <value>dans {0:0} minutes</value>
+  </data>
+  <data name="NiceDateTime_InMonths_" xml:space="preserve">
+    <value>dans {0:0} mois</value>
+  </data>
+  <data name="NiceDateTime_InOneHour" xml:space="preserve">
+    <value>dans une heure</value>
+  </data>
+  <data name="NiceDateTime_InYears_" xml:space="preserve">
+    <value>dans {0:0} ans</value>
+  </data>
+  <data name="NiceDateTime_JustNow" xml:space="preserve">
+    <value>à l'instant</value>
+  </data>
+  <data name="NiceDateTime_LastNight" xml:space="preserve">
+    <value>la nuit dernière</value>
+  </data>
+  <data name="NiceDateTime_Midday" xml:space="preserve">
+    <value>ce midi</value>
+  </data>
+  <data name="NiceDateTime_MinutesAgo_" xml:space="preserve">
+    <value>il y a {0:0} minutes</value>
+  </data>
+  <data name="NiceDateTime_MonthsAgo_" xml:space="preserve">
+    <value>il y a {0:0} mois</value>
+  </data>
+  <data name="NiceDateTime_Morning" xml:space="preserve">
+    <value>ce matin</value>
+  </data>
+  <data name="NiceDateTime_NextMonth" xml:space="preserve">
+    <value>le mois prochain</value>
+  </data>
+  <data name="NiceDateTime_NextYear" xml:space="preserve">
+    <value>l'année prochaine</value>
+  </data>
+  <data name="NiceDateTime_OneHourAgo" xml:space="preserve">
+    <value>il y a une heure</value>
+  </data>
+  <data name="NiceDateTime_PreviousMonth" xml:space="preserve">
+    <value>le mois dernier</value>
+  </data>
+  <data name="NiceDateTime_PreviousYear" xml:space="preserve">
+    <value>l'année dernière</value>
+  </data>
+  <data name="NiceDateTime_Tomorrow" xml:space="preserve">
+    <value>demain</value>
+  </data>
+  <data name="NiceDateTime_Tonight" xml:space="preserve">
+    <value>cette nuit</value>
+  </data>
+  <data name="NiceDateTime_YearsAgo_" xml:space="preserve">
+    <value>il y a {0:0} ans</value>
+  </data>
+  <data name="NiceDateTime_Yesterday" xml:space="preserve">
+    <value>hier</value>
+  </data>
+</root>
