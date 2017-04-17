@@ -1,0 +1,52 @@
+﻿@using System.Globalization
+@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@using Sparkle.Services.Networks.Models
+@using Sparkle.Services.Networks.Users
+
+@helper AvatarList(IEnumerable<UserModel> items, UserProfilePictureSize pictureSize)
+{
+    <ul class="Display-AvatarList">
+    @foreach (var item in items)
+    {
+        var picture = pictureSize == UserProfilePictureSize.Small
+            ? item.SmallProfilePictureUrl
+            : item.MediumProfilePictureUrl;
+<li><a title="@item.DisplayName" href="/Person/@(item.Username)"><img class="Avatar-Size@(pictureSize)" src="@picture" alt="@item.DisplayName" /></a></li>}
+    </ul>
+}
+
+@helper PlaceList(System.Web.Mvc.HtmlHelper Html, IList<PlaceModel> items, IList<PlaceModel> allItems)
+{
+    if (items == null || items.Count == 0)
+    {
+        <!-- no more items -->
+    }
+    else
+    {
+        foreach (var item in items)
+        {
+            var place = item;
+            var children = allItems != null ? allItems.Where(p => p.ParentId == item.Id).ToList() : null;
+            @*<li>
+                @Html.ActionLink(item.Name ?? item.Id.ToString(), "Place", "Places", new { id = item.Alias ?? item.Id.ToString(), }, null)
+                @PlaceList(Html, children, allItems)
+            </li>*@
+<div class="contentItem contentPlace mainPlace" style="border-left:3px solid @(place.Category != null ? place.Category.Color : "#000")" data-tag="@(place.Category != null ? place.Category.Id : 0)" data-lat="@(place.Location != null && place.Location.Latitude != null? place.Location.Latitude.Value.ToString(CultureInfo.InvariantCulture) : "")" data-lon="@(place.Location != null && place.Location.Longitude != null ? place.Location.Longitude.Value.ToString(CultureInfo.InvariantCulture) : "")">
+    <img class="avatar" alt="" src="/Content/places/place.gif" />
+    <div style="padding-left:70px">
+        <h2><a class="flatButtonInline accentColor" href="/Places/Place/@place.Alias">@place.Name</a></h2>
+        <p style="">@(place.Category != null ? place.Category.Name : "")</p>
+    </div>
+    <p>@place.Address @place.ZipCode @place.City</p>
+    @if (place.Children != null && place.Children.Count > 0)
+    {
+    <div style="padding:10px 0 0 20px">
+        @PlaceList(Html, children, allItems)
+    </div>
+    }
+    <div class="clear"></div>
+</div>
+        }
+    }
+}

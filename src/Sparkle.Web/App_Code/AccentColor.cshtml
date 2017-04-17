@@ -1,0 +1,35 @@
+﻿
+@helper Declare(string color = "#4da400")
+{
+    string secondColor = "#fff";
+    if (color.ToUpper() == "#33AB46") { secondColor = "#4edb64"; }
+    if (color.ToUpper() == "#9A0372") { secondColor = "#d25db3"; }
+    if (color.ToUpper() == "#760845") { secondColor = "#a44078"; }
+    if (color.ToUpper() == "#F4890A") { secondColor = "#f6b160"; }
+    if (color.ToUpper() == "#1774A4") { secondColor = "#479eca"; }
+    
+@*<style type="text/css">
+label {color:@color;}
+.accentColor{color:@color;}
+ul.tabs li a.bottomAccentColor { border-bottom: 4px solid @color }
+a.accentColor{color:@color;}
+.flatButton,a.flatButton:link{color:@color;}
+a.external.accentColor:link{color:@color;}
+.accentBorderColor{border-left:2px solid @color;}
+.accentBgColor, table.dashboard tr.accentBgColor{background-color:@color; color:#fff;}
+.button.accentColor{
+color:#fff;
+text-shadow: 0 1px 1px rgba(0,0,0,.5);
+border-color:@color;
+background: @color; /* Old browsers */
+background: -moz-linear-gradient(top,  @secondColor 0%, @color 75%); /* FF3.6+ */
+background: -webkit-linear-gradient(top,  @secondColor 0%, @color 75%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, @secondColor 0%, @color 75%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, @secondColor 0%, @color 75%); /* IE10+ */
+background-image: linear-gradient(to bottom, @secondColor 0%, @color 75%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@secondColor', endColorstr='@color',GradientType=0 ); /* IE6-9 */
+}
+.textbox:focus,.filterBox:focus, .textarea:focus,.textbox:hover,.filterBox:hover, .textarea:hover {border: 1px solid @color;}
+.ui-widget-header{border: 1px solid @secondColor; background: @color; color: #fff;}
+</style>*@
+}

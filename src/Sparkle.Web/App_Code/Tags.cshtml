@@ -1,0 +1,70 @@
+﻿
+@helper List(IList<Sparkle.Entities.Networks.ResumeSkill> items){
+    <ul class="tags">
+        @foreach (var item in items)
+        {
+        <li><a href="/Tags/Skills/@item.Skill.Id"><span>@item.Skill.TagName</span></a></li>
+        }
+    </ul>
+}
+
+@helper List(IList<Sparkle.Models.SkillModel> items){
+    <ul class="tags">
+        @foreach (var item in items)
+        {
+        <li><a href="/Tags/Skills/@item.Value"><span>@item.Name</span></a></li>
+        }
+    </ul>
+}
+
+@helper List(IList<Sparkle.Models.InterestModel> items){
+    <ul class="tags">
+        @foreach (var item in items)
+        {
+        <li><a href="/Tags/Interests/@item.Value"><span>@item.Name</span></a></li>
+        }
+    </ul>
+}
+
+@helper List(IList<Sparkle.Models.RecreationModel> items){
+    <ul class="tags">
+        @foreach (var item in items)
+        {
+        <li><a href="/Tags/Recreations/@item.Value"><span>@item.Name</span></a></li>
+        }
+    </ul>
+}
+
+@helper List(IList<Sparkle.Entities.Networks.Skill> items){
+    if (items != null) {
+    <ul class="tags">
+        @foreach (var item in items)
+        {
+        <li><a href="/Tags/Skills/@item.Id"><span>@item.TagName</span></a></li>
+        }
+    </ul>
+    }
+}
+
+@helper List(IEnumerable<Sparkle.Entities.Networks.CompanySkill> items){
+    <ul class="tags">
+        @foreach (var item in items)
+        {
+        <li><a href="/Tags/Skills/@item.Skill.Id"><span>@item.Skill.TagName</span></a></li>
+        }
+    </ul>
+}
+@helper Tag(Sparkle.Entities.Networks.CompanySkill item){
+    <ul class="tags">
+        <li><a href="/Tags/Skills/@item.Skill.Id"><span>@item.Skill.TagName</span></a></li>
+    </ul>
+}
+
+@helper List(IList<Sparkle.Services.Networks.Tags.Tag2Model> items) { 
+    <ul class="tags">
+    @foreach (var item in items)
+    {
+        <li data-alias="@item.Name"><a href="javascript:void(0);"><span>@item.Name</span></a></li>
+    }
+    </ul>
+}

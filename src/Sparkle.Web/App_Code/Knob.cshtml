@@ -1,0 +1,15 @@
+﻿
+@helper Arc(string label, int min, int max, int value, string title = null) {
+<input class="knob" data-readOnly="true" data-thickness=".25" data-height="150" data-width="180" data-angleOffset="-125" data-angleArc="250" data-fgColor="" data-min="@min" data-max="@max" value="@value" title="@(title ?? (value + " / " + max))" />
+ if(!string.IsNullOrWhiteSpace(label)) { 
+     <h4>@label</h4> 
+ }
+}
+
+@helper Arc(string label, double min, double max, double value, string numberFormat = "F0", string title = null) {
+    var inv = System.Globalization.CultureInfo.InvariantCulture;
+<input class="knob" data-readOnly="true" data-thickness=".25" data-height="150" data-width="180" data-angleOffset="-125" data-angleArc="250" data-fgColor="" data-min="@min.ToString(numberFormat ?? "F2", inv)" data-max="@max.ToString(numberFormat ?? "F2", inv)" value="@value.ToString(numberFormat ?? "F2", inv)" title="@(title ?? (value.ToString(numberFormat ?? "F2") + " / " + max.ToString(numberFormat ?? "F2")))" />
+ if(!string.IsNullOrWhiteSpace(label)) { 
+     <h4>@label</h4> 
+ }
+}

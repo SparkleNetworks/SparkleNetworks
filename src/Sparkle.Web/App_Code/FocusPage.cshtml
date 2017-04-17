@@ -1,0 +1,2 @@
+﻿@helper Declare(string title, string explication = null){<div class="focusPage">    <div class="page">        <div class="space">        <h2 class="title ellipsis">@title</h2>        @if(!string.IsNullOrEmpty(explication)) {            <p class="explication accentColor">@explication</p>        }        </div>    </div></div>}
+@helper Custom(string title, string explication = null){<h2 class="title">@title</h2>    if(!string.IsNullOrEmpty(explication)) {        <p class="explication">@explication</p>    }}

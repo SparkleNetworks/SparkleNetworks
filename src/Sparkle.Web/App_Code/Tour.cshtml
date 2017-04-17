@@ -1,0 +1,57 @@
+﻿@using Sparkle.UI
+
+@helper Company(Sparkle.Models.CompanyListModel company, bool showUsers) {
+    <h3>@company.Name</h3>
+    <h4 class="accentColor">@company.Baseline</h4>
+    <div style="margin-top:20px">
+        <a href="/Company/@company.Alias"><img alt="@company.Name" class="avatar" height="100" width="100" src="@company.Picture" /></a>
+        <div style="margin-left:125px">
+            <p>@Sparkle.Helpers.HtmlExtention.Text(null, company.About, true, true, true, false)</p>
+
+            @Tags.List(company.Skills)
+            <div class="space20"></div>
+
+            @if (company.Users != null && showUsers) {
+            <div id="@company.Alias-people" class="peopleTiles max1">
+            @foreach (var item in company.Users)
+	        {
+            <div class="contentItem">
+                <div class="large-avatar-container"><div class="large-avatar" id="largeAvatar@(item.UserId)" style="background-image:url(@item.ProfilePictureUrl)"></div></div>
+                <img alt="" src="@item.ProfilePictureUrl" onload="fadeIn($('#largeAvatar@(item.UserId)'))" style="display:none" />
+                <div class="infos">
+                    @item.FirstName<br />
+                    @item.JobName
+                </div>
+                <div class="clear"></div>
+            </div>
+	        }
+            </div>
+                
+                if (company.Users.Count > 4)
+                {
+                    <a href="javascript:void(0)" class="more people @company.Alias-people" onclick="ShowMore('@company.Alias-people')">@Lang.T("Afficher tout")</a>
+                }
+                
+            }
+            <div class="clear"></div>
+
+            <a class="button accentColor" href="/Company/@company.Alias">@Lang.T("Découvrir") @company.Name</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+}
+
+@helper Company(Sparkle.Entities.Networks.Company company){
+    <h3>@company.Name</h3>
+    <h4 class="accentColor">@company.Baseline</h4>
+    <div style="margin-top:20px">
+        <img alt="@company.Name" class="avatar" height="200" width="200" src="@company.EmailDomain" />
+        <div style="margin-left:220px">
+
+            <a class="button accentColor" href="/Company/@company.Alias">@company.Name</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <hr />
+    <div class="space30"></div>
+}

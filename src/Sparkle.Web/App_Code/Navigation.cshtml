@@ -1,0 +1,11 @@
+﻿
+@helper Declare(Dictionary<string, string> items){
+<nav>
+    <ul class="nav">
+        @foreach (var item in items)
+        {
+            <li><a class="accentColor" href="@item.Value">@item.Key</a></li>
+        }
+    </ul>
+</nav>
+}
