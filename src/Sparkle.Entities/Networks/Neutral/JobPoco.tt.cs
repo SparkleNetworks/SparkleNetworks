@@ -47,6 +47,7 @@ namespace Sparkle.Entities.Networks.Neutral
 
         #region Navigation Properties
     
+        // JobByBusiness
         public ICollection<JobByBusinessPoco> JobByBusinesses
         {
             get
@@ -79,6 +80,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<JobByBusinessPoco> _jobByBusinesses;
     
+        // Users
         public ICollection<UserPoco> Users
         {
             get

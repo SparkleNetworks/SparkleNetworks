@@ -479,6 +479,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private TeamPoco _team;
     
+        // TimelineItemComments
         public ICollection<TimelineItemCommentPoco> Comments
         {
             get
@@ -556,6 +557,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private NetworkPoco _network;
     
+        // TimelineItemSkill
         public ICollection<TimelineItemSkillPoco> Skills
         {
             get
@@ -618,6 +620,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private InboundEmailMessagePoco _inboundEmailMessage;
     
+        // Like
         public ICollection<TimelineItemLikePoco> Likes
         {
             get
@@ -665,6 +668,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private PartnerResourcePoco _partnerResource;
     
+        // TimelineItemTag
         public ICollection<TimelineItemTagPoco> Tags
         {
             get

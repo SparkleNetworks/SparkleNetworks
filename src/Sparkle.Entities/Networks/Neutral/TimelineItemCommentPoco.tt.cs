@@ -129,6 +129,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private UserPoco _postedBy;
     
+        // LikeComment
         public ICollection<TimelineItemCommentLikePoco> Likes
         {
             get

@@ -1012,7 +1012,6 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Hints.table.sql" />
     <Build Include="Schema Objects\Schemas\dbo\Tables\HintsToUsers.table.sql" />
     <Build Include="Schema Objects\Schemas\dbo\Tables\AdTags.table.sql" />
-    <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\Copy of Upgrade20150318_MigratePlacesCoordinates.sql" />
     <Build Include="Schema Objects\Schemas\dbo\Tables\ApiKeys.table.sql" />
     <Build Include="Schema Objects\Schemas\dbo\Tables\UserPresences.table.sql" />
     <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\UpdateUserPresence.sql" />
@@ -1090,17 +1089,9 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_Users_NetworkId.sql">
       <SubType>NotInBuild</SubType>
     </Build>
-    <None Include="SparkleNetworksPreview.publish.xml" />
     <None Include="SparkleNetworks.publish.xml" />
-    <None Include="SparkleNetworksLConnect.publish.xml" />
-    <None Include="SparkleNetworksPreviewBad.publish.xml" />
-    <None Include="SparkleNetworksLConnectProd.publish.xml" />
-    <None Include="SparkleNetworksConnecteoCamp.publish.xml" />
     <None Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_Users_MostFrequent.sql" />
     <None Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\Upgrade_EnsurePlaceCategoryId.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SparkleNetworksWorld.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="Scripts\Pre-Deployment\Script.PreDeployment.sql" />

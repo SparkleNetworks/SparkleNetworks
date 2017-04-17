@@ -41,7 +41,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>SparkleBasicKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -95,6 +96,75 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NetworksModelEntitiesExtensions.tt</DependentUpon>
     </Compile>
+    <Compile Include="Networks\Neutral\AchievementPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\AchievementsCompanyPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\AchievementsUserPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ActiveUsersViewLightExPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ActiveUsersViewLightPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ActivityPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\AdCategoryPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\AdPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\AdTagPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\AlbumPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ApiKeyPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ApplyRequestPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\AspnetMembershipPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\AspnetUsersPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\BuildingPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CareerOpportunityPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ClubPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CompaniesVisitPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CompanyAdminPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CompanyCategoryPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CompanyContactPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CompanyNewPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CompanyPlacePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Networks\Neutral\CompanyPoco.tt.cs">
       <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
     </Compile>
@@ -102,7 +172,130 @@
     <Compile Include="Networks\Neutral\CompanyProfileFieldPoco.tt.cs">
       <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Networks\Neutral\CompanyRelationshipPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CompanyRelationshipTypePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CompanyRequestMessagePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CompanyRequestPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CompanySkillPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CompanyTagPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ContactPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CreateNetworkRequestPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\DeviceConfigurationPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\DevicePlanningPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\DevicePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\EmailMessagePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\EventCategoryPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\EventMemberPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\EventPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\EventPublicMemberPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ExchangeMaterialPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ExchangeSkillPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ExchangeSurfacePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\GroupCategoryPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\GroupInterestPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\GroupMemberPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\GroupPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\GroupRecreationPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\GroupSkillPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\GroupTagPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\HintPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\HintsToUserPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\InboundEmailMessagePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\InformationNotePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\InterestPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\InvitedPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\JobByBusinessPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Networks\Neutral\JobPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\LinkPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ListItemPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ListPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\LivePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\LostItemPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\MenuPlanningPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\MenuPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\MessagePoco.tt.cs">
       <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
     </Compile>
     <Compile Include="Networks\Neutral\NetworkEntitiesPocos.tt.cs">
@@ -110,28 +303,196 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Networks\Neutral\NetworkPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\NetworkTypePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\NotificationPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\NumberPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\PagePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\PartnerResourcePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\PartnerResourceProfileFieldPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\PartnerResourceTagPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\PicturePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\PlaceCategoryPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\PlaceHistoryPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\PlacePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\PlaceProfileFieldPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\PollAnswerPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\PollChoicePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\PollPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ProfileFieldPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ProfileFieldsAvailiableValuePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ProjectMemberPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ProjectPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\RecreationPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\RegisterRequestPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\RelationshipPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\RequestForProposalPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ResumePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\ResumeSkillPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\SeekFriendPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\SkillPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\SocialNetworkCompanySubscriptionPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\SocialNetworkConnectionPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\SocialNetworkStatePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\SocialNetworkUserSubscriptionPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Networks\Neutral\StatsCounter.cs" />
+    <Compile Include="Networks\Neutral\StatsCounterHitPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\StatsCounterPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\StripeTransactionPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\SubscriptionNotificationPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Networks\Neutral\SubscriptionPoco.cs" />
     <Compile Include="Networks\Neutral\SubscriptionPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\SubscriptionTemplatePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\TagCategoryPoco.tt.cs">
       <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
     </Compile>
     <Compile Include="Networks\Neutral\TagDefinitionPoco.cs" />
     <Compile Include="Networks\Neutral\TagDefinitionPoco.tt.cs">
       <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Networks\Neutral\TeamMemberPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\TeamPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\TimelineItemCommentLikePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Networks\Neutral\TimelineItemCommentPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\TimelineItemLikePoco.tt.cs">
       <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
     </Compile>
     <Compile Include="Networks\Neutral\TimelineItemPoco.cs" />
     <Compile Include="Networks\Neutral\TimelineItemPoco.tt.cs">
       <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Networks\Neutral\TimelineItemSkillPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\TimelineItemTagPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\TouchCommunicationItemPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\TouchCommunicationPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\UserActionKeyPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\UserEmailChangeRequestPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\UserInterestPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Networks\Neutral\UserPoco.cs" />
     <Compile Include="Networks\Neutral\UserPoco.tt.cs">
       <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Networks\Neutral\UserPresencePoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Networks\Neutral\UserProfileFieldPoco.cs" />
     <Compile Include="Networks\Neutral\UserProfileFieldPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\UserRecreationPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\UserSettingPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\UserSkillPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\UsersViewPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\UsersVisitPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\UserTagPoco.tt.cs">
       <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
     </Compile>
     <Compile Include="Networks\Page.cs" />
@@ -208,7 +569,7 @@
     <Compile Include="Networks\TimelineItem.cs" />
     <Compile Include="Networks\TimelineItemComments.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="..\..\CommonAssemblyInfo.cs">
+    <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
   </ItemGroup>
@@ -226,7 +587,6 @@
       <LastGenOutput>NetworkEntitiesPocos.tt.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
-    <None Include="SparkleBasicKey.snk" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

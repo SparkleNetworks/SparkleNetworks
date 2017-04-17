@@ -298,6 +298,7 @@ namespace Sparkle.Entities.Networks.Neutral
 
         #region Navigation Properties
     
+        // Activities
         public ICollection<ActivityPoco> Activities
         {
             get
@@ -330,6 +331,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<ActivityPoco> _activities;
     
+        // Ads
         public ICollection<AdPoco> Ads
         {
             get
@@ -377,6 +379,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private CompanyPoco _company;
     
+        // CompaniesVisits
         public ICollection<CompaniesVisitPoco> CompaniesVisits
         {
             get
@@ -409,6 +412,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<CompaniesVisitPoco> _companiesVisits;
     
+        // CompanyAdmins
         public ICollection<CompanyAdminPoco> CompanyAdmins
         {
             get
@@ -441,6 +445,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<CompanyAdminPoco> _companyAdmins;
     
+        // CompanyNews
         public ICollection<CompanyNewPoco> CompanyNews
         {
             get
@@ -473,6 +478,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<CompanyNewPoco> _companyNews;
     
+        // Contacts
         public ICollection<ContactPoco> ContactsOf
         {
             get
@@ -505,6 +511,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<ContactPoco> _contactsOf;
     
+        // Contacts
         public ICollection<ContactPoco> Contacts
         {
             get
@@ -537,6 +544,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<ContactPoco> _contacts;
     
+        // EventMembers
         public ICollection<EventMemberPoco> EventMembers
         {
             get
@@ -569,6 +577,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<EventMemberPoco> _eventMembers;
     
+        // Events
         public ICollection<EventPoco> Events
         {
             get
@@ -601,6 +610,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<EventPoco> _events;
     
+        // ExchangeMaterials
         public ICollection<ExchangeMaterialPoco> ExchangeMaterials
         {
             get
@@ -633,6 +643,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<ExchangeMaterialPoco> _exchangeMaterials;
     
+        // ExchangeSkills
         public ICollection<ExchangeSkillPoco> ExchangeSkills
         {
             get
@@ -665,6 +676,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<ExchangeSkillPoco> _exchangeSkills;
     
+        // ExchangeSurfaces
         public ICollection<ExchangeSurfacePoco> ExchangeSurfaces
         {
             get
@@ -697,6 +709,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<ExchangeSurfacePoco> _exchangeSurfaces;
     
+        // GroupMembers
         public ICollection<GroupMemberPoco> GroupMembers
         {
             get
@@ -729,6 +742,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<GroupMemberPoco> _groupMembers;
     
+        // Groups
         public ICollection<GroupPoco> Groups
         {
             get
@@ -761,6 +775,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<GroupPoco> _groups;
     
+        // InformationNotes
         public ICollection<InformationNotePoco> InformationNotes
         {
             get
@@ -793,6 +808,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<InformationNotePoco> _informationNotes;
     
+        // Interests
         public ICollection<InterestPoco> Interests
         {
             get
@@ -825,6 +841,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<InterestPoco> _interests;
     
+        // Invited
         public ICollection<InvitedPoco> UsersInvited
         {
             get
@@ -857,6 +874,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<InvitedPoco> _usersInvited;
     
+        // Invited
         public ICollection<InvitedPoco> Invitations
         {
             get
@@ -904,6 +922,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private JobPoco _job;
     
+        // Links
         public ICollection<LinkPoco> Links
         {
             get
@@ -936,6 +955,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<LinkPoco> _links;
     
+        // ListItems
         public ICollection<ListItemPoco> ListItems
         {
             get
@@ -968,6 +988,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<ListItemPoco> _listItems;
     
+        // Lists
         public ICollection<ListPoco> Lists
         {
             get
@@ -1000,6 +1021,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<ListPoco> _lists;
     
+        // Live
         public ICollection<LivePoco> Lives
         {
             get
@@ -1032,6 +1054,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<LivePoco> _lives;
     
+        // LostItems
         public ICollection<LostItemPoco> LostItems
         {
             get
@@ -1064,6 +1087,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<LostItemPoco> _lostItems;
     
+        // Messages
         public ICollection<MessagePoco> MessagesSent
         {
             get
@@ -1096,6 +1120,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<MessagePoco> _messagesSent;
     
+        // Messages
         public ICollection<MessagePoco> MessagesReceived
         {
             get
@@ -1128,6 +1153,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<MessagePoco> _messagesReceived;
     
+        // Recreations
         public ICollection<RecreationPoco> Recreations
         {
             get
@@ -1175,6 +1201,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private RelationshipPoco _relationship;
     
+        // TeamMembers
         public ICollection<TeamMemberPoco> TeamMembers
         {
             get
@@ -1207,6 +1234,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<TeamMemberPoco> _teamMembers;
     
+        // TimelineItems
         public ICollection<TimelineItemPoco> TimelineItems
         {
             get
@@ -1239,6 +1267,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<TimelineItemPoco> _timelineItems;
     
+        // TimelineItems
         public ICollection<TimelineItemPoco> MyTimelineItems
         {
             get
@@ -1271,6 +1300,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<TimelineItemPoco> _myTimelineItems;
     
+        // UserInterests
         public ICollection<UserInterestPoco> UserInterests
         {
             get
@@ -1303,6 +1333,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<UserInterestPoco> _userInterests;
     
+        // UserRecreations
         public ICollection<UserRecreationPoco> UserRecreations
         {
             get
@@ -1335,6 +1366,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<UserRecreationPoco> _userRecreations;
     
+        // UserSkills
         public ICollection<UserSkillPoco> UserSkills
         {
             get
@@ -1367,6 +1399,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<UserSkillPoco> _userSkills;
     
+        // UsersVisits
         public ICollection<UsersVisitPoco> OtherUsersVisits
         {
             get
@@ -1399,6 +1432,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<UsersVisitPoco> _otherUsersVisits;
     
+        // UsersVisits
         public ICollection<UsersVisitPoco> MyUsersVisits
         {
             get
@@ -1431,6 +1465,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<UsersVisitPoco> _myUsersVisits;
     
+        // SeekFriend
         public ICollection<SeekFriendPoco> SeekFriends
         {
             get
@@ -1463,6 +1498,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<SeekFriendPoco> _seekFriends;
     
+        // SeekFriend
         public ICollection<SeekFriendPoco> SeekFriends1
         {
             get
@@ -1495,6 +1531,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<SeekFriendPoco> _seekFriends1;
     
+        // ProjectMember
         public ICollection<ProjectMemberPoco> ProjectMembers
         {
             get
@@ -1542,6 +1579,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private AspnetUsersPoco _aspnetUser;
     
+        // TimelineItemComment
         public ICollection<TimelineItemCommentPoco> PostedTimelineItemComments
         {
             get
@@ -1589,6 +1627,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private NotificationPoco _notification;
     
+        // AchievementsUser
         public ICollection<AchievementsUserPoco> Achievements
         {
             get
@@ -1621,6 +1660,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<AchievementsUserPoco> _achievements;
     
+        // RegisterRequest
         public ICollection<RegisterRequestPoco> RepliedToRegisterRequests
         {
             get
@@ -1653,6 +1693,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<RegisterRequestPoco> _repliedToRegisterRequests;
     
+        // RegisterRequest
         public ICollection<RegisterRequestPoco> ValidatedRegisterRequests
         {
             get
@@ -1685,6 +1726,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<RegisterRequestPoco> _validatedRegisterRequests;
     
+        // CareerOpportunity
         public ICollection<CareerOpportunityPoco> CareerOpportunities
         {
             get
@@ -1717,6 +1759,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<CareerOpportunityPoco> _careerOpportunities;
     
+        // SocialNetworkConnection
         public ICollection<SocialNetworkConnectionPoco> SocialNetworkConnections
         {
             get
@@ -1749,6 +1792,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<SocialNetworkConnectionPoco> _socialNetworkConnections;
     
+        // SocialNetworkUserSubscription
         public ICollection<SocialNetworkUserSubscriptionPoco> SocialNetworkUserSubscriptions
         {
             get
@@ -1796,6 +1840,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private NetworkPoco _network;
     
+        // CompanyContact
         public ICollection<CompanyContactPoco> CompanyContacts
         {
             get
@@ -1828,6 +1873,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<CompanyContactPoco> _companyContacts;
     
+        // StatsCounterHit
         public ICollection<StatsCounterHitPoco> StatsCounterHits
         {
             get
@@ -1860,6 +1906,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<StatsCounterHitPoco> _statsCounterHits;
     
+        // CompanyRequestMessage
         public ICollection<CompanyRequestMessagePoco> CompanyRequestMessages
         {
             get
@@ -1892,6 +1939,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<CompanyRequestMessagePoco> _companyRequestMessages;
     
+        // CompanyRequest
         public ICollection<CompanyRequestPoco> ApprovedCompanyRequests
         {
             get
@@ -1924,6 +1972,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<CompanyRequestPoco> _approvedCompanyRequests;
     
+        // CompanyRequest
         public ICollection<CompanyRequestPoco> BlockedCompanyRequests
         {
             get
@@ -1956,6 +2005,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<CompanyRequestPoco> _blockedCompanyRequests;
     
+        // Club
         public ICollection<ClubPoco> CreatedClubs
         {
             get
@@ -1988,6 +2038,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<ClubPoco> _createdClubs;
     
+        // UserActionKey
         public ICollection<UserActionKeyPoco> UserActionKeys
         {
             get
@@ -2020,6 +2071,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<UserActionKeyPoco> _userActionKeys;
     
+        // TimelineItemSkill
         public ICollection<TimelineItemSkillPoco> TimelineItemSkillsCreated
         {
             get
@@ -2052,6 +2104,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<TimelineItemSkillPoco> _timelineItemSkillsCreated;
     
+        // TimelineItemSkill
         public ICollection<TimelineItemSkillPoco> TimelineItemSkillsDeleted
         {
             get
@@ -2084,6 +2137,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<TimelineItemSkillPoco> _timelineItemSkillsDeleted;
     
+        // TimelineItem
         public ICollection<TimelineItemPoco> DeletedTimelineItems
         {
             get
@@ -2116,6 +2170,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<TimelineItemPoco> _deletedTimelineItems;
     
+        // GroupSkill
         public ICollection<GroupSkillPoco> GroupSkillsCreated
         {
             get
@@ -2148,6 +2203,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<GroupSkillPoco> _groupSkillsCreated;
     
+        // GroupSkill
         public ICollection<GroupSkillPoco> GroupSkillsDeleted
         {
             get
@@ -2180,6 +2236,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<GroupSkillPoco> _groupSkillsDeleted;
     
+        // GroupInterest
         public ICollection<GroupInterestPoco> GroupInterestsCreatedBy
         {
             get
@@ -2212,6 +2269,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<GroupInterestPoco> _groupInterestsCreatedBy;
     
+        // GroupInterest
         public ICollection<GroupInterestPoco> GroupInterestsDeletedBy
         {
             get
@@ -2244,6 +2302,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<GroupInterestPoco> _groupInterestsDeletedBy;
     
+        // GroupRecreation
         public ICollection<GroupRecreationPoco> GroupRecreationsCreatedBy
         {
             get
@@ -2276,6 +2335,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<GroupRecreationPoco> _groupRecreationsCreatedBy;
     
+        // GroupRecreation
         public ICollection<GroupRecreationPoco> GroupRecreationsDeletedBy
         {
             get
@@ -2308,6 +2368,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<GroupRecreationPoco> _groupRecreationsDeletedBy;
     
+        // EmailMessage
         public ICollection<EmailMessagePoco> EmailMessages
         {
             get
@@ -2340,6 +2401,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<EmailMessagePoco> _emailMessages;
     
+        // UserEmailChangeRequest
         public ICollection<UserEmailChangeRequestPoco> UserEmailChangeRequests
         {
             get
@@ -2372,6 +2434,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<UserEmailChangeRequestPoco> _userEmailChangeRequests;
     
+        // UserEmailChangeRequest
         public ICollection<UserEmailChangeRequestPoco> UserEmailChangeRequests1
         {
             get
@@ -2404,6 +2467,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<UserEmailChangeRequestPoco> _userEmailChangeRequests1;
     
+        // Like
         public ICollection<TimelineItemLikePoco> TimelineItemLikes
         {
             get
@@ -2436,6 +2500,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<TimelineItemLikePoco> _timelineItemLikes;
     
+        // LikeComment
         public ICollection<TimelineItemCommentLikePoco> TimelineItemCommentLikes
         {
             get
@@ -2468,6 +2533,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<TimelineItemCommentLikePoco> _timelineItemCommentLikes;
     
+        // GroupMember
         public ICollection<GroupMemberPoco> GroupAcceptationsDone
         {
             get
@@ -2500,6 +2566,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<GroupMemberPoco> _groupAcceptationsDone;
     
+        // GroupMember
         public ICollection<GroupMemberPoco> GroupInvitationsSent
         {
             get
@@ -2532,6 +2599,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<GroupMemberPoco> _groupInvitationsSent;
     
+        // UserProfileField
         public ICollection<UserProfileFieldPoco> UserProfileFields
         {
             get
@@ -2564,6 +2632,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<UserProfileFieldPoco> _userProfileFields;
     
+        // ApplyRequest
         public ICollection<ApplyRequestPoco> ApplyRequests
         {
             get
@@ -2596,6 +2665,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<ApplyRequestPoco> _applyRequests;
     
+        // ApplyRequest
         public ICollection<ApplyRequestPoco> ApplyRequests1
         {
             get
@@ -2628,6 +2698,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<ApplyRequestPoco> _applyRequests1;
     
+        // ApplyRequest
         public ICollection<ApplyRequestPoco> ApplyRequests2
         {
             get
@@ -2660,6 +2731,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<ApplyRequestPoco> _applyRequests2;
     
+        // Subscription
         public ICollection<SubscriptionPoco> ApplyingSubscriptions
         {
             get
@@ -2692,6 +2764,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<SubscriptionPoco> _applyingSubscriptions;
     
+        // Subscription
         public ICollection<SubscriptionPoco> OwnedSubscriptions
         {
             get
@@ -2724,6 +2797,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<SubscriptionPoco> _ownedSubscriptions;
     
+        // StripeTransaction
         public ICollection<StripeTransactionPoco> StripeTransactions
         {
             get
@@ -2756,6 +2830,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<StripeTransactionPoco> _stripeTransactions;
     
+        // TagDefinition
         public ICollection<TagDefinitionPoco> CreatedTagDefinitions
         {
             get
@@ -2788,6 +2863,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<TagDefinitionPoco> _createdTagDefinitions;
     
+        // PartnerResource
         public ICollection<PartnerResourcePoco> CreatedPartnerResources
         {
             get
@@ -2820,6 +2896,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<PartnerResourcePoco> _createdPartnerResources;
     
+        // PartnerResource
         public ICollection<PartnerResourcePoco> DeletedPartnerResources
         {
             get
@@ -2852,6 +2929,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<PartnerResourcePoco> _deletedPartnerResources;
     
+        // PartnerResource
         public ICollection<PartnerResourcePoco> PartnerResources
         {
             get
@@ -2884,6 +2962,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<PartnerResourcePoco> _partnerResources;
     
+        // ApplyRequest
         public ICollection<ApplyRequestPoco> DeletedApplyRequests
         {
             get
@@ -2916,6 +2995,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<ApplyRequestPoco> _deletedApplyRequests;
     
+        // ApplyRequest
         public ICollection<ApplyRequestPoco> ApplyRequests3
         {
             get
@@ -2948,6 +3028,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<ApplyRequestPoco> _applyRequests3;
     
+        // CompanyTag
         public ICollection<CompanyTagPoco> CreatedCompanyTags
         {
             get
@@ -2980,6 +3061,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<CompanyTagPoco> _createdCompanyTags;
     
+        // CompanyTag
         public ICollection<CompanyTagPoco> DeletedCompanyTags
         {
             get
@@ -3012,6 +3094,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<CompanyTagPoco> _deletedCompanyTags;
     
+        // Invited
         public ICollection<InvitedPoco> DeletedInvited
         {
             get
@@ -3044,6 +3127,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<InvitedPoco> _deletedInvited;
     
+        // UserTag
         public ICollection<UserTagPoco> UserTags
         {
             get
@@ -3076,6 +3160,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<UserTagPoco> _userTags;
     
+        // UserTag
         public ICollection<UserTagPoco> CreatedUserTags
         {
             get
@@ -3108,6 +3193,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<UserTagPoco> _createdUserTags;
     
+        // UserTag
         public ICollection<UserTagPoco> DeletedUserTags
         {
             get
@@ -3140,6 +3226,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<UserTagPoco> _deletedUserTags;
     
+        // GroupTag
         public ICollection<GroupTagPoco> GroupTagsCreated
         {
             get
@@ -3172,6 +3259,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<GroupTagPoco> _groupTagsCreated;
     
+        // GroupTag
         public ICollection<GroupTagPoco> GroupTagsDeleted
         {
             get
@@ -3204,6 +3292,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<GroupTagPoco> _groupTagsDeleted;
     
+        // TimelineItemTag
         public ICollection<TimelineItemTagPoco> TimelineItemTagsCreated
         {
             get
@@ -3236,6 +3325,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<TimelineItemTagPoco> _timelineItemTagsCreated;
     
+        // TimelineItemTag
         public ICollection<TimelineItemTagPoco> TimelineItemTagsDeleted
         {
             get
@@ -3268,6 +3358,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<TimelineItemTagPoco> _timelineItemTagsDeleted;
     
+        // Ad
         public ICollection<AdPoco> AdsClosed
         {
             get
@@ -3300,6 +3391,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<AdPoco> _adsClosed;
     
+        // Ad
         public ICollection<AdPoco> AdsValidated
         {
             get
@@ -3332,6 +3424,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<AdPoco> _adsValidated;
     
+        // AdTag
         public ICollection<AdTagPoco> AdTagsCreated
         {
             get
@@ -3364,6 +3457,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<AdTagPoco> _adTagsCreated;
     
+        // AdTag
         public ICollection<AdTagPoco> AdTagsDeleted
         {
             get
@@ -3396,6 +3490,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<AdTagPoco> _adTagsDeleted;
     
+        // HintsToUser
         public ICollection<HintsToUserPoco> HintsToUsers
         {
             get
@@ -3428,6 +3523,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<HintsToUserPoco> _hintsToUsers;
     
+        // UserPresence
         public ICollection<UserPresencePoco> UserPresences
         {
             get

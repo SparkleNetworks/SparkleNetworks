@@ -41,11 +41,12 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>SparkleBasicKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SrkToolkit.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SrkToolkit.Common.1.1.131\lib\net45\SrkToolkit.Common.dll</HintPath>
+      <HintPath>..\packages\SrkToolkit.Common.1.1.131\lib\net45\SrkToolkit.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -175,7 +176,7 @@
     <Compile Include="Networks\ProjectsMembersRepository.cs" />
     <Compile Include="Networks\ProjectsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="..\..\CommonAssemblyInfo.cs">
+    <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Networks\RecreationsRepository.cs" />
@@ -194,7 +195,6 @@
       <DependentUpon>NetworksModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="SparkleBasicKey.snk" />
     <None Include="Networks\EntityRepositoryFactory.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EntityRepositoryFactory.tt.cs</LastGenOutput>

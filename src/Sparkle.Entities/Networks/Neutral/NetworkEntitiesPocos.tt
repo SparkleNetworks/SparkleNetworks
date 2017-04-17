@@ -23,11 +23,19 @@ string inputFile = @"..\..\..\Sparkle.Data.Entity\Networks\Model\NetworksModel.e
 EdmItemCollection ItemCollection = loader.CreateEdmItemCollection(inputFile);
 string namespaceName = code.VsNamespaceSuggestion();
 
+bool tryFilter = false;
 var entityNames = new List<string>()
 {
-    "Company",
+    "Activity","Activities",
+    "Company","Companies",
+    "CompanyCategory","CompanyCategories",
     "CompanyProfileField",
+    "CompaniesVisit",
     "Job",
+    "JobByBusiness",
+    "Network",
+    "NetworkType",
+    "Place",
     "Subscription",
     "TagDefinition",
     "TimelineItemComment",
@@ -45,7 +53,7 @@ WriteCustomObservableCollection();
 EndNamespace(namespaceName);
 
 // Emit Entity Types
-foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e => e.Name).Where(e => entityNames.Contains(e.Name)))
+foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e => e.Name).Where(e => !tryFilter || entityNames.Contains(e.Name)))
 {
     fileManager.StartNewFile(entity.Name + "Poco.tt.cs");
     BeginNamespace(namespaceName, code);
@@ -206,8 +214,20 @@ foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e =>
 
     region.Begin("Navigation Properties");
 
-    foreach (NavigationProperty navProperty in entity.NavigationProperties.Where(np => np.DeclaringType == entity))
+    var doneNavProperties = new List<string>();
+
+    foreach (NavigationProperty navProperty in entity.NavigationProperties.Where(np => np.DeclaringType == entity /*&& entityNames.Contains("NetworksModel." + np.DeclaringType)*/))
     {
+        if (tryFilter && !entityNames.Contains(navProperty.ToEndMember.Name))
+        {
+#>
+
+    // SKIP Navigation Property: <#= navProperty.Name #> (<#= navProperty.ToEndMember.Name #>)
+<#
+            continue;
+        }
+
+        doneNavProperties.Add(navProperty.Name);
         NavigationProperty inverse = ef.Inverse(navProperty);
         if (inverse != null &&  !IsReadWriteAccessibleProperty(inverse))
         {
@@ -219,6 +239,7 @@ foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e =>
         if (navProperty.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many)
         {
 #>
+    // <#= navProperty.ToEndMember.Name #>
     <#=Accessibility.ForReadOnlyProperty(navProperty)#> ICollection<<#=code.Escape(navProperty.ToEndMember.GetEntityType())#>Poco> <#=code.Escape(navProperty)#>
     {
         get
@@ -324,6 +345,15 @@ foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e =>
     }
     foreach (NavigationProperty navProperty in entity.NavigationProperties.Where(np => np.DeclaringType == entity))
     {
+        if (tryFilter && !doneNavProperties.Contains(navProperty.Name))
+        {
+#>
+
+    // SKIP Fixup1: <#= navProperty.Name #> (<#= navProperty.ToEndMember.Name #>)
+<#
+            continue;
+        }
+
         NavigationProperty inverse = ef.Inverse(navProperty);
 
         if (inverse != null && !IsReadWriteAccessibleProperty(inverse))
@@ -545,6 +575,15 @@ foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e =>
 
     foreach (NavigationProperty navProperty in entity.NavigationProperties.Where(np => np.DeclaringType == entity))
     {
+        if (!doneNavProperties.Contains(navProperty.Name))
+        {
+#>
+
+    // SKIP Fixup1: <#= navProperty.Name #> (<#= navProperty.ToEndMember.Name #>)
+<#
+            continue;
+        }
+
         NavigationProperty inverse = ef.Inverse(navProperty);
 
         if (inverse != null && !IsReadWriteAccessibleProperty(inverse))

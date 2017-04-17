@@ -353,6 +353,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private NetworkPoco _network;
     
+        // StripeTransaction
         public ICollection<StripeTransactionPoco> StripeTransactions
         {
             get
@@ -385,6 +386,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<StripeTransactionPoco> _stripeTransactions;
     
+        // SubscriptionNotification
         public ICollection<SubscriptionNotificationPoco> SubscriptionNotifications
         {
             get

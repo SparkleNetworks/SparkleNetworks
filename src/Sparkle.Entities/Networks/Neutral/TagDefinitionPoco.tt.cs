@@ -155,6 +155,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private UserPoco _createdByUser;
     
+        // PartnerResourceTag
         public ICollection<PartnerResourceTagPoco> PartnerResourceTags
         {
             get
@@ -187,6 +188,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<PartnerResourceTagPoco> _partnerResourceTags;
     
+        // CompanyTag
         public ICollection<CompanyTagPoco> CompanyTags
         {
             get
@@ -219,6 +221,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<CompanyTagPoco> _companyTags;
     
+        // UserTag
         public ICollection<UserTagPoco> UserTags
         {
             get
@@ -251,6 +254,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<UserTagPoco> _userTags;
     
+        // GroupTag
         public ICollection<GroupTagPoco> GroupTags
         {
             get
@@ -283,6 +287,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<GroupTagPoco> _groupTags;
     
+        // TimelineItemTag
         public ICollection<TimelineItemTagPoco> TimelineItemTags
         {
             get
@@ -315,6 +320,7 @@ namespace Sparkle.Entities.Networks.Neutral
         }
         private ICollection<TimelineItemTagPoco> _timelineItemTags;
     
+        // AdTag
         public ICollection<AdTagPoco> AdTags
         {
             get
