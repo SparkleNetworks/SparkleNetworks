@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A95C5C44-350D-4C57-8454-128516423A20}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sparkle.Data.Entity</RootNamespace>
+    <AssemblyName>Sparkle.Data.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SparkleBasicKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SrkToolkit.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SrkToolkit.Common.1.1.131\lib\net45\SrkToolkit.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\DataExtensions.cs" />
+    <Compile Include="Networks\AchievementsRepository.cs" />
+    <Compile Include="Networks\AchievementsUsersRepository.cs" />
+    <Compile Include="Networks\ActivitiesRepository.cs" />
+    <Compile Include="Networks\AdsCategoriesRepository.cs" />
+    <Compile Include="Networks\AdsRepository.cs" />
+    <Compile Include="Networks\AlbumsRepository.cs" />
+    <Compile Include="Networks\ApiKeysRepository.cs" />
+    <Compile Include="Networks\ApplyRequestsRepository.cs" />
+    <Compile Include="Networks\BaseNetworkRepository.cs" />
+    <Compile Include="Networks\BuildingRepository.cs" />
+    <Compile Include="Networks\CareerOpportunitiesRepository.cs" />
+    <Compile Include="Networks\ClubsRepository.cs" />
+    <Compile Include="Networks\CompaniesVisitsRepository.cs" />
+    <Compile Include="Networks\CompanyCategoriesRepository.cs" />
+    <Compile Include="Networks\CompanyPlacesRepository.cs" />
+    <Compile Include="Networks\CompanyProfileFieldsRepository.cs" />
+    <Compile Include="Networks\CompanyRelationshipsRepository.cs" />
+    <Compile Include="Networks\CompanyRelationshipTypesRepository.cs" />
+    <Compile Include="Networks\CompanyRepository.cs" />
+    <Compile Include="Networks\AchievementsCompaniesRepository.cs" />
+    <Compile Include="Networks\CompanyContactsRepository.cs" />
+    <Compile Include="Networks\CompanyTagsRepository.cs" />
+    <Compile Include="Networks\EntityDataTransaction.cs" />
+    <Compile Include="Networks\AdTagsRepository.cs" />
+    <Compile Include="Networks\GroupTagsRepository.cs" />
+    <Compile Include="Networks\HintsRepository.cs" />
+    <Compile Include="Networks\HintsToUsersRepository.cs" />
+    <Compile Include="Networks\NetworksEntities.cs" />
+    <Compile Include="Networks\PagesRepository.cs" />
+    <Compile Include="Networks\PartnerResourceProfileFieldsRepository.cs" />
+    <Compile Include="Networks\CreateNetworkRequestsRepository.cs" />
+    <Compile Include="Networks\CompanyRequestMessagesRepository.cs" />
+    <Compile Include="Networks\CompanyRequestsRepository.cs" />
+    <Compile Include="Networks\EmailMessagesRepository.cs" />
+    <Compile Include="Networks\InboundEmailMessageRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Networks\NetworkTypesRepository.cs" />
+    <Compile Include="Networks\PartnerResourcesRepository.cs" />
+    <Compile Include="Networks\PartnerResourceTagsRepository.cs" />
+    <Compile Include="Networks\PlaceProfileFieldsRepository.cs" />
+    <Compile Include="Networks\ProfileFieldsAvailiableValuesRepository.cs" />
+    <Compile Include="Networks\ProfileFieldsRepository.cs" />
+    <Compile Include="Networks\ResumesRepository.cs" />
+    <Compile Include="Networks\DeviceConfigurationRepository.cs" />
+    <Compile Include="Networks\DevicePlanningRepository.cs" />
+    <Compile Include="Networks\DevicesRepository.cs" />
+    <Compile Include="Networks\EntityRepositoryFactory.cs" />
+    <Compile Include="Networks\EventPublicMembersRepository.cs" />
+    <Compile Include="Networks\EventsMembersRepository.cs" />
+    <Compile Include="Networks\EventsRepository.cs" />
+    <Compile Include="Networks\ExchangeMaterialsRepository.cs" />
+    <Compile Include="Networks\ExchangeSkillsRepository.cs" />
+    <Compile Include="Networks\ExchangeSurfacesRepository.cs" />
+    <Compile Include="Networks\FriendsRepository.cs" />
+    <Compile Include="Networks\GroupsCategoriesRepository.cs" />
+    <Compile Include="Networks\GroupsMembersRepository.cs" />
+    <Compile Include="Networks\GroupsRepository.cs" />
+    <Compile Include="Networks\InformationNotesRepository.cs" />
+    <Compile Include="Networks\InterestsRepository.cs" />
+    <Compile Include="Networks\InvitedRepository.cs" />
+    <Compile Include="Networks\EntityRepositoryFactory.tt.cs">
+      <DependentUpon>EntityRepositoryFactory.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Networks\JobRepository.cs" />
+    <Compile Include="Networks\LikesRepository.cs" />
+    <Compile Include="Networks\LinksRepository.cs" />
+    <Compile Include="Networks\LiveRepository.cs" />
+    <Compile Include="Networks\LostItemsRepository.cs" />
+    <None Include="Networks\LunchRepository.cs" />
+    <Compile Include="Networks\MembershipRepository.cs" />
+    <Compile Include="Networks\MenusPlanningRepository.cs" />
+    <Compile Include="Networks\MenusRepository.cs" />
+    <Compile Include="Networks\Model\NetworksModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NetworksModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\NetworksRepository.cs" />
+    <Compile Include="Networks\RegisterRequestsRepository.cs" />
+    <Compile Include="Networks\RequestsForProposalRepository.cs" />
+    <Compile Include="Networks\SocialNetworkCompanySubscriptionsRepository.cs" />
+    <Compile Include="Networks\SocialNetworkConnectionsRepository.cs" />
+    <Compile Include="Networks\SocialNetworkStatesRepository.cs" />
+    <Compile Include="Networks\SocialNetworkUserSubscriptionsRepository.cs" />
+    <Compile Include="Networks\Sql\DbCommandExtensions.cs" />
+    <Compile Include="Networks\StatsCounterHitsRepository.cs" />
+    <Compile Include="Networks\StatsCountersRepository.cs" />
+    <Compile Include="Networks\StripeTransactionsRepository.cs" />
+    <Compile Include="Networks\SubscriptionNotificationsRepository.cs" />
+    <Compile Include="Networks\SubscriptionsRepository.cs" />
+    <Compile Include="Networks\SubscriptionTemplatesRepository.cs" />
+    <Compile Include="Networks\TagCategoriesRepository.cs" />
+    <Compile Include="Networks\TagDefinitionsRepository.cs" />
+    <Compile Include="Networks\TextRepository.cs" />
+    <Compile Include="Networks\TimelineItemSkillsRepository.cs" />
+    <Compile Include="Networks\TimelineItemTagsRepository.cs" />
+    <Compile Include="Networks\UserActionKeysRepository.cs" />
+    <Compile Include="Networks\UserEmailChangeRequestRepository.cs" />
+    <Compile Include="Networks\UserPresencesRepository.cs" />
+    <Compile Include="Networks\UserProfileFieldsRepository.cs" />
+    <Compile Include="Networks\UserSettingsRepository.cs" />
+    <Compile Include="Networks\UserTagsRepository.cs" />
+    <Compile Include="Networks\NotificationsRepository.cs" />
+    <Compile Include="Networks\NumbersRepository.cs" />
+    <Compile Include="Networks\PeoplesRepository.cs" />
+    <Compile Include="Networks\PeoplesSkillsRepository.cs" />
+    <Compile Include="Networks\PeopleVisitsRepository.cs" />
+    <Compile Include="Networks\PlacesRepository.cs" />
+    <Compile Include="Networks\PollsRepository.cs" />
+    <Compile Include="Networks\PrivateMessageRepository.cs" />
+    <Compile Include="Networks\ProjectsMembersRepository.cs" />
+    <Compile Include="Networks\ProjectsRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Networks\RecreationsRepository.cs" />
+    <Compile Include="Networks\RelationshipRepository.cs" />
+    <Compile Include="Networks\SeekFriendsRepository.cs" />
+    <Compile Include="Networks\SkillsRepository.cs" />
+    <Compile Include="Networks\TouchCommunicationItemsRepository.cs" />
+    <Compile Include="Networks\TouchCommunicationRepository.cs" />
+    <Compile Include="Networks\WallCommentsRepository.cs" />
+    <Compile Include="Networks\WallRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Networks\Model\NetworksModel.edmx" />
+    <None Include="Networks\Model\NetworksModel.edmx.diagram">
+      <DependentUpon>NetworksModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="SparkleBasicKey.snk" />
+    <None Include="Networks\EntityRepositoryFactory.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityRepositoryFactory.tt.cs</LastGenOutput>
+    </None>
+    <None Include="Networks\Model\NetworksModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NetworksModel.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Sparkle.Data\Sparkle.Data.csproj">
+      <Project>{f3bbc3e7-ba09-43f4-a32c-9d77a7e0d4be}</Project>
+      <Name>Sparkle.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Entities\Sparkle.Entities.csproj">
+      <Project>{f2341891-7dbe-4a69-a90b-641e4663e24d}</Project>
+      <Name>Sparkle.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Infrastructure\Sparkle.Infrastructure.csproj">
+      <Project>{63efbc4b-cb11-4539-b999-960c1209e696}</Project>
+      <Name>Sparkle.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

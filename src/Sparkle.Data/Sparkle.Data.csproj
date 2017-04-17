@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F3BBC3E7-BA09-43F4-A32C-9D77A7E0D4BE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sparkle.Data</RootNamespace>
+    <AssemblyName>Sparkle.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SparkleBasicKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Networks\Filters\CompanyProfileFieldsFilter.cs" />
+    <Compile Include="Networks\Filters\PartnerResourceProfileFieldsFilter.cs" />
+    <Compile Include="Networks\Filters\PartnerResourcesFilter.cs" />
+    <Compile Include="Networks\Filters\SubscriptionFilters.cs" />
+    <Compile Include="Networks\IApiKeysRepository.cs" />
+    <Compile Include="Networks\IApplyRequestsRepository.cs" />
+    <Compile Include="Networks\Filters\UserProfileFieldsFilter.cs" />
+    <Compile Include="Networks\ICompanyPlacesRepository.cs" />
+    <Compile Include="Networks\ICompanyProfileFieldsRepository.cs" />
+    <Compile Include="Networks\ICompanyRelationshipsRepository.cs" />
+    <Compile Include="Networks\ICompanyRelationshipTypesRepository.cs" />
+    <Compile Include="Networks\IAdTagsRepository.cs" />
+    <Compile Include="Networks\IHintsRepository.cs" />
+    <Compile Include="Networks\IHintsToUsersRepository.cs" />
+    <Compile Include="Networks\IPagesRepository.cs" />
+    <Compile Include="Networks\ITagsV1Repository.cs" />
+    <Compile Include="Networks\ITagsV2Repository.cs" />
+    <Compile Include="Networks\ITimelineItemTagsRepository.cs" />
+    <Compile Include="Networks\IGroupTagsRepository.cs" />
+    <Compile Include="Networks\ICompanyTagsRepository.cs" />
+    <Compile Include="Networks\IEmailMessagesRepository.cs" />
+    <Compile Include="Networks\Filters\UserEmailChangeRequestFilter.cs" />
+    <Compile Include="Networks\IInboundEmailMessageRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Networks\IDataTransaction.cs" />
+    <Compile Include="Networks\IPartnerResourceProfileFieldsRepository.cs" />
+    <Compile Include="Networks\IPartnerResourcesRepository.cs" />
+    <Compile Include="Networks\IPartnerResourceTagsRepository.cs" />
+    <Compile Include="Networks\IPlaceProfileFieldsRepository.cs" />
+    <Compile Include="Networks\IProfileFieldsAvailiableValuesRepository.cs" />
+    <Compile Include="Networks\IProfileFieldsRepository.cs" />
+    <Compile Include="Networks\IStripeTransactionsRepository.cs" />
+    <Compile Include="Networks\ISubscriptionNotificationsRepository.cs" />
+    <Compile Include="Networks\ISubscriptionsRepository.cs" />
+    <Compile Include="Networks\ISubscriptionTemplatesRepository.cs" />
+    <Compile Include="Networks\ITagCategoriesRepository.cs" />
+    <Compile Include="Networks\ITagDefinitionsRepository.cs" />
+    <Compile Include="Networks\IUserActionKeysRepository.cs" />
+    <Compile Include="Networks\IClubsRepository.cs" />
+    <Compile Include="Networks\ICompanyRequestMessagesRepository.cs" />
+    <Compile Include="Networks\ICompanyRequestsRepository.cs" />
+    <Compile Include="Networks\ICompanyCategoriesRepository.cs" />
+    <Compile Include="Networks\INetworkTypesRepository.cs" />
+    <Compile Include="Networks\IStatsCounterHitsRepository.cs" />
+    <Compile Include="Networks\IStatsCountersRepository.cs" />
+    <Compile Include="Networks\ICreateNetworkRequestsRepository.cs" />
+    <Compile Include="Networks\ICompanyContactsRepository.cs" />
+    <Compile Include="Networks\IResumesRepository.cs" />
+    <Compile Include="Networks\IAchievementsCompaniesRepository.cs" />
+    <Compile Include="Networks\IBaseNetworkRepository.cs" />
+    <Compile Include="Networks\ICareerOpportunitiesRepository.cs" />
+    <Compile Include="Networks\ICompaniesVisitsRepository.cs" />
+    <Compile Include="Networks\CompanyWithStatistics.cs" />
+    <Compile Include="DataDisposable.cs" />
+    <Compile Include="Networks\Filters\AchievementsFilter.cs" />
+    <Compile Include="Networks\Filters\ActivitiesFilter.cs" />
+    <Compile Include="Networks\Filters\AdsFilter.cs" />
+    <Compile Include="Networks\Filters\AlbumsFilter.cs" />
+    <Compile Include="Networks\Filters\BuildingFilter.cs" />
+    <Compile Include="Networks\Filters\CompanyFilter.cs" />
+    <Compile Include="Networks\Filters\ContactsFilter.cs" />
+    <Compile Include="Networks\Filters\EventFilter.cs" />
+    <Compile Include="Networks\Filters\EventsMembersFilter.cs" />
+    <Compile Include="Networks\Filters\GroupsFilter.cs" />
+    <Compile Include="Networks\Filters\GroupsMembersFilter.cs" />
+    <Compile Include="Networks\Filters\InvitedFilter.cs" />
+    <Compile Include="Networks\Filters\JobFilter.cs" />
+    <Compile Include="Networks\Filters\LinksFilter.cs" />
+    <Compile Include="Networks\Filters\LostItemsFilter.cs" />
+    <Compile Include="Networks\Filters\MembershipFilter.cs" />
+    <Compile Include="Networks\Filters\MenusFilter.cs" />
+    <Compile Include="Networks\Filters\NotificationsFilter.cs" />
+    <Compile Include="Networks\Filters\PeopleFilter.cs" />
+    <Compile Include="Networks\Filters\PeoplesSkillsFilter.cs" />
+    <Compile Include="Networks\Filters\PlacesFilter.cs" />
+    <Compile Include="Networks\Filters\PollsFilter.cs" />
+    <Compile Include="Networks\Filters\PrivateMessageFilter.cs" />
+    <Compile Include="Networks\Filters\ProjectsFilter.cs" />
+    <Compile Include="Networks\Filters\ProjectsMembersFilter.cs" />
+    <Compile Include="Networks\Filters\RelationshipFilter.cs" />
+    <Compile Include="Networks\Filters\SkillsFilter.cs" />
+    <Compile Include="Networks\IUserEmailChangeRequestRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Networks\IUserPresencesRepository.cs" />
+    <Compile Include="Networks\IUserProfileFieldsRepository.cs" />
+    <Compile Include="Networks\IUserTagsRepository.cs" />
+    <Compile Include="Networks\LikesFilter.cs" />
+    <Compile Include="Networks\Objects\CompanySearchRow.cs" />
+    <Compile Include="Networks\Options\CompanyRelationshipOptions.cs" />
+    <Compile Include="Networks\Options\LikeOptions.cs" />
+    <Compile Include="Networks\ITextRepository.cs" />
+    <Compile Include="Networks\Options\SubscriptionOptions.cs" />
+    <Compile Include="Stub\RandomData.cs" />
+    <Compile Include="Stub\StaticData.cs" />
+    <None Include="app.config" />
+    <None Include="Networks\Filters\SparkleServicesFilter.cs" />
+    <Compile Include="Networks\Filters\TouchCommunicationFiter.cs" />
+    <Compile Include="Networks\Filters\WallCommentsFilter.cs" />
+    <Compile Include="Networks\Filters\WallFilter.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Networks\IAchievementsRepository.cs" />
+    <Compile Include="Networks\IAchievementsUsersRepository.cs" />
+    <Compile Include="Networks\IActivitiesRepository.cs" />
+    <Compile Include="Networks\IAdsCategoriesRepository.cs" />
+    <Compile Include="Networks\IAdsRepository.cs" />
+    <Compile Include="Networks\IAlbumsRepository.cs" />
+    <Compile Include="Networks\IBuildingRepository.cs" />
+    <None Include="Networks\ICompaniesNewsRepository.cs" />
+    <Compile Include="Networks\ICompanyRepository.cs" />
+    <Compile Include="Networks\IDeviceConfigurationRepository.cs" />
+    <Compile Include="Networks\IDevicePlanningRepository.cs" />
+    <Compile Include="Networks\IDevicesRepository.cs" />
+    <Compile Include="Networks\IEventPublicMembersRepository.cs" />
+    <Compile Include="Networks\IEventsMembersRepository.cs" />
+    <Compile Include="Networks\IEventsRepository.cs" />
+    <Compile Include="Networks\IExchangeMaterialsRepository.cs" />
+    <Compile Include="Networks\IExchangeSkillsRepository.cs" />
+    <Compile Include="Networks\IExchangeSurfacesRepository.cs" />
+    <Compile Include="Networks\IFriendsRepository.cs" />
+    <Compile Include="Networks\IGroupsCategoriesRepository.cs" />
+    <Compile Include="Networks\IGroupsMembersRepository.cs" />
+    <Compile Include="Networks\IGroupsRepository.cs" />
+    <Compile Include="Networks\IInformationNotesRepository.cs" />
+    <Compile Include="Networks\IInvitedRepository.cs" />
+    <Compile Include="Networks\IJobRepository.cs" />
+    <Compile Include="Networks\ILikesRepository.cs" />
+    <Compile Include="Networks\ILinksRepository.cs" />
+    <Compile Include="Networks\ILiveRepository.cs" />
+    <Compile Include="Networks\ILostItemsRepository.cs" />
+    <None Include="Networks\ILunchRepository.cs" />
+    <Compile Include="Networks\IMembershipRepository.cs" />
+    <Compile Include="Networks\IMenusPlanningRepository.cs" />
+    <Compile Include="Networks\IMenusRepository.cs" />
+    <Compile Include="Networks\INetworksRepository.cs" />
+    <Compile Include="Networks\INotificationsRepository.cs" />
+    <Compile Include="Networks\INumbersRepository.cs" />
+    <Compile Include="Networks\IPeopleRepository.cs" />
+    <Compile Include="Networks\IPeoplesSkillsRepository.cs" />
+    <Compile Include="Networks\IPlacesRepository.cs" />
+    <Compile Include="Networks\IPollsRepository.cs" />
+    <Compile Include="Networks\IPrivateMessageRepository.cs" />
+    <Compile Include="Networks\IProjectsMembersRepository.cs" />
+    <Compile Include="Networks\IProjectsRepository.cs" />
+    <Compile Include="Networks\IRegisterRequestsRepository.cs" />
+    <Compile Include="Networks\IRelationshipRepository.cs" />
+    <Compile Include="Networks\IRepositoryFactory.cs" />
+    <Compile Include="Networks\IRepositoryFactory.tt.cs">
+      <DependentUpon>IRepositoryFactory.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Networks\IRequestsForProposalRepository.cs" />
+    <Compile Include="Networks\ISeekFriendsRepository.cs" />
+    <None Include="Networks\ISparkleServicesRepository.cs" />
+    <Compile Include="Networks\ISkillsRepository.cs" />
+    <Compile Include="Networks\ISocialNetworkCompanySubscriptionsRepository.cs" />
+    <Compile Include="Networks\ISocialNetworkConnectionsRepository.cs" />
+    <Compile Include="Networks\ISocialNetworkStatesRepository.cs" />
+    <Compile Include="Networks\ISocialNetworkUserSubscriptionsRepository.cs" />
+    <Compile Include="Networks\ITeamsRepository.cs" />
+    <Compile Include="Networks\ITouchCommunicationItemsRepository.cs" />
+    <Compile Include="Networks\ITouchCommunicationsRepository.cs" />
+    <Compile Include="Networks\IUserSettingsRepository.cs" />
+    <Compile Include="Networks\IWallCommentsRepository.cs" />
+    <Compile Include="Networks\IWallRepository.cs" />
+    <Compile Include="Networks\Objects\Coffee.cs" />
+    <Compile Include="Networks\Objects\CompanyExtended.cs" />
+    <Compile Include="Networks\Objects\JobWithStats.cs" />
+    <Compile Include="Networks\Objects\Live.cs" />
+    <Compile Include="Networks\Objects\PeopleCountByInviter.cs" />
+    <Compile Include="Networks\Objects\UserExtended.cs" />
+    <Compile Include="Networks\Objects\PersonExtendedList.cs" />
+    <Compile Include="Networks\Objects\UsersConversationsGrouping.cs" />
+    <Compile Include="Networks\Options\CompanyOptions.cs" />
+    <Compile Include="Networks\Options\SocialNetworkUserSubscriptionOptions.cs" />
+    <Compile Include="Networks\Options\TimelineItemOptions.cs" />
+    <Compile Include="Networks\Options\EventOptions.cs" />
+    <Compile Include="Networks\Options\PersonFields.cs" />
+    <Compile Include="Networks\Options\PersonOptions.cs" />
+    <Compile Include="Networks\IPeopleVisitsRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Networks\RepositoryAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SparkleBasicKey.snk" />
+    <None Include="Networks\IRepositoryFactory.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IRepositoryFactory.tt.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sparkle.Helpers\Sparkle.Helpers.csproj">
+      <Project>{e6305d03-84b6-4752-a4f4-77d5ffeef9f4}</Project>
+      <Name>Sparkle.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Entities\Sparkle.Entities.csproj">
+      <Project>{f2341891-7dbe-4a69-a90b-641e4663e24d}</Project>
+      <Name>Sparkle.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Infrastructure\Sparkle.Infrastructure.csproj">
+      <Project>{63efbc4b-cb11-4539-b999-960c1209e696}</Project>
+      <Name>Sparkle.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

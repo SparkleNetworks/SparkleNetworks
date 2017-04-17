@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F2341891-7DBE-4A69-A90B-641E4663E24D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sparkle.Entities</RootNamespace>
+    <AssemblyName>Sparkle.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SparkleBasicKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Networks\AccountRightLevel.cs" />
+    <Compile Include="Networks\Achievement.cs" />
+    <Compile Include="Networks\AchievementsCompany.cs" />
+    <Compile Include="Networks\AchievementsUser.cs" />
+    <Compile Include="Networks\Activity.cs" />
+    <Compile Include="Networks\Ad.cs" />
+    <Compile Include="Networks\ApiKey.cs" />
+    <Compile Include="Networks\ApplyRequest.cs" />
+    <Compile Include="Networks\CareerOpportunity.cs" />
+    <Compile Include="Networks\Club.cs" />
+    <Compile Include="Networks\Company.cs" />
+    <Compile Include="Networks\CompanyAccessLevel.cs" />
+    <Compile Include="Networks\CompanyCategory.cs" />
+    <Compile Include="Networks\CompanyContact.cs" />
+    <Compile Include="Networks\CompanyProfileField.cs" />
+    <Compile Include="Networks\CompanyRelationship.cs" />
+    <Compile Include="Networks\CompanyTag.cs" />
+    <Compile Include="Networks\CreateNetworkRequest.cs" />
+    <Compile Include="Networks\DataPage.cs" />
+    <Compile Include="Networks\EmailContact.cs" />
+    <Compile Include="Networks\Event.cs" />
+    <Compile Include="Networks\EmailMessage.cs" />
+    <Compile Include="Networks\DataEntities.cs" />
+    <Compile Include="Networks\EventMember.cs" />
+    <Compile Include="Networks\GroupMember.cs" />
+    <Compile Include="Networks\GroupTag.cs" />
+    <Compile Include="Networks\Hint.cs" />
+    <Compile Include="Networks\InboundEmailMessages.cs" />
+    <Compile Include="Networks\IProfileFieldValue.cs" />
+    <Compile Include="Networks\Message.cs" />
+    <Compile Include="Networks\NetworksModelEntitiesExtensions.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NetworksModelEntitiesExtensions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CompanyPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\CompanyProfileFieldPoco.cs" />
+    <Compile Include="Networks\Neutral\CompanyProfileFieldPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\JobPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\NetworkEntitiesPocos.tt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\StatsCounter.cs" />
+    <Compile Include="Networks\Neutral\SubscriptionPoco.cs" />
+    <Compile Include="Networks\Neutral\SubscriptionPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\TagDefinitionPoco.cs" />
+    <Compile Include="Networks\Neutral\TagDefinitionPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\TimelineItemCommentPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\TimelineItemPoco.cs" />
+    <Compile Include="Networks\Neutral\TimelineItemPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\UserPoco.cs" />
+    <Compile Include="Networks\Neutral\UserPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Neutral\UserProfileFieldPoco.cs" />
+    <Compile Include="Networks\Neutral\UserProfileFieldPoco.tt.cs">
+      <DependentUpon>NetworkEntitiesPocos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\Page.cs" />
+    <Compile Include="Networks\PartnerResource.cs" />
+    <Compile Include="Networks\PartnerResourceProfileField.cs" />
+    <Compile Include="Networks\PartnerResourceTag.cs" />
+    <Compile Include="Networks\PlaceProfileField.cs" />
+    <Compile Include="Networks\ProfileField.cs" />
+    <Compile Include="Networks\ProfileFieldsAvailiableValue.cs" />
+    <Compile Include="Networks\Resume.cs" />
+    <Compile Include="Networks\ICommonNetworkEntity.cs" />
+    <Compile Include="Networks\EventPublicMember.cs" />
+    <Compile Include="Networks\ExchangeSurface.cs" />
+    <Compile Include="Networks\Group.cs" />
+    <Compile Include="Networks\GroupCategory.cs" />
+    <Compile Include="Networks\IEntityInt32Id.cs" />
+    <Compile Include="Networks\INetworkEntity.cs" />
+    <Compile Include="Networks\InformationNote.cs" />
+    <Compile Include="Networks\Live.cs" />
+    <Compile Include="Networks\LostItem.cs" />
+    <Compile Include="Networks\Network.cs" />
+    <Compile Include="Networks\NetworkAccessLevel.cs" />
+    <Compile Include="Networks\EnumTool.cs" />
+    <Compile Include="Networks\NetworksModelEntities.cs">
+      <DependentUpon>NetworksModelEntities.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Networks\EventScope.cs" />
+    <Compile Include="Networks\EventMemberState.cs" />
+    <Compile Include="Networks\Interest.cs" />
+    <Compile Include="Networks\IPerson.cs" />
+    <Compile Include="Networks\ITag.cs" />
+    <Compile Include="Networks\Neutral\Company.cs" />
+    <Compile Include="Networks\Neutral\Job.cs" />
+    <Compile Include="Networks\Neutral\Person.cs" />
+    <Compile Include="Networks\Neutral\SimpleContact.cs" />
+    <Compile Include="Networks\Neutral\SocialNetworkStateModel.cs" />
+    <Compile Include="Networks\Neutral\Tag.cs" />
+    <Compile Include="Networks\Notification.cs" />
+    <Compile Include="Networks\NotificationFrequencyType.cs" />
+    <Compile Include="Networks\Place.cs" />
+    <Compile Include="Networks\RegisterRequest.cs" />
+    <Compile Include="Networks\RequestForProposal.cs" />
+    <Compile Include="Networks\SeekFriend.cs" />
+    <Compile Include="Networks\SubscriptionNotification.cs" />
+    <Compile Include="Networks\SocialNetworkConnectionType.cs" />
+    <Compile Include="Networks\SocialNetworkUserSubscription.cs" />
+    <Compile Include="Networks\StatsCounter.cs" />
+    <Compile Include="Networks\StatsCounterHit.cs" />
+    <Compile Include="Networks\Neutral\TimelineItemCommentsPoco.cs" />
+    <Compile Include="Networks\StripeTransaction.cs" />
+    <Compile Include="Networks\Subscription.cs" />
+    <Compile Include="Networks\SubscriptionTemplate.cs" />
+    <Compile Include="Networks\TagCategory.cs" />
+    <Compile Include="Networks\TagDefinition.cs" />
+    <Compile Include="Networks\TagStat.cs" />
+    <Compile Include="Networks\TimelineItemScope.cs" />
+    <Compile Include="Networks\TimelineItemTag.cs" />
+    <Compile Include="Networks\TimelineItemType.cs" />
+    <Compile Include="Networks\TimeStatItem.cs" />
+    <Compile Include="Networks\UserActionKey.cs" />
+    <Compile Include="Networks\UserEmailChangeRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Networks\UserPresence.cs" />
+    <Compile Include="Networks\UserProfileField.cs" />
+    <Compile Include="Networks\UsersVisit.cs" />
+    <Compile Include="Networks\UserTag.cs" />
+    <Compile Include="Networks\User.cs" />
+    <Compile Include="Networks\Recreation.cs" />
+    <Compile Include="Networks\Skill.cs" />
+    <Compile Include="Networks\TimelineType.cs" />
+    <Compile Include="Networks\TimelineItem.cs" />
+    <Compile Include="Networks\TimelineItemComments.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Networks\NetworksModelEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NetworksModelEntities.cs</LastGenOutput>
+    </None>
+    <None Include="Networks\NetworksModelEntitiesExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NetworksModelEntitiesExtensions.cs</LastGenOutput>
+    </None>
+    <None Include="Networks\Neutral\NetworkEntitiesPocos.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NetworkEntitiesPocos.tt.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="SparkleBasicKey.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sparkle.Infrastructure\Sparkle.Infrastructure.csproj">
+      <Project>{63efbc4b-cb11-4539-b999-960c1209e696}</Project>
+      <Name>Sparkle.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
