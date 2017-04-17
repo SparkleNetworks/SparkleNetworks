@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2E0B532F-D587-40B6-9C1B-75C37CB36D29}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sparkle.NetworksStatus</RootNamespace>
+    <AssemblyName>Sparkle.NetworksStatus</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PetaPoco">
+      <HintPath>..\Libraries\NET40\PetaPoco.dll</HintPath>
+    </Reference>
+    <Reference Include="SrkToolkit.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SrkToolkit.Common.1.1.131\lib\net45\SrkToolkit.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SrkToolkit.Domain, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SrkToolkit.Domain.1.1.129\lib\net45\SrkToolkit.Domain.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Data\Database.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\EmailAddress.cs" />
+    <Compile Include="Data\Entities\Cache.cs" />
+    <Compile Include="Data\Repositories\BaseSqlRepository.cs" />
+    <Compile Include="Data\Repositories\SqlCachesRepository.cs" />
+    <Compile Include="Data\Repositories\ICachesRepository.cs" />
+    <Compile Include="Data\Repositories\SqlUserPasswordsRepository.cs" />
+    <Compile Include="Data\Repositories\IUserPasswordsRepository.cs" />
+    <Compile Include="Data\Repositories\INetworkRequestsRepository.cs" />
+    <Compile Include="Data\Repositories\SqlEmailAddresssRepository.cs" />
+    <Compile Include="Data\Repositories\IEmailAddresssRepository.cs" />
+    <Compile Include="Data\Repositories\SqlUserAuthenticationAttemptsRepository.cs" />
+    <Compile Include="Data\Repositories\IUserAuthenticationAttemptsRepository.cs" />
+    <Compile Include="Data\Repositories\ILinkedInRedirectionsRepository.cs" />
+    <Compile Include="Data\Repositories\IRepository.cs" />
+    <Compile Include="Data\IRepositoryFactory.cs" />
+    <Compile Include="Data\Repositories\IUsersRepository.cs" />
+    <Compile Include="Data\Repositories\LinkedInRedirectionsRepository.cs" />
+    <Compile Include="Data\Repositories\SqlClientRepositoryFactory.cs" />
+    <Compile Include="Data\Repositories\SqlNetworkRequestsRepository.cs" />
+    <Compile Include="Data\Repositories\SqlUsersRepository.cs" />
+    <Compile Include="Domain\BaseService.cs" />
+    <Compile Include="Domain\Cache\AspnetDomainCacheProvider.cs" />
+    <Compile Include="Domain\Cache\BasicDomainCacheProvider.cs" />
+    <Compile Include="Domain\Cache\DomainCacheObject.cs" />
+    <Compile Include="Domain\Cache\IDomainCacheObject.cs" />
+    <Compile Include="Domain\Cache\IDomainCacheProvider.cs" />
+    <Compile Include="Domain\Internals\BasicEmail.cs" />
+    <Compile Include="Domain\Internals\BasicEmailModel.cs" />
+    <Compile Include="Domain\Internals\EmailService.cs" />
+    <Compile Include="Domain\Internals\IEmailService.cs" />
+    <Compile Include="Domain\Internals\IpAddressInfo.cs" />
+    <Compile Include="Domain\Internals\IServiceFactoryEx.cs" />
+    <Compile Include="Domain\Internals\SendEmailResult.cs" />
+    <Compile Include="Domain\IServiceFactory.cs" />
+    <Compile Include="Domain\Lang\DomainStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DomainStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Lang\ValidationStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Models\CacheModel.cs" />
+    <Compile Include="Domain\Messages\EmailPasswordAuthenticate.cs" />
+    <Compile Include="Domain\Models\EditUserError.cs" />
+    <Compile Include="Domain\Models\EmailAddressAuthentication.cs" />
+    <Compile Include="Domain\Models\EmailAddressAuthenticationModel.cs" />
+    <Compile Include="Domain\Models\EmailAddressModel.cs" />
+    <Compile Include="Domain\Models\GeocodeFarmModel.cs" />
+    <Compile Include="Domain\Models\LinkedInRedirectionModel.cs" />
+    <Compile Include="Domain\Models\NetworkRequestModel.cs" />
+    <Compile Include="Domain\Models\UserModel.cs" />
+    <Compile Include="Domain\ServiceFactory.cs" />
+    <Compile Include="Domain\ServiceFactory.tt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceFactory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\ServicesConfiguration.cs" />
+    <Compile Include="Domain\Services\CacheService.cs" />
+    <Compile Include="Domain\Services\CachesService.cs" />
+    <Compile Include="Domain\Services\ICacheService.cs" />
+    <Compile Include="Domain\Services\ICachesService.cs" />
+    <Compile Include="Domain\Services\ILinkedInRedirectionsService.cs" />
+    <Compile Include="Domain\Services\INetworkRequestsService.cs" />
+    <Compile Include="Domain\Services\IUsersService.cs" />
+    <Compile Include="Domain\Services\LinkedInRedirectionsService.cs" />
+    <Compile Include="Domain\Services\NetworkRequestsService.cs" />
+    <Compile Include="Domain\Services\UsersService.cs" />
+    <Compile Include="Internals\DomainMailExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\Database.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Database.cs</LastGenOutput>
+    </None>
+    <None Include="Data\PetaPoco.Core.ttinclude" />
+    <None Include="Data\PetaPoco.Generator.ttinclude" />
+    <None Include="Data\PetaPoco.Repos.ttinclude" />
+    <None Include="Data\PetaPoco.SqlClient.ttinclude" />
+    <None Include="Domain\Internals\Emails\ConfirmEmailAddress.md" />
+    <None Include="Domain\Internals\Emails\EmailTemplate.md" />
+    <None Include="Domain\ServiceFactory.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ServiceFactory.tt.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sparkle.Infrastructure\Sparkle.Infrastructure.csproj">
+      <Project>{63efbc4b-cb11-4539-b999-960c1209e696}</Project>
+      <Name>Sparkle.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Domain\Lang\DomainStrings.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Domain\Lang\DomainStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DomainStrings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Domain\Lang\ValidationStrings.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Domain\Lang\ValidationStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationStrings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

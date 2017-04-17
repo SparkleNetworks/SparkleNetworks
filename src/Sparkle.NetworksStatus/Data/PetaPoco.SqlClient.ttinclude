@@ -1,0 +1,64 @@
+<#
+if (string.IsNullOrEmpty(Namespace)) Namespace=ConnectionStringName;
+if (string.IsNullOrEmpty(RepoName) && !string.IsNullOrEmpty(ConnectionStringName)) RepoName=ConnectionStringName + "DB";
+if (string.IsNullOrEmpty(Namespace)) Namespace="PetaPoco";
+if (string.IsNullOrEmpty(RepoName)) RepoName="PetaPocoDB";
+
+Func<string, string> FirstLetterToLower = value =>
+{
+	return value[0].ToString().ToLowerInvariant() + value.Substring(1);
+};
+
+#>
+
+// PetaPoco.SqlClient.ttinclude
+
+namespace <#=Namespace #>.Repositories
+{
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Web;
+	using PetaPoco;
+	using Sparkle.NetworksStatus.Data.Repositories;
+    using Sparkle.Infrastructure;
+
+<# if (GenerateRepos) { #>
+<#
+foreach(Table tbl in from t in tables where !t.Ignore select t)
+{
+#>
+    
+    public partial class Sql<#= tbl.ClassName #>sRepository : BaseSqlRepository<<#= tbl.ClassName #>, <#= tbl.PK.PropertyType #>>, I<#= tbl.ClassName #>sRepository
+    {
+		internal const string TableName = "<#=tbl.Schema + "." + tbl.Name #>";
+
+        public Sql<#= tbl.ClassName #>sRepository(SqlClientRepositoryFactory factory)
+            : base(factory)
+        {
+        }
+	}
+<# } #>
+	
+	public partial class SqlClientRepositoryFactory : IRepositoryFactory
+	{
+        private readonly CompositeDisposable disposable = new CompositeDisposable();
+    
+<#
+foreach(Table tbl in from t in tables where !t.Ignore select t)
+{
+	var name = tbl.ClassName + "sRepository";
+	var lname = FirstLetterToLower(name);
+	var interf = "I" + tbl.ClassName + "Repository";
+#>
+		private I<#= tbl.ClassName #>sRepository <#= lname #>;
+		public I<#= tbl.ClassName #>sRepository <#= tbl.ClassName #>s
+		{
+            [System.Diagnostics.DebuggerStepThrough]
+			get { return this.<#=lname#> ?? (this.<#=lname#> = new Sql<#= name #>(this)); }
+		}
+
+<# } #>
+	}
+<# } #>
+}

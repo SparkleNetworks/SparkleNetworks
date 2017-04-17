@@ -1,0 +1,196 @@
+<#
+if (string.IsNullOrEmpty(Namespace)) Namespace=ConnectionStringName;
+if (string.IsNullOrEmpty(RepoName) && !string.IsNullOrEmpty(ConnectionStringName)) RepoName=ConnectionStringName + "DB";
+if (string.IsNullOrEmpty(Namespace)) Namespace="PetaPoco";
+if (string.IsNullOrEmpty(RepoName)) RepoName="PetaPocoDB";
+#>
+
+// PetaPoco.Generator.ttinclude
+
+namespace <#=Namespace #>
+{
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Web;
+	using PetaPoco;
+	using PetaPoco.Core;
+
+#region Context
+
+<# if (GenerateCommon) { #>
+	public partial class <#=RepoName#> : Database
+	{
+		public <#=RepoName#>() 
+			: base("<#=ConnectionStringName#>")
+		{
+			CommonConstruct();
+		}
+
+		public <#=RepoName#>(string connectionStringName) 
+			: base(connectionStringName)
+		{
+			CommonConstruct();
+		}
+		
+        public <#=RepoName#>(string connectionString, string providerName)
+            : base(connectionString, providerName)
+        {
+            CommonConstruct();
+        }
+
+		partial void CommonConstruct();
+		
+		public interface IFactory
+		{
+			<#=RepoName#> GetInstance();
+		}
+		
+		public static IFactory Factory { get; set; }
+<# if (GenerateOperations || TrackModifiedColumns) { #>
+		public class Record<T> : IContextAwarePoco where T : new()
+		{
+<# if (GenerateOperations) { #>
+			[Ignore]
+            public PetaContext repo {
+                get { return (PetaContext)this.Database; }
+            }
+			[Ignore]
+            public Database Database { get; set; }
+			public bool IsNew() { return repo.IsNew(this); }
+			public object Insert() { return repo.Insert(this); }
+<# if (!TrackModifiedColumns) { #>
+			public void Save() { repo.Save(this); }
+			public int Update() { return repo.Update(this); }
+<# } #>
+			public int Update(IEnumerable<string> columns) { return repo.Update(this, columns); }
+			public int Delete() { return repo.Delete(this); }
+<# } #>
+<# if (TrackModifiedColumns) { #>			
+			private Dictionary<string,bool> ModifiedColumns;
+			private void OnLoaded()
+			{
+				ModifiedColumns = new Dictionary<string,bool>();
+			}
+			protected void MarkColumnModified(string column_name)
+			{
+				if (ModifiedColumns!=null)
+					ModifiedColumns[column_name]=true;
+			}
+			public int Update() 
+			{ 
+				if (ModifiedColumns==null)
+					return repo.Update(this); 
+
+				int retv = repo.Update(this, ModifiedColumns.Keys);
+				ModifiedColumns.Clear();
+				return retv;
+			}
+			public void Save() 
+			{ 
+				if (repo.IsNew(this))
+					repo.Insert(this);
+				else
+					Update();
+			}
+			
+            /// <summary>
+            /// Detaches this object (and children) from its database context to avoid memory leaks when keeping this object in-memory.
+            /// </summary>
+			public void Detach() 
+			{ 
+				if (this.Database != null)
+					this.Database = null;
+                this.DetachChildren();
+			}
+
+            protected virtual void DetachChildren()
+            {
+            }
+<# } #>
+		}
+<# } #>
+	}
+<# } #>	
+
+#endregion
+
+#region POCOs
+<# if (GeneratePocos) { #>
+<#
+foreach(Table tbl in from t in tables where !t.Ignore select t)
+{
+#>
+    
+	[TableName("<#=tbl.Name#>")]
+<# if (tbl.PK!=null && tbl.PK.IsAutoIncrement) { #>
+<# if (tbl.SequenceName==null) { #>
+	[PrimaryKey("<#=tbl.PK.Name#>")]
+<# } else { #>
+	[PrimaryKey("<#=tbl.PK.Name#>", sequenceName="<#=tbl.SequenceName#>")]
+<# } #>
+<# } #>
+<# if (tbl.PK!=null && !tbl.PK.IsAutoIncrement) { #>
+	[PrimaryKey("<#=tbl.PK.Name#>", autoIncrement=false)]
+<# } #>
+	[ExplicitColumns]
+    public partial class <#=tbl.ClassName#> <# if (GenerateOperations || TrackModifiedColumns) { #>: <#=RepoName#>.Record<<#=tbl.ClassName#>> <# } #> 
+    {
+<#
+var toDetach = new List<string>();
+foreach(Column col in from c in tbl.Columns where !c.Ignore select c)
+{
+		// Column bindings
+#>
+<# if (TrackModifiedColumns) { #>
+<# if (col.Name!=col.PropertyName) { #>
+        [Column("<#=col.Name#>")] 
+<# } else { #>
+        [Column] 
+<# } #>
+		public <#=col.PropertyType #><#=CheckNullable(col)#> <#=col.PropertyName #> 
+		{ 
+			get
+			{
+				return _<#=col.PropertyName #>;
+			}
+			set
+			{
+				_<#=col.PropertyName #> = value;
+				MarkColumnModified("<#=col.Name#>");
+			}
+		}
+		<#=col.PropertyType #><#=CheckNullable(col)#> _<#=col.PropertyName #>;
+
+<# } else { #>
+<# if (col.Name!=col.PropertyName) { #>
+		[Column("<#=col.Name#>")] public <#=col.PropertyType #><#=CheckNullable(col)#> <#=col.PropertyName #> { get; set; }
+<# } else { #>
+		[Column] public <#=col.PropertyType #><#=CheckNullable(col)#> <#=col.PropertyName #> { get; set; }
+<# } #>
+<# } #>
+<#
+if (col.PropertyType == "int" && col.PropertyName.EndsWith("Id") && !col.PropertyName.StartsWith("Id") && false) {
+	var relPropName = col.PropertyName.Substring(0, col.PropertyName.Length - 2);
+	toDetach.Add(relPropName);
+#>
+		public <#= relPropName #> <#= relPropName #> { get; set; }
+
+<# } #>
+<# } #>
+<# if (toDetach.Count > 0) { #>
+        protected override void DetachChildren()
+        {
+<# foreach (var detach in toDetach) { #>
+            if (this.<#= detach #> != null)
+                this.<#= detach #>.Detach();
+<# } #>
+        }
+<# } #>
+	}
+<# } #>
+<# } #>
+
+#endregion
+
+}

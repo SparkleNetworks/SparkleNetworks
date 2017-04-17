@@ -70,17 +70,6 @@
     </Compile>
     <Compile Include="Strings.cs" />
     <None Include="README" />
-    <None Include="Strings.tt.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Strings.tt</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Strings.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Strings.tt.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

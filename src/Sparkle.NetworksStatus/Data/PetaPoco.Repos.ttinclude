@@ -1,0 +1,52 @@
+<#
+if (string.IsNullOrEmpty(Namespace)) Namespace=ConnectionStringName;
+if (string.IsNullOrEmpty(RepoName) && !string.IsNullOrEmpty(ConnectionStringName)) RepoName=ConnectionStringName + "DB";
+if (string.IsNullOrEmpty(Namespace)) Namespace="PetaPoco";
+if (string.IsNullOrEmpty(RepoName)) RepoName="PetaPocoDB";
+#>
+
+// PetaPoco.Repos.ttinclude
+
+namespace <#=Namespace #>.Repositories
+{
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Web;
+	using PetaPoco;
+	using Sparkle.NetworksStatus.Data.Repositories;
+
+<# if (GenerateRepos) { #>
+<#
+foreach(Table tbl in from t in tables where !t.Ignore select t)
+{
+#>
+    
+    public partial interface I<#= tbl.ClassName #>sRepository : IRepository<<#= tbl.ClassName #>, <#= tbl.PK != null ? tbl.PK.PropertyType : "int" #>>
+    {
+	}
+<# } #>
+	
+}
+
+namespace <#=Namespace #>
+{
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Web;
+	using PetaPoco;
+	using Sparkle.NetworksStatus.Data.Repositories;
+
+	public partial interface IRepositoryFactory
+	{
+<#
+foreach(Table tbl in from t in tables where !t.Ignore select t)
+{
+#>
+    
+		I<#= tbl.ClassName #>sRepository <#= tbl.ClassName #>s { get; }
+<# } #>
+	}
+<# } #>
+}
