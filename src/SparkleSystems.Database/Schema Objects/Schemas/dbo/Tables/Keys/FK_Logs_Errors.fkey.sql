@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[Logs]
+    ADD CONSTRAINT [FK_Logs_Errors] FOREIGN KEY ([Error]) REFERENCES [dbo].[Errors] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
