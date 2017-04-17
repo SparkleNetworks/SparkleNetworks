@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+  <!--<Entry Name="" BlittableType="System.String" IsRequired="False" IsCollection="False">
+    <Summary></Summary>
+    <DefaultValue></DefaultValue>
+  </Entry>-->
+
+  <Entry Name="Resources.Pots.BaseDirectoryPath" BlittableType="System.String" IsRequired="True" IsCollection="False">
+    <Web IsVirtualDirectory="True" />
+  </Entry>
+</Root>

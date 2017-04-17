@@ -62,7 +62,6 @@
     <Compile Include="CommandLine\CommandRegistry.cs" />
     <Compile Include="CommandLine\ICommand.cs" />
     <Compile Include="CommandLine\Options.cs" />
-    <None Include="EmailAddressUtility.cs" />
     <Compile Include="ConsoleTraceListener.cs" />
     <Compile Include="DurationUnit.cs" />
     <Compile Include="IDictionaryExtensions.cs" />

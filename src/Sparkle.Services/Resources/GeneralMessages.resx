@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Desc_EmailAddress" xml:space="preserve">
+    <value>Enter your email address</value>
+  </data>
+  <data name="Label_AddressAltitude" xml:space="preserve">
+    <value>Altitude</value>
+  </data>
+  <data name="Label_AddressLatitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="Label_AddressLine1" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Label_AddressLine2" xml:space="preserve">
+    <value>Address (extension)</value>
+  </data>
+  <data name="Label_AddressLine3" xml:space="preserve">
+    <value>Address (extension 2)</value>
+  </data>
+  <data name="Label_AddressLine4" xml:space="preserve">
+    <value>Address (extension 3)</value>
+  </data>
+  <data name="Label_AddressLine5" xml:space="preserve">
+    <value>Address (extension 4)</value>
+  </data>
+  <data name="Label_AddressLongitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="Label_AddressRemark" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="Label_City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Label_Civility" xml:space="preserve">
+    <value>Civility</value>
+  </data>
+  <data name="Label_Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Label_Culture" xml:space="preserve">
+    <value>Culture</value>
+  </data>
+  <data name="Label_Description" xml:space="preserve">
+    <value>Long description</value>
+  </data>
+  <data name="Label_DisplayName" xml:space="preserve">
+    <value>Display name</value>
+  </data>
+  <data name="Label_EmailAddress" xml:space="preserve">
+    <value>Email address</value>
+  </data>
+  <data name="Label_Firstname" xml:space="preserve">
+    <value>Firstname</value>
+  </data>
+  <data name="Label_InternalRemark" xml:space="preserve">
+    <value>Remark for staff</value>
+  </data>
+  <data name="Label_IsDeleted" xml:space="preserve">
+    <value>Is deleted</value>
+  </data>
+  <data name="Label_IsEnabled" xml:space="preserve">
+    <value>Is enabled</value>
+  </data>
+  <data name="Label_IsMinor" xml:space="preserve">
+    <value>Secondary</value>
+  </data>
+  <data name="Label_Lastname" xml:space="preserve">
+    <value>Lastname</value>
+  </data>
+  <data name="Label_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Label_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Label_PhoneNumber" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="Label_Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Label_PriceIT" xml:space="preserve">
+    <value>Price (with taxes included)</value>
+  </data>
+  <data name="Label_PriceWT" xml:space="preserve">
+    <value>Price (without taxes)</value>
+  </data>
+  <data name="Label_Remark" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="Label_ShortDescription" xml:space="preserve">
+    <value>Short description</value>
+  </data>
+  <data name="Label_SortOrder" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="Label_State" xml:space="preserve">
+    <value>State or region</value>
+  </data>
+  <data name="Label_Timezone" xml:space="preserve">
+    <value>Timezone</value>
+  </data>
+  <data name="Label_Username" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Label_Visible" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="Label_Website" xml:space="preserve">
+    <value>Website URL</value>
+  </data>
+  <data name="Label_ZipCode" xml:space="preserve">
+    <value>Zip code</value>
+  </data>
+</root>

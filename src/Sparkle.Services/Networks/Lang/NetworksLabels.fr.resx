@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Présentation</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Porte</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="AdminWorksDefaultSubject" xml:space="preserve">
+    <value>Tâche administrative en attente</value>
+  </data>
+  <data name="AllCompanies" xml:space="preserve">
+    <value>Toutes les entreprises</value>
+  </data>
+  <data name="AllowAutoRenew" xml:space="preserve">
+    <value>Renouvellement automatique possible</value>
+  </data>
+  <data name="AnswerBefore" xml:space="preserve">
+    <value>Répondre avant</value>
+  </data>
+  <data name="ApplyToAllNetworks" xml:space="preserve">
+    <value>Appliquer à tous les réseaux</value>
+  </data>
+  <data name="Baseline" xml:space="preserve">
+    <value>Slogan</value>
+  </data>
+  <data name="Birthday" xml:space="preserve">
+    <value>Date de naissance</value>
+  </data>
+  <data name="Building" xml:space="preserve">
+    <value>Bâtiment</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Catégorie</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="CompanyAccess" xml:space="preserve">
+    <value>Rôle entreprise (permissions)</value>
+  </data>
+  <data name="CompanyRegistration_AdminEmails" xml:space="preserve">
+    <value>Administrateurs du profil de l'entreprise (adresses email)</value>
+  </data>
+  <data name="CompanyRegistration_Alias_Description" xml:space="preserve">
+    <value>Ce nom apparaitra dans les adresses des pages (/Company/Nom-Entreprise) et ne peut pas comporter de caractères spéciaux (autorisés : lettres, chiffres, tiret, point).</value>
+  </data>
+  <data name="CompanyRegistration_Alias_Name" xml:space="preserve">
+    <value>Nom URL de l'entreprise</value>
+  </data>
+  <data name="CompanyRegistration_EmailDomain_Description" xml:space="preserve">
+    <value>Permet aux personnes de s'inscrire sans confirmation des administrateurs. Il faut saisir un nom de domaine appartenant à l'entreprise (nom-entreprise.fr) et non un domaine générique (gmail.com).</value>
+  </data>
+  <data name="CompanyRegistration_EmailDomain_Name" xml:space="preserve">
+    <value>Nom de domaine des adresses email</value>
+  </data>
+  <data name="CompanyRegistration_IsApproved_Description" xml:space="preserve">
+    <value>Vous pouvez créer l'entreprise directement sans passer par une requète de création. Une invitation sera envoyée à chaque adresse email en votre nom.</value>
+  </data>
+  <data name="CompanyRegistration_IsApproved_Name" xml:space="preserve">
+    <value>Créer directement</value>
+  </data>
+  <data name="CompanyRegistration_OtherEmails" xml:space="preserve">
+    <value>Membres de l'entreprise (adresses email) à inviter</value>
+  </data>
+  <data name="ContactEmail" xml:space="preserve">
+    <value>Adresse email de contact</value>
+  </data>
+  <data name="ContactGuideline" xml:space="preserve">
+    <value>Instructions de contact</value>
+  </data>
+  <data name="Contribution" xml:space="preserve">
+    <value>Je contribue en</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Pays</value>
+  </data>
+  <data name="CreatedCompany" xml:space="preserve">
+    <value>Entreprise créée</value>
+  </data>
+  <data name="CreatedUser" xml:space="preserve">
+    <value>Utilisateur créé</value>
+  </data>
+  <data name="Culture_" xml:space="preserve">
+    <value>Langue et région</value>
+  </data>
+  <data name="CurrentTarget" xml:space="preserve">
+    <value>Objectif actuel</value>
+  </data>
+  <data name="DateBegin" xml:space="preserve">
+    <value>Début</value>
+  </data>
+  <data name="DateEnd" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Durée</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Adresse email</value>
+  </data>
+  <data name="EmailDomain" xml:space="preserve">
+    <value>Domaine des emails</value>
+  </data>
+  <data name="FavoriteQuotes" xml:space="preserve">
+    <value>Citations préférées</value>
+  </data>
+  <data name="Firstname" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="Floor" xml:space="preserve">
+    <value>Etage</value>
+  </data>
+  <data name="For" xml:space="preserve">
+    <value>Pour</value>
+  </data>
+  <data name="ForbidNewEmail" xml:space="preserve">
+    <value>Bloquer l'utilisation de l'ancienne adresse</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="Industry" xml:space="preserve">
+    <value>Secteur d'activité</value>
+  </data>
+  <data name="InformationNote_EndDate" xml:space="preserve">
+    <value>Fin de diffusion</value>
+  </data>
+  <data name="InformationNote_StartDate" xml:space="preserve">
+    <value>Début de diffusion</value>
+  </data>
+  <data name="Interests" xml:space="preserve">
+    <value>Centres d'intérêt</value>
+  </data>
+  <data name="IsDefaultOnAccountCreate" xml:space="preserve">
+    <value>Par défault à la création de compte</value>
+  </data>
+  <data name="IsForAllCompanyUsers" xml:space="preserve">
+    <value>Applicable à une entreprise pour tout ses utilisateurs</value>
+  </data>
+  <data name="IsSpam" xml:space="preserve">
+    <value>Ceci est du spam</value>
+  </data>
+  <data name="IsUserSubscribable" xml:space="preserve">
+    <value>Applicable à un utilisateur</value>
+  </data>
+  <data name="IsValid" xml:space="preserve">
+    <value>Valide</value>
+  </data>
+  <data name="IsWrongCompany" xml:space="preserve">
+    <value>Ce n'est pas la bonne entreprise</value>
+  </data>
+  <data name="Job" xml:space="preserve">
+    <value>Poste</value>
+  </data>
+  <data name="Lastname" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="LinkedInPublicUrl" xml:space="preserve">
+    <value>Url public LinkedIn</value>
+  </data>
+  <data name="LinkedInUrl" xml:space="preserve">
+    <value>Profil LinkedIn</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="NetworkAccess" xml:space="preserve">
+    <value>Rôles réseau (permissions)</value>
+  </data>
+  <data name="NewEmail" xml:space="preserve">
+    <value>Nouvel email</value>
+  </data>
+  <data name="NewName" xml:space="preserve">
+    <value>Nouveau nom</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nouveau mot de passe</value>
+  </data>
+  <data name="Objective" xml:space="preserve">
+    <value>Objectif</value>
+  </data>
+  <data name="OomanCheck" xml:space="preserve">
+    <value>Vérification</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="PersoEmail" xml:space="preserve">
+    <value>Adresse email personnelle</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Téléphone</value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>Lieu</value>
+  </data>
+  <data name="PriceWithoutVat" xml:space="preserve">
+    <value>Prix HT</value>
+  </data>
+  <data name="PriceWithVat" xml:space="preserve">
+    <value>Prix TTC</value>
+  </data>
+  <data name="ProEmail" xml:space="preserve">
+    <value>Email professionnelle</value>
+  </data>
+  <data name="Recreations" xml:space="preserve">
+    <value>Loisirs</value>
+  </data>
+  <data name="Remark" xml:space="preserve">
+    <value>Remarque</value>
+  </data>
+  <data name="RequestType" xml:space="preserve">
+    <value>Type de contrat</value>
+  </data>
+  <data name="ResumeUrl" xml:space="preserve">
+    <value>Lien de votre CV</value>
+  </data>
+  <data name="Skills" xml:space="preserve">
+    <value>Compétences</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Région</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Sujet</value>
+  </data>
+  <data name="SuggestedCompanies" xml:space="preserve">
+    <value>Entreprises suggérées</value>
+  </data>
+  <data name="TicketsWebsite" xml:space="preserve">
+    <value>Obtenir un ticket</value>
+  </data>
+  <data name="Timezone" xml:space="preserve">
+    <value>Fuseau horaire</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titre</value>
+  </data>
+  <data name="ToggleCompanyRequest_IsEnabledRemark" xml:space="preserve">
+    <value>Indiquer la raison de ce changement :</value>
+  </data>
+  <data name="TwitterAccount" xml:space="preserve">
+    <value>Compte Twitter</value>
+  </data>
+  <data name="TwitterName" xml:space="preserve">
+    <value>Nom Twitter</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Nom d'utilisateur</value>
+  </data>
+  <data name="ViadeoUrl" xml:space="preserve">
+    <value>Profil Viadeo</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>Site web</value>
+  </data>
+  <data name="YourCompany" xml:space="preserve">
+    <value>Votre entreprise</value>
+  </data>
+  <data name="YourName" xml:space="preserve">
+    <value>Votre nom</value>
+  </data>
+  <data name="Zip" xml:space="preserve">
+    <value>Code postal</value>
+  </data>
+  <data name="BeginDate" xml:space="preserve">
+    <value>Date de début</value>
+  </data>
+  <data name="OnlyOneCurrencyIsSupported" xml:space="preserve">
+    <value>Une seule devise est acceptée</value>
+  </data>
+  <data name="PaidByCashEur" xml:space="preserve">
+    <value>Payé en espèces (EURO)</value>
+  </data>
+  <data name="PaidByCashUsd" xml:space="preserve">
+    <value>Payé en espèces (USD)</value>
+  </data>
+  <data name="SubscriptionId" xml:space="preserve">
+    <value>Abonnement #{0}</value>
+  </data>
+  <data name="SubscriptionTitle2Dates" xml:space="preserve">
+    <value>Abonnement du {0} au {1}</value>
+  </data>
+  <data name="SubscriptionTitleBeginDate" xml:space="preserve">
+    <value>Abonnement du {1}</value>
+  </data>
+  <data name="SubscriptionTitleEndDate" xml:space="preserve">
+    <value>Abonnement jusqu'au {1}</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>Activé</value>
+  </data>
+  <data name="ConcernedCities" xml:space="preserve">
+    <value>Ville(s) concernée(s)</value>
+  </data>
+  <data name="EmailContent" xml:space="preserve">
+    <value>Contenu du mail</value>
+  </data>
+  <data name="SendUserNotify" xml:space="preserve">
+    <value>Envoyer un email pour notifier l'utilisateur</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Entreprise</value>
+  </data>
+  <data name="JobTitle" xml:space="preserve">
+    <value>Poste</value>
+  </data>
+  <data name="Subscription" xml:space="preserve">
+    <value>Abonnement</value>
+  </data>
+  <data name="ExportType" xml:space="preserve">
+    <value>Format d'export</value>
+  </data>
+  <data name="SubscriptionVerificationDate" xml:space="preserve">
+    <value>Date de référence des abonnements</value>
+  </data>
+  <data name="Encoding" xml:space="preserve">
+    <value>Encodage</value>
+  </data>
+  <data name="KnownCategory" xml:space="preserve">
+    <value>Type de catégorie</value>
+  </data>
+  <data name="ApplyToCompanies" xml:space="preserve">
+    <value>Disponible pour les profils entreprises</value>
+  </data>
+  <data name="ApplyToUsers" xml:space="preserve">
+    <value>Disponible pour les comptes utilisateurs</value>
+  </data>
+  <data name="CanUsersCreate" xml:space="preserve">
+    <value>Ajoutable par les utilisateurs</value>
+  </data>
+  <data name="DisplayInApplyProcess" xml:space="preserve">
+    <value>Visible lors de l'inscription</value>
+  </data>
+  <data name="Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="Minimum" xml:space="preserve">
+    <value>Minimum</value>
+  </data>
+  <data name="Rules" xml:space="preserve">
+    <value>Règles</value>
+  </data>
+  <data name="NewJob" xml:space="preserve">
+    <value>Nouveau poste</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Groupe</value>
+  </data>
+  <data name="ApplyToGroups" xml:space="preserve">
+    <value>Disponible pour les groupes</value>
+  </data>
+  <data name="ApplyToTimelineItems" xml:space="preserve">
+    <value>Disponinle pour les publications</value>
+  </data>
+  <data name="InviteWithApplyError_EmailAddressInUse" xml:space="preserve">
+    <value>Cette adresse email est déjà utilisée.</value>
+  </data>
+  <data name="InviteWithApplyError_InvalidCompanyCategory" xml:space="preserve">
+    <value>La catégorie d'entreprise sélectionnée n'est pas valide.</value>
+  </data>
+  <data name="InviteWithApplyError_InvalidCompanyRelationship" xml:space="preserve">
+    <value>Le type de relation d'entreprise n'est pas valide.</value>
+  </data>
+  <data name="InviteWithApplyError_InvalidEmailAddress" xml:space="preserve">
+    <value>L'adresse email n'est pas valide.</value>
+  </data>
+  <data name="InviteWithApplyError_NoSuchActingUser" xml:space="preserve">
+    <value>L'utilisateur courant n'est pas défini.</value>
+  </data>
+  <data name="InviteWithApplyError_NotAuthorized" xml:space="preserve">
+    <value>Vous n'êtes pas autorisé.</value>
+  </data>
+  <data name="EmailProviderDefaultDisplayError" xml:space="preserve">
+    <value>Une erreur est survenue lors de l'envoi de l'email. </value>
+  </data>
+  <data name="EmailProviderSpecifiedDisplayError" xml:space="preserve">
+    <value>Une erreur est survenue lors de l'envoi de l'email : {0}.</value>
+  </data>
+  <data name="EmailProviderUnauthorizedAddressDisplayError" xml:space="preserve">
+    <value>Une erreur est survenue lors de l'envoi de l'email : l'adresse n'est pas autorisée par le fournisseur d'envoi.</value>
+  </data>
+  <data name="DeleteJobTarget" xml:space="preserve">
+    <value>Transférer vers</value>
+  </data>
+  <data name="JobGroupName" xml:space="preserve">
+    <value>Nom de groupe</value>
+  </data>
+  <data name="IsSubscriptionEnabled" xml:space="preserve">
+    <value>Est activé</value>
+  </data>
+  <data name="Punctuation_Colon" xml:space="preserve">
+    <value> : </value>
+  </data>
+</root>

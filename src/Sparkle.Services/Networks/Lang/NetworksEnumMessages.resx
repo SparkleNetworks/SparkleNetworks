@@ -1,0 +1,1138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddGroupTagError_AlreadyAdded" xml:space="preserve">
+    <value>This tag is already here !</value>
+  </data>
+  <data name="AddGroupTagError_AlreadyDeleted" xml:space="preserve">
+    <value>This tag was already deleted by an other user</value>
+  </data>
+  <data name="AddGroupTagError_CannotAddDeletedTag" xml:space="preserve">
+    <value>The user {0} has removed this tag because of: "{1}", only {0} can add it again.</value>
+  </data>
+  <data name="AddGroupTagError_CannotAddDeletedTagDefault" xml:space="preserve">
+    <value>An other user already removed this tag !</value>
+  </data>
+  <data name="AddGroupTagError_NoSuchGroup" xml:space="preserve">
+    <value>This group does not exist !</value>
+  </data>
+  <data name="AddGroupTagError_NoSuchTag" xml:space="preserve">
+    <value>This tag does not exist !</value>
+  </data>
+  <data name="AddGroupTagError_NoSuchTagInGroup" xml:space="preserve">
+    <value>This tag was not found in the current group.</value>
+  </data>
+  <data name="AddPlaceError_MissingCategory" xml:space="preserve">
+    <value>Select a category</value>
+  </data>
+  <data name="AddPlaceError_NoSuchPlace" xml:space="preserve">
+    <value>This place does not exist.</value>
+  </data>
+  <data name="ChangeTimelineItemOwnerCode_NoSuchItem" xml:space="preserve">
+    <value>No such item.</value>
+  </data>
+  <data name="ChangeTimelineItemOwnerCode_NoSuchUser" xml:space="preserve">
+    <value>No such user.</value>
+  </data>
+  <data name="ChangeTimelineItemOwnerCode_NotSupported" xml:space="preserve">
+    <value>This element does not support this operation.</value>
+  </data>
+  <data name="ConfirmEmailError_AccountPendingValidation" xml:space="preserve">
+    <value>Your account is pending validation. You will receive an email when it is validated.</value>
+  </data>
+  <data name="ConfirmEmailError_EmailActivationActionExpired" xml:space="preserve">
+    <value>Le délai de confirmation de l'adresse email de votre compte est dépassé. Veuillez contacter le support.</value>
+  </data>
+  <data name="ConfirmEmailError_EmailAlreadyConfirmed" xml:space="preserve">
+    <value>This account's email address is already confirmed.</value>
+  </data>
+  <data name="ConfirmEmailError_InvalidSecret" xml:space="preserve">
+    <value>The confirmation token is invalid. Have you correctly typed the address?</value>
+  </data>
+  <data name="ConfirmEmailError_NoSuchActionKey" xml:space="preserve">
+    <value>Cette clé d'activation n'est pas valide.</value>
+  </data>
+  <data name="ConfirmEmailError_NoSuchEmail" xml:space="preserve">
+    <value>The specified email address matches no user in our database.</value>
+  </data>
+  <data name="ConfirmEmailError_UserIsDisabled" xml:space="preserve">
+    <value>The account associated with this email address is disabled.</value>
+  </data>
+  <data name="CreateEmailPassordAccountError_InternalError1" xml:space="preserve">
+    <value>You account is not in a valid state. Please contact the support with the following code: IE1.</value>
+  </data>
+  <data name="CreateEmailPassordAccountError_InternalError2" xml:space="preserve">
+    <value>An error occured while creating your account. Please contact the support with the following code: IE2.</value>
+  </data>
+  <data name="CreateEmailPassordAccountError_InvitationOnly" xml:space="preserve">
+    <value>This is a invite-only website.</value>
+  </data>
+  <data name="CreateEmailPassordAccountError_InvitedEmailAlreadyExists" xml:space="preserve">
+    <value>An invitation is already waiting for you.</value>
+  </data>
+  <data name="CreateEmailPassordAccountError_RegisterInCompanyValueIsInvalid" xml:space="preserve">
+    <value>A configuration issue is preventing account creation.</value>
+  </data>
+  <data name="CreateEmailPassordAccountError_UserEmailAlreadyExists" xml:space="preserve">
+    <value>A user with this email address already exists.</value>
+  </data>
+  <data name="EditEventError_NoSuchCategory" xml:space="preserve">
+    <value>This category does not exist.</value>
+  </data>
+  <data name="EditEventError_NoSuchPlace" xml:space="preserve">
+    <value>This place does not exist.</value>
+  </data>
+  <data name="EditEventError_NoSuchUser" xml:space="preserve">
+    <value>The creating user must be specified.</value>
+  </data>
+  <data name="EditEventError_NoSuchVisibility" xml:space="preserve">
+    <value>This visibility does not exist.</value>
+  </data>
+  <data name="EditEventError_UserIsNotGroupMember" xml:space="preserve">
+    <value>You are not a member of this group.</value>
+  </data>
+  <data name="EditInformationNoteError_CannotEdit" xml:space="preserve">
+    <value>This note cannot be edited.</value>
+  </data>
+  <data name="EditInformationNoteError_InvalidRequest" xml:space="preserve">
+    <value>The request is not valid.</value>
+  </data>
+  <data name="EventVisibility_Company" xml:space="preserve">
+    <value>Within {0}</value>
+  </data>
+  <data name="EventVisibility_CompanyPrivate" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="EventVisibility_External" xml:space="preserve">
+    <value>Open to anyone (externals too)</value>
+  </data>
+  <data name="EventVisibility_Personal" xml:space="preserve">
+    <value>By invitation (private event)</value>
+  </data>
+  <data name="EventVisibility_Public" xml:space="preserve">
+    <value>Open to members of {0}</value>
+  </data>
+  <data name="EventVisibility_Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="InviteToEventCode_EventIsInPast" xml:space="preserve">
+    <value>This event is passed</value>
+  </data>
+  <data name="InviteToEventCode_InviterIsNotAuthorized" xml:space="preserve">
+    <value>The user is not authorized to take part</value>
+  </data>
+  <data name="InviteToEventCode_NobodyToInvite" xml:space="preserve">
+    <value>There was nobody to invite in this selection</value>
+  </data>
+  <data name="InviteToEventCode_NoSuchEvent" xml:space="preserve">
+    <value>This event does not exist</value>
+  </data>
+  <data name="InviteToEventCode_NoSuchInviter" xml:space="preserve">
+    <value>Cannot find inviting user</value>
+  </data>
+  <data name="InviteToEventCode_UnknownEventVisibility" xml:space="preserve">
+    <value>The event visibility is not supported</value>
+  </data>
+  <data name="InviteToEventResult_UserCode_AlreadyMember" xml:space="preserve">
+    <value>This user is already attending</value>
+  </data>
+  <data name="InviteToEventResult_UserCode_InviteeIsNotAuthorized" xml:space="preserve">
+    <value>You are not authorized to invite</value>
+  </data>
+  <data name="InviteToEventResult_UserCode_NoSuchUser" xml:space="preserve">
+    <value>Cannot find this user</value>
+  </data>
+  <data name="SendActivationEmailError_EmailActionDoneTooManyTimes" xml:space="preserve">
+    <value>You have reached the maximum number of activation emails sent. If your email address is valid and you received no confirmation email, please contact support.</value>
+  </data>
+  <data name="SendActivationEmailError_EmailActivationActionExpired" xml:space="preserve">
+    <value>The confirmation delay has been reached. Please contact support.</value>
+  </data>
+  <data name="SendActivationEmailError_EmailAlreadyConfirmed" xml:space="preserve">
+    <value>This account's email address is already confirmed.</value>
+  </data>
+  <data name="SendActivationEmailError_EmailProviderError" xml:space="preserve">
+    <value>An error occured sending a confirmation email. Please try again later.</value>
+  </data>
+  <data name="SendActivationEmailError_NoEmailActivationAction" xml:space="preserve">
+    <value>This account's email address does not need to be confirmed.</value>
+  </data>
+  <data name="SendActivationEmailError_NoSuchUserByEmail" xml:space="preserve">
+    <value>T</value>
+  </data>
+  <data name="SetProfilePictureError_FileIsNotPicture" xml:space="preserve">
+    <value>This file is not in a supported picture format.</value>
+  </data>
+  <data name="WallItemDeleteReason_AuthorDelete" xml:space="preserve">
+    <value>Deleted by author</value>
+  </data>
+  <data name="WallItemDeleteReason_DrugOrAlcoholAbuse" xml:space="preserve">
+    <value>Drug or alcohol abuse</value>
+  </data>
+  <data name="WallItemDeleteReason_HateSpeech" xml:space="preserve">
+    <value>Hate speech</value>
+  </data>
+  <data name="WallItemDeleteReason_LinkedEntityDelete" xml:space="preserve">
+    <value>Links to a deleted entry</value>
+  </data>
+  <data name="WallItemDeleteReason_None" xml:space="preserve">
+    <value>No delete reason specified</value>
+  </data>
+  <data name="WallItemDeleteReason_Nudity" xml:space="preserve">
+    <value>Nudity</value>
+  </data>
+  <data name="WallItemDeleteReason_OffTopic" xml:space="preserve">
+    <value>Off topic</value>
+  </data>
+  <data name="WallItemDeleteReason_Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="WallItemDeleteReason_SexuallySuggestive" xml:space="preserve">
+    <value>Sexually suggestive</value>
+  </data>
+  <data name="WallItemDeleteReason_ShouldntHaveBeenImported" xml:space="preserve">
+    <value>Shouldn't have been imported</value>
+  </data>
+  <data name="WallItemDeleteReason_Spam" xml:space="preserve">
+    <value>Spam</value>
+  </data>
+  <data name="WallItemDeleteReason_Violence" xml:space="preserve">
+    <value>Violence</value>
+  </data>
+  <data name="WallItemDeleteReason_WrongImportContext" xml:space="preserve">
+    <value>Importation selected wrong context</value>
+  </data>
+  <data name="AddTimelineTagError_AlreadyAdded" xml:space="preserve">
+    <value>This tag is already here !</value>
+  </data>
+  <data name="AddTimelineTagError_AlreadyDeleted" xml:space="preserve">
+    <value>This tag was already deleted by an other user</value>
+  </data>
+  <data name="AddTimelineTagError_CannotAddDeletedTag" xml:space="preserve">
+    <value>The user {0} has removed this tag because of: "{1}", only {0} can add it again.</value>
+  </data>
+  <data name="AddTimelineTagError_CannotAddDeletedTagDefault" xml:space="preserve">
+    <value>An other user already removed this tag !</value>
+  </data>
+  <data name="AddTimelineTagError_NoSuchTag" xml:space="preserve">
+    <value>This tag does not exist !</value>
+  </data>
+  <data name="AddTimelineTagError_NoSuchTagInTimelineItem" xml:space="preserve">
+    <value>This tag was not found in the current item.</value>
+  </data>
+  <data name="AddTimelineTagError_NoSuchTimelineItem" xml:space="preserve">
+    <value>This timeline item does not exist !</value>
+  </data>
+  <data name="AddTimelineTagError_NotAuthorized" xml:space="preserve">
+    <value>You are not authorized to perform this action.</value>
+  </data>
+  <data name="RemoveTimelineTagError_AlreadyDeleted" xml:space="preserve">
+    <value>An other user already removed this tag !</value>
+  </data>
+  <data name="RemoveTimelineTagError_NoSuchRelation" xml:space="preserve">
+    <value>This tag was not found in the current item.</value>
+  </data>
+  <data name="RemoveTimelineTagError_NotAuthorized" xml:space="preserve">
+    <value>You are not authorized to perform this action.</value>
+  </data>
+  <data name="AdminProceduresError_NoSuchUser" xml:space="preserve">
+    <value>The user you try to send a request does not exist</value>
+  </data>
+  <data name="AdminProceduresError_UserIsInactive" xml:space="preserve">
+    <value>This procedure cannot apply to an inactive user.</value>
+  </data>
+  <data name="AdminProceduresError_AlreadyPending" xml:space="preserve">
+    <value>{0} {1} already has a pending email change.</value>
+  </data>
+  <data name="AdminProceduresError_ForbiddenEmail" xml:space="preserve">
+    <value>This e-mail address is already in use by another user or it is forbidden !</value>
+  </data>
+  <data name="SendPasswordRecoveryEmailError_NoSuchUser" xml:space="preserve">
+    <value>This email address does not match a user account. Pleasy verify its correctness.</value>
+  </data>
+  <data name="SendPasswordRecoveryEmailError_UserIsNotAuthorized" xml:space="preserve">
+    <value>This user is not authorized to access the networks.</value>
+  </data>
+  <data name="SendPasswordRecoveryEmailError_EmailInternalError" xml:space="preserve">
+    <value>The system was unable to send the password recovery email (internal error). Please try again later.</value>
+  </data>
+  <data name="SendPasswordRecoveryEmailError_EmailProviderError" xml:space="preserve">
+    <value>The system was unable to send the password recovery email (provider error). Please try again later.</value>
+  </data>
+  <data name="SetNetworkAccessLevelError_NoSuchUser" xml:space="preserve">
+    <value>No such user.</value>
+  </data>
+  <data name="DeleteEventError_NoSuchItem" xml:space="preserve">
+    <value>No such event.</value>
+  </data>
+  <data name="DeleteEventError_NoSuchUserOrInactive" xml:space="preserve">
+    <value>Acting user is not specified, the account is closed or the user does not exist anymore.</value>
+  </data>
+  <data name="DeleteEventError_NotAuthorized" xml:space="preserve">
+    <value>You are not authorized to delete this event.</value>
+  </data>
+  <data name="AcceptGroupInvitationError_AlreadyAcceptedMember" xml:space="preserve">
+    <value>You already are a member of this group.</value>
+  </data>
+  <data name="AcceptGroupInvitationError_DeletedGroup" xml:space="preserve">
+    <value>This group has been deleted.</value>
+  </data>
+  <data name="AcceptGroupInvitationError_KickedFromGroup" xml:space="preserve">
+    <value>You have no valid invitation for this group.</value>
+  </data>
+  <data name="AcceptGroupInvitationError_NoSuchGroup" xml:space="preserve">
+    <value>No such group.</value>
+  </data>
+  <data name="AcceptGroupInvitationError_NoSuchMembership" xml:space="preserve">
+    <value>You have no valid invitation for this group.</value>
+  </data>
+  <data name="AcceptGroupInvitationError_NoSuchUser" xml:space="preserve">
+    <value>No such user.</value>
+  </data>
+  <data name="GroupKickError_DeletedGroup" xml:space="preserve">
+    <value>This group has been deleted.</value>
+  </data>
+  <data name="GroupKickError_NoSuchGroup" xml:space="preserve">
+    <value>No such group.</value>
+  </data>
+  <data name="GroupKickError_NoSuchMembership" xml:space="preserve">
+    <value>He/She or you are not a member of this group.</value>
+  </data>
+  <data name="GroupKickError_NoSuchUser" xml:space="preserve">
+    <value>No such user.</value>
+  </data>
+  <data name="GroupKickError_NotAuthorized" xml:space="preserve">
+    <value>Only group administrators can kick a user.</value>
+  </data>
+  <data name="InviteToGroupError_ActingUserIsNotGroupMember" xml:space="preserve">
+    <value>You are not a member of this group.</value>
+  </data>
+  <data name="InviteToGroupError_AlreadyInvited" xml:space="preserve">
+    <value>This user is already invited.</value>
+  </data>
+  <data name="InviteToGroupError_AlreadyJoinRequest" xml:space="preserve">
+    <value>This user is already invited.</value>
+  </data>
+  <data name="InviteToGroupError_AlreadyMember" xml:space="preserve">
+    <value>This user is already a member of this group.</value>
+  </data>
+  <data name="InviteToGroupError_AlreadyRejected" xml:space="preserve">
+    <value>Cannot invite this user in this group.</value>
+  </data>
+  <data name="InviteToGroupError_DeletedGroup" xml:space="preserve">
+    <value>This group has been deleted.</value>
+  </data>
+  <data name="InviteToGroupError_NoSuchGroup" xml:space="preserve">
+    <value>No such group.</value>
+  </data>
+  <data name="InviteToGroupError_NoSuchUser" xml:space="preserve">
+    <value>No such user.</value>
+  </data>
+  <data name="InviteToGroupError_UnexpectedMembershipStatis" xml:space="preserve">
+    <value>Cannot invite this user in this group.</value>
+  </data>
+  <data name="LeaveGroupError_DeletedGroup" xml:space="preserve">
+    <value>This group has been deleted.</value>
+  </data>
+  <data name="LeaveGroupError_LastAdmin" xml:space="preserve">
+    <value>You cannot leave this group because you are the last administrator. You may choose a new administrator or delete the group instead.</value>
+  </data>
+  <data name="LeaveGroupError_NoSuchGroup" xml:space="preserve">
+    <value>No such group.</value>
+  </data>
+  <data name="LeaveGroupError_NoSuchMembership" xml:space="preserve">
+    <value>You are not a member of this group.</value>
+  </data>
+  <data name="LeaveGroupError_NoSuchUser" xml:space="preserve">
+    <value>No such user.</value>
+  </data>
+  <data name="LeaveGroupError_NotGroupMember" xml:space="preserve">
+    <value>You are not a member of this group.</value>
+  </data>
+  <data name="UpdateNotificationError_DeletedGroup" xml:space="preserve">
+    <value>This group has been deleted.</value>
+  </data>
+  <data name="UpdateNotificationError_NoSuchGroup" xml:space="preserve">
+    <value>No such group.</value>
+  </data>
+  <data name="UpdateNotificationError_NoSuchMembership" xml:space="preserve">
+    <value>You are not a member of this group.</value>
+  </data>
+  <data name="UpdateNotificationError_NoSuchUser" xml:space="preserve">
+    <value>No such user.</value>
+  </data>
+  <data name="UpdateNotificationError_NotGroupMember" xml:space="preserve">
+    <value>You are not a member of this group.</value>
+  </data>
+  <data name="ChangeGroupRightError_DeletedGroup" xml:space="preserve">
+    <value>This group has been deleted.</value>
+  </data>
+  <data name="ChangeGroupRightError_NoSuchGroup" xml:space="preserve">
+    <value>No such group.</value>
+  </data>
+  <data name="ChangeGroupRightError_NoSuchMembership" xml:space="preserve">
+    <value>He/She or you are not a member of this group.</value>
+  </data>
+  <data name="ChangeGroupRightError_NoSuchUser" xml:space="preserve">
+    <value>No such user.</value>
+  </data>
+  <data name="ChangeGroupRightError_NotAuthorized" xml:space="preserve">
+    <value>Only group administrators can change group member rights.</value>
+  </data>
+  <data name="ChangeGroupRightError_NotGroupMember" xml:space="preserve">
+    <value>You are not a member of this group.</value>
+  </data>
+  <data name="GroupMemberRight_Admin" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="GroupMemberRight_Basic" xml:space="preserve">
+    <value>Member</value>
+  </data>
+  <data name="JoinGroupError_AlreadyAcceptedMember" xml:space="preserve">
+    <value>You already are a member of this group.</value>
+  </data>
+  <data name="JoinGroupError_DeletedGroup" xml:space="preserve">
+    <value>This group has been deleted.</value>
+  </data>
+  <data name="JoinGroupError_NoSuchGroup" xml:space="preserve">
+    <value>No such group.</value>
+  </data>
+  <data name="JoinGroupError_NoSuchUser" xml:space="preserve">
+    <value>No such user.</value>
+  </data>
+  <data name="JoinGroupError_UnexpectedMembership" xml:space="preserve">
+    <value>Your latest group membership does not allow joining the group again.</value>
+  </data>
+  <data name="CreateEmailPassordAccountError_CompanyIsInactive" xml:space="preserve">
+    <value>The company you have been invited to is not active in this network.</value>
+  </data>
+  <data name="CreateEmailPassordAccountError_InvalidInvitation" xml:space="preserve">
+    <value>This invitation is not valid any more.</value>
+  </data>
+  <data name="ValidateInvitationCodeError_AlreadyUsed" xml:space="preserve">
+    <value>This invitation code has already been used.</value>
+  </data>
+  <data name="ValidateInvitationCodeError_NoSuchCode" xml:space="preserve">
+    <value>Invalid invitation code.</value>
+  </data>
+  <data name="CreateEmailPassordAccountError_RegisterRequestEmailMismatch" xml:space="preserve">
+    <value>This invitation is reserved for the email address '{0}'.</value>
+  </data>
+  <data name="CannotActOnDifferentNetwork" xml:space="preserve">
+    <value>You cannot act in a different network.</value>
+  </data>
+  <data name="TimelinePublishError_CannotPostInDifferentNetwork" xml:space="preserve">
+    <value>You cannot publish in a different network.</value>
+  </data>
+  <data name="TimelineCommentError_CannotActOnDifferentNetwork" xml:space="preserve">
+    <value>You cannot act in a different network.</value>
+  </data>
+  <data name="TimelineCommentError_NoSuchTimelineItem" xml:space="preserve">
+    <value>This content does not exist, is not accessible to you or has been deleted.</value>
+  </data>
+  <data name="TimelineCommentError_NoSuchUser" xml:space="preserve">
+    <value>No such user.</value>
+  </data>
+  <data name="NetworkAccessLevel_AddCompany" xml:space="preserve">
+    <value>Add a new company</value>
+  </data>
+  <data name="NetworkAccessLevel_ManageClubs" xml:space="preserve">
+    <value>Manage clubs</value>
+  </data>
+  <data name="NetworkAccessLevel_ManageCompany" xml:space="preserve">
+    <value>Manage company</value>
+  </data>
+  <data name="NetworkAccessLevel_ManageDevices" xml:space="preserve">
+    <value>Manage devices</value>
+  </data>
+  <data name="NetworkAccessLevel_ManageInformationNotes" xml:space="preserve">
+    <value>Manage informations notes</value>
+  </data>
+  <data name="NetworkAccessLevel_ManageRegisterRequests" xml:space="preserve">
+    <value>Manage register requests</value>
+  </data>
+  <data name="NetworkAccessLevel_ModerateNetwork" xml:space="preserve">
+    <value>Network moderation</value>
+  </data>
+  <data name="NetworkAccessLevel_NetworkAdmin" xml:space="preserve">
+    <value>Network administration</value>
+  </data>
+  <data name="NetworkAccessLevel_ReadDevices" xml:space="preserve">
+    <value>Read devices</value>
+  </data>
+  <data name="NetworkAccessLevel_ReadNetworkStatistics" xml:space="preserve">
+    <value>Read network statistics</value>
+  </data>
+  <data name="NetworkAccessLevel_ValidatePendingUsers" xml:space="preserve">
+    <value>Validate pending users</value>
+  </data>
+  <data name="NetworkAccessLevel_ValidatePublications" xml:space="preserve">
+    <value>Validate publications</value>
+  </data>
+  <data name="NetworkAccessLevel_AddCompany_Desc" xml:space="preserve">
+    <value>Create a new company. Accept or reject company create requests.</value>
+  </data>
+  <data name="NetworkAccessLevel_ManageClubs_Desc" xml:space="preserve">
+    <value>Edit or delete clubs.</value>
+  </data>
+  <data name="NetworkAccessLevel_ManageCompany_Desc" xml:space="preserve">
+    <value>Edit a company. Manage user access and roles within it.</value>
+  </data>
+  <data name="NetworkAccessLevel_ManageDevices_Desc" xml:space="preserve">
+    <value>Configure devices. Edit or delete their planning.</value>
+  </data>
+  <data name="NetworkAccessLevel_ManageInformationNotes_Desc" xml:space="preserve">
+    <value>Create, edit or delete information notes.</value>
+  </data>
+  <data name="NetworkAccessLevel_ManageRegisterRequests_Desc" xml:space="preserve">
+    <value>Accept or reject register requests.</value>
+  </data>
+  <data name="NetworkAccessLevel_ModerateNetwork_Desc" xml:space="preserve">
+    <value>Edit or delete events, look at their informations. Edit or delete publications or their tags (also change the owner of a publication). Have access to some administration pages like email statistics.</value>
+  </data>
+  <data name="NetworkAccessLevel_NetworkAdmin_Desc" xml:space="preserve">
+    <value>Same access as moderators plus : edit users profiles, accept or reject register requests, edit or delete places.</value>
+  </data>
+  <data name="NetworkAccessLevel_ReadDevices_Desc" xml:space="preserve">
+    <value>Look at devices, their planning and general configuration.</value>
+  </data>
+  <data name="NetworkAccessLevel_ReadNetworkStatistics_Desc" xml:space="preserve">
+    <value>Look at people and company statistics and the network general statistics.</value>
+  </data>
+  <data name="NetworkAccessLevel_ValidatePendingUsers_Desc" xml:space="preserve">
+    <value>Look at users pending requests.</value>
+  </data>
+  <data name="NetworkAccessLevel_ValidatePublications_Desc" xml:space="preserve">
+    <value>Read pending publications on devices.</value>
+  </data>
+  <data name="ToggleCompanyError_NoSuchCompany" xml:space="preserve">
+    <value>No such company.</value>
+  </data>
+  <data name="ToggleCompanyError_NoSuchUser" xml:space="preserve">
+    <value>No such user or cannot use this function.</value>
+  </data>
+  <data name="ToggleCompanyError_AlreadyDisabled" xml:space="preserve">
+    <value>This company has already been disabled.</value>
+  </data>
+  <data name="ToggleCompanyError_AlreadyEnabled" xml:space="preserve">
+    <value>This company is already enabled.</value>
+  </data>
+  <data name="ToggleCompanyError_UnknownError" xml:space="preserve">
+    <value>Something went wrong while updating the company.</value>
+  </data>
+  <data name="SetNetworkAccessLevelError_UserCompanyIsDisabled" xml:space="preserve">
+    <value>The company of this user is disabled.</value>
+  </data>
+  <data name="EventMemberState_HasAccepted" xml:space="preserve">
+    <value>Present</value>
+  </data>
+  <data name="EventMemberState_IsInvited" xml:space="preserve">
+    <value>Invited</value>
+  </data>
+  <data name="EventMemberState_MaybeJoin" xml:space="preserve">
+    <value>Maybe</value>
+  </data>
+  <data name="EventMemberState_WantJoin" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="EventMemberState_WontCome" xml:space="preserve">
+    <value>Absent</value>
+  </data>
+  <data name="TimelinePublishError_NoAuthorizedInGroup" xml:space="preserve">
+    <value>You are not authorized to post in this group.</value>
+  </data>
+  <data name="TimelinePublishError_NoSuchEvent" xml:space="preserve">
+    <value>This event does not exist or has been deleted.</value>
+  </data>
+  <data name="TimelinePublishError_NoSuchGroup" xml:space="preserve">
+    <value>This group does not exist or has been deleted.</value>
+  </data>
+  <data name="TimelinePublishError_PostingInOtherCompanyIsNotAllowed" xml:space="preserve">
+    <value>Posting in another company's timeline is not allowed.</value>
+  </data>
+  <data name="TimelinePublishError_PostingUserIsInactive" xml:space="preserve">
+    <value>Your account is not active.</value>
+  </data>
+  <data name="ChangeUserCultureError_MustBeAuthenticated" xml:space="preserve">
+    <value>You must be authenticated to perform this action.</value>
+  </data>
+  <data name="ChangeUserCultureError_NoSuchUser" xml:space="preserve">
+    <value>No such user or disabled.</value>
+  </data>
+  <data name="LinkedInPeopleError_LinkedInAccountNotLinked" xml:space="preserve">
+    <value>Your LinkedIn account is not linked to this user account.</value>
+  </data>
+  <data name="LinkedInPeopleError_LinkedInNotConfigured" xml:space="preserve">
+    <value>LinkedIn connect is not availiable.</value>
+  </data>
+  <data name="ProfileEditError_InactiveUser" xml:space="preserve">
+    <value>This user is inactive.</value>
+  </data>
+  <data name="ProfileEditError_NoSuchUser" xml:space="preserve">
+    <value>No such user.</value>
+  </data>
+  <data name="LinkedInPeopleError_ApiCallFailed" xml:space="preserve">
+    <value>Something went wrong while trying to contact LinkedId :(</value>
+  </data>
+  <data name="ProfileEditError_NoSuchCountry" xml:space="preserve">
+    <value>No such country exists.</value>
+  </data>
+  <data name="ProfileEditError_NoSuchIndustry" xml:space="preserve">
+    <value>No such industry exists.</value>
+  </data>
+  <data name="LinkedInPeopleError_InvalidApiToken" xml:space="preserve">
+    <value>Your session with LinkedIn has expired. Please try again now.</value>
+  </data>
+  <data name="LinkedInPeopleError_NoSuchUser" xml:space="preserve">
+    <value>This user does not exist.</value>
+  </data>
+  <data name="LinkedInPeopleError_UnauthorizedUser" xml:space="preserve">
+    <value>This user is not authorized.</value>
+  </data>
+  <data name="ApplyRequestError_EmailAddressAlreadyInUse" xml:space="preserve">
+    <value>This email address is already in use. Maybe you already have an account?</value>
+  </data>
+  <data name="AdminWorkPriority_Current" xml:space="preserve">
+    <value>Main tasks</value>
+  </data>
+  <data name="AdminWorkPriority_High" xml:space="preserve">
+    <value>Important tasks</value>
+  </data>
+  <data name="AdminWorkPriority_Low" xml:space="preserve">
+    <value>Other tasks</value>
+  </data>
+  <data name="AdminWorkTask_AcceptOrRefuse" xml:space="preserve">
+    <value>Accept or refuse</value>
+  </data>
+  <data name="AdminWorkTask_None" xml:space="preserve">
+    <value>Nothing to do</value>
+  </data>
+  <data name="AdminWorkType_NewApplyRequestToManage" xml:space="preserve">
+    <value>Register request</value>
+  </data>
+  <data name="AdminWorkType_RegisterRequest" xml:space="preserve">
+    <value>Register request</value>
+  </data>
+  <data name="AdminWorkType_UserEmailChangeRequest" xml:space="preserve">
+    <value>Change of email address</value>
+  </data>
+  <data name="ApplyRequestError_BadCompanyId" xml:space="preserve">
+    <value>You have to choose a company or create one.</value>
+  </data>
+  <data name="AcceptApplyRequestError_NoSuchApplyRequest" xml:space="preserve">
+    <value>No such apply request.</value>
+  </data>
+  <data name="AcceptApplyRequestError_CreateCompanyRequestFailed" xml:space="preserve">
+    <value>Failed to create the new company.</value>
+  </data>
+  <data name="AcceptApplyRequestError_CreateEmailPasswordAccountFailed" xml:space="preserve">
+    <value>Failed to create the new user account.</value>
+  </data>
+  <data name="ApplyRequestError_CompanyIsDisabled" xml:space="preserve">
+    <value>This company is not authorized any more.</value>
+  </data>
+  <data name="ConfirmApplyRequestEmailAddressError_Accepted" xml:space="preserve">
+    <value>This request has already been accepted. You should try to login to your account instead.</value>
+  </data>
+  <data name="ConfirmApplyRequestEmailAddressError_InvalidSecret" xml:space="preserve">
+    <value>The verification key of this apply request does not seem valid. Have you correctly typed the address of this page?</value>
+  </data>
+  <data name="ConfirmApplyRequestEmailAddressError_NoSuchApplyRequest" xml:space="preserve">
+    <value>This request does not exist.</value>
+  </data>
+  <data name="ConfirmApplyRequestEmailAddressError_Refused" xml:space="preserve">
+    <value>This request has already been refused. You may contact the support if you have any question.</value>
+  </data>
+  <data name="ConfirmApplyRequestEmailAddressError_UnexpectedState" xml:space="preserve">
+    <value>This request is in a unexpected state. You may contact the support if you have any question.</value>
+  </data>
+  <data name="ConfirmApplyRequestEmailAddressError_NotSubmitted" xml:space="preserve">
+    <value>This request has not been submitted yet.</value>
+  </data>
+  <data name="NetworkUserGender_Female" xml:space="preserve">
+    <value>Woman</value>
+  </data>
+  <data name="NetworkUserGender_Male" xml:space="preserve">
+    <value>Man</value>
+  </data>
+  <data name="NetworkUserGender_Unspecified" xml:space="preserve">
+    <value>Unspecified</value>
+  </data>
+  <data name="RefuseApplyRequestError_AlreadyAccepted" xml:space="preserve">
+    <value>This apply request has already been accepted.</value>
+  </data>
+  <data name="RefuseApplyRequestError_AlreadyRefused" xml:space="preserve">
+    <value>This apply request has already been refused.</value>
+  </data>
+  <data name="RefuseApplyRequestError_NoSuchApplyRequest" xml:space="preserve">
+    <value>No such apply request.</value>
+  </data>
+  <data name="RefuseApplyRequestError_PendingEmailConfirmation" xml:space="preserve">
+    <value>This apply request is waiting for email confirmation.</value>
+  </data>
+  <data name="ApplyRequestStatus_Accepted" xml:space="preserve">
+    <value>Accepted</value>
+  </data>
+  <data name="ApplyRequestStatus_New" xml:space="preserve">
+    <value>Not submitted or partially filled</value>
+  </data>
+  <data name="ApplyRequestStatus_PendingAccept" xml:space="preserve">
+    <value>Waiting accept or refuse</value>
+  </data>
+  <data name="ApplyRequestStatus_PendingEmailConfirmation" xml:space="preserve">
+    <value>Waiting for email address confirmation</value>
+  </data>
+  <data name="ApplyRequestStatus_Refused" xml:space="preserve">
+    <value>Refused</value>
+  </data>
+  <data name="ApplyRequestStatus_Unknown" xml:space="preserve">
+    <value>Unknown state</value>
+  </data>
+  <data name="ConfirmApplyRequestEmailAddressError_AcceptOnEmailDomainMatch" xml:space="preserve">
+    <value>A critical error has been encountered, please contact an administrator.</value>
+  </data>
+  <data name="CreateEmailPassordAccountError_JoinCompanyIdIsInvalid" xml:space="preserve">
+    <value>The company to join is invalid or does not exists.</value>
+  </data>
+  <data name="AcceptApplyRequestError_OnForwardRequestNoSuchCompany" xml:space="preserve">
+    <value>No such company or company is inactive</value>
+  </data>
+  <data name="CreateEmailPassordAccountError_NoCompanyFound" xml:space="preserve">
+    <value>No companies found, an internal error occured with the process.</value>
+  </data>
+  <data name="ValidateApplyRequestError_InvalidSecret" xml:space="preserve">
+    <value>The verification key is invalid. Have you correctly typed the URL of this page?</value>
+  </data>
+  <data name="ValidateApplyRequestError_NoSuchItem" xml:space="preserve">
+    <value>This register request does not seem to exist.</value>
+  </data>
+  <data name="ValidateApplyRequestError_PendingAccept" xml:space="preserve">
+    <value>Your request has not been validated by administrators. Please wait for an answer.</value>
+  </data>
+  <data name="ValidateApplyRequestError_Refused" xml:space="preserve">
+    <value>You request has been refused. You may contact us for any question.</value>
+  </data>
+  <data name="ValidateApplyRequestError_UnknownState" xml:space="preserve">
+    <value>Your request is in a known state.</value>
+  </data>
+  <data name="AcceptApplyRequestError_NotInPendingAccept" xml:space="preserve">
+    <value>This apply request is not ready yet to be validated or has already been finalized.</value>
+  </data>
+  <data name="ApplyRequestError_RequestIsNotNew" xml:space="preserve">
+    <value>This apply request can not be modified anymore.</value>
+  </data>
+  <data name="LinkedInPeopleError_RequestIsNotNew" xml:space="preserve">
+    <value>This apply request can not be modified anymore.</value>
+  </data>
+  <data name="SubscribeError_NoSuchTemplate" xml:space="preserve">
+    <value>No such subscription template.</value>
+  </data>
+  <data name="SubscribeError_CannotCreateCharge" xml:space="preserve">
+    <value>We failed to create the payment transaction. Please try again later.</value>
+  </data>
+  <data name="SubscribeError_CannotCaptureCharge" xml:space="preserve">
+    <value>We failed to execute the payment transaction. Please try again later.</value>
+  </data>
+  <data name="SubscribeError_NoSuchUserOrInactive" xml:space="preserve">
+    <value>You must be authenticated and have an active account.</value>
+  </data>
+  <data name="PaymentMethod_Cash" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="PaymentMethod_Stripe" xml:space="preserve">
+    <value>Stripe</value>
+  </data>
+  <data name="PaymentMethod_Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="TransactionType_Stripe_Name" xml:space="preserve">
+    <value>Stripe (stripe.com)</value>
+  </data>
+  <data name="GetPictureFromUrlError_FileIsNotPicture" xml:space="preserve">
+    <value>The file retrieved from the given url is not in a supported picture format.</value>
+  </data>
+  <data name="GetPictureFromUrlError_HttpRequestFailed" xml:space="preserve">
+    <value>Error when retrieving the picture.</value>
+  </data>
+  <data name="LinkedInPeopleError_CannotRetrieveProfilePicture" xml:space="preserve">
+    <value>We have been unable to retrieve the profile picture.</value>
+  </data>
+  <data name="RegionSettingsError_CultureNotSupported" xml:space="preserve">
+    <value>This culture is not supported.</value>
+  </data>
+  <data name="RegionSettingsError_NoSuchUserOrInactive" xml:space="preserve">
+    <value>No such user or inactive.</value>
+  </data>
+  <data name="RegionSettingsError_TimezoneNotSupported" xml:space="preserve">
+    <value>This timezone is not supported.</value>
+  </data>
+  <data name="NetworkAccessLevel_ManagePartnerResources" xml:space="preserve">
+    <value>Manage resources.</value>
+  </data>
+  <data name="NetworkAccessLevel_ManagePartnerResources_Desc" xml:space="preserve">
+    <value>Create, edit or delete a resource. Look at the resources' hit counter stats.</value>
+  </data>
+  <data name="NetworkAccessLevel_ManageSubscriptions" xml:space="preserve">
+    <value>Manage subscriptions</value>
+  </data>
+  <data name="NetworkAccessLevel_ManageSubscriptions_Desc" xml:space="preserve">
+    <value>Look at the users' subscriptions list, manually subscribe a user.</value>
+  </data>
+  <data name="PartnerResourceEditError_NoSuchPartnerResource" xml:space="preserve">
+    <value>No such partner.</value>
+  </data>
+  <data name="PartnerResourceEditError_NoSuchUserOrInactiveOrUnauthorized" xml:space="preserve">
+    <value>No such user or unauthorized</value>
+  </data>
+  <data name="PartnerResourceEditError_CityIsRequired" xml:space="preserve">
+    <value>At least one city has to be specified.</value>
+  </data>
+  <data name="SetProfilePictureError_NoSuchPartnerResource" xml:space="preserve">
+    <value>No such resource.</value>
+  </data>
+  <data name="AdminWorkType_CompanyHasNoAdministrator" xml:space="preserve">
+    <value>Company with no administrator</value>
+  </data>
+  <data name="AdminWorkType_NewCompanyRequestToManage" xml:space="preserve">
+    <value>Company register request</value>
+  </data>
+  <data name="AdminWorkType_PartnerResourceToApprove" xml:space="preserve">
+    <value>Resource proposal</value>
+  </data>
+  <data name="EditTextError_NoSuchSubscriptionTemplate" xml:space="preserve">
+    <value>No such subscription template.</value>
+  </data>
+  <data name="TimelinePublishError_InvalidMode" xml:space="preserve">
+    <value>Invalid publish mode.</value>
+  </data>
+  <data name="TimelinePublishError_NoEventVisibility" xml:space="preserve">
+    <value>You do not have access to this event.</value>
+  </data>
+  <data name="ConnectWithLinkedInError_ApiCallFailed" xml:space="preserve">
+    <value>Unable to contact LinkedIn</value>
+  </data>
+  <data name="ConnectWithLinkedInError_LinkedInNotConfigured" xml:space="preserve">
+    <value>LinkedIn is not configured, try to log in manually</value>
+  </data>
+  <data name="ConnectWithLinkedInError_NoSuchUser" xml:space="preserve">
+    <value>Your LinkedIn account has no match among our users</value>
+  </data>
+  <data name="ConnectWithLinkedInError_UserEmailMatch" xml:space="preserve">
+    <value>Your email match a user but it seems the LinkedIn account is not linked, log in manually this time and you will be able to log with LinkedIn in the future</value>
+  </data>
+  <data name="SubscribeError_InternalError" xml:space="preserve">
+    <value>Something is wrong with your subscriptions, please contact support.</value>
+  </data>
+  <data name="MassSubscriptionError_InvalidTemplate" xml:space="preserve">
+    <value>This subscription template does not exist</value>
+  </data>
+  <data name="MassSubscriptionError_NotAuthorized" xml:space="preserve">
+    <value>You are not authorized to perform this action</value>
+  </data>
+  <data name="NotificationType_Comment" xml:space="preserve">
+    <value>Comments on my publications</value>
+  </data>
+  <data name="NotificationType_CompanyTimelineComments" xml:space="preserve">
+    <value>New comment on company internal publication</value>
+  </data>
+  <data name="NotificationType_CompanyTimelineItems" xml:space="preserve">
+    <value>New publication on company internal timeline</value>
+  </data>
+  <data name="NotificationType_ContactRequest" xml:space="preserve">
+    <value>Contact requests</value>
+  </data>
+  <data name="NotificationType_DailyNewsletter" xml:space="preserve">
+    <value>Daily newsletter</value>
+  </data>
+  <data name="NotificationType_EventInvitation" xml:space="preserve">
+    <value>Event invitations</value>
+  </data>
+  <data name="NotificationType_MailChimp" xml:space="preserve">
+    <value>Mailing list (occasional sends)</value>
+  </data>
+  <data name="NotificationType_MainTimelineComments" xml:space="preserve">
+    <value>New comment on publication</value>
+  </data>
+  <data name="NotificationType_MainTimelineItems" xml:space="preserve">
+    <value>New publication on the network</value>
+  </data>
+  <data name="NotificationType_Newsletter" xml:space="preserve">
+    <value>Weekly newsletter (Monday morning)</value>
+  </data>
+  <data name="NotificationType_PrivateGroupJoinRequest" xml:space="preserve">
+    <value>Private group join requests</value>
+  </data>
+  <data name="NotificationType_PrivateMessage" xml:space="preserve">
+    <value>New private message</value>
+  </data>
+  <data name="NotificationType_Publication" xml:space="preserve">
+    <value>New publications</value>
+  </data>
+  <data name="UnsubscribeFromNotificationError_NoSuchNotification" xml:space="preserve">
+    <value>This type of notification does not exist</value>
+  </data>
+  <data name="UnsubscribeFromNotificationError_NoSuchUser" xml:space="preserve">
+    <value>This user does not exist</value>
+  </data>
+  <data name="ExportType_CsvCommaSeparated" xml:space="preserve">
+    <value>.csv (comma seperated)</value>
+  </data>
+  <data name="ExportType_CsvSemicolonSeparated" xml:space="preserve">
+    <value>.csv (semicolon separated)</value>
+  </data>
+  <data name="KnownCompanyCategory_CompanyAccelerator" xml:space="preserve">
+    <value>Company accelerator</value>
+  </data>
+  <data name="KnownCompanyCategory_Startup" xml:space="preserve">
+    <value>Startup</value>
+  </data>
+  <data name="KnownCompanyCategory_Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="LinkedInPeopleError_LinkedInImportAlreadyDone" xml:space="preserve">
+    <value>The LinkedIn import has already be done</value>
+  </data>
+  <data name="AcceptApplyRequestError_JoinCompanyIsDisabled" xml:space="preserve">
+    <value>The joining company is disabled</value>
+  </data>
+  <data name="EditEventError_NoSuchEvent" xml:space="preserve">
+    <value>No such event</value>
+  </data>
+  <data name="ImportFoursquarePlaceError_FoursquareApiError" xml:space="preserve">
+    <value>Unexpected error from Foursquare.</value>
+  </data>
+  <data name="ImportFoursquarePlaceError_FoursquareNotConfigured" xml:space="preserve">
+    <value>You cannot do that, Foursquare is not configured.</value>
+  </data>
+  <data name="AddPlaceError_CannotAddPlaceForCompany" xml:space="preserve">
+    <value>You cannot add a place for this company.</value>
+  </data>
+  <data name="AddPlaceError_NoSuchCompany" xml:space="preserve">
+    <value>The company you try to add a place for does not exist.</value>
+  </data>
+  <data name="AddOrRemoveTagError_MustSpecifyTagId" xml:space="preserve">
+    <value>You must specify a tag.</value>
+  </data>
+  <data name="AddOrRemoveTagError_NoSuchCompany" xml:space="preserve">
+    <value>No such company.</value>
+  </data>
+  <data name="AddOrRemoveTagError_NoSuchTag" xml:space="preserve">
+    <value>No such tag.</value>
+  </data>
+  <data name="AddOrRemoveTagError_NoSuchTagCategory" xml:space="preserve">
+    <value>No such tag category.</value>
+  </data>
+  <data name="AddOrRemoveTagError_NotAuthorized" xml:space="preserve">
+    <value>You cannot do this.</value>
+  </data>
+  <data name="AddOrRemoveTagError_CannotAddTagForCategory" xml:space="preserve">
+    <value>You cannot add a tag for this category.</value>
+  </data>
+  <data name="AddOrRemoveTagError_DoesNotApplyToCompanies" xml:space="preserve">
+    <value>This tag category cannot be used for companies.</value>
+  </data>
+  <data name="AddOrRemoveTagError_MaxNumberOfTagForCategory" xml:space="preserve">
+    <value>Maximum number of tag reached for this category.</value>
+  </data>
+  <data name="AddOrRemoveTagError_CategoryNotAvailableForEntity" xml:space="preserve">
+    <value>This category cannot be used right now.</value>
+  </data>
+  <data name="DeleteInvitationError_InvitationAlreadyUsed" xml:space="preserve">
+    <value>This invitation has already been used. </value>
+  </data>
+  <data name="DeleteInvitationError_NoSuchInvitation" xml:space="preserve">
+    <value>No such invitation.</value>
+  </data>
+  <data name="DeleteInvitationError_NoSuchUser" xml:space="preserve">
+    <value>Acting user is not defined.</value>
+  </data>
+  <data name="DeleteInvitationError_Unauthorized" xml:space="preserve">
+    <value>You are not authorized to do that.</value>
+  </data>
+  <data name="AddOrRemoveTagError_NoSuchApplyRequest" xml:space="preserve">
+    <value>No such apply request.</value>
+  </data>
+  <data name="AdminProceduresError_NoSuchCompany" xml:space="preserve">
+    <value>You have to select an existing company to move a user in.</value>
+  </data>
+  <data name="EditNetworkRoleError_NoSuchUser" xml:space="preserve">
+    <value>No such user.</value>
+  </data>
+  <data name="EditNetworkRoleError_RoleDescriptionTooLong" xml:space="preserve">
+    <value>Description must be less than 4000 characters.</value>
+  </data>
+  <data name="EditNetworkRoleError_RoleTitleTooLong" xml:space="preserve">
+    <value>Role must be less than 120 characters.</value>
+  </data>
+  <data name="EditNetworkRoleError_MustSpecifyGroup" xml:space="preserve">
+    <value>You must specify an valid/existing group or a new one.</value>
+  </data>
+  <data name="AddOrRemoveTagError_NoSuchUser" xml:space="preserve">
+    <value>No such user.</value>
+  </data>
+  <data name="AddOrRemoveTagError_NoSuchAd" xml:space="preserve">
+    <value>The item does not exist.</value>
+  </data>
+  <data name="EditAdError_CannotEditWhenClosed" xml:space="preserve">
+    <value>Cannot edit a closed item.</value>
+  </data>
+  <data name="EditAdError_Invalid" xml:space="preserve">
+    <value>The request has validation errors.</value>
+  </data>
+  <data name="EditAdError_NoSuchActingUser" xml:space="preserve">
+    <value>The current user is not defined.</value>
+  </data>
+  <data name="EditAdError_NoSuchCategory" xml:space="preserve">
+    <value>The specified category does not exist.</value>
+  </data>
+  <data name="EditAdError_NoSuchType" xml:space="preserve">
+    <value>The specified type does not exist.</value>
+  </data>
+  <data name="EditAdError_NotAuthorized" xml:space="preserve">
+    <value>You are not authorized to do that.</value>
+  </data>
+  <data name="AdminWorkType_EditAdToApprove" xml:space="preserve">
+    <value>Ad change</value>
+  </data>
+  <data name="AdminWorkType_NewAdToApprove" xml:space="preserve">
+    <value>New ad</value>
+  </data>
+  <data name="EditAdError_NoSuchItem" xml:space="preserve">
+    <value>This ad does not exists or has been deleted.</value>
+  </data>
+  <data name="ValidateAdError_AlreadyValidated" xml:space="preserve">
+    <value>This ad has already been validated.</value>
+  </data>
+  <data name="ValidateAdError_CannotAcceptWhenUserNotActive" xml:space="preserve">
+    <value>Cannot accept this ad because the owner is not active on this network.</value>
+  </data>
+  <data name="ValidateAdError_CannotValidateWhenClosed" xml:space="preserve">
+    <value>It is useless to validate a closed ad.</value>
+  </data>
+  <data name="ValidateAdError_ConcurrencyOnPendingEditDate" xml:space="preserve">
+    <value>The ad has changed since you intended to validate it. Please try again.</value>
+  </data>
+  <data name="ValidateAdError_Invalid" xml:space="preserve">
+    <value>The request has validation errors.</value>
+  </data>
+  <data name="ValidateAdError_NoSuchActingUser" xml:space="preserve">
+    <value>The current user is not defined.</value>
+  </data>
+  <data name="ValidateAdError_NoSuchItem" xml:space="preserve">
+    <value>This ad does not exists or has been deleted.</value>
+  </data>
+  <data name="ValidateAdError_NotAuthorized" xml:space="preserve">
+    <value>You are not authorized to do that.</value>
+  </data>
+  <data name="ApplyRequestError_RegisterCompanyMissconfigured" xml:space="preserve">
+    <value>There is a problem in the network configuration that prevents your account from being created. Please contact the administrators and specify the code "RegisterCompanyMissconfigured".</value>
+  </data>
+  <data name="InviteToGroupError_Left" xml:space="preserve">
+    <value>Cannot invite a user that left the group.</value>
+  </data>
+  <data name="EditInformationNoteError_NoSuchItem" xml:space="preserve">
+    <value>There is no such information note.</value>
+  </data>
+  <data name="EditInformationNoteError_NoSuchActingUser" xml:space="preserve">
+    <value>No such acting user.</value>
+  </data>
+  <data name="EditInformationNoteError_NotAuthorized" xml:space="preserve">
+    <value>You are not authorized to do that.</value>
+  </data>
+  <data name="ExportType_CsvTabSeparated" xml:space="preserve">
+    <value>.csv (tab separated)</value>
+  </data>
+  <data name="DeleteJobError_NoSuchActingUser" xml:space="preserve">
+    <value>The acting user is not defined.</value>
+  </data>
+  <data name="DeleteJobError_NoSuchItem" xml:space="preserve">
+    <value>This item does not exist.</value>
+  </data>
+  <data name="DeleteJobError_NotAuthorized" xml:space="preserve">
+    <value>You are not authorized.</value>
+  </data>
+  <data name="DeleteJobError_SameTarget" xml:space="preserve">
+    <value>Cannot reassign into the same item.</value>
+  </data>
+  <data name="EditJobError_NameAlreadyInUse" xml:space="preserve">
+    <value>This name is already in use.</value>
+  </data>
+  <data name="InviteToEventCode_MultipleErrors" xml:space="preserve">
+    <value>All invitations have failed. </value>
+  </data>
+  <data name="SendPrivateMessageError_EmptyMessage" xml:space="preserve">
+    <value>The message cannot be empty.</value>
+  </data>
+  <data name="SendPrivateMessageError_MessageIsTooLong" xml:space="preserve">
+    <value>The message is too long (1200 max).</value>
+  </data>
+  <data name="SendPrivateMessageError_NoSuchTargetUser" xml:space="preserve">
+    <value>No such recipient.</value>
+  </data>
+  <data name="SendPrivateMessageError_TargetUserIsInactive" xml:space="preserve">
+    <value>The recipient is not an active user.</value>
+  </data>
+  <data name="ConnectWithLinkedInError_LinkedInLoginIsDisabled" xml:space="preserve">
+    <value>Loging-in with LinkedIn is disabled.</value>
+  </data>
+  <data name="LinkedInPeopleError_LinkedInUpdateIsDisabled" xml:space="preserve">
+    <value>LinkedIn profile update is disabled.</value>
+  </data>
+</root>

@@ -1,0 +1,1088 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SharpSquare</name>
+    </assembly>
+    <members>
+        <member name="P:FourSquare.SharpSquare.Entities.Icon.prefix">
+            <summary>
+            url of the image withouth the suffix
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Icon.suffix">
+            <summary>
+            Suffix of the image, example .png .ico etc
+            </summary> 
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetUser(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/users/USER_ID
+            Returns profile information for a given user, including selected badges and mayorships.
+            If the user is a friend, contact information, Facebook ID, and Twitter handle and the user's last checkin may also be present.
+            In addition, the pings field will indicate whether checkins from this user will trigger a ping (notifications to mobile devices). This setting can be changed via setpings. Note that this setting is overriden if pings is false in settings (no pings will be sent, even if this user is set to true). 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SearchUsers(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            https://api.foursquare.com/v2/users/search
+            Returns an array of compact users's profiles.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetUserRequests">
+            <summary>
+            https://api.foursquare.com/v2/users/requests
+            Shows a user the list of users with whom they have a pending friend request (i.e., someone tried to add the acting user as a friend, but the acting user has not accepted). 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetUserCheckins(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/users/USER_ID/checkins
+            Returns a history of checkins for the authenticated user.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetUserFriends(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/users/USER_ID/friends
+            Returns an array of a user's friends.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetUserTips(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/users/USER_ID/tips
+            Returns tips from a user.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetUserVenueHistory">
+            <summary>
+            https://api.foursquare.com/v2/users/USER_ID/venuehistory
+            Returns a list of all venues visited by the specified user, along with how many visits and when they were last there.
+            This is an experimental API. We're excited about the innovation we think it enables as a much more efficient version of fetching all of a user's checkins, but we're also still learning if this right approach. Please give it a shot and provide feedback on the mailing list. Note that although the venuehistory endpoint currently returns all of the user's data, we expect to return only the last 6 months, requiring callers to page backwards as needed. We may also remove the lastHereAt value. Additionally, for anomalous users, we'll cap out at 500 unique venues. 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SendUserRequest(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/users/USER_ID/request
+            Sends a friend request to another user.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SendUserUnfriend(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/users/USER_ID/unfriend
+            Cancels any relationship between the acting user and the specified user.
+            Removes a friend, unfollows a celebrity, or cancels a pending friend request. 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SendUserApprove(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/users/USER_ID/approve
+            Approves a pending friend request from another user.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SendUserDeny(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/users/USER_ID/deny
+            Denies a pending friend request from another user.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SetUserPings(System.String,System.String)">
+            <summary>
+            https://api.foursquare.com/v2/users/USER_ID/setpings
+            Changes whether the acting user will receive pings (phone notifications) when the specified user checks in.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetVenue(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/venues/VENUE_ID
+            Gives details about a venue, including location, mayorship, tags, tips, specials, and category.
+            Authenticated users will also receive information about who is here now.
+            If the venue ID given is one that has been merged into another "master" venue, the response will show data about the "master" instead of giving you an error. 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.AddVenue(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            https://api.foursquare.com/v2/venues/add
+            Allows users to add a new venue.
+            If this method returns an error, give the user the option to edit her inputs. The method may return an HTTP 409 error if the new venue looks like a duplicate of an existing venue. This response will include two useful values: candidateDuplicateVenues and ignoreDuplicatesKey. In this situation we recommend you try these two options: 1) use one of the candidateDuplicateVenues included in the response of the 409 error, or 2) ignore duplicates and force the addition of a new venue by resubmitting the same venue add request with two additional parameters: ignoreDuplicates set to true and ignoreDuplicatesKey set to the value from the earlier error response.
+            In addition to this, give users the ability to say "never mind, check-in here anyway" and perform a manual ("venueless") checkin by specifying just the venue name
+            All fields are optional, but one of either a valid address or a geolat/geolong pair must be provided. We recommend that developers provide a geolat/geolong pair in every case.
+            Caller may also, optionally, pass in a category (primarycategoryid) to which you want this venue assigned. You can browse a full list of categories using the /categories method. On adding venue, we recommend that applications show the user this hierarchy and allow them to choose something suitable. 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetVenueCategories">
+            <summary>
+            https://api.foursquare.com/v2/venues/categories
+            Returns a hierarchical list of categories applied to venues. 
+            When designing client applications, please download this list only once per session, but also avoid caching this data for longer than a week to avoid stale information. 
+            This endpoint is part of the venues API (https://developer.foursquare.com/overview/venues.html). 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetManagedVenues">
+            <summary>
+            https://api.foursquare.com/v2/venues/managed
+            Get a list of venues the current user manages. 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetManagedVenues(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            https://api.foursquare.com/v2/venues/managed
+            Get a list of venues the current user manages. 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SearchVenues(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            https://api.foursquare.com/v2/venues/search
+            Returns a list of venues near the current location, optionally matching the search term.
+            To ensure the best possible results, pay attention to the intent parameter below. And if you're looking for "top" venues or recommended venues, use the explore endpoint instead. 
+            If lat and long is provided, each venue includes a distance. If authenticated, the method will return venue metadata related to you and your friends. If you do not authenticate, you will not get this data.
+            Note that most of the fields returned inside venue can be optional. The user may create a venue that has no address, city or state (the venue is created instead at the geolat/geolong specified). Your client should handle these conditions safely.
+            You'll also notice a stats block that reveals some count data about the venue. herenow shows the number of people currently there (this value can be 0). 
+            This endpoint is part of the venues API (https://developer.foursquare.com/overview/venues.html). 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetVenueTimeSeriesData(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            https://api.foursquare.com/v2/venues/timeseries
+            Get daily venue stats for a list of venues over a time range.  
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetSuggestCompletionVenues(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            https://api.foursquare.com/v2/venues/suggestcompletion
+            Returns a list of mini-venues partially matching the search term, near the location. 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetTrendingVenues(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            https://api.foursquare.com/v2/venues/trending
+            Returns a list of venues near the current location with the most people currently checked in.
+            This endpoint is part of the venues API (https://developer.foursquare.com/overview/venues.html). 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetVenueHereNow(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/venues/VENUE_ID/herenow
+            Provides a count of how many people are at a given venue, plus the first page of the users there, friends-first, and if the current user is authenticated.
+            This is an experimental API. We're excited about the innovation we think it enables as a much more efficient version of fetching all data about a venue, but we're also still learning if this right approach. Please give it a shot and provide feedback on the mailing list. 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetVenueTips(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/venues/VENUE_ID/tips
+            Returns tips for a venue.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetVenuePhotos(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            https://api.foursquare.com/v2/venues/VENUE_ID/photos
+            Returns photos for a venue. 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetVenueLinks(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/venues/VENUE_ID/links
+            Returns URLs or identifiers from third parties that have been applied to this venue, such as how the New York Times refers to this venue and a URL for additional information from nytimes.com. This is part of the foursquare Venue Map.
+            This is an experimental endpoint and very much subject to change. Please provide us feedback in the forum.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SetVenueToDo(System.String,System.String)">
+            <summary>
+            https://api.foursquare.com/v2/venues/VENUE_ID/marktodo
+            Allows you to mark a venue to-do, with optional text.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SetVenueFlag(System.String,System.String)">
+            <summary>
+            https://api.foursquare.com/v2/venues/VENUE_ID/flag
+            Allows users to indicate a venue is incorrect in some way.
+            Flags are pushed into a moderation queue. If a closed flag is approved, the venue will no longer show up in search results. Moderators will attempt to correct cases of mislocated or duplicate venues as appropriate. If the user has the correct address for a mislocated venue, use proposeedit instead. 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SetVenueProposeEdit(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/venues/VENUE_ID/proposeedit
+            Allows you to propose a change to a venue.
+            If the user knows a correct address, use this method to save it. Otherwise, use flag to flag the venue instead (you need not specify a new address or geolat/geolong in that case). 
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetCheckin(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/checkins/CHECKIN_ID
+            Get details of a checkin.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.AddCheckin(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            https://api.foursquare.com/v2/checkins/add
+            Allows you to check in to a place. 
+            Checkins will always have notifications included.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetRecentCheckin">
+            <summary>
+            https://api.foursquare.com/v2/checkins/recent
+            Returns a list of recent checkins from friends.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.AddChekinComment(System.String,System.String)">
+            <summary>
+            https://api.foursquare.com/v2/checkins/CHECKIN_ID/addcomment
+            Comment on a checkin-in.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.DeleteChekinComment(System.String,System.String)">
+            <summary>
+            https://api.foursquare.com/v2/checkins/CHECKIN_ID/deletecomment
+            Remove a comment from a checkin, if the acting user is the author or the owner of the checkin.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetTip(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/tips/TIP_ID
+            Gives details about a tip, including which users (especially friends) have marked the tip to-do or done.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.AddTip(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            https://api.foursquare.com/v2/tips/add
+            Allows you to add a new tip at a venue.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SearchTips(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            https://api.foursquare.com/v2/tips/search
+            Returns a list of tips near the area specified.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SetTipToDo(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/tips/TIP_ID/marktodo
+            Allows you to mark a tip to-do.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SetTipDone(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/tips/TIP_ID/markdone
+            Allows the acting user to mark a tip done.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SetTipUnMark(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/tip/TIP_ID/unmark
+            Allows you to remove a tip from your to-do list or done list.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetPhoto(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/photos/PHOTO_ID
+            Get details of a photo.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.AddPhoto(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            https://api.foursquare.com/v2/photos/add
+            Allows users to add a new photo to a checkin, tip, or a venue in general.
+            All fields are optional, but exactly one of the id fields (checkinId, tipId, venueId) must be passed in. 
+            In addition, the image file data must be posted. The photo should be uploaded as a jpeg and the Content-Type should be set to "image/jpeg". 
+            Attaching a photo to a tip or a venue makes it visible to anybody, while attaching a photo to a checkin makes it visible only to the people who can see the checkin (the user's friends, unless the checkin has been sent to Twitter or Facebook.). 
+            Multiple photos can be attached to a checkin or venue, but there can only be one photo per tip. 
+            To avoid double-tweeting, if you are sending a checkin that will be immediately followed by a photo, do not set broadcast=twitter on the checkin, and just set it on the photo.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetSettings">
+            <summary>
+            https://api.foursquare.com/v2/settings/all
+            Returns a setting for the acting user.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SetSetting(System.String,System.String)">
+            <summary>
+            https://api.foursquare.com/v2/settings/SETTING_ID/set
+            Change a setting for the given user.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.GetSpecial(System.String)">
+            <summary>
+            https://api.foursquare.com/v2/specials/SPECIAL_ID
+            Gives details about a special, including text and unlock rules.
+            </summary>
+        </member>
+        <member name="M:FourSquare.SharpSquare.Core.SharpSquare.SearchSpecials(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            https://api.foursquare.com/v2/specials/search
+            Returns a list of specials near the current location.
+            This is an experimental API. We'd love your feedback as we solidify it over the next few weeks. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Badge.id">
+            <summary>
+            A unique identifier for this badge, if locked, or this user's specific unlock of this badge, if unlocked.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Badge.badgeld">
+            <summary>
+            optional A canonical ID for this badge.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Badge.name">
+            <summary>
+            The name of the badge.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Badge.description">
+            <summary>
+            Additional text about the badge.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Badge.image">
+            <summary>
+            Pieces needed to construct badge image at various sizes. Combine prefix with one of the sizes and a name, e.g. http://foursquare.com/img/badge/57/newbie.png. For locked badges, this will point to the locked badge image.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Badge.unlocks">
+            <summary>
+            optional If present, an array of unlock data. Array contains checkins, which is an array of checkins. Currently both arrays will only contain 1 element.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Category.id">
+            <summary>
+            A unique identifier for this category.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Category.name">
+            <summary>
+            Name of the category.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Category.pluralName">
+            <summary>
+            Pluralized version of the category name.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Category.shortName">
+            <summary>
+            Shorter version of the category name.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Category.icon">
+            <summary>
+            Pieces needed to construct category icons at various sizes. 
+            Combine prefix with a size (32, 44, 64, and 88 are available) and suffix, e.g. https://foursquare.com/img/categories/food/default_64.png. 
+            To get an image with a gray background, use bg_ before the size, e.g. https://foursquare.com/img/categories_v2/food/icecream_bg_32.png.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Category.parents">
+            <summary>
+            If this is the primary category for parent venue object.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Category.primary">
+            <summary>
+            If this is the primary category for parent venue object.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Category.categories">
+            <summary>
+            (only present in venues/categories response). A list of categories that are descendants of this category in the hierarchy.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Checkin.id">
+            <summary>
+            A unique identifier for this checkin.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Checkin.createdAt">
+            <summary>
+            Seconds since epoch when this checkin was created.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Checkin.type">
+            <summary>
+            One of checkin, shout, or venueless.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Checkin.timeZone">
+            <summary>
+            optional String representation of the time zone where this check-in occurred.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Checkin.user">
+            <summary>
+            optional If the user is not clear from context, then a compact user is present.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Checkin.venue">
+            <summary>
+            optional If the venue is not clear from context, and this checkin was at a venue, then a compact venue is present.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Checkin.location">
+            <summary>
+            optionalIf the type of this checkin is shout or venueless, this field may be present and may contains a lat, lng pair and/or a name, providing unstructured information about the user's current location.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Checkin.source">
+            <summary>
+            optional If present, the name and url for the application that created this checkin.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Checkin.photos">
+            <summary>
+            count and items for photos on this checkin. All items may not be present.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Checkin.comments">
+            <summary>
+            count and items for comments on this checkin. All items may not be present.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Checkin.shout">
+            <summary>
+            optional Message from check-in, if present and visible to the acting user.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Item.id">
+            <summary>
+            A unique identifier for this item. Note: item ids are only valid within the context of a list.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Item.user">
+            <summary>
+            The compact user who added this item to the current list. Only present when viewing a specific list and when the user is the not same as the list owner.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Item.photo">
+            <summary>
+            A photo for this item. If no photo has been explicitly set on this item, but the tip contains a photo it will be returned in this field.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Item.venue">
+            <summary>
+            The compact venue this item is for, unless the venue is clear from context.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Item.tip">
+            <summary>
+            If this item contains a tip, then a compact tip is present.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Item.note">
+            <summary>
+            Text entered by the user when creating this item. This field is private and only returned to the author.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Item.createdAt">
+            <summary>
+            Seconds since epoch when this item was added to the list.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Item.listed">
+            <summary>
+            Information about what other lists this item appears on. If present, an array of compact lists.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Link.provider">
+            <summary>
+            For now just contains an id of a provider, e.g. nymag.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Link.url">
+            <summary>
+            optional If present, a URL for additional information about this venue from this provider.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Link.linkedId">
+            <summary>
+            optional If present, the identifer used by this provider to identify this venue.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.List.id">
+            <summary>
+            A unique string identifier for this photo.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.List.name">
+            <summary>
+            The user-entered name for this list.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.List.description">
+            <summary>
+            The user-entered list description.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.List.user">
+            <summary>
+            The compact user who created this list.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.List.following">
+            <summary>
+            Boolean indicating whether the acting user is following this list. Absent if there is no acting user.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.List.followers">
+            <summary>
+            Count and items of users who follow this list. All items may not be present.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.List.editable">
+            <summary>
+            Boolean indicating whether the acting user can edit this list. Absent if there is no acting user.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.List.collaborative">
+            <summary>
+            Boolean indicating whether this list is editable by the owner's friends.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.List.collaborators">
+            <summary>
+             Count and items of users who have edited this list. All items may not be present.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.List.canonicalUrl">
+            <summary>
+            The canonical URL for this list, e.g. https://foursquare.com/dens/list/a-brief-history-of-foursquare
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.List.photo">
+            <summary>
+            A photo for this list.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.List.venueCount">
+            <summary>
+            The number of unique venues on the list.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.List.visitedCount">
+            <summary>
+            The number of venues on the list visited by the acting user. Absent if there is no acting user.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.List.listItems">
+            <summary>
+            Count and items of list items on this list.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Menu.name">
+            <summary>
+            A name for this menu.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Menu.menuId">
+            <summary>
+            A unique string identifier for this menu.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Menu.description">
+            <summary>
+            More information describing this menu.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Open.renderedTime">
+            <summary>
+            A localized string describing the time the venue us open.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Photo.id">
+            <summary>
+            A unique string identifier for this photo.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Photo.createdAt">
+            <summary>
+            Seconds since epoch when this photo was created.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Photo.prefix">
+            <summary>
+            Start of the URL for this photo.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Photo.suffix">
+            <summary>
+            Ending of the URL for this photo.
+            To assemble a resolvable photo URL, take prefix + size + suffix, e.g. https://irs0.4sqi.net/img/general/300x500/2341723_vt1Kr-SfmRmdge-M7b4KNgX2_PHElyVbYL65pMnxEQw.jpg.
+            size can be one of the following, where XX or YY is one of 36, 100, 300, or 500.
+            - XXxYY
+            - original: the original photo's size
+            - capXX: cap the photo with a width or height of XX (whichever is larger). Scales the other, smaller dimension proportionally
+            - widthXX: forces the width to be XX and scales the height proportionally
+            - heightYY: forces the height to be YY and scales the width proportionally
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Photo.url">
+            <summary>
+            The url for the original uploaded file.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Photo.sizes">
+            <summary>
+            The count of supported sizes, plus items, an array of supported sizes. Each size will have a string url and integer width and height parameters. The first item will be the original photo size, and the remaining items will be derived photo sizes. Just because a derived photo size (with url) is returned does not mean it is necessarily available at that url. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Photo.source">
+            <summary>
+            optional If present, the name and url for the application that created this photo.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Photo.user">
+            <summary>
+             If the user is not clear from context, then a compact user is present.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Photo.venue">
+            <summary>
+            If the venue is not clear from context, then a compact venue is present.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Photo.tip">
+            <summary>
+             If the tip is not clear from context, then a compact tip is present.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Photo.checkin">
+            <summary>
+            If the checkin is not clear from context, then a compact checkin is present.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Segment.lable">
+            <summary>
+            The name of the named segment.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Segment.start">
+            <summary>
+            The time as HHMM (24hr) at which the segment begins.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Segment.end">
+            <summary>
+            The time as HHMM (24hr) at which the segment ends.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Special.id">
+            <summary>
+            A unique identifier for this special.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Special.type">
+            <summary>
+            One of mayor, count, frequency, regular, friends, swarm, flash or other.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Special.message">
+            <summary>
+            A message describing the special.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Special.description">
+            <summary>
+            A description of how to unlock the special.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Special.finePrint">
+            <summary>
+             The specific rules for this special.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Special.unlocked">
+            <summary>
+             True or false indicating if this special is unlocked for the acting user.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Special.icon">
+            <summary>
+             The name of the icon to use: http://foursquare.com/img/specials/icon.png
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Special.title">
+            <summary>
+            The header text describing the type of special.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Special.state">
+            <summary>
+            Possible values:
+            unlocked -> the special is unlocked (all types)
+            before start -> the time after which the special may be unlocked is in the future (flash specials)
+            in progress -> the special is locked but could be unlocked if you check in (flash specials), or the special is locked but could be unlocked if enough of your friends check in (friends specials)
+            taken -> the maximum number of people have unlocked the special for the day (flash and swarm specials)
+            locked -> the special is locked (all other types)
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Special.progress">
+            <summary>
+            A description of how close you are to unlocking the special. Either the number of people who have already unlocked the special (flash and swarm specials), or the number of your friends who have already checked in (friends specials) 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Special.progressDescription">
+            <summary>
+            A label describing what the number in the progress field means.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Special.detail">
+            <summary>
+            Minutes remaining until the special can be unlocked (flash special only).
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Special.target">
+            <summary>
+            A number indicating the maximum (swarm, flash) or minimum (friends) number of people allowed to unlock the special.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Special.friendsHere">
+            <summary>
+            A list of friends currently checked in, as compact user objects (friends special only).
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Stat.checkinsCount">
+            <summary>
+            Total checkins ever here.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Stat.usersCount">
+            <summary>
+            Total users who have ever checked in here.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Stat.tipCount">
+            <summary>
+            Number of tips here.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.TimeFrame.days">
+            <summary>
+            Localized list of day names
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.TimeFrame.includesToday">
+            <summary>
+            An array of times the venue is open on days within the timeframe.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.TimeFrame.open">
+            <summary>
+            An array of times the venue is open on days within the timeframe.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Tip.id">
+            <summary>
+            A unique identifier for this tip.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Tip.text">
+            <summary>
+            The actual tip.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Tip.createdAt">
+            <summary>
+            Seconds since epoch when their tip was created.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Tip.status">
+            <summary>
+            optionalOne of todo or done, depending on the user's relationship to the tip. Absent if there is no relationship. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Tip.photo">
+            <summary>
+            optional If there is a photo for this tip and the tip is not already container inside of a photo element, details about the photo. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Tip.user">
+            <summary>
+            optional If the context allows tips from multiple users, the compact user that created this tip. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Tip.venue">
+            <summary>
+            optional If the context allows tips from multiple venues, the compact venue for this tip.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Tip.todo">
+            <summary>
+            The count of users who have marked this tip todo, and groups containing any friends who have marked it to-do. The groups included are subject to change. (Note that to-dos are only visible to friends!) 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Tip.done">
+            <summary>
+            The count of users who have done this tip todo, and groups containing any friends and others who have marked it done. The groups included are subject to change. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Tip.likes">
+            <summary>
+             The count of users who have liked this tip, and groups containing any friends and others who have liked it. The groups included are subject to change. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.id">
+            <summary>
+            A unique identifier for this user.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.firstName">
+            <summary>
+            A user's first name.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.lastName">
+            <summary>
+            A user's last name.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.gender">
+            <summary>
+            male or female
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.photo">
+            <summary>
+            URL of a profile picture for this user.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.friends">
+            <summary>
+            	Contains count of friends for this user and groups of users who are friends. Right now will only contain a group where type is friends, but it's subject to change. Groups are omitted when viewing self The full set of friends is at users/XXX/friends. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.tips">
+            <summary>
+            Contains the count of tips from this user. May contain an array of selected tips as items, which may or may not be empty. Full set of items at users/XXX/tips
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.homeCity">
+            <summary>
+            User's home city
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.bio">
+            <summary>
+            A short bio for the user.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.contact">
+            <summary>
+            An object containing none, some, or all of twitter, facebook, email, and phone. Both are strings.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.pings">
+            <summary>
+            Optional. Whether we receive pings from this user, if we have a relationship.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.type">
+            <summary>
+            One of brand, celebrity, or user. Users can establish following relationships with celebrities.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.badges">
+            <summary>
+            Contains the count of badges for this user. May eventually contain some selected badges. Use user/XX/badges to get the list of badges. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.relationship">
+            <summary>
+            optional The relationship of the acting user (me) to this user (them). One of self, friend, pendingMe (user has sent a friend request that acting user has not accepted), pendingThem (acting user has sent a friend request to the user but they have not accepted), or followingThem (acting user is following a celebrity or brand). If there is no relationship or pending request between the two users, the node is absent. If the acting user is a celebrity, does not indicate whether the user is following them.
+            If pendingme, applications will want to the acting user to an approve/ignore action. If pendingthem, applications will want to show the acting user a "pending" message. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.checkins">
+            <summary>
+            Contains the count of checkins by this user. May contain the most recent checkin as an array items containing a single element, if the user is a friend. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.mayorships">
+            <summary>
+            Contains the count of mayorships for this user. If there are any mayorships, may contain an array of selected mayorships as items, which may or may not be empty. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.todos">
+            <summary>
+            Contains the count of todos this user has. May contain an array of selected todos as items, full set of items at users/XXX/todos, but only visible to friends. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.followers">
+            <summary>
+            Contains count of followers for this user, if they are a brand or celebrity. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.User.request">
+            <summary>
+            Contains count of pending friend requests for this user. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.id">
+            <summary>
+            A unique string identifier for this venue.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.name">
+            <summary>
+            The best known name for this venue.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.contact">
+            <summary>
+            An object containing none, some, or all of twitter, phone, and formattedPhone. All are strings.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.location">
+            <summary>
+             An object containing none, some, or all of address (street address), crossStreet, city, state, postalCode, country, lat, lng, and distance. All fields are strings, except for lat, lng, and distance. Distance is measured in meters. 
+             Some venues have their locations intentionally hidden for privacy reasons (such as private residences). If this is the case, the parameter isFuzzed will be set to true, and the lat/lng parameters will have reduced precision. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.categories">
+            <summary>
+            An array, possibly empty, of categories that have been applied to this venue. One of the categories will have a field primary indicating that it is the primary category for the venue. For the complete set of categories, see venues/categories. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.verified">
+            <summary>
+            Boolean indicating whether the owner of this business has claimed it and verified the information.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.stats">
+            <summary>
+            Contains checkinsCount (total checkins ever here) and usersCount (total users who have ever checked in here). 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.url">
+            <summary>
+             URL of the venue's website, typically provided by the venue manager. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.hours">
+            <summary>
+             Contains the hours during the week that the venue is open along with any named hours segments in a human-readable format. For machine readable hours see venues/hours
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.popular">
+            <summary>
+            Optional Contains the hours during the week when people usually go to the venue. For machine readable hours see venues/hours. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.menu">
+            <summary>
+             An object containing url and mobileUrl that display the menu information for this venue. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.price">
+            <summary>
+             An object containing the price tier from 1 (least pricey) - 4 (most pricey) and a message describing the price tier. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.specials">
+            <summary>
+            If v >= 20120121, a dictionary containing count and items array of specials at this venue. Otherwise, an array, possibly empty, of specials at this venue. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.hereNow">
+            <summary>
+            Optional. Information about who is here now. If present, there is always a count, the number of people here. If viewing details and there is a logged-in user, there is also a groups field with friends and others as types. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.storeId">
+            <summary>
+            The manager's internal identifier for the venue. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.description">
+            <summary>
+            Optional. Description of the venue provided by venue owner. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.createdAt">
+            <summary>
+            Seconds since epoch when the venue was created.  
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.mayor">
+            <summary>
+            user is the compact user who is the mayor (absent if there is no mayor), and count is the number of times they have checked in within the last 60 days.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.tips">
+            <summary>
+            Contains the total count of tips and groups with friends and others as groupTypes. Groups may change over time.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.listed">
+            <summary>
+            A grouped response of lists that contain this venue. Contains a summary string representing the acting user's relationship to these lists. If an acting user is present, groups may include todos, created, edited, followed, friends, and others. If this venue is on the acting user's todo list, those items will be included in the todos group. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.tags">
+            <summary>
+            An array of string tags applied to this venue.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.beenHere">
+            <summary>
+             Contains count of the number of times the acting user has been here. Absent if there is no acting user.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.shortUrl">
+            <summary>
+            A short URL for this venue, e.g. http://4sq.com/Ab123D
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.canonicalUrl">
+            <summary>
+            The canonical URL for this venue, e.g. https://foursquare.com/v/foursquare-hq/4ab7e57cf964a5205f7b20e3
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.specialsNearby">
+            <summary>
+            An array of specials near this venue.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.photos">
+            <summary>
+            A count and groups of photos for this venue. Group types are checkin and venue. Not all items will be present.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.likes">
+            <summary>
+            A count and groups of photos for this venue. Group types are checkin and venue. Not all items will be present.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.like">
+            <summary>
+            Indicates if the current user has liked this venue.  
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.dislike">
+            <summary>
+            Indicates if the current user has disliked this venue. 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.timeZone">
+            <summary>
+            Time zone, e.g. America/New_York 
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.Venue.roles">
+            <summary>
+             Present if and only if the current user has at least one assigned role for this venue. The value is a list of all of the current user's assigned roles for this venue. Possible values for each element of the list are manager and employee. Subject to change as additional roles may be defined.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.VenueGroup.id">
+            <summary>
+             A unique identifier for this venue group.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.VenueGroup.name">
+            <summary>
+            The name of the venue group.
+            </summary>
+        </member>
+        <member name="P:FourSquare.SharpSquare.Entities.VenueTimeSerie.venueId">
+            <summary>
+            The venue id
+            </summary>
+        </member>
+    </members>
+</doc>

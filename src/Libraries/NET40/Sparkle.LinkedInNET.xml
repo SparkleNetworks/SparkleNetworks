@@ -1,0 +1,3982 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sparkle.LinkedInNET</name>
+    </assembly>
+    <members>
+        <member name="T:Sparkle.LinkedInNET.ApiError">
+            <summary>
+            An API error.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.ApiError.Status">
+            <summary>
+            Gets or sets the (HTTP?) status.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.ApiError.Timestamp">
+            <summary>
+            Gets or sets the timestamp.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.ApiError.RequestId">
+            <summary>
+            Gets or sets the request unique identifier.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.ApiError.ErrorCode">
+            <summary>
+            Gets or sets the error code.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.ApiError.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.FieldSelector`1">
+            <summary>
+            Allows to accumulate a list of fields for API calls.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.FieldSelector">
+            <summary>
+            Field selector extension methods.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.FieldSelector.For``1">
+            <summary>
+            Creates a field selector for the specified entityt type.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.FieldSelector.Add(System.String)">
+            <summary>
+            Adds the specified field.
+            </summary>
+            <param name="field">The field.</param>
+            <returns>The current instance of field selector.</returns>
+            <exception cref="T:System.ArgumentException">The value cannot be empty;field</exception>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.FieldSelector.AddRange(System.String[])">
+            <summary>
+            Adds a range of fields.
+            </summary>
+            <param name="fields">The fields.</param>
+            <returns>The current instance of field selector.</returns>
+            <exception cref="T:System.ArgumentNullException">fields</exception>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.FieldSelector.AddRange(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds a range of fields.
+            </summary>
+            <param name="fields">The fields.</param>
+            <returns>The current instance of field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.FieldSelector.Remove(System.String)">
+            <summary>
+            Removes the specified field.
+            </summary>
+            <param name="field">The field.</param>
+            <returns>The current instance of field selector.</returns>
+            <exception cref="T:System.ArgumentException">The value cannot be empty;field</exception>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.FieldSelector.Clear">
+            <summary>
+            Clears this instance.
+            </summary>
+            <returns>The current instance of field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.FieldSelector.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.FieldSelector.Items">
+            <summary>
+            Gets the items.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.FieldSelector`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sparkle.LinkedInNET.FieldSelector`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.FieldSelector`1.Add(System.String)">
+            <summary>
+            Adds the specified field.
+            </summary>
+            <param name="field">The field.</param>
+            <returns>The current instance of field selector.</returns>
+            <exception cref="T:System.ArgumentException">The value cannot be empty;field</exception>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.FieldSelector`1.AddRange(System.String[])">
+            <summary>
+            Adds a range of fields.
+            </summary>
+            <param name="fields">The fields.</param>
+            <returns>The current instance of field selector.</returns>
+            <exception cref="T:System.ArgumentNullException">fields</exception>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.FieldSelector`1.AddRange(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds a range of fields.
+            </summary>
+            <param name="fields">The fields.</param>
+            <returns>The current instance of field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.FieldSelector`1.Remove(System.String)">
+            <summary>
+            Removes the specified field.
+            </summary>
+            <param name="field">The field.</param>
+            <returns>The current instance of field selector.</returns>
+            <exception cref="T:System.ArgumentException">The value cannot be empty;field</exception>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.FieldSelector`1.Clear">
+            <summary>
+            Clears this instance.
+            </summary>
+            <returns>The current instance of field selector.</returns>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Internals.BaseApi">
+            <summary>
+            Base class for LinkedIn APIs.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Internals.BaseApi.#ctor(Sparkle.LinkedInNET.LinkedInApi)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sparkle.LinkedInNET.Internals.BaseApi"/> class.
+            </summary>
+            <param name="linkedInApi">The API factory.</param>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Internals.BaseApi.FormatUrl(System.String,System.Object[])">
+            <summary>
+            Formats the URL.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="values">The values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Internals.BaseApi.FormatUrl(System.String,Sparkle.LinkedInNET.FieldSelector,System.Object[])">
+            <summary>
+            Formats the URL.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="fieldSelector">The field selectors.</param>
+            <param name="values">The values.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Internals.Strings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Internals.Strings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Internals.Strings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Internals.Strings.ApiException_ApiEmptyErrorResult">
+            <summary>
+              Looks up a localized string similar to API returned empty/invalid error mesage (HTTP {0}).
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Internals.Strings.ApiException_ApiEmptyResult">
+            <summary>
+              Looks up a localized string similar to The API returned an empty result.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Internals.Strings.ApiException_ApiErrorResult">
+            <summary>
+              Looks up a localized string similar to API error ({0}) {1} at {2}.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Internals.Strings.ApiException_ApiUnknownError">
+            <summary>
+              Looks up a localized string similar to Unknown API error (HTTP code: {0}).
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Internals.Strings.ApiException_ApiUnknownHttpCode">
+            <summary>
+              Looks up a localized string similar to The API replied with a unknown HTTP code: {0}..
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Internals.Strings.ApiException_OAuth2ErrorResult">
+            <summary>
+              Looks up a localized string similar to OAuth2 error ({0}): {1}.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Internals.Strings.InternalException_ReadStreamAsText">
+            <summary>
+              Looks up a localized string similar to Could not read stream as text: {0}.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Internals.Strings.InternalException_SerializerCtor">
+            <summary>
+              Looks up a localized string similar to Could not create serializer for this API call: {0}.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Internals.Strings.InternalException_SerializerDeserialize">
+            <summary>
+              Looks up a localized string similar to Could not deserialize API response: {0}.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Internals.Strings.InternalException_SerializerDeserializeError">
+            <summary>
+              Looks up a localized string similar to Could not deserialize API error response: {0}.
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.LinkedInApi">
+            <summary>
+            LinkedIn API client.
+            </summary>
+            <summary>
+            The factory for LinkedIn APIs.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.LinkedInApi.#ctor(Sparkle.LinkedInNET.LinkedInApiConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sparkle.LinkedInNET.LinkedInApi"/> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+            <exception cref="T:System.ArgumentNullException">configuration</exception>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.LinkedInApi.OAuth2">
+            <summary>
+            Gets the OAuth2 API.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.LinkedInApi.Profiles">
+            <summary>
+            The Profiles API.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.LinkedInApi.Companies">
+            <summary>
+            The Companies API.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.LinkedInApi.Groups">
+            <summary>
+            The Groups API.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.LinkedInApi.Jobs">
+            <summary>
+            The Jobs API.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.LinkedInApi.Social">
+            <summary>
+            The Social API.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.LinkedInApi.Common">
+            <summary>
+            The Common API.
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.LinkedInApiConfiguration">
+            <summary>
+            Configuration object for LinkedIn API.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.LinkedInApiConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sparkle.LinkedInNET.LinkedInApiConfiguration"/> class.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.LinkedInApiConfiguration.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sparkle.LinkedInNET.LinkedInApiConfiguration"/> class.
+            </summary>
+            <param name="apiKey">The API key.</param>
+            <param name="apiSecretKey">The API secret key.</param>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.LinkedInApiConfiguration.FromAppSettings(System.String)">
+            <summary>
+            Creates a configuration object froms the application settings.
+            </summary>
+            <param name="prefix">The prefix.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.LinkedInApiConfiguration.BaseApiUrl">
+            <summary>
+            Gets or sets the base API URL.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.LinkedInApiConfiguration.BaseOAuthUrl">
+            <summary>
+            Gets or sets the base automatic authentication URL.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.LinkedInApiConfiguration.ApiKey">
+            <summary>
+            Gets or sets the API key.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.LinkedInApiConfiguration.ApiSecretKey">
+            <summary>
+            Gets or sets the API secret key.
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.LinkedInApiException">
+            <summary>
+            Exception for API errors.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.LinkedInApiException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sparkle.LinkedInNET.LinkedInApiException"/> class.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.LinkedInNetException">
+            <summary>
+            Exception for library internal errors.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.LinkedInNetException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sparkle.LinkedInNET.LinkedInApiException"/> class.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.OAuth2.AuthorizationAccessToken">
+            <summary>
+            The result of a OAuth2/authorization.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.OAuth2.AuthorizationAccessToken.ExpiresIn">
+            <summary>
+            Gets or sets the validity of the token in seconds.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.OAuth2.AuthorizationAccessToken.AccessToken">
+            <summary>
+            Gets or sets the access token.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.OAuth2.AuthorizationAccessToken.AuthorizationDateUtc">
+            <summary>
+            Gets or sets the authorization date UTC.
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.OAuth2.AuthorizationScope">
+            <summary>
+            Permissions for authorization requests.
+            </summary>
+        </member>
+        <member name="F:Sparkle.LinkedInNET.OAuth2.AuthorizationScope.ReadBasicProfile">
+            <summary>
+            The read basic profile (r_basicprofile).
+            Name, photo, headline, and current positions.
+            </summary>
+        </member>
+        <member name="F:Sparkle.LinkedInNET.OAuth2.AuthorizationScope.ReadFullProfile">
+            <summary>
+            The read full profile (r_fullprofile).
+            Full profile including experience, education, skills, and recommendations.
+            </summary>
+        </member>
+        <member name="F:Sparkle.LinkedInNET.OAuth2.AuthorizationScope.ReadEmailAddress">
+            <summary>
+            The read email address (r_emailaddress).
+            The primary email address you use for your LinkedIn account
+            </summary>
+        </member>
+        <member name="F:Sparkle.LinkedInNET.OAuth2.AuthorizationScope.ReadNetwork">
+            <summary>
+            The read network (r_network).
+            Your 1st and 2nd degree connections.
+            </summary>
+        </member>
+        <member name="F:Sparkle.LinkedInNET.OAuth2.AuthorizationScope.ReadContactInfo">
+            <summary>
+            The read contact information (r_contactinfo).
+            Address, phone number, and bound accounts.
+            </summary>
+        </member>
+        <member name="F:Sparkle.LinkedInNET.OAuth2.AuthorizationScope.ReadWriteNetworkUpdates">
+            <summary>
+            The read write network updates (rw_nus).
+            Retrieve and post updates to LinkedIn as you.
+            </summary>
+        </member>
+        <member name="F:Sparkle.LinkedInNET.OAuth2.AuthorizationScope.ReadWriteCompanyPage">
+            <summary>
+            The read write company page (rw_company_admin).
+            Edit company pages for which I am an Admin and post status updates on behalf of those companies.
+            </summary>
+        </member>
+        <member name="F:Sparkle.LinkedInNET.OAuth2.AuthorizationScope.ReadWriteGroups">
+            <summary>
+            The read write groups (rw_groups).
+            Retrieve and post group discussions as you.
+            </summary>
+        </member>
+        <member name="F:Sparkle.LinkedInNET.OAuth2.AuthorizationScope.WriteMessages">
+            <summary>
+            The write messages (w_messages).
+            Send messages and invitations to connect as you.
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.OAuth2.OAuth2Api">
+            <summary>
+            OAuth2 operations for LinkedIn.
+            </summary>
+            <remarks>
+            https://developer.linkedin.com/documents/authentication
+            </remarks>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.OAuth2.OAuth2Api.#ctor(Sparkle.LinkedInNET.LinkedInApi)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sparkle.LinkedInNET.OAuth2.OAuth2Api"/> class.
+            </summary>
+            <param name="linkedInApi">The linked information API.</param>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.OAuth2.OAuth2Api.GetAuthorizationUrl(Sparkle.LinkedInNET.OAuth2.AuthorizationScope,System.String,System.String)">
+            <summary>
+            Gets the authorization URL.
+            </summary>
+            <param name="scope">An enum of permissions.</param>
+            <param name="state">A unique identifier to use as a CSRF check.</param>
+            <param name="redirectUri">The redirect URI.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException">
+            The value cannot be empty;state
+            or
+            The value cannot be empty;redirectUri
+            </exception>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.OAuth2.OAuth2Api.GetAccessToken(System.String,System.String)">
+            <summary>
+            Gets the access token for a authorization code.
+            </summary>
+            <param name="authorizationCode">The authorization code.</param>
+            <param name="redirectUri">The redirect URI.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException">
+            The value cannot be empty;authorizationCode
+            or
+            The value cannot be empty;redirectUri
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Failed to read API response
+            or
+            Error from API (HTTP  + (int)(response.StatusCode) + )
+            or
+            Error from API:  + ex.Message
+            or
+            API responded with an empty response
+            </exception>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.OAuth2.OAuth2Error">
+            <summary>
+            OAuth2 error.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.OAuth2.OAuth2Error.Error">
+            <summary>
+            Gets or sets the error.
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.OAuth2.OAuth2Error.ErrorMessage">
+            <summary>
+            Gets or sets the error message.
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Person">
+            <summary>
+            Name: 'person'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Firstname">
+            <summary>
+            Field: 'first-name' (default)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Lastname">
+            <summary>
+            Field: 'last-name' (default)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Headline">
+            <summary>
+            Field: 'headline' (default)
+            Field: 'headline' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.SiteStandardProfileRequest">
+            <summary>
+            Field: 'site-standard-profile-request/url' (default)
+            Field: 'site-standard-profile-request' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.MaidenName">
+            <summary>
+            Field: 'maiden-name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.FormattedName">
+            <summary>
+            Field: 'formatted-name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.PhoneticFirstName">
+            <summary>
+            Field: 'phonetic-first-name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.PhoneticLastName">
+            <summary>
+            Field: 'phonetic-last-name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.FormattedPhoneticName">
+            <summary>
+            Field: 'formatted-phonetic-name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Location">
+            <summary>
+            Field: 'location:(name)' (on-demand)
+            Field: 'location:(country:(code))' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Industry">
+            <summary>
+            Field: 'industry' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Distance">
+            <summary>
+            Field: 'distance' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.RelationToViewer">
+            <summary>
+            Field: 'relation-to-viewer' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.CurrentStatusTimestamp">
+            <summary>
+            Field: 'current-status-timestamp' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.CurrentShare">
+            <summary>
+            Field: 'current-share' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.NumConnections">
+            <summary>
+            Field: 'num-connections' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.NumConnectionsCapped">
+            <summary>
+            Field: 'num-connections-capped' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Summary">
+            <summary>
+            Field: 'summary' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Specialties">
+            <summary>
+            Field: 'specialties' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Positions">
+            <summary>
+            Field: 'positions' (on-demand)
+            Field: 'positions:(id,title,start-date,end-date,is-current,company)'
+            Field: 'positions:(id)'
+            Field: 'positions:(title)'
+            Field: 'positions:(summary)'
+            Field: 'positions:(start-date)'
+            Field: 'positions:(end-date)'
+            Field: 'positions:(is-current)'
+            Field: 'positions:(company)'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.PictureUrl">
+            <summary>
+            Field: 'picture-url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.ApiStandardProfileRequest">
+            <summary>
+            Field: 'api-standard-profile-request' (on-demand)
+            Field: 'api-standard-profile-request:(url)'
+            Field: 'api-standard-profile-request:(headers)'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.PublicProfileUrl">
+            <summary>
+            Field: 'public-profile-url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.EmailAddress">
+            <summary>
+            Field: 'email-address' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.LastModifiedTimestamp">
+            <summary>
+            Field: 'last-modified-timestamp' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.ProposalComments">
+            <summary>
+            Field: 'proposal-comments' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Associations">
+            <summary>
+            Field: 'associations' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Interests">
+            <summary>
+            Field: 'interests' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Publications">
+            <summary>
+            Field: 'publications' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Patents">
+            <summary>
+            Field: 'patents' (on-demand)
+            Field: 'patents:(id,title,summary,number,status:(id,name),office:(name),inventors:(id,name,person),date,url)'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Languages">
+            <summary>
+            Field: 'languages' (on-demand)
+            Field: 'languages:(id)'
+            Field: 'languages:(language)'
+            Field: 'languages:(proficiency)'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Skills">
+            <summary>
+            Field: 'skills' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Certifications">
+            <summary>
+            Field: 'certifications' (on-demand)
+            Field: 'certifications:(id,name,authority:(name),number,start-date,end-date)'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Educations">
+            <summary>
+            Field: 'educations' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Courses">
+            <summary>
+            Field: 'courses' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Volunteer">
+            <summary>
+            Field: 'volunteer' (on-demand)
+            Field: 'volunteer:(volunteer-experiences:(id,role,organization:(name),cause:(name)))'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.ThreeCurrentPositions">
+            <summary>
+            Field: 'three-current-positions' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.ThreePastPositions">
+            <summary>
+            Field: 'three-past-positions' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.NumRecommenders">
+            <summary>
+            Field: 'num-recommenders' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.RecommendationsReceived">
+            <summary>
+            Field: 'recommendations-received' (on-demand)
+            Field: 'recommendations-received'
+            Field: 'recommendations-received:(id,recommendation-type:(code),recommendation-text,recommender:(id,first-name,last-name,num-connections,headline,picture-url))'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Following">
+            <summary>
+            Field: 'following' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.JobBookmarks">
+            <summary>
+            Field: 'job-bookmarks' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Suggestions">
+            <summary>
+            Field: 'suggestions' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.DateOfBirth">
+            <summary>
+            Field: 'date-of-birth' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.MemberUrlResources">
+            <summary>
+            Field: 'member-url-resources' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.RelatedProfileViews">
+            <summary>
+            Field: 'related-profile-views' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.HonorsAwards">
+            <summary>
+            Field: 'honors-awards' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.PhoneNumbers">
+            <summary>
+            Field: 'phone-numbers' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.BoundAccountTypes">
+            <summary>
+            Field: 'bound-account-types' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.ImAccounts">
+            <summary>
+            Field: 'im-accounts' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.MainAddress">
+            <summary>
+            Field: 'main-address' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.TwitterAccounts">
+            <summary>
+            Field: 'twitter-accounts' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.PrimaryTwitterAccount">
+            <summary>
+            Field: 'primary-twitter-account' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Connections">
+            <summary>
+            Field: 'connections' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.GroupMemberships">
+            <summary>
+            Field: 'group-memberships' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Person.Network">
+            <summary>
+            Field: 'network' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Connections">
+            <summary>
+            Name: 'connections'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Connections.Total">
+            <summary>
+            Field: 'total' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Connections.Person">
+            <summary>
+            Field: 'person' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.PersonPosition">
+            <summary>
+            Name: 'position'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.PersonPosition.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.PersonPosition.Title">
+            <summary>
+            Field: 'title' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.PersonPosition.Summary">
+            <summary>
+            Field: 'summary' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.PersonPosition.StartDate">
+            <summary>
+            Field: 'start-date' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.PersonPosition.EndDate">
+            <summary>
+            Field: 'end-date' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.PersonPosition.IsCurrent">
+            <summary>
+            Field: 'is-current' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.PersonPosition.Company">
+            <summary>
+            Field: 'company' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.PersonPositions">
+            <summary>
+            Name: 'positions'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.PersonPositions.Position">
+            <summary>
+            Field: 'position' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.CompanyIdentifier">
+            <summary>
+            Name: 'CompanyIdentifier'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.CompanyIdentifier.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.CompanyIdentifier.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.CompanyIdentifier.Type">
+            <summary>
+            Field: 'type' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.CompanyIdentifier.Industry">
+            <summary>
+            Field: 'industry' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.CompanyIdentifier.Ticker">
+            <summary>
+            Field: 'ticker' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.DateParts">
+            <summary>
+            Name: 'DateParts'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.DateParts.Year">
+            <summary>
+            Field: 'year' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.DateParts.Month">
+            <summary>
+            Field: 'month' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.DateParts.Day">
+            <summary>
+            Field: 'day' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.RelationToViewer">
+            <summary>
+            Name: 'relation-to-viewer'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.RelationToViewer.Distance">
+            <summary>
+            Field: 'distance' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.RelationToViewer.RelatedConnections">
+            <summary>
+            Field: 'related-connections' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.RelationToViewer.Connections">
+            <summary>
+            Field: 'connections' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Languages">
+            <summary>
+            Name: 'languages'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Languages.Language">
+            <summary>
+            Field: 'language' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Language">
+            <summary>
+            Name: 'language'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Language.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Language.LanguageInfo">
+            <summary>
+            Field: 'language' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Language.Proficiency">
+            <summary>
+            Field: 'proficiency' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.LanguageInfo">
+            <summary>
+            Name: 'LanguageInfo'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.LanguageInfo.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.LanguageProficiency">
+            <summary>
+            Name: 'LanguageProficiency'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.LanguageProficiency.Level">
+            <summary>
+            Field: 'level' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.LanguageProficiency.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Skills">
+            <summary>
+            Name: 'skills'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Skills.Skill">
+            <summary>
+            Field: 'skill' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Skill">
+            <summary>
+            Name: 'skill'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Skill.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Skill.SkillName">
+            <summary>
+            Field: 'skill' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.SkillName">
+            <summary>
+            Name: 'skill'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.SkillName.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Certifications">
+            <summary>
+            Name: 'certifications'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Certifications.Certification">
+            <summary>
+            Field: 'certification' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Certification">
+            <summary>
+            Name: 'certification'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Certification.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Certification.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Certification.Authority">
+            <summary>
+            Field: 'authority:(name)' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Certification.Number">
+            <summary>
+            Field: 'number' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Certification.StartDate">
+            <summary>
+            Field: 'start-date' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Certification.EndDate">
+            <summary>
+            Field: 'end-date' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Educations">
+            <summary>
+            Name: 'educations'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Educations.Education">
+            <summary>
+            Field: 'education' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Education">
+            <summary>
+            Name: 'education'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Education.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Education.SchoolName">
+            <summary>
+            Field: 'school-name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Education.Notes">
+            <summary>
+            Field: 'notes' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Education.Activities">
+            <summary>
+            Field: 'activities' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Education.FieldOfStudy">
+            <summary>
+            Field: 'field-of-study' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Education.Degree">
+            <summary>
+            Field: 'degree' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Education.StartDate">
+            <summary>
+            Field: 'start-date' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Education.EndDate">
+            <summary>
+            Field: 'end-date' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Courses">
+            <summary>
+            Name: 'courses'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Courses.Course">
+            <summary>
+            Field: 'course' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Course">
+            <summary>
+            Name: 'course'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Course.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Course.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Course.Number">
+            <summary>
+            Field: 'number' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Volunteer">
+            <summary>
+            Name: 'volunteer'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Volunteer.VolunteerExperiences">
+            <summary>
+            Field: 'volunteer-experiences' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.VolunteerExperiences">
+            <summary>
+            Name: 'volunteer-experiences'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.VolunteerExperiences.VolunteerExperience">
+            <summary>
+            Field: 'volunteer-experience' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.VolunteerExperience">
+            <summary>
+            Name: 'volunteer-experience'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.VolunteerExperience.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.VolunteerExperience.Role">
+            <summary>
+            Field: 'role' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.VolunteerExperience.Organization">
+            <summary>
+            Field: 'organization:(name)' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.VolunteerExperience.Cause">
+            <summary>
+            Field: 'cause:(name)' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Recommendations">
+            <summary>
+            Name: 'recommendations'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Recommendations.Recommendation">
+            <summary>
+            Field: 'recommendation' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Recommendation">
+            <summary>
+            Name: 'recommendation'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Recommendation.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Recommendation.RecommendationType">
+            <summary>
+            Field: 'recommendation-type:(code)' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Recommendation.RecommendationText">
+            <summary>
+            Field: 'recommendation-text' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Recommendation.Recommender">
+            <summary>
+            Field: 'recommender' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.PhoneNumbers">
+            <summary>
+            Name: 'phone-numbers'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.PhoneNumbers.PhoneNumber">
+            <summary>
+            Field: 'phone-number' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.PhoneNumber">
+            <summary>
+            Name: 'phone-number'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.PhoneNumber.Type">
+            <summary>
+            Field: 'phone-type' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.PhoneNumber.Number">
+            <summary>
+            Field: 'phone-number' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Publications">
+            <summary>
+            Name: 'publications'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Publications.Publication">
+            <summary>
+            Field: 'publication' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Publication">
+            <summary>
+            Name: 'publication'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Publication.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Publication.Title">
+            <summary>
+            Field: 'title' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Publication.Publisher">
+            <summary>
+            Field: 'publisher:(name)' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Publication.Authors">
+            <summary>
+            Field: 'authors:(id)' (on-demand)
+            Field: 'authors:(name)' (on-demand)
+            Field: 'authors:(person)' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Publication.Date">
+            <summary>
+            Field: 'date' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Publication.Url">
+            <summary>
+            Field: 'url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Publication.Summary">
+            <summary>
+            Field: 'summary' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Patents">
+            <summary>
+            Name: 'patents'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Patents.Patent">
+            <summary>
+            Field: 'patent' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Patent">
+            <summary>
+            Name: 'patent'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Patent.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Patent.Title">
+            <summary>
+            Field: 'title' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Patent.Date">
+            <summary>
+            Field: 'date' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Patent.Url">
+            <summary>
+            Field: 'url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Patent.Summary">
+            <summary>
+            Field: 'summary' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Patent.Number">
+            <summary>
+            Field: 'number' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Patent.Status">
+            <summary>
+            Field: 'status' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Patent.Office">
+            <summary>
+            Field: 'office:(name)' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Patent.Inventors">
+            <summary>
+            Field: 'inventors' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Status">
+            <summary>
+            Name: 'status'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Status.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Status.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Inventors">
+            <summary>
+            Name: 'inventors'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Inventors.Inventor">
+            <summary>
+            Field: 'inventor' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Inventor">
+            <summary>
+            Name: 'inventor'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Inventor.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Inventor.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Inventor.Person">
+            <summary>
+            Field: 'person' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.InventorPerson">
+            <summary>
+            Name: 'person'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.InventorPerson.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.InventorPerson.FirstName">
+            <summary>
+            Field: 'first-name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.InventorPerson.LastName">
+            <summary>
+            Field: 'last-name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.UrlResources">
+            <summary>
+            Name: 'member-url-resources'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.UrlResources.MemberUrlResource">
+            <summary>
+            Field: 'member-url-resource' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.UrlResource">
+            <summary>
+            Name: 'member-url-resource'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.UrlResource.Url">
+            <summary>
+            Field: 'url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.UrlResource.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.ProfileRequest">
+            <summary>
+            Name: 'ProfileRequest'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.ProfileRequest.Url">
+            <summary>
+            Field: 'url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.ProfileRequest.Headers">
+            <summary>
+            Field: 'headers' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.RequestHeaders">
+            <summary>
+            Name: 'headers'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.RequestHeaders.HttpHeader">
+            <summary>
+            Field: 'http-header' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.RequestHeader">
+            <summary>
+            Name: 'http-header'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.RequestHeader.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.RequestHeader.Value">
+            <summary>
+            Field: 'value' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.FollowingInfos">
+            <summary>
+            Name: 'FollowingInfos'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.FollowingInfos.People">
+            <summary>
+            Field: 'people' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.FollowingInfos.Companies">
+            <summary>
+            Field: 'companies' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.FollowingInfos.Industries">
+            <summary>
+            Field: 'industries' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.FollowingInfos.SpecialEditions">
+            <summary>
+            Field: 'special-editions' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.FollowingInfosPeople">
+            <summary>
+            Name: 'FollowingInfosPeople'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.FollowingInfosPeople.Total">
+            <summary>
+            Field: 'total' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.FollowingInfosCompanies">
+            <summary>
+            Name: 'FollowingInfosCompanies'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.FollowingInfosCompanies.Total">
+            <summary>
+            Field: 'total' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.FollowingInfosIndustries">
+            <summary>
+            Name: 'FollowingInfosIndustries'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.FollowingInfosIndustries.Total">
+            <summary>
+            Field: 'total' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.FollowingInfosSpecialEditions">
+            <summary>
+            Name: 'FollowingInfosSpecialEditions'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.FollowingInfosSpecialEditions.Total">
+            <summary>
+            Field: 'total' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.JobBookmarks">
+            <summary>
+            Name: 'job-bookmarks'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.JobBookmarks.Total">
+            <summary>
+            Field: 'total' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.HonorsAwards">
+            <summary>
+            Name: 'honors-awards'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.HonorsAwards.HonorAward">
+            <summary>
+            Field: 'honor-award' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.HonorAward">
+            <summary>
+            Name: 'honor-award'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.HonorAward.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.HonorAward.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.HonorAward.Issuer">
+            <summary>
+            Field: 'issuer' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.TwitterAccounts">
+            <summary>
+            Name: 'twitter-accounts'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.TwitterAccounts.TwitterAccount">
+            <summary>
+            Field: 'twitter-account' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.TwitterAccount">
+            <summary>
+            Name: 'twitter-account'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.TwitterAccount.ProviderAccountId">
+            <summary>
+            Field: 'provider-account-id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.TwitterAccount.ProviderAccountName">
+            <summary>
+            Field: 'provider-account-name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.ImAccounts">
+            <summary>
+            Name: 'im-accounts'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.ImAccounts.ImAccount">
+            <summary>
+            Field: 'im-account' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.ImAccount">
+            <summary>
+            Name: 'im-account'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.ImAccount.ImAccountType">
+            <summary>
+            Field: 'im-account-type' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.ImAccount.ImAccountName">
+            <summary>
+            Field: 'im-account-name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.ImAccount.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.PictureUrls">
+            <summary>
+            Name: 'picture-urls'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.PictureUrls.PictureUrl">
+            <summary>
+            Field: 'picture-url' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Specialties">
+            <summary>
+            Name: 'specialties'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Specialties.Total">
+            <summary>
+            Field: 'total' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Specialties.Specialty">
+            <summary>
+            Field: 'specialty' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.SiteStandardProfileRequest">
+            <summary>
+            Name: 'site-standard-profile-request'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.SiteStandardProfileRequest.Url">
+            <summary>
+            Field: 'url' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Location">
+            <summary>
+            Name: 'location'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Location.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Location.Country">
+            <summary>
+            Field: 'country' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Country">
+            <summary>
+            Name: 'country'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Country.Code">
+            <summary>
+            Field: 'code' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Authority">
+            <summary>
+            Name: 'authority'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Authority.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Organization">
+            <summary>
+            Name: 'organization'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Organization.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Cause">
+            <summary>
+            Name: 'cause'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Cause.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.RecommendationType">
+            <summary>
+            Name: 'recommendation-type'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.RecommendationType.Code">
+            <summary>
+            Field: 'code' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Publisher">
+            <summary>
+            Name: 'publisher'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Publisher.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Authors">
+            <summary>
+            Name: 'authors'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Authors.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Authors.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Authors.Person">
+            <summary>
+            Field: 'person' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.Office">
+            <summary>
+            Name: 'office'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Profiles.Office.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.ProfilesFields">
+            <summary>
+            Field selectors for the 'person', 'connections', 'position', 'positions', 'CompanyIdentifier', 'DateParts', 'relation-to-viewer', 'languages', 'language', 'LanguageInfo', 'LanguageProficiency', 'skills', 'skill', 'skill', 'certifications', 'certification', 'educations', 'education', 'courses', 'course', 'volunteer', 'volunteer-experiences', 'volunteer-experience', 'recommendations', 'recommendation', 'phone-numbers', 'phone-number', 'publications', 'publication', 'patents', 'patent', 'status', 'inventors', 'inventor', 'person', 'member-url-resources', 'member-url-resource', 'ProfileRequest', 'headers', 'http-header', 'FollowingInfos', 'FollowingInfosPeople', 'FollowingInfosCompanies', 'FollowingInfosIndustries', 'FollowingInfosSpecialEditions', 'job-bookmarks', 'honors-awards', 'honor-award', 'twitter-accounts', 'twitter-account', 'im-accounts', 'im-account', 'picture-urls', 'specialties', 'site-standard-profile-request', 'location', 'country', 'authority', 'organization', 'cause', 'recommendation-type', 'publisher', 'authors', 'office' return types.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithFirstName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'first-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithLastName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'last-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithHeadline(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'headline'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithSiteStandardProfileRequestUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'site-standard-profile-request'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithId(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'id'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithMaidenName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'maiden-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithFormattedName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'formatted-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPhoneticFirstName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'phonetic-first-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPhoneticLastName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'phonetic-last-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithFormattedPhoneticName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'formatted-phonetic-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithLocationName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'location:(name)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithLocationCountryCode(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'location:(country:(code))'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithIndustry(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'industry'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithDistance(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'distance'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithRelationToViewer(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'relation-to-viewer'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithCurrentStatusTimestamp(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'current-status-timestamp'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithCurrentShare(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'current-share'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithNumConnections(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'num-connections'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithNumConnectionsCapped(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'num-connections-capped'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithSummary(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'summary'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithSpecialties(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'specialties'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPositions(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'positions:(id,title,start-date,end-date,is-current,company)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPositionsId(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'positions:(id)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPositionsTitle(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'positions:(title)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPositionsSummary(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'positions:(summary)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPositionsStartDate(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'positions:(start-date)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPositionsEndDate(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'positions:(end-date)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPositionsIsCurrent(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'positions:(is-current)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPositionsCompany(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'positions:(company)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPictureUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'picture-url'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithSiteStandardProfileRequest(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'site-standard-profile-request'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithApiStandardProfileRequestUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'api-standard-profile-request:(url)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithApiStandardProfileRequestHeaders(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'api-standard-profile-request:(headers)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPublicProfileUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'public-profile-url'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithEmailAddress(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'email-address'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithLastModifiedTimestamp(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'last-modified-timestamp'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithProposalComments(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'proposal-comments'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithAssociations(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'associations'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithInterests(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'interests'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPublications(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'publications'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPatents(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'patents:(id,title,summary,number,status:(id,name),office:(name),inventors:(id,name,person),date,url)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithLanguageId(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'languages:(id)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithLanguageName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'languages:(language)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithLanguageProficiency(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'languages:(proficiency)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithSkills(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'skills'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithCertifications(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'certifications:(id,name,authority:(name),number,start-date,end-date)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithEducations(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'educations'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithCourses(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'courses'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithFullVolunteer(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'volunteer:(volunteer-experiences:(id,role,organization:(name),cause:(name)))'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithThreeCurrentPositions(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'three-current-positions'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithThreePastPositions(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'three-past-positions'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithNumRecommenders(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'num-recommenders'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithRecommendationsReceived(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'recommendations-received'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithRecommendationsReceivedWithAdditionalRecommenderInfo(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'recommendations-received:(id,recommendation-type:(code),recommendation-text,recommender:(id,first-name,last-name,num-connections,headline,picture-url))'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithFollowing(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'following'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithJobBookmarks(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'job-bookmarks'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithSuggestions(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'suggestions'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithDateOfBirth(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'date-of-birth'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithMemberUrlResources(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'member-url-resources'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithRelatedProfileViews(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'related-profile-views'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithHonorsAwards(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'honors-awards'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPhoneNumbers(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'phone-numbers'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithBoundAccountTypes(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'bound-account-types'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithImAccounts(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'im-accounts'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithMainAddress(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'main-address'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithTwitterAccounts(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'twitter-accounts'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPrimaryTwitterAccount(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'primary-twitter-account'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithConnections(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'connections'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithGroupMemberships(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'group-memberships'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithNetwork(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes the field 'network'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithAllFields(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            Includes all the fields.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithId(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'id'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithFirstName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'first-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithLastName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'last-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithMaidenName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'maiden-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithFormattedName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'formatted-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPhoneticFirstName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'phonetic-first-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPhoneticLastName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'phonetic-last-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithFormattedPhoneticName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'formatted-phonetic-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithHeadline(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'headline'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithLocationName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'location:(name)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithLocationCountryCode(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'location:(country:(code))'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithIndustry(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'industry'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithDistance(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'distance'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithRelationToViewerDistance(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'relation-to-viewer:(distance)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithRelationToViewerRelatedConnections(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'relation-to-viewer:(related-connections)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithRelationToViewerConnections(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'relation-to-viewer:(connections)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithNumConnections(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'num-connections'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithNumConnectionsCapped(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'num-connections-capped'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithSummary(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'summary'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithSpecialties(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'specialties'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPositions(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'positions'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPictureUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'picture-url'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithSiteStandardProfileRequest(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'site-standard-profile-request'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithApiStandardProfileRequestUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'api-standard-profile-request:(url)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithApiStandardProfileRequestHeaders(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'api-standard-profile-request:(headers)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithPublicProfileUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes the field 'public-profile-url'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesFields.WithAllFields(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            Includes all the fields.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.Company">
+            <summary>
+            Name: 'company'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.Id">
+            <summary>
+            Field: 'id' (default)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.Name">
+            <summary>
+            Field: 'name' (default)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.UniversalName">
+            <summary>
+            Field: 'universal-name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.EmailDomains">
+            <summary>
+            Field: 'email-domains' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.CompanyType">
+            <summary>
+            Field: 'company-type' (on-demand)
+            Field: 'company-type:(code,name)'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.Ticker">
+            <summary>
+            Field: 'ticker' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.WebsiteUrl">
+            <summary>
+            Field: 'website-url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.Industries">
+            <summary>
+            Field: 'industries' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.Status">
+            <summary>
+            Field: 'status' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.LogoUrl">
+            <summary>
+            Field: 'logo-url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.SquareLogoUrl">
+            <summary>
+            Field: 'square-logo-url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.BlogRssUrl">
+            <summary>
+            Field: 'blog-rss-url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.TwitterId">
+            <summary>
+            Field: 'twitter-id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.EmployeeCountRange">
+            <summary>
+            Field: 'employee-count-range' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.Specialties">
+            <summary>
+            Field: 'specialties' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.Locations">
+            <summary>
+            Field: 'locations' (on-demand)
+            Field: 'locations:(description,is-headquarters,is-active,address:(street1,street2,city,state,postal-code,country-code,region-code),contact-info:(phone1,phone2,fax))'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.Description">
+            <summary>
+            Field: 'description' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.StockExchange">
+            <summary>
+            Field: 'stock-exchange' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.FoundedYear">
+            <summary>
+            Field: 'founded-year' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.EndYear">
+            <summary>
+            Field: 'end-year' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Company.NumFollowers">
+            <summary>
+            Field: 'num-followers' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyLocations">
+            <summary>
+            Name: 'locations'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyLocations.Location">
+            <summary>
+            Field: 'location' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyLocation">
+            <summary>
+            Name: 'location'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyLocation.Description">
+            <summary>
+            Field: 'description' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyLocation.IsHeadquarters">
+            <summary>
+            Field: 'is-headquarters' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyLocation.IsActive">
+            <summary>
+            Field: 'is-active' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyLocation.Address">
+            <summary>
+            Field: 'address' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyLocation.ContactInfo">
+            <summary>
+            Field: 'contact-info' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyAddress">
+            <summary>
+            Name: 'address'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyAddress.Street1">
+            <summary>
+            Field: 'street1' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyAddress.Street2">
+            <summary>
+            Field: 'street2' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyAddress.City">
+            <summary>
+            Field: 'city' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyAddress.State">
+            <summary>
+            Field: 'state' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyAddress.PostalCode">
+            <summary>
+            Field: 'postal-code' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyAddress.CountryCode">
+            <summary>
+            Field: 'country-code' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyAddress.RegionCode">
+            <summary>
+            Field: 'region-code' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyContact">
+            <summary>
+            Name: 'contact-info'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyContact.Phone1">
+            <summary>
+            Field: 'phone1' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyContact.Phone2">
+            <summary>
+            Field: 'phone2' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyContact.Fax">
+            <summary>
+            Field: 'fax' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyEmailDomains">
+            <summary>
+            Name: 'email-domains'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyEmailDomains.EmailDomain">
+            <summary>
+            Field: 'email-domain' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyKeyValue">
+            <summary>
+            Name: 'company-key-value'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyKeyValue.Code">
+            <summary>
+            Field: 'code' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyKeyValue.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyIndustries">
+            <summary>
+            Name: 'industries'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyIndustries.Industry">
+            <summary>
+            Field: 'industry' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyIndustry">
+            <summary>
+            Name: 'industry'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyIndustry.Code">
+            <summary>
+            Field: 'code' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyIndustry.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyUpdates">
+            <summary>
+            Name: 'updates'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyUpdates.Update">
+            <summary>
+            Field: 'update' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyUpdate">
+            <summary>
+            Name: 'CompanyUpdate'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyUpdate.Timestamp">
+            <summary>
+            Field: 'timestamp' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyUpdate.UpdateKey">
+            <summary>
+            Field: 'update-key' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyUpdate.UpdateType">
+            <summary>
+            Field: 'update-type' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyUpdate.UpdateContent">
+            <summary>
+            Field: 'update-content' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyUpdate.IsCommentable">
+            <summary>
+            Field: 'is-commentable' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyUpdate.IsLikable">
+            <summary>
+            Field: 'is-likable' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyUpdate.IsLiked">
+            <summary>
+            Field: 'is-liked' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyUpdate.NumLikes">
+            <summary>
+            Field: 'num-likes' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyUpdateContent">
+            <summary>
+            Name: 'CompanyUpdateContent'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyUpdateContent.Company">
+            <summary>
+            Field: 'company' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyUpdateContent.CompanyJobUpdate">
+            <summary>
+            Field: 'company-job-update' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyUpdateContent.CompanyProductUpdate">
+            <summary>
+            Field: 'company-product-update' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyUpdateContent.CompanyStatusUpdate">
+            <summary>
+            Field: 'company-status-update' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyIdentifier">
+            <summary>
+            Name: 'CompanyIdentifier'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyIdentifier.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyIdentifier.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyJobUpdate">
+            <summary>
+            Name: 'CompanyJobUpdate'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyJobUpdate.Job">
+            <summary>
+            Field: 'job' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyJobUpdate.Action">
+            <summary>
+            Field: 'action/code' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyJobUpdateJob">
+            <summary>
+            Name: 'CompanyJobUpdateJob'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyJobUpdateJob.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyJobUpdateJob.Company">
+            <summary>
+            Field: 'company' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyJobUpdateJob.Position">
+            <summary>
+            Field: 'position' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyJobUpdateJob.Url">
+            <summary>
+            Field: 'site­‐job­‐request' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyJobUpdateJob.Description">
+            <summary>
+            Field: 'description' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyJobUpdateJob.Location">
+            <summary>
+            Field: 'location-­description' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.PositionIdentifier">
+            <summary>
+            Name: 'PositionIdentifier'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.PositionIdentifier.Title">
+            <summary>
+            Field: 'title' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.UrlIdentifier">
+            <summary>
+            Name: 'UrlIdentifier'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.UrlIdentifier.Url">
+            <summary>
+            Field: 'url' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyProductUpdate">
+            <summary>
+            Name: 'CompanyProductUpdate'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyProductUpdate.Action">
+            <summary>
+            Field: 'action/code' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyProductUpdate.EventType">
+            <summary>
+            Field: 'event-type/code' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyProductUpdate.Product">
+            <summary>
+            Field: 'product' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyProduct">
+            <summary>
+            Name: 'CompanyProduct'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyProduct.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyProduct.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanyStatusUpdate">
+            <summary>
+            Name: 'company‐status­‐update'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanyStatusUpdate.Share">
+            <summary>
+            Field: 'share' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.Specialties">
+            <summary>
+            Name: 'specialties'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Specialties.Total">
+            <summary>
+            Field: 'total' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Specialties.Specialty">
+            <summary>
+            Field: 'specialty' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompanySearch">
+            <summary>
+            Name: 'company-search'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanySearch.Companies">
+            <summary>
+            Field: 'companies' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanySearch.NumResults">
+            <summary>
+            Field: 'num-results' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.CompanySearch.Facets">
+            <summary>
+            Field: 'facets' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.SearchCompanyList">
+            <summary>
+            Name: 'SearchCompanyList'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.SearchCompanyList.Total">
+            <summary>
+            Field: 'total' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.SearchCompanyList.Count">
+            <summary>
+            Field: 'count' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.SearchCompanyList.Start">
+            <summary>
+            Field: 'start' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.SearchCompanyList.Items">
+            <summary>
+            Field: 'company' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.SearchFacetList">
+            <summary>
+            Name: 'SearchFacetList'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.SearchFacetList.Total">
+            <summary>
+            Field: 'total' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.SearchFacetList.Items">
+            <summary>
+            Field: 'facet' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.Facet">
+            <summary>
+            Name: 'facet'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Facet.Code">
+            <summary>
+            Field: 'code' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Facet.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Facet.Buckets">
+            <summary>
+            Field: 'buckets' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.Buckets">
+            <summary>
+            Name: 'buckets'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Buckets.Total">
+            <summary>
+            Field: 'total' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Buckets.Items">
+            <summary>
+            Field: 'bucket' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.Bucket">
+            <summary>
+            Name: 'bucket'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Bucket.Code">
+            <summary>
+            Field: 'code' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Bucket.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Bucket.Count">
+            <summary>
+            Field: 'count' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Bucket.Selected">
+            <summary>
+            Field: 'selected' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.Action">
+            <summary>
+            Name: 'action'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.Action.Code">
+            <summary>
+            Field: 'code' (on-demand)
+            Field: 'code' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.EventType">
+            <summary>
+            Name: 'event-type'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Companies.EventType.Code">
+            <summary>
+            Field: 'code' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompaniesFields">
+            <summary>
+            Field selectors for the 'company', 'locations', 'location', 'address', 'contact-info', 'email-domains', 'company-key-value', 'industries', 'industry', 'updates', 'CompanyUpdate', 'CompanyUpdateContent', 'CompanyIdentifier', 'CompanyJobUpdate', 'CompanyJobUpdateJob', 'PositionIdentifier', 'UrlIdentifier', 'CompanyProductUpdate', 'CompanyProduct', 'company‐status­‐update', 'specialties', 'company-search', 'SearchCompanyList', 'SearchFacetList', 'facet', 'buckets', 'bucket', 'action', 'event-type' return types.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithId(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'id'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithUniversalName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'universal-name'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithEmailDomains(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'email-domains'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithType(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'company-type:(code,name)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithTicker(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'ticker'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithWebsiteUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'website-url'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithIndustries(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'industries'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithStatus(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'status'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithLogoUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'logo-url'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithSquareLogoUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'square-logo-url'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithBlogRssUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'blog-rss-url'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithTwitterId(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'twitter-id'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithEmployeeCountRange(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'employee-count-range'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithSpecialties(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'specialties'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithLocations(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'locations:(description,is-headquarters,is-active,address:(street1,street2,city,state,postal-code,country-code,region-code),contact-info:(phone1,phone2,fax))'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithDescription(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'description'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithStockExchange(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'stock-exchange'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithFoundedYear(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'founded-year'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithEndYear(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'end-year'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithNumFollowers(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes the field 'num-followers'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithAllFields(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Includes all the fields.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithFacets(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'facets'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesId(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(id)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(name)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesUniversalName(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(universal-name)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesEmailDomains(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(email-domains)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesCompanyType(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(company-type)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesTicker(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(ticker)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesWebsiteUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(website-url)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesIndustries(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(industries)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesStatus(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(status)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesLogoUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(logo-url)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesSquareLogoUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(square-logo-url)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesBlogRssUrl(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(blog-rss-url)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesTwitterId(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(twitter-id)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesEmployeeCountRange(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(employee-count-range)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesSpecialties(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(specialties)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesLocations(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(locations)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesDescription(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(description)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesStockExchange(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(stock-exchange)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesFoundedYear(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(founded-year)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesEndYear(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(end-year)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithCompaniesNumFollowers(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes the field 'companies:(num-followers)'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesFields.WithAllFields(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            Includes all the fields.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Groups.GroupsFields">
+            <summary>
+            Field selectors for the '' return types.
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Jobs.JobsFields">
+            <summary>
+            Field selectors for the '' return types.
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Social.UserUpdates">
+            <summary>
+            Name: 'updates'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Social.UserUpdates.Update">
+            <summary>
+            Field: 'update' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Social.UserUpdate">
+            <summary>
+            Name: 'UserUpdate'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Social.UserUpdate.Timestamp">
+            <summary>
+            Field: 'timestamp' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Social.UserUpdate.UpdateKey">
+            <summary>
+            Field: 'update-key' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Social.UserUpdate.UpdateType">
+            <summary>
+            Field: 'update-type' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Social.UserUpdate.UpdateContent">
+            <summary>
+            Field: 'update-content' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Social.UserUpdate.IsCommentable">
+            <summary>
+            Field: 'is-commentable' (on-demand)
+            Field: 'is-commentable' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Social.UserUpdateContent">
+            <summary>
+            Name: 'UserUpdateContent'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Social.UserUpdateContent.Person">
+            <summary>
+            Field: 'person' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Social.UserUpdateContent.PersonStatusUpdate">
+            <summary>
+            Field: 'person-status-update' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Social.UserStatusUpdate">
+            <summary>
+            Name: 'user-status-update'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Social.UserStatusUpdate.Share">
+            <summary>
+            Field: 'share' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Social.SocialFields">
+            <summary>
+            Field selectors for the 'updates', 'UserUpdate', 'UserUpdateContent', 'user-status-update' return types.
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Common.Share">
+            <summary>
+            Name: 'share'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.Share.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.Share.Timestamp">
+            <summary>
+            Field: 'timestamp' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.Share.Comment">
+            <summary>
+            Field: 'comment' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.Share.Content">
+            <summary>
+            Field: 'content' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.Share.Visibility">
+            <summary>
+            Field: 'visibility/code' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.Share.Source">
+            <summary>
+            Field: 'source' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.Share.Author">
+            <summary>
+            Field: 'author' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Common.ShareSource">
+            <summary>
+            Name: 'ShareSource'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.ShareSource.ServiceProvider">
+            <summary>
+            Field: 'service-provider' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.ShareSource.ServiceProviderShareId">
+            <summary>
+            Field: 'service-provider-share-id' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Common.ShareSourceProvider">
+            <summary>
+            Name: 'ShareSourceProvider'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.ShareSourceProvider.Name">
+            <summary>
+            Field: 'name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Common.ShareContent">
+            <summary>
+            Name: 'ShareContent'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.ShareContent.Title">
+            <summary>
+            Field: 'title' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.ShareContent.Description">
+            <summary>
+            Field: 'description' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.ShareContent.SubmittedUrl">
+            <summary>
+            Field: 'submitted-url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.ShareContent.ShortenedUrl">
+            <summary>
+            Field: 'shortened-url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.ShareContent.SubmittedImageUrl">
+            <summary>
+            Field: 'submitted-image-url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.ShareContent.ThumbnailUrl">
+            <summary>
+            Field: 'thumbnail-url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.ShareContent.EyebrowUrl">
+            <summary>
+            Field: 'eyebrow-url' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Common.ShareAuthor">
+            <summary>
+            Name: 'ShareAuthor'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.ShareAuthor.Id">
+            <summary>
+            Field: 'id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.ShareAuthor.FirstName">
+            <summary>
+            Field: 'first-name' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.ShareAuthor.LastName">
+            <summary>
+            Field: 'last-name' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Common.PostShare">
+            <summary>
+            Name: 'PostShare'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.PostShare.Comment">
+            <summary>
+            Field: 'comment' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.PostShare.Content">
+            <summary>
+            Field: 'content' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.PostShare.Attribution">
+            <summary>
+            Field: 'attribution/share/id' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.PostShare.Visibility">
+            <summary>
+            Field: 'visibility/code' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Common.PostShareContent">
+            <summary>
+            Name: 'PostShareContent'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.PostShareContent.Title">
+            <summary>
+            Field: 'title' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.PostShareContent.Description">
+            <summary>
+            Field: 'description' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.PostShareContent.SubmittedUrl">
+            <summary>
+            Field: 'submitted-url' (on-demand)
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.PostShareContent.SubmittedImageUrl">
+            <summary>
+            Field: 'submitted-image-url' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Common.PostShareResult">
+            <summary>
+            Name: 'PostShareResult'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.PostShareResult.Location">
+            <summary>
+            HTTP header 'Location'
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Common.Visibility">
+            <summary>
+            Name: 'visibility'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.Visibility.Code">
+            <summary>
+            Field: 'code' (on-demand)
+            Field: 'code' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Common.Attribution">
+            <summary>
+            Name: 'attribution'
+            </summary>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.Common.Attribution.Share">
+            <summary>
+            Field: 'share' (on-demand)
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Common.CommonFields">
+            <summary>
+            Field selectors for the 'share', 'ShareSource', 'ShareSourceProvider', 'ShareContent', 'ShareAuthor', 'PostShare', 'PostShareContent', 'PostShareResult', 'visibility', 'attribution' return types.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Common.CommonFields.WithId(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Common.Share})">
+            <summary>
+            Includes the field 'id'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Common.CommonFields.WithTimestamp(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Common.Share})">
+            <summary>
+            Includes the field 'timestamp'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Common.CommonFields.WithComment(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Common.Share})">
+            <summary>
+            Includes the field 'comment'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Common.CommonFields.WithContent(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Common.Share})">
+            <summary>
+            Includes the field 'content'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Common.CommonFields.WithVisibilityCode(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Common.Share})">
+            <summary>
+            Includes the field 'visibility'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Common.CommonFields.WithSource(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Common.Share})">
+            <summary>
+            Includes the field 'source'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Common.CommonFields.WithAuthor(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Common.Share})">
+            <summary>
+            Includes the field 'author'.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Common.CommonFields.WithAllFields(Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Common.Share})">
+            <summary>
+            Includes all the fields.
+            </summary>
+            <param name="me">The field selector.</param>
+            <returns>The field selector.</returns>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Profiles.ProfilesApi">
+            <summary>
+            Name: 'Profiles'
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesApi.GetMyProfile(Sparkle.LinkedInNET.UserAuthorization,System.String[],Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            the profile of the current user
+            </summary>
+            <remarks>
+            See https://developer.linkedin.com/documents/profile-api
+            </remarks>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesApi.GetProfileById(Sparkle.LinkedInNET.UserAuthorization,System.String,System.String[],Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            the profile of a user in the network
+            </summary>
+            <remarks>
+            See https://developer.linkedin.com/documents/profile-api
+            </remarks>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesApi.GetPublicProfile(Sparkle.LinkedInNET.UserAuthorization,System.String,System.String[],Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Person})">
+            <summary>
+            the public profile of a user
+            </summary>
+            <remarks>
+            See https://developer.linkedin.com/documents/profile-api
+            </remarks>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesApi.GetMyConnections(Sparkle.LinkedInNET.UserAuthorization,System.Int32,System.Int32,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            returns a list of 1st degree connections for a user 
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesApi.GetConnectionsByProfileId(Sparkle.LinkedInNET.UserAuthorization,System.String,System.Int32,System.Int32,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            returns a list of 1st degree connections for a user 
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesApi.GetConnectionsByPublicProfile(Sparkle.LinkedInNET.UserAuthorization,System.String,System.Int32,System.Int32,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            returns a list of 1st degree connections for a user 
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesApi.GetNewConnectionsByProfileId(Sparkle.LinkedInNET.UserAuthorization,System.String,System.Int32,System.Int32,System.Int64,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            returns a list of 1st degree connections for a user 
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesApi.GetNewConnectionsByPublicProfile(Sparkle.LinkedInNET.UserAuthorization,System.String,System.Int32,System.Int32,System.Int64,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            returns a list of 1st degree connections for a user 
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesApi.GetUpdatedConnectionsByProfileId(Sparkle.LinkedInNET.UserAuthorization,System.String,System.Int32,System.Int32,System.Int64,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            returns a list of 1st degree connections for a user 
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesApi.GetUpdatedConnectionsByPublicProfile(Sparkle.LinkedInNET.UserAuthorization,System.String,System.Int32,System.Int32,System.Int64,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Profiles.Connections})">
+            <summary>
+            returns a list of 1st degree connections for a user 
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesApi.GetOriginalProfilePicture(Sparkle.LinkedInNET.UserAuthorization)">
+            <summary>
+            returns the original picture posted by the user, fields selector are ignored
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesApi.GetProfilePicture(Sparkle.LinkedInNET.UserAuthorization,System.Int16,System.Int16)">
+            <summary>
+            returns the original picture posted by the user, fields selector are ignored
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesApi.GetOriginalProfilePicture(Sparkle.LinkedInNET.UserAuthorization,System.String)">
+            <summary>
+            returns the original picture posted by the user, fields selector are ignored
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Profiles.ProfilesApi.GetProfilePicture(Sparkle.LinkedInNET.UserAuthorization,System.String,System.Int16,System.Int16)">
+            <summary>
+            returns the original picture posted by the user, fields selector are ignored
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Companies.CompaniesApi">
+            <summary>
+            Name: 'Companies'
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesApi.GetList(Sparkle.LinkedInNET.UserAuthorization,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Hacker Summary
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesApi.GetById(Sparkle.LinkedInNET.UserAuthorization,System.String,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            retrieve a company by using the company ID
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesApi.GetByName(Sparkle.LinkedInNET.UserAuthorization,System.String,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            Retrieve a company by universal-name.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesApi.GetListByEmailDomain(Sparkle.LinkedInNET.UserAuthorization,System.String,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.Company})">
+            <summary>
+            This returns an array of companies that match to the specified email domain.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesApi.GetShares(Sparkle.LinkedInNET.UserAuthorization,System.Int32,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanyUpdates})">
+            <summary>
+            Retrieve the company's updates
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesApi.Search(Sparkle.LinkedInNET.UserAuthorization,System.Int32,System.Int32,System.String,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesApi.FacetSearch(Sparkle.LinkedInNET.UserAuthorization,System.Int32,System.Int32,System.String,System.String,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Companies.CompanySearch})">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Companies.CompaniesApi.Share(Sparkle.LinkedInNET.UserAuthorization,System.Int32,Sparkle.LinkedInNET.Common.PostShare)">
+            <summary>
+            Share a new company update.
+            </summary>
+            <remarks>
+            See https://developer.linkedin.com/creating-company-shares
+            </remarks>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Groups.GroupsApi">
+            <summary>
+            Name: 'Groups'
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Jobs.JobsApi">
+            <summary>
+            Name: 'Jobs'
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Social.SocialApi">
+            <summary>
+            Name: 'Social'
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.Social.SocialApi.GetMyUpdates(Sparkle.LinkedInNET.UserAuthorization,System.Int32,System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Boolean,Sparkle.LinkedInNET.FieldSelector{Sparkle.LinkedInNET.Social.UserUpdates})">
+            <summary>
+            retrieve the member's updates
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.Common.CommonApi">
+            <summary>
+            Name: 'Common'
+            </summary>
+        </member>
+        <member name="T:Sparkle.LinkedInNET.UserAuthorization">
+            <summary>
+            Strongly-typed user access token for API calls.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.UserAuthorization.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sparkle.LinkedInNET.UserAuthorization"/> class.
+            </summary>
+        </member>
+        <member name="M:Sparkle.LinkedInNET.UserAuthorization.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sparkle.LinkedInNET.UserAuthorization"/> class.
+            </summary>
+            <param name="accessToken">The access token.</param>
+        </member>
+        <member name="P:Sparkle.LinkedInNET.UserAuthorization.AccessToken">
+            <summary>
+            Gets or sets the access token.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DateStartEnd" xml:space="preserve">
+    <value>La date de fin doit être après la date de début.</value>
+  </data>
+  <data name="InvalidCountry" xml:space="preserve">
+    <value>Ce pays n'existe pas ou n'est pas supporté.</value>
+  </data>
+  <data name="InvalidCulture" xml:space="preserve">
+    <value>Cette culture n'existe pas ou n'est pas supportée.</value>
+  </data>
+  <data name="InvalidEmailAddress" xml:space="preserve">
+    <value>Adresse email non valide</value>
+  </data>
+  <data name="InvalidFoursquarePlaceId" xml:space="preserve">
+    <value>Identifiant Foursquare non valide</value>
+  </data>
+  <data name="InvalidLatitude" xml:space="preserve">
+    <value>La latitude doit être comprise entre -90 et 90.</value>
+  </data>
+  <data name="InvalidLongitude" xml:space="preserve">
+    <value>La longitude doit être comprise entre -180 et 180.</value>
+  </data>
+  <data name="InvalidPhoneNumber" xml:space="preserve">
+    <value>Numéro de téléphone non valide. Le format est "+33 123456789 3210" (code pays, numéro local, extension).</value>
+  </data>
+  <data name="InvalidTimezone" xml:space="preserve">
+    <value>Cette zone n'existe pas ou n'est pas supportée.</value>
+  </data>
+  <data name="InvalidUrl" xml:space="preserve">
+    <value>Adresse URL invalide</value>
+  </data>
+  <data name="Label_EmailAddresses" xml:space="preserve">
+    <value>Adresses email</value>
+  </data>
+  <data name="Label_Firstname" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="Label_Lastname" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="MinimumDateThisYear" xml:space="preserve">
+    <value>La date doit commencer au minimum cette année.</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>Ce champ doit être complété.</value>
+  </data>
+  <data name="RequiredEmailAddress" xml:space="preserve">
+    <value>Une adresse email est requise.</value>
+  </data>
+  <data name="RequiredPageName" xml:space="preserve">
+    <value>Indiquez juste le nom de la page</value>
+  </data>
+  <data name="RequiredPassword" xml:space="preserve">
+    <value>Un mot de passe est requis.</value>
+  </data>
+  <data name="StringLength" xml:space="preserve">
+    <value>Ce champ doit contenir moins de {1} caractères</value>
+  </data>
+</root>

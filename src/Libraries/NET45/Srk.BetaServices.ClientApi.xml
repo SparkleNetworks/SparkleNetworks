@@ -1,0 +1,636 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Srk.BetaServices.ClientApi</name>
+    </assembly>
+    <members>
+        <member name="T:Srk.BetaServices.ClientApi.Announcement">
+            <summary>
+            Represent an announcement.
+            </summary>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.Announcement.AnnouncementId">
+            <summary>
+            Data storage ID.
+            Supposed to identify items.
+            </summary>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.Announcement.Source">
+            <summary>
+            Informative field.
+            </summary>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.Announcement.Author">
+            <summary>
+            Author of the message.
+            </summary>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.Announcement.Date">
+            <summary>
+            Date of publication.
+            </summary>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.Announcement.Status">
+            <summary>
+            Publication status.
+            </summary>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.Announcement.Content">
+            <summary>
+            Message content.
+            </summary>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.Announcement.Section">
+            <summary>
+            Section is used for targetting applications.
+            </summary>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.Announcement.IsRead">
+            <summary>
+            Mark an announcement as read.
+            </summary>
+        </member>
+        <member name="T:Srk.BetaServices.ClientApi.AsyncResponseArgs">
+            <summary>
+            Represent an API response with no data.
+            </summary>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.AsyncResponseArgs.#ctor(System.Boolean)">
+            <summary>
+            Class .ctor to mark the response as a success or failure with no data.
+            </summary>
+            <param name="succeed"></param>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.AsyncResponseArgs.#ctor(System.Exception)">
+            <summary>
+            Class .ctor to mark the response as a failure with no data.
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.AsyncResponseArgs.#ctor(System.Boolean,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Class .ctor to mark the response as a success or failure with no data.
+            </summary>
+            <param name="succeed"></param>
+            <param name="requestData"></param>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.AsyncResponseArgs.#ctor(System.Exception,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            lass .ctor to mark the response as a failure with no data.
+            </summary>
+            <param name="exception"></param>
+            <param name="requestData"></param>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.AsyncResponseArgs.Succeed">
+            <summary>
+            Informs of a successful request.
+            </summary>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.AsyncResponseArgs.BetaError">
+            <summary>
+            Service error.
+            </summary>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.AsyncResponseArgs.Error">
+            <summary>
+            Internal error.
+            </summary>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.AsyncResponseArgs.RequestData">
+            <summary>
+            Contains data from the initial request.
+            This field is not used yet.
+            </summary>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.AsyncResponseArgs.Message">
+            <summary>
+            Returns an error message from <see cref="P:Srk.BetaServices.ClientApi.AsyncResponseArgs.BetaError"/> or <see cref="P:Srk.BetaServices.ClientApi.AsyncResponseArgs.Error"/>.
+            </summary>
+        </member>
+        <member name="T:Srk.BetaServices.ClientApi.AsyncResponseArgs`1">
+            <summary>
+            Represent an API response with data.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.AsyncResponseArgs`1.#ctor(System.Exception)">
+            <summary>
+            Class .ctor to mark the response as a failure with no data.
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.AsyncResponseArgs`1.#ctor(`0)">
+            <summary>
+            Class .ctor to mark the response as a success with data.
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.AsyncResponseArgs`1.#ctor(System.Exception,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Class .ctor to mark the response as a failure with no data.
+            </summary>
+            <param name="exception"></param>
+            <param name="requestData"></param>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.AsyncResponseArgs`1.#ctor(`0,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Class .ctor to mark the response as a success with data.
+            </summary>
+            <param name="data"></param>
+            <param name="requestData"></param>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.AsyncResponseArgs`1.Data">
+            <summary>
+            Attached data from the service.
+            This can be null event if <see cref="P:Srk.BetaServices.ClientApi.AsyncResponseArgs.Succeed"/> is true.
+            </summary>
+        </member>
+        <member name="T:Srk.BetaServices.ClientApi.AsyncResponseHandler">
+            <summary>
+            Delegate for a service response not containing data.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Srk.BetaServices.ClientApi.AsyncResponseHandler`1">
+            <summary>
+            Delegate for a service response containing data.
+            </summary>
+            <typeparam name="T">data type</typeparam>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Srk.BetaServices.ClientApi.BetaservicesClientFactory">
+            <summary>
+            This class helps instanciating client classes.
+            It also permits to share session tokens between clients.
+            </summary>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.BetaservicesClientFactory.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Class .ctor to create a factory.
+            </summary>
+            <param name="apiKey">your API key (ask it on the website, don't use someone else's)</param>
+            <param name="apiUserAgent">anything like MyBetaseriesApp/1.0.0.0 (name/version)</param>
+            <param name="shareSessionToken">true will activate session token sharing for all clients created from this factory</param>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.BetaservicesClientFactory.CreateDefaultClient">
+            <summary>
+            Create a new client with the factory's configuration.
+            Object type is <see cref="!:BetaseriesXmlClient"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.BetaservicesClientFactory.Default">
+            <summary>
+            This is the main factory instance.
+            It's recommended to fill this property on application startup.
+            </summary>
+        </member>
+        <member name="T:Srk.BetaServices.ClientApi.BetaservicesException">
+            <summary>
+            This exception is thrown when a service query fails.
+            </summary>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.BetaservicesException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Srk.BetaServices.ClientApi.BetaservicesException"/> class.
+            </summary>
+            <param name="info">The information.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.BetaservicesException.Error">
+            <summary>
+            Gets the error.
+            </summary>
+        </member>
+        <member name="T:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient">
+            <summary>
+            The main implementation of <see cref="T:Srk.BetaServices.ClientApi.IBetaservices"/>.
+            </summary>
+        </member>
+        <member name="T:Srk.BetaServices.ClientApi.IBetaservices">
+            <summary>
+            Service interface.
+            </summary>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient"/> class.
+            </summary>
+            <param name="authKey">The authentication key.</param>
+            <param name="userAgent">The user agent.</param>
+            <param name="baseUrl">The base URL.</param>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.ExecuteQuery(System.String,System.String,System.String[])">
+            <summary>
+            Download a response string.
+            </summary>
+            <param name="action">Service action</param>
+            <param name="keyValues">Pairs of query string parameters (key1, value1, key2, value2...)</param>
+            <returns>HTTP response body as a string.</returns>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.ExecuteQuery(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Download a response string.
+            </summary>
+            <param name="action">Service action</param>
+            <param name="parameters">Query string parameters</param>
+            <returns>HTTP response body as a string.</returns>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.ExecuteQuery(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.IO.Stream)">
+            <summary>
+            Download a response string.
+            </summary>
+            <param name="action">Service action</param>
+            <param name="parameters">Query string parameters</param>
+            <returns>HTTP response body as a string.</returns>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.ParseResponse``1(System.IO.Stream)">
+            <summary>
+            Returns a <see cref="!:ServiceResult`T"/> from a HTTP body.
+            </summary>
+            <param name="content">the HTTP response content</param>
+            <returns>the root XML element</returns>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.ParseResponse(System.IO.Stream)">
+            <summary>
+            Returns a <see cref="!:ServiceResult`T"/> from a HTTP body.
+            </summary>
+            <param name="content">the HTTP response content</param>
+            <returns>the root XML element</returns>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.ParseResponse``1(System.String)">
+            <summary>
+            Returns a <see cref="!:ServiceResult`T"/> from a HTTP body.
+            </summary>
+            <param name="content">the HTTP response content</param>
+            <returns>the root XML element</returns>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.ParseResponse(System.String)">
+            <summary>
+            Returns a <see cref="!:ServiceResult`T"/> from a HTTP body.
+            </summary>
+            <param name="content">the HTTP response content</param>
+            <returns>the root XML element</returns>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.ExecuteQueryImpl(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Use a <see cref="T:System.Net.HttpWebRequest"/> to download a response string.
+            </summary>
+            <param name="action">Service action</param>
+            <param name="parameters">Query string parameters</param>
+            <returns>HTTP response body as a string.</returns>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.GetQueryString(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Create a HTTP query string from a dictionary of parameters.
+            </summary>
+            <param name="action"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.HandleError(System.Exception)">
+            <summary>
+            Handle a custom error via <see cref="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.HandleCustomError(System.Exception)"/>.
+            The throws an exception if the parameter is not null.
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.HandleCustomError(System.Exception)">
+            <summary>
+            Empty overridable method to handle custom errors.
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.HandleError(Srk.BetaServices.ServiceError)">
+            <summary>
+            Encapsulates a <see cref="!:BetaError"/> into an exception.
+            Do nothing if error is null.
+            </summary>
+            <param name="error"></param>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Clients.JsonBetaservicesClient.HandleError(System.Collections.Generic.IEnumerable{Srk.BetaServices.ServiceError})">
+            <summary>
+            Encapsulates 1 or many <see cref="!:BetaError"/>s into an exception.
+            Do nothing if errors is null.
+            </summary>
+            <param name="errors"></param>
+        </member>
+        <member name="T:Srk.BetaServices.ClientApi.ErrorReport">
+            <summary>
+            A .NET app error report.
+            </summary>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.ErrorReport.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Srk.BetaServices.ClientApi.ErrorReport"/> class.
+            </summary>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.ErrorReport.SetException(System.Exception)">
+            <summary>
+            Sets the exception.
+            </summary>
+            <param name="exception">The exception.</param>
+            <exception cref="T:System.ArgumentNullException">exception is null</exception>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.ErrorReport.SetNonException(System.String)">
+            <summary>
+            Sets the non exception.
+            </summary>
+            <param name="message">The message.</param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.ErrorReport.AppendComment(System.String)">
+            <summary>
+            Appends the comment to the comment field.
+            </summary>
+            <param name="comment">The comment.</param>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.ExceptionType">
+            <summary>
+            Gets or sets the type of the exception (varchar(255)).
+            </summary>
+            <value>
+            The type of the exception.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.ExceptionMessage">
+            <summary>
+            Gets or sets the exception message (varchar(255)).
+            </summary>
+            <value>
+            The exception message.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.ExceptionTrace">
+            <summary>
+            Gets or sets the exception trace (text).
+            </summary>
+            <value>
+            The exception trace.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.FullException">
+            <summary>
+            Gets or sets the full exception (text).
+            </summary>
+            <value>
+            The full exception.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.AppStartTime">
+            <summary>
+            Gets or sets the app start time.
+            </summary>
+            <value>
+            The app start time.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.AppErrorTime">
+            <summary>
+            Gets or sets the app error time.
+            </summary>
+            <value>
+            The app error time.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.AppExitTime">
+            <summary>
+            Gets or sets the app exit time.
+            </summary>
+            <value>
+            The app exit time.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.AssemblyName">
+            <summary>
+            Gets or sets the name of the assembly (varchar(255)).
+            </summary>
+            <value>
+            The name of the assembly.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.AssemblyVersion">
+            <summary>
+            Gets or sets the assembly version (varchar(32)).
+            </summary>
+            <value>
+            The assembly version.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.Culture">
+            <summary>
+            Gets or sets the culture (varchar(24)).
+            </summary>
+            <value>
+            The culture.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.DeploymentKind">
+            <summary>
+            Gets or sets the kind of the deployment (varchar(32)).
+            </summary>
+            <value>
+            The kind of the deployment.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.DeploymentComment">
+            <summary>
+            Gets or sets the deployment comment (varchar(1000)).
+            </summary>
+            <value>
+            The deployment comment.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.DeploymentInstance">
+            <summary>
+            Gets or sets the deployment instance (varchar(120)).
+            </summary>
+            <value>
+            The deployment instance.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.OSPlatform">
+            <summary>
+            Gets or sets the OS platform (varchar(64)).
+            </summary>
+            <value>
+            The OS platform.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.OSVersion">
+            <summary>
+            Gets or sets the OS version (varchar(64)).
+            </summary>
+            <value>
+            The OS version.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.UserId">
+            <summary>
+            Gets or sets the user id (varchar(255)).
+            </summary>
+            <value>
+            The user id.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.DeviceId">
+            <summary>
+            Gets or sets the device id (varchar(128)).
+            </summary>
+            <value>
+            The device id.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.DeviceManufacturer">
+            <summary>
+            Gets or sets the device manufacturer (varchar(128)).
+            </summary>
+            <value>
+            The device manufacturer.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.DeviceName">
+            <summary>
+            Gets or sets the name of the device (varchar(128)).
+            </summary>
+            <value>
+            The name of the device.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.DeviceTotalMemory">
+            <summary>
+            Gets or sets the device total memory.
+            </summary>
+            <value>
+            The device total memory.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.AppCurrentMemoryUsage">
+            <summary>
+            Gets or sets the app current memory usage.
+            </summary>
+            <value>
+            The app current memory usage.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.AppPeakMemoryUsage">
+            <summary>
+            Gets or sets the app peak memory usage.
+            </summary>
+            <value>
+            The app peak memory usage.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.HttpRequest">
+            <summary>
+            Gets or sets the HTTP request (text).
+            </summary>
+            <value>
+            The HTTP request.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.HttpReferer">
+            <summary>
+            Gets or sets the HTTP referer (text).
+            </summary>
+            <value>
+            The HTTP referer.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.HttpMethod">
+            <summary>
+            Gets or sets the HTTP method (varchar(32)).
+            </summary>
+            <value>
+            The HTTP method.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.HttpHost">
+            <summary>
+            Gets or sets the HTTP host (varchar(255)).
+            </summary>
+            <value>
+            The HTTP host.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.Comment">
+            <summary>
+            Gets or sets the comment (varchar(2500)).
+            </summary>
+            <value>
+            The comment.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.RuntimeName">
+            <summary>
+            Gets or sets the name of the runtime (varchar(120)).
+            </summary>
+            <value>
+            The name of the runtime.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.RuntimeVersion">
+            <summary>
+            Gets or sets the runtime version (varchar(30)).
+            </summary>
+            <value>
+            The runtime version.
+            </value>
+        </member>
+        <member name="P:Srk.BetaServices.ClientApi.ErrorReport.BuildConfiguration">
+            <summary>
+            Gets or sets the build configuration (varchar(40)).
+            </summary>
+            <value>
+            The build configuration.
+            </value>
+        </member>
+        <member name="T:Srk.BetaServices.ClientApi.HttpErrorReport">
+            <summary>
+            Helps generate a error report in a HTTP server context.
+            </summary>
+        </member>
+        <member name="T:Srk.BetaServices.ClientApi.Internals.DictionaryExtensions">
+            <summary>
+            Extension methods for dictionaries.
+            </summary>
+        </member>
+        <member name="M:Srk.BetaServices.ClientApi.Internals.DictionaryExtensions.GetQueryString(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Constructs a QueryString (string).
+            Consider this method to be the opposite of "System.Web.HttpUtility.ParseQueryString"
+            </summary>
+            <param name="dictionary"></param>
+            <returns>String</returns>
+        </member>
+        <member name="T:Srk.BetaServices.ClientApi.Internals.HttpRequestWrapper">
+            <summary>
+            Internal implementation of <see cref="!:IHttpRequestWrapper"/>.
+            </summary>
+        </member>
+        <member name="F:Srk.BetaServices.ClientApi.Internals.HttpRequestWrapper.BaseUrl">
+            <summary>
+            Base HTTP url for queries. 
+            This will permit to use a different base adresse (for HTTPS, different port or domain name...).
+            Default is http://api.betaseries.com/.
+            </summary>
+            <remarks>
+            Value must be setted from .ctor.
+            </remarks>
+        </member>
+        <member name="F:Srk.BetaServices.ClientApi.Internals.HttpRequestWrapper.UrlFormat">
+            <summary>
+            Formating string for query string.
+            Must be set from sub-class.
+            </summary>
+        </member>
+        <member name="F:Srk.BetaServices.ClientApi.Internals.HttpRequestWrapper.UserAgent">
+            <summary>
+            Formating string for query string.
+            Must be set from sub-class.
+            </summary>
+        </member>
+    </members>
+</doc>
