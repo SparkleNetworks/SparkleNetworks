@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{63EFBC4B-CB11-4539-B999-960C1209E696}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sparkle.Infrastructure</RootNamespace>
+    <AssemblyName>Sparkle.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SSC Release|AnyCPU'">
+    <OutputPath>bin\SSC Release\</OutputPath>
+    <DefineConstants>TRACE;SSC</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppConfiguration.cs" />
+    <Compile Include="AppConfigurationException.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="ApplicationStatus.cs" />
+    <Compile Include="AppVersion.cs" />
+    <Compile Include="AppVersionInternal.cs" />
+    <Compile Include="ConfigTree.cs" />
+    <Compile Include="ConfigTree.tt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConfigTree.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Constants\SessionConstants.cs" />
+    <Compile Include="CompositeDisposable.cs" />
+    <Compile Include="Contracts\Names.cs" />
+    <Compile Include="Crypto\SimpleCrypt.cs" />
+    <Compile Include="Crypto\SimpleHash.cs" />
+    <None Include="Crypto\SimpleSecrets.cs" />
+    <Compile Include="Data\AppConfigurationEntry.cs" />
+    <Compile Include="Data\CompositeConfigurationRepository.cs" />
+    <Compile Include="Data\FileCachedConfigurationFactory.cs" />
+    <Compile Include="Data\IConfigurationRepository.cs" />
+    <Compile Include="Data\Internals\CachedConfigurationContainer.cs" />
+    <Compile Include="Data\Objects\UniverseDomainName.cs" />
+    <Compile Include="Data\Objects\Host.cs" />
+    <Compile Include="Data\Objects\Product.cs" />
+    <Compile Include="Data\Objects\Universe.cs" />
+    <Compile Include="Data\SqlConfigurationRepository.cs" />
+    <Compile Include="Data\FakeSysLogRepository.cs" />
+    <Compile Include="Data\SqlRepository.cs" />
+    <Compile Include="Data\SqlSysLogRepository.cs" />
+    <Compile Include="Data\UnknownApplicationException.cs" />
+    <Compile Include="Data\WcfConfigurationFactory.cs" />
+    <Compile Include="Data\WcfFileCachedConfigurationFactory.cs" />
+    <Compile Include="ErrorLevel.cs" />
+    <Compile Include="Fx.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Internals\ArrayExtensions.cs" />
+    <Compile Include="ISysLogWriter.cs" />
+    <Compile Include="LogEntryType.cs" />
+    <Compile Include="Logging\BaseLogger.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <None Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="SysLogger.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="ConfigTree.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ConfigTree.tt.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
