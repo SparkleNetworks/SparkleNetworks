@@ -1,0 +1,7 @@
+﻿
+Assembly:         Sparkle.WebBase
+Business-related: YES
+Stacks:           System, System.Web, System.Web.Mvc
+
+Description:
+Contains base classes for SparkleNetworks web projects.
