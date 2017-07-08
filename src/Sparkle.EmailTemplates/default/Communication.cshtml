@@ -1,0 +1,16 @@
+﻿@{Layout = "Parent";}
+
+<div style="@Model.Styles.StyleContent">
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Bonjour {0}", Model.RecipientContact.Firstname)</p>
+
+    <div style="border-left:2px solid #888888; padding-left:5px; margin-bottom:4px">
+        <div style="color: #202020;display: block;font-family: Arial;font-size: 14px;font-weight: lighter;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;text-align: left;">@Model.Title</div>
+        <div>@(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null, Model.Model).ToString()))</div>
+    </div>
+    <hr style="@Model.Styles.StyleHR" />
+    
+    <p>
+        @Model.Lang.T("A bientôt")<br />
+        @Model.Lang.T("L'équipe")
+    </p>
+</div>

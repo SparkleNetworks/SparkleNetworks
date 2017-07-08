@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "Parent";
+    string sep = "";
+}
+
+<div style="@Model.Styles.StyleContent">
+
+<table><tr>
+	<td valign="top" style="vertical-align:top;padding-right:10px;height:285px;">
+		<div style="overflow:hidden;border:5px solid #fff;box-shadow:0 0 5px #888;width:170px;height:200px">
+			<img alt="@Model.Sender.FirstName @Model.Sender.LastName" src="@Model.Lang.T("AppDomain")Data/PersonPicture/@Model.Sender.Username" />
+		</div>
+	</td>
+	<td valign="top">
+        <p style="@Model.Styles.StyleTour">@Model.Lang.T("Bonjour {0}", Model.RecipientContact.Firstname)</p>
+        <p style="@Model.Styles.StyleTour">@Model.Lang.T(
+            "{0} {1} a ajouté votre entreprise à {2}, le réseau communautaire {3}.",
+            Model.Sender.FirstName,
+            Model.Sender.LastName,
+            Model.Lang.T("AppName"),
+            Model.Lang.T("CurrentPlace"))</p>
+
+        <p style="@Model.Styles.StyleTour">@Model.Lang.T("Des invitations personnelles ont été envoyées aux adresses email suivantes.")</p>
+
+@if (Model.AdminEmails != null && Model.AdminEmails.Length > 0) 
+{
+    sep = "";
+        <p style="@Model.Styles.StyleTour">@Model.Lang.T("Ces utilisateurs seront administrateurs de l'entreprise : ")
+    @foreach (var email in Model.AdminEmails)
+    {
+            @:@sep<code>@email</code>
+            sep = ", ";
+    }
+        </p>
+}
+
+@if (Model.AdminEmails != null && Model.OtherEmails.Length > 0) 
+{
+    sep = "";
+        <p style="@Model.Styles.StyleTour">@Model.Lang.T("Ces utilisateurs seront membre de l'entreprise : ")
+    @foreach (var email in Model.OtherEmails)
+    {
+            @:@sep<code>@email</code>
+            sep = ", ";
+    }
+        </p>
+}
+
+        <p style="@Model.Styles.StyleTour">@Model.Lang.T("Ces permissions peuvent être modifiées à tout moment. ")</p>
+        <p style="@Model.Styles.StyleTour">@Model.Lang.T("Bonne journée.")</p>
+
+	</td>
+</tr></table>
+
+</div>

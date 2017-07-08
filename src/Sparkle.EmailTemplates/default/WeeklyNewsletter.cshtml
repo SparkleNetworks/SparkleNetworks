@@ -1,0 +1,341 @@
+﻿@{Layout = "Parent";}
+@* Razor Include: default._Timeline.cshtml *@
+@{
+    string introSep = null;
+}
+
+<p style="@(Model.Styles.StyleContent)">
+@if (Model.Subtitle != null)
+{
+    <span>@(Model.Subtitle)</span><br />
+}
+@if (Model.AdsTotal > 0)
+{
+    {<span>@(introSep)</span><span>@(Model.Lang.M("{0} new ad", "{0} new ads", Model.AdsTotal))</span>}
+    introSep = ", ";
+}
+@if (Model.NewCompanies != null && Model.NewCompanies.Count > 0)
+{
+    {<span>@(introSep)</span><span>@(Model.Lang.M("{0} new company", "{0} new companies", Model.NewCompanies.Count))</span>}
+    introSep = ", ";
+}
+@if (Model.HasNewGroups && Model.NewGroups.Count > 0)
+{
+    {<span>@(introSep)</span><span>@(Model.Lang.M("{0} nouveau groupe", "{0} nouveaux groupes", Model.NewGroups.Count))</span>}
+    introSep = ", ";
+}
+@if (introSep != null)
+{
+    {<span>.</span>}
+}
+</p>
+
+@*        INVITED BOX         *@
+@if (!Model.Registered)
+{
+<div style="@(Model.Styles.StyleContent)">
+    <div style="font-size:14px; padding:8px; border:1px solid #aaa;border-radius:3px">
+        <span style="font-size:large;text-align:center;display:inherit">@(Model.Subscriber.InvitedByName) vous a invité à rejoindre @(Model.Lang.T("AppName")) !</span><br />
+        <span>Vous pouvez <a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")Account/Register/@(Model.Subscriber.InvitedCode)?@this.Model.TrackerFollow">accepter</a> cette invitation et découvrir dès aujourd'hui @Model.Lang.T("CurrentPlace").</span><br />
+        <span>Si en revanche cet email ne vous concerne pas vous pouvez vous <a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")/Account/Unregister/@(Model.Subscriber.InvitedCode)?@this.Model.TrackerFollow">désabonner</a> pour ne plus recevoir cette newsletter.</span><br />
+        <div style="display:inherit;text-align:center"><br />
+            <a style="@Model.Styles.StyleButton" href="@Model.Lang.T("AppDomain")Account/Register/@(Model.Subscriber.InvitedCode)?@this.Model.TrackerFollow">Rejoindre @Model.Lang.T("AppName")</a>
+            <a style="@Model.Styles.StyleButton" href="@Model.Lang.T("AppDomain")Account/Unregister/@(Model.Subscriber.InvitedCode)?@this.Model.TrackerFollow">Se désabonner</a>
+        </div>
+    </div>
+</div>
+}
+
+<div style="@Model.Styles.StyleContent">
+
+@*        CONTACT REQUESTS         *@
+@if (Model.contactRequests > 0)
+{
+    <div style="font-size:14px; padding:5px; border:1px solid #aaa;border-radius:3px">
+        <a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")Account/ContactRequests?@this.Model.TrackerFollow">@Model.Lang.M("{0} demande de contact", "{0} demandes de contact", Model.contactRequests)</a>.
+    </div>
+    <br />
+}
+
+@*        NEW COMPANIES: BY CATEGORY         *@
+@if (Model.AppConfiguration.Tree.Features.EnableCompanies && Model.NewCompanies != null && Model.NewCompanies.Count > 0)
+{
+    foreach (short categoryOfCompanies in Model.CompanyCategories.Keys)
+    {
+        //var list = categoryOfCompanies.ToList();
+        var list = Model.NewCompanies.Where(c => c.CategoryId == categoryOfCompanies).ToArray();
+        var category = Model.CompanyCategories[categoryOfCompanies];
+        //var categoryTitle = list.Length > 1 
+        //    ? Model.Lang.T("{1} ajouts dans : {0}", Model.Lang.T(category.Name), list.Length) 
+        //    : Model.Lang.T("1 ajout dans : {0}", Model.Lang.T(category.Name));
+        if (list.Length > 0)
+        {
+            var title = Model.Lang.M("CompanyCategoryEnum_" + category.Name + "_OneNew", "CompanyCategoryEnum_" + category.Name + "_MultiNew", list.Length);
+    <h1 style="@Model.Styles.StyleH1">@title</h1>
+        }
+
+        foreach (var item in list)
+        {
+    <h3 style="@Model.Styles.StyleH3"><a style="@Model.Styles.StyleLink" href="@(item.ProfileUrl)?@this.Model.TrackerFollow">@item.Name</a></h3>
+    <h4 style="@Model.Styles.StyleH4">@item.Baseline</h4>
+    <div style="margin-top:20px">
+        <div style="float:left;width:200px;height:200px;background-color:#f2f2f2;">
+            <img src="@item.PictureUrl" alt="" style="width:200px;height:200px;display:block;" />
+        </div>
+        <div style="margin-left:220px">
+            <div style="@Model.Styles.StyleTour">@(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null, item.About).ToString()))</div>
+
+            <ul class="tags" style="margin:0;padding:0;list-style:none">
+            @foreach (var tag in item.Skills)
+            {
+                <li style="display:inline-block;margin:0 0 2px 0;padding:0"><a style="display:block;border-radius:3px;border:1px solid #C5C5C5;background-color:#fff;text-decoration:none;box-shadow:0 0 1px rgba(0,0,0,0.1);color:#555;font-size:14px;text-shadow:0 1px 1px #fff;padding:3px" href="@Model.Lang.T("AppDomain")Tags/Skills/@(tag.Id)?@this.Model.TrackerFollow"><span> @tag.Name </span></a></li>
+            }
+            </ul>
+        </div>
+    </div>
+    <div style="clear:left;"></div>
+        }
+    }
+    <hr style="@Model.Styles.StyleHR" />
+    <br />
+}
+
+@*        TIMELINE: COMPANIES         *@
+@if (Model.HasCompaniesPublications)
+{ 
+    <div>
+    @if (Model.IsCompanyFeatureEnabled)
+    {
+        <h1 style="@Model.Styles.StyleH1">@Model.Lang.T("L'actualité des [something]", Model.Lang.T("CompaniesLabel"))</h1>
+    }
+    else
+    {
+        <h1 style="@Model.Styles.StyleH1">@Model.Lang.T("L'actualité du réseau")</h1>
+    }
+    @if (Model.CompaniesTimeline != null)
+    {
+@DisplayTimeline(this.Model.CompaniesTimeline, Model)
+    }
+    </div>
+    <hr style="@Model.Styles.StyleHR" />
+    <br />
+}
+
+@*        NEW ADS         *@
+@if (Model.Ads != null && Model.Ads.Count > 0)
+{
+    if (Model.Ads.Count >= 1)
+    {
+    <h1 style="@Model.Styles.StyleH1">@Model.Lang.M("{0} new ad", "{0} new ads", Model.AdsTotal)</h1>
+    }
+@DisplayAds(Model.Ads, Model)
+<p style="@Model.Styles.StyleContent"><a href="@Model.Lang.T("AppDomain")Ads?@this.Model.TrackerFollow">@Model.Lang.T("See all the ads")</a></p>
+    <hr style="@Model.Styles.StyleHR" />
+    <br />
+}
+
+@*        TIMELINE: PEOPLE         *@
+@if (Model.HasPeoplePublications)
+{
+    <div>
+    <h1 style="@Model.Styles.StyleH1">@Model.Lang.T("L'actualité des [something]", Model.Lang.T("PeopleLabel"))</h1>
+    @if (Model.PeopleTimeline != null)
+    {
+@DisplayTimeline(this.Model.PeopleTimeline, Model)
+    }
+    </div>
+    <hr style="@Model.Styles.StyleHR" />
+    <br />
+}
+
+@*       TIMELINE: PARTNER RESOURCES       *@
+@if (Model.AppConfiguration.Tree.Features.PartnerResources.IsEnabled && Model.HasPartnersPublications)
+{ 
+    <div>
+    <h1 style="@Model.Styles.StyleH1">@Model.Lang.T("L'actualité des [something]", Model.Lang.T("Ressources partenaires"))</h1>
+    @if (Model.PartnersTimeline != null)
+    {
+        @DisplayPartners(Model.PartnersTimeline, Model)
+    }
+    <hr style="@Model.Styles.StyleHR"/>
+    </div>
+}
+
+
+@*        NEW GROUPS         *@
+@if (Model.HasNewGroups)
+{
+    var groupsCount = Model.NewGroups.Count();
+    if (groupsCount >= 1)
+    {
+    <h1 style="@Model.Styles.StyleH1">@Model.Lang.M("Un nouveau groupe à découvrir", "{0} nouveaux groupes à découvrir", groupsCount)</h1>
+    }
+    <div>
+    @foreach (var item in Model.NewGroups)
+    {
+    <div style="margin-bottom:4px">
+        <table cellspacing="0" cellpadding="0" border="0"><tr><td valign="top">
+            <a href="@Model.Lang.T("AppDomain")Group/@(item.Id)?@this.Model.TrackerFollow" target="_blank" style="border:0"><img style="float:left;display:block;width:100px;height:100px; background-color: #f2f2f2;" alt="" src="@item.PictureUrl" /></a>
+        </td><td style="padding-left:5px;width:430px">
+            <div style="color: #202020;display: block;font-family: Arial;font-size: 17px;font-weight: lighter;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;text-align: left;"><a href="@Model.Lang.T("AppDomain")Group/@(item.Id)?@this.Model.TrackerFollow" target="_blank" style="color: @Model.Lang.T("AccentColor");font-weight:normal; text-decoration:none;">@item.Name</a></div>
+            <div style="font-size:13px">@(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null, item.Description).ToString()))</div>
+        </td></tr></table>
+    </div>
+    }
+    </div>
+    <hr style="@Model.Styles.StyleHR" />
+    <br />
+}
+
+@*        NEW USERS         *@
+@if (Model.HasNewRegistrants)
+{
+    <h1 style="@Model.Styles.StyleH1">@Model.Lang.T("Nouveaux arrivants")</h1>
+    <table><tr>
+    @foreach (var item in Model.NewRegistrants)
+    {
+        <td valign="top" style="vertical-align:top;padding-right:10px;height:285px;">
+            <a target="_blank" href="@Model.Lang.T("AppDomain")Person/@(item.Login)?@this.Model.TrackerFollow">
+                <div style="overflow:hidden;border:5px solid #fff;box-shadow:0 0 5px #888;width:170px;height:200px">
+                    <img alt="@item.Name" src="@item.PictureUrl" />
+                </div>
+            </a>
+            <div>
+                <a href="@Model.Lang.T("AppDomain")Person/@(item.Login)?@this.Model.TrackerFollow" target="_blank" style="@Model.Styles.StyleLink; font-family:Arial">@item.Name</a><br />
+                <div style="font-size:12px">@item.JobName</div>
+                @if (Model.IsCompanyFeatureEnabled)
+                {
+                <div style="font-size:12px">@Model.Lang.T("chez") @item.CompanyName</div>
+                }
+            </div>
+        </td>
+    }
+    </tr></table>
+  if (Model.OtherCountNewRegistrants >= 1)
+  {
+    <p>@Model.Lang.M("Et {0} autre.", "Et {0} autres.", Model.OtherCountNewRegistrants)</p>
+  }
+    <hr style="@Model.Styles.StyleHR" />
+    <br />
+}
+
+@*        EVENTs         *@
+@if ((Model.HasEvents && Model.Events != null) || (Model.HasOtherEvents && Model.OtherEvents != null))
+{
+    <h1 style="@Model.Styles.StyleH1">@Model.Lang.T("Prochains évenements")</h1>
+    if (Model.HasEvents && Model.Events != null)
+    {
+@DisplayEvents(Model.Events, Model, true)
+    }
+
+    if (Model.HasOtherEvents && Model.OtherEvents != null)
+    {
+@DisplayEvents(Model.OtherEvents, Model, false)
+    }
+    
+    <p><a style='@Model.Styles.StyleLink' href='@Model.Lang.T("AppDomain")Events?@(this.Model.TrackerFollow)'>@Model.Lang.T("Voir tous les prochains événements")</a>.</p>
+    <hr style="@Model.Styles.StyleHR" />
+    <br />
+}
+
+
+@*        REGISTERED / INVITED         *@
+<div style="font-size:13px; ">
+@if (Model.Registered)
+{
+    <div style="font-size:13px; margin:0; padding:0; border:0;"><a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")Account/Invitations?@this.Model.TrackerFollow">@Model.Lang.T("Cliquez-ici[ pour inviter...]")</a>@Model.Lang.T("[Cliquer ici] pour inviter des personnes à rejoindre {0}.", Model.Lang.T("AppName"))</div>
+}
+else
+{
+    <div style="font-size:13px; margin-left:25px; margin-right:25px; padding:0; border:0;">
+        @(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null, Model.AboutNetwork).ToString()))
+        <p style="display:inherit;font-size:large;text-align:center"><a style="@Model.Styles.StyleButton" href="@Model.Lang.T("AppDomain")Account/Register/@(Model.Subscriber.InvitedCode)?@this.Model.TrackerFollow">@Model.Lang.T("Rejoindre {0}", Model.Lang.T("AppName"))</a></p>
+    </div>
+}
+    @*<hr style="@Model.Styles.StyleHR" />
+    <br />*@
+</div>
+
+
+</div>
+
+@helper DisplayEvents(IList<Sparkle.Services.Networks.Models.EventModel> items, Sparkle.Services.EmailTemplates.BaseEmailModel emailModel, bool showDescription = true)
+{
+    foreach (var evt in items)
+    {
+<div style="background:white;border-left:5px solid @(emailModel.Styles.EventColor); padding:10px;">
+    <div style="padding:3px;font-size:12px;color:#000">@(new RazorEngine.Text.RawString(System.Web.Mvc.SrkHtmlExtensions.DisplayDate(Html, evt.DateEventUtc, true).ToString())) @Model.Lang.T("à [heure]") @(new RazorEngine.Text.RawString(System.Web.Mvc.SrkHtmlExtensions.DisplayTime(Html, evt.DateEventUtc, true).ToString()))</div>
+    <a href="@(emailModel.Lang.T("AppDomain"))Event/@(evt.Id)?@(emailModel.TrackerFollow)" target="_blank" style="font-size:16px;color:#444;font-weight:normal;text-decoration:none;">@(evt.Name)</a>
+        @if (showDescription)
+        {
+    <div style="padding:3px;font-size:12px">@(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null, evt.Description).ToString())) <a style="color:#F4890A" href="@(emailModel.Lang.T("AppDomain"))Event/@(evt.Id)?@(emailModel.TrackerFollow)">@Model.Lang.T("En savoir plus")</a></div>
+        }
+</div>
+    <br />
+    }
+}
+
+@helper DisplayAds(IList<Sparkle.Services.Networks.Ads.AdModel> items, Sparkle.Services.EmailTemplates.BaseEmailModel emailModel)
+{
+<div>
+    @foreach (var evt in items)
+    {
+    <div style="padding:10px 0px;">
+        <div style="background:white;border-left:5px solid @(emailModel.Styles.GroupColor); padding:10px; ">
+            <div>
+                <a href="@(emailModel.Lang.T("AppDomain"))Ads/Details/@(evt.Alias)?@(emailModel.TrackerFollow)" target="_blank" style="font-size:16px;color:#444;font-weight:normal;text-decoration:none;">@(evt.Title)</a>
+            </div>
+            <div style="padding:3px;font-size:12px;color:#000">@(evt.Owner.DisplayName) - @(evt.CategoryName)</div>
+        </div>
+    </div>
+    }
+</div>
+}
+
+
+@helper DisplayPartners(Sparkle.Services.Networks.Timelines.BasicTimelineItemModel model, Sparkle.Services.EmailTemplates.BaseEmailModel emailModel)
+{
+    if (model.IsRootNode && model.Items != null)
+    {
+        foreach (var item in model.Items)
+        {
+@DisplayPartners(item, emailModel)
+        }
+    }
+    else if (!model.IsRootNode && model.IsVisible)
+    {
+<div class="timelineitem">
+    <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+        <tr>
+            <td rowspan="3" valign="top" style="padding-left:2px;padding-right:5px;width:55px;"><a href="@(model.PostedByUrl)?@(emailModel.TrackerFollow)" target="_blank" style="border:0; display:block; float:left; width: 50px; height: 50px; background-color: #f2f2f2;"><img style="width: 50px; height: 50px; display:block;" alt="" src="@(model.PostedByPictureUrl)" /></a></td>
+            <td colspan="2" style="border-left:5px solid @(model.ForegroundColor);background-color:@(model.ForegroundColor);padding:10px;color:#fff;font-family: Arial;font-size:16px;font-weight: lighter;text-align: left;">
+                <span style="color: #fff;">@(model.PostedByName)</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="border-left:5px solid @(model.ForegroundColor);background-color:#fff;padding:10px 10px 0 10px"><div style="@(emailModel.Styles.StyleTour)"><a style="color: @(emailModel.Styles.CompanyColor) !important; font-weight:bold; text-decoration: none;" href="@(model.PostedIntoUrl)">@(model.PostedIntoName)</a> @(model.Text)</div></td>
+        </tr>
+        <tr style="font-size:80%;">
+            <td style="border-left:5px solid @(model.ForegroundColor);background-color:@(emailModel.Styles.FooterBackground);padding:10px;color:#aaaaaa"><div class="wallItemActions">
+                <span>@(model.LikesCount)</span><span class="likeCount" style="background:url(@(emailModel.Lang.T("AppDomain"))Content/Site/Timelines/like_outline-16.png) no-repeat right center;padding-right:20px;height:16px;font-size:1.2em;"></span>
+            </div>
+            </td>
+            <td align="right" style="background-color:@(emailModel.Styles.FooterBackground);padding:10px;"><a href="@(model.PostedIntoUrl)?@(emailModel.TrackerFollow)" target="_blank" style="border:0;font-weight:normal;text-decoration:none;color:#AAAAAA">@(new RazorEngine.Text.RawString(System.Web.Mvc.SrkHtmlExtensions.DisplayDateTime(Html, model.DateUtc, true).ToString()))</a>
+            </td>
+        </tr>
+        <tr style="height:10px"><td></td><td colspan="2" style="border-left:5px solid #a5a5a5;"></td></tr>
+        <tr><td></td><td colspan="2" style="border-left:5px dashed #a5a5a5;">
+        @if (model.Items != null && model.Items.Count > 0)
+        {
+            foreach (var item in model.Items)
+            {
+<div>
+@DisplayTimeline(item, emailModel)
+</div>
+            }
+        }
+        </td></tr>
+    </table>
+</div>
+    }
+}

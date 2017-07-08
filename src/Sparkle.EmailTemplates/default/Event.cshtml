@@ -1,0 +1,27 @@
+﻿@{Layout = "Parent";}
+
+<div style="text-align:center; background-color: @Model.Styles.EventColor">
+
+	<h1 style="text-align:center; padding: 20px 0; font-weight: lighter; color: #fff">@Model.EventName</h1>
+
+</div>
+
+<div style="@Model.Styles.StyleContent">
+	<p>Bonjour @Model.FirstName,<br />
+	<a style='@Model.Styles.StyleLink' href='@Model.ProfileUrl'>@Model.ContactFirstName @Model.ContactLastName</a> vous a invité l'évènement "@Model.EventName".</p>
+
+	<div style="border-left:2px solid @Model.Lang.T("AccentColor"); padding-left:5px; margin-bottom:4px">
+		<div style="color: #202020;display: block;font-family: Arial;font-weight: lighter;font-size: 14px;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;text-align: left;">@Model.EventDate.ToString("D")</div>
+		<div style="color: #202020;display: block;font-family: Arial;font-weight: lighter;font-size: 14px;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;text-align: left;">@Model.EventDate.ToString("t") <a href="@Model.EventUrl" target="_blank" style="color: @Model.Lang.T("AccentColor");font-weight:normal; text-decoration:none;">@Model.EventName</a></div>
+		<div style="font-size:11px">@(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null,Model.EventDescription).ToString()))</div>
+		<br />
+		<div>Vous répondez :</div>
+		<a style='text-decoration:none; color:@Model.Lang.T("AccentColor");' href="@Model.EventReponseYesUrl">Présent</a> - 
+		<a style='text-decoration:none; color:@Model.Lang.T("AccentColor");' href="@Model.EventReponseMaybeUrl">Peut-être</a> - 
+		<a style='text-decoration:none; color:@Model.Lang.T("AccentColor");' href="@Model.EventReponseNoUrl">Absent</a>
+	</div>
+	<br />
+
+	Bonne journée,<br />
+	L'équipe.
+</div>

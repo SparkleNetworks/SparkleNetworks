@@ -1,0 +1,65 @@
+﻿@{Layout = "Parent";}
+
+<div style="@Model.Styles.StyleContent">
+    <h1 style="@Model.Styles.StyleH1"></h1>
+    <p>@Model.Lang.T("Bonjour {0},", Model.Model.SelfRecipient.User.FirstName)</p>
+
+@{
+    var groups = Model.Model.Items
+        .GroupBy(i => i.Priority)
+        .Select(g => new
+        {
+            Priority = g.Key,
+            Count = g.Count(),
+            Items = g.ToList(),
+        })
+        .ToArray();
+}
+
+@foreach (var priority in groups)
+{
+    if (priority.Count > 0)
+    {
+        var first = priority.Items.First();
+    <h2>@first.PriorityTitle</h2>
+    }
+    
+    <table style="@Model.Styles.Tables.TableStyle; width: 90%;">
+        <thead style="@Model.Styles.Tables.TheadStyle">
+            <tr style="@Model.Styles.Tables.TheadTrStyle @Model.Styles.Colors.DashboardBackground">
+                <th style="@Model.Styles.Tables.TheadThStyle">@Model.Lang.T("Subject")</th>
+                <th style="@Model.Styles.Tables.TheadThStyle">@Model.Lang.T("Task")</th>
+                <th style="@Model.Styles.Tables.TheadThStyle">@Model.Lang.T("Age")</th>
+                <th style="@Model.Styles.Tables.TheadThStyle">@Model.Lang.T("Actions")</th>
+            </tr>
+        </thead>
+        <tbody style="@Model.Styles.Tables.TbodyStyle">
+    @for (int i = 0; i < priority.Items.Count; i++)
+    {
+        var work = priority.Items[i];
+<tr style="@Model.Styles.Tables.TbodyTrStyle">
+    <th style="@Model.Styles.Tables.TbodyThStyle">@work.TypeTitle</th>
+    <td style="@Model.Styles.Tables.TbodyTdStyle">@work.TaskTitle</td>
+    <td style="@Model.Styles.Tables.TbodyTdStyle">@work.Age</td>
+    <td style="@Model.Styles.Tables.TbodyTdStyle"><a href="@work.TaskUrl">@Model.Lang.T("Go")</a></td>
+</tr>
+    }
+        </tbody>
+    </table>
+    
+    <hr style="@Model.Styles.StyleHR" />
+}
+
+@if (Model.Model.DiscloseRecipients && Model.Model.Recipients != null && Model.Model.Recipients.Count > 0)
+{
+    var sep = "";
+    <h2>@Model.Lang.T("Recipients of this email")</h2>
+    <p>
+    @foreach (var recipient in Model.Model.Recipients)
+    {@(sep)<span>@recipient.DisplayName</span>
+        sep = ", ";
+    }
+    </p>
+    <hr style="@Model.Styles.StyleHR" />
+}
+</div>

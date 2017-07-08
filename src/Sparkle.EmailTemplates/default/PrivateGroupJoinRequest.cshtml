@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "Parent";
+}
+
+<div style="@Model.Styles.StyleContent">
+    <div>
+        <p>
+            Bonjour @Model.AdminFirstName,<br />
+            @Model.UserFirstName @Model.UserLastName souhaite rejoindre le groupe <span style="font-weight:bold;">@Model.GroupName</span> dont vous êtes administrateur.
+        </p><br />
+        <div style="text-align:center;"><a style="@Model.Styles.StyleButton" href="@Model.RequestLink">Répondre à @Model.UserFirstName !</a></div>
+    </div>
+</div>

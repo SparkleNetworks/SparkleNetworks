@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "Parent";
+}
+@* Razor Include: default._Shared.cshtml *@
+
+<div style="@Model.Styles.StyleContent">
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Bonjour,")</p>
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T(
+        @"Vous avez demandé à inscrire l'entreprise {0} sur {1}.",
+        Model.Name,
+        Model.Lang.T("AppName"))</p>
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Nos équipes vont s'assurer que vos coordonnées sont correctes et valideront votre inscription.")</p>
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("En attendant un autre email de notre part, vous pouvez visualiser la demande d'inscription.")</p>
+@DisplayAction(Model, Model.Lang.T("Voir la demande d'inscription"), Model.Lang.T("AppDomain") + "Companies/RegistrationRequest/" + Model.RequestUniqueId, false)
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Une fois votre inscription validée, vous rejoindrez les autres entreprises du réseau. N'hésitez pas à inviter des personnes.")</p>
+
+
+@*<p>
+    <img src="@Model.Lang.T("AppDomain")Companies/RegistrationRequestEmailPicture/@Model.RequestUniqueId" alt="[image] etat de la demande" />
+</p>*@
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Bonne journée.")</p>
+
+</div>

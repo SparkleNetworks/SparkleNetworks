@@ -1,0 +1,242 @@
+﻿@using System.Web.Mvc
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>@Model.Lang.T("AppName")</title>
+<style type="text/css">
+#outlook a{padding:0;}
+body{width:100% !important;}
+.ReadMsgBody{width:100%;}
+.ExternalClass{width:100%;}
+body{-webkit-text-size-adjust:none;}
+body{margin:0;padding:0;}
+img{border:0;height:auto;line-height:100%;outline:none;text-decoration:none;}
+table td{border-collapse:collapse;}
+#backgroundTable{height:100% !important;margin:0;padding:0;width:100% !important;}
+body,#backgroundTable{background-color:#FAFAFA;}
+#templateContainer{border:1px solid #DDDDDD;}
+h1,.h1{
+    color:#202020;
+    display:block;
+    font-family:Arial;
+    font-size:34px;
+    font-weight:bold;
+    line-height:100%;
+    margin-top:0;
+    margin-right:0;
+    margin-bottom:10px;
+    margin-left:0;
+    text-align:left;
+}
+h2,.h2{
+    color:#202020;
+    display:block;
+    font-family:Arial;
+    font-size:30px;
+    font-weight:bold;
+    line-height:100%;
+    margin-top:0;
+    margin-right:0;
+    margin-bottom:10px;
+    margin-left:0;
+    text-align:left;
+}
+h3,.h3{
+    color:#202020;
+    display:block;
+    font-family:Arial;
+    font-size:26px;
+    font-weight:bold;
+    line-height:100%;
+    margin-top:0;
+    margin-right:0;
+    margin-bottom:10px;
+    margin-left:0;
+    text-align:left;
+}
+h4,.h4{
+    color:#202020;
+    display:block;
+    font-family:Arial;
+    font-size:22px;
+    font-weight:bold;
+    line-height:100%;
+    margin-top:0;
+    margin-right:0;
+    margin-bottom:10px;
+    margin-left:0;
+    text-align:left;
+}
+#templatePreheader{
+    background-color:#EEEEEE;
+}
+.preheaderContent div{
+    color:#c0c0c0;
+    font-family:Arial;
+    font-size:10px;
+    line-height:100%;
+    text-align:left;
+}
+.preheaderContent div a:link,.preheaderContent div a:visited,.preheaderContent div a .yshortcuts {
+    color:#336699;
+    font-weight:normal;
+    text-decoration:underline;
+}
+#templateHeader{
+    background-color:#fbf9ee;
+    border-bottom:0;
+    padding:10px;
+}
+.headerContent{
+    color:#202020;
+    font-family:Arial;
+    font-size:34px;
+    font-weight:bold;
+    line-height:100%;
+    padding:0;
+    text-align:center;
+    vertical-align:middle;
+}
+.headerContent a:link,.headerContent a:visited,.headerContent a .yshortcuts {
+    color:#336699;
+    font-weight:normal;
+    text-decoration:underline;
+}
+#headerImage{
+    height:auto;
+    max-width:600px !important;
+}
+#templateContainer,.bodyContent{
+    background-color:#FFFFFF;
+}
+.bodyContent div{
+    color:#505050;
+    font-family:Arial;
+    font-size:14px;
+    line-height:150%;
+    text-align:left;
+}
+.bodyContent div a:link,.bodyContent div a:visited,.bodyContent div a .yshortcuts {
+    color:#336699;
+    font-weight:normal;
+    text-decoration:underline;
+}
+.bodyContent img{
+    display:inline;
+    height:auto;
+}
+#templateFooter{
+    background-color:#e6e6e6;
+    border-top:0;
+}
+.footerContent div{
+    color:#111111;
+    font-family:Arial;
+    font-size:12px;
+    line-height:125%;
+    text-align:left;
+}
+.footerContent div a:link,.footerContent div a:visited,.footerContent div a .yshortcuts {
+    color:#336699;
+    font-weight:normal;
+    text-decoration:underline;
+}
+.footerContent img{
+    display:inline;
+}
+#social{
+    background-color:#e6e6e6;
+    border:0;
+}
+#social div{
+    text-align:center;
+}
+#utility{
+    background-color:#e6e6e6;
+    border:0;
+}
+#utility div{
+    text-align:center;
+}
+#monkeyRewards img{
+    max-width:190px;
+}
+.headerContent a{
+    color:#111111;
+    text-decoration:none;
+}
+body,#backgroundTable{
+    background-color:#EEEEEE;
+}
+</style>
+</head>
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="-webkit-text-size-adjust: none;margin: 0;padding: 0;background-color: #EEEEEE;width: 100% !important;">
+<div style="background-color:#EEEEEE;" class="Sparkle-Message" name="Sparkle-Message">
+  <center>
+<br />
+    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="800px" id="backgroundTable" style="margin:auto; padding:0;background-color: #EEEEEE;height: 100% !important;width: 800px !important;">
+      <tr>
+        <td align="center" valign="top" style="border-collapse: collapse;">
+          <a href="@Model.Lang.T("AppDomain")?@this.Model.TrackerFollow" style="background-color:#f2f2f2; width:316px; height:88px; margin:auto;"><img src="@Model.Lang.T("AppDomain")Content/Networks/@Model.Lang.T("AppNameKey")/Styles/MailLogo.gif?@this.Model.TrackerDisplay" alt="@Model.Lang.T("AppName")" border="0" style="margin: 0;padding: 0;display:block;" width="316" height="88" /></a>
+          <div>
+@if (!string.IsNullOrEmpty(this.Model.Title))
+{
+            <div style="text-align:center; background-color: @Model.Lang.T("AccentColor")">
+              <h1 style="font-size:20px;text-align:center; padding: 20px 0; font-weight: lighter; color: #fff">@Model.Title</h1>
+            </div>
+}
+
+<table border="0" cellpadding="0" cellspacing="0" width="800" height="88" id="templateContainer" style="border: 1px solid #DDDDDD; width:800px; height:88px">
+  <tr>
+    <td align="center" valign="top" style="border-collapse: collapse;">
+      <table border="0" cellpadding="0" cellspacing="0" width="800" id="templateBody">
+        <tr>
+          <td valign="top" class="bodyContent" style="border-collapse: collapse;background-color: #f7f7f7;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tr>
+                <td valign="top" style="border-collapse: collapse;">
+                  <div style="color: #505050;font-family: Arial;font-size: 14px;line-height: 150%;text-align: left;">
+@RenderBody()
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style=" border-collapse: collapse;">
+    </td>
+  </tr>
+</table>
+          </div>
+          <br />
+          <div style="font-family: Arial; font-size:12px; color:#aaa;">
+            @Model.Lang.T("Ce message a été envoyé à : ")<a href="mailto:@Model.RecipientEmailAddress" style="text-decoration:none; color:@Model.Lang.T("AccentColor");">@(Model.RecipientContact != null && Model.RecipientContact.Firstname != null ? (Model.RecipientContact.FullName + " (" + Model.RecipientEmailAddress + ")") : Model.RecipientEmailAddress)</a>.<br />
+            @if (Model.Registered) {
+                if (Model.NotificationType.HasValue) {
+                    @:@Model.Lang.T("NotificationEmail: Vous recevez ce message car vous êtes abonné aux notifications de type '{0}', si vous le souhaitez vous pouvez ", Model.NotificationTypeTitle) <a style="text-decoration:none; color:@Model.Lang.T("AccentColor");" href="@Model.UnsubscribeNotificationUrl&@Model.TrackerFollow">@Model.Lang.T("NotificationEmail: vous désabonner directement de ceux-ci")</a>@Model.Lang.T("NotificationEmail: ou plus simplement")<a style="text-decoration:none; color:@Model.Lang.T("AccentColor");" href="@Model.NotificationUrl&@this.Model.TrackerFollow">@Model.Lang.T("modifier vos préférences")</a>.
+                }
+                else {
+                    @:@Model.Lang.T("Si vous ne souhaitez plus recevoir ces messages via votre adresse électronique, vous pouvez ") <a style="text-decoration:none; color:@Model.Lang.T("AccentColor");" href="@Model.Lang.T("AppDomain")Account/Settings?@this.Model.TrackerFollow">@Model.Lang.T("modifier vos préférences")</a>.
+                }
+            } else {
+            @:@Model.Lang.T("Si vous ne souhaitez plus recevoir ces messages via votre adresse électronique ni rejoindre {0}, vous pouvez ", Model.Lang.T("AppName"))<a style="text-decoration:none; color:@Model.Lang.T("AccentColor");" href="@Model.Lang.T("AppDomain")Account/Unregister/?id=@Model.RecipientInvitedCode&email=@System.Uri.EscapeDataString(Model.RecipientEmailAddress)&amp;@this.Model.TrackerFollow">@Model.Lang.T("vous désinscrire")</a>.
+            }
+            <br />
+@{
+    var culture = Model.Culture ?? System.Globalization.CultureInfo.InvariantCulture;
+    var tz = Model.Timezone ?? TimeZoneInfo.Local;
+}
+            @culture.DisplayName - @tz.DisplayName
+            <br />
+          </div>
+        </td>
+      </tr>
+    </table>
+  </center>
+</div>
+</body>
+</html>

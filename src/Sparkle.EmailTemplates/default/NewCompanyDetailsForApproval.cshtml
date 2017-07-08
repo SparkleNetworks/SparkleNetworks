@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "Parent";
+}
+
+<div style="@Model.Styles.StyleContent">
+<p>Bonjour,</p>
+<p>
+    Quelqu'un a demandé à inscrire une nouvelle entreprise.
+    Rendez vous sur 
+@if (Model.RequestId > 0){
+    <a href="@Model.Lang.T("AppDomain")Dashboard/CompanyRequest/@Model.RequestId">cette page</a>
+}else{
+    <a href="@Model.Lang.T("AppDomain")Dashboard/Companies">cette page</a>
+}
+    pour valider ou refuser la demande.
+</p>
+<pre>Nom :       @Model.Name
+Alias :     @Model.Alias
+Email :     @Model.Email
+Requète # : @Model.RequestId</pre>
+
+<p>Si vous remarquez des erreurs dans la demande, vous pourrez les corriger ou communiquer avec l'auteur de la demande.</p>
+@if (Model.RequestId > 0) {
+<p>
+    L'auteur de la demande a reçu un email lui permettant de 
+    <a href="@Model.Lang.T("AppDomain")Companies/RegistrationRequest/@Model.RequestUniqueId">suivre sa demande</a>.
+</p>
+}
+
+<hr style="@Model.Styles.StyleHR" />
+</div>

@@ -1,0 +1,16 @@
+﻿@{Layout = "Parent";}
+
+<div style="text-align:center; background-color: @Model.Styles.PersonColor">
+
+	<h1 style="text-align:center; padding: 20px 0; font-weight: lighter; color: #fff">Demande acceptée</h1>
+
+</div>
+
+<div style="@Model.Styles.StyleContent">
+	<p>Bonjour @Model.FirstName,<br />
+	Bonne nouvelle, <a style="text-decoration:none; color:@Model.Lang.T("AccentColor");" href="@Model.Lang.T("AppDomain")Person/@Model.Contact.Login">@Model.Contact.FirstName @Model.Contact.LastName</a> a accepté votre demande.</p>
+	<br />
+
+	Bonne journée<br />
+	L'équipe.
+</div>

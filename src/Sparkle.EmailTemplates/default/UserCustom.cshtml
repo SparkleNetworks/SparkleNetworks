@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "Parent";
+}
+@* Razor Include: default._Shared.cshtml *@
+
+<div style="text-align:center; background-color: @Model.Styles.PersonColor">
+    <h1 style="text-align:center; padding: 20px 0; font-weight: lighter; color: #fff">@(Model.Model.Title)</h1>
+</div>
+
+<div style="@Model.Styles.StyleContent">
+    @(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null, Model.Model.Value).ToString()))
+</div>

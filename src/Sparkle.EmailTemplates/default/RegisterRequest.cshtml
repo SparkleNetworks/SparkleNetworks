@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "Parent";
+}
+
+<div style="text-align:center; background-color: @Model.Styles.PersonColor">
+    <h1 style="text-align:center; padding: 20px 0; font-weight: lighter; color: #fff">Demande d'inscription en attente</h1>
+</div>
+
+<div style="@Model.Styles.StyleContent">
+<p style="@Model.Styles.StyleTour">Bonjour @Model.RecipientContact.Firstname,</p>
+@if (Model.CompanyHasNoAdmin) {
+    <p style="@Model.Styles.StyleTour">Une personne a demandé à rejoindre le réseau 
+        @Model.Lang.T("AppName") au sein de l'entreprise @Model.Company.Name.<br />
+        Nous avons besoin que vous confirmiez que cette personne fait bien partie de cette entreprise car celle-ci n'a pas d'administrateur.</p>
+    
+} else {
+    <p style="@Model.Styles.StyleTour">Une personne a demandé à rejoindre le réseau 
+        @Model.Lang.T("AppName") au sein de votre entreprise.<br />
+        Nous avons besoin que vous confirmiez que cette personne fait bien partie de votre entreprise.</p>
+}
+    @if (Model.OtherRequestCount > 1) {
+    <p style="@Model.Styles.StyleTour">Il y a @Model.OtherRequestCount autres demandes à traiter.</p>
+    }
+    <p style="@Model.Styles.StyleTour">
+        <a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")Companies/Management/@Model.Company.Alias">Accéder à la gestion des demandes d'inscription et collaborateurs</a>
+    </p>
+<p style="@Model.Styles.StyleTour">Bonne journée,<br />
+L'équipe.</p>
+</div>

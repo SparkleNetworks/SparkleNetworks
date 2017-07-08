@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D82F5D27-7968-47B6-95F8-DE7593426341}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sparkle.EmailTemplates</RootNamespace>
+    <AssemblyName>Sparkle.EmailTemplates</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\Libraries\NET40\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="SrkToolkit.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SrkToolkit.Common.1.1.131\lib\net45\SrkToolkit.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SrkToolkit.Web.Mvc4, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SrkToolkit.Web.AspMvc4.1.1.127\lib\net45\SrkToolkit.Web.Mvc4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.40804.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DefaultEmailTemplateProvider.cs" />
+    <Compile Include="Internals\CustomTemplateBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="default\Invite.cshtml" />
+    <EmbeddedResource Include="default\WeeklyNewsletter.cshtml" />
+    <EmbeddedResource Include="default\Master.cshtml" />
+    <EmbeddedResource Include="default\Reminder.cshtml" />
+    <EmbeddedResource Include="default\ContactRequest.cshtml" />
+    <EmbeddedResource Include="default\Register.cshtml" />
+    <EmbeddedResource Include="default\PrivateMessage.cshtml" />
+    <EmbeddedResource Include="default\Event.cshtml" />
+    <EmbeddedResource Include="default\Group.cshtml" />
+    <EmbeddedResource Include="default\Communication.cshtml" />
+    <EmbeddedResource Include="default\WeeklyGroupNewsletter.cshtml" />
+    <EmbeddedResource Include="default\Publication.cshtml" />
+    <EmbeddedResource Include="default\CompleteProfile.cshtml" />
+    <EmbeddedResource Include="default\ContactRequestAccepted.cshtml" />
+    <EmbeddedResource Include="default\Proposal.cshtml" />
+    <EmbeddedResource Include="default\NewCompanyDetailsForApproval.cshtml" />
+    <EmbeddedResource Include="default\CompanyContact.cshtml" />
+    <EmbeddedResource Include="default\AddResume.cshtml" />
+    <EmbeddedResource Include="default\ExternalCompanyContact.cshtml" />
+    <EmbeddedResource Include="default\RecoverPassword.cshtml" />
+    <EmbeddedResource Include="default\CompanyRequestConfirmation.cshtml" />
+    <EmbeddedResource Include="default\CompanyRegisteredNotification.cshtml" />
+    <EmbeddedResource Include="default\CompanyRequestRejected.cshtml" />
+    <EmbeddedResource Include="default\CompanyRequestAccepted.cshtml" />
+    <EmbeddedResource Include="default\NewUserConfirmEmail.cshtml" />
+    <EmbeddedResource Include="default\PendingUserRegistrations.cshtml" />
+    <EmbeddedResource Include="default\TechnicalMessages.cshtml" />
+    <EmbeddedResource Include="default\RegisterRequest.cshtml" />
+    <EmbeddedResource Include="default\RegisterRequestConfirmation.cshtml" />
+    <EmbeddedResource Include="default\RegisterRequestDenied.cshtml" />
+    <EmbeddedResource Include="default\EmailChangeRequest.cshtml" />
+    <EmbeddedResource Include="default\PrivateGroupJoinRequest.cshtml" />
+    <EmbeddedResource Include="default\PrivateGroupJoinResponse.cshtml" />
+    <EmbeddedResource Include="default\_Timeline.cshtml" />
+    <None Include="app.config" />
+    <EmbeddedResource Include="default\ApplyRequestConfirmation.cshtml" />
+    <EmbeddedResource Include="default\_Shared.cshtml" />
+    <EmbeddedResource Include="default\ApplyRequestAccepted.cshtml" />
+    <EmbeddedResource Include="default\AdminWorks.cshtml" />
+    <EmbeddedResource Include="default\ApplyRequestRefused.cshtml" />
+    <EmbeddedResource Include="default\PartnerResourceProposalAccepted.cshtml" />
+    <EmbeddedResource Include="default\PartnerResourceProposalRefused.cshtml" />
+    <EmbeddedResource Include="default\UserCustom.cshtml" />
+    <EmbeddedResource Include="default\InvitationWithApply.cshtml" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="default\Test.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sparkle.Common\Sparkle.Common.csproj">
+      <Project>{e2445875-e89b-403d-8721-a97e120b01d5}</Project>
+      <Name>Sparkle.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Data\Sparkle.Data.csproj">
+      <Project>{f3bbc3e7-ba09-43f4-a32c-9d77a7e0d4be}</Project>
+      <Name>Sparkle.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Entities\Sparkle.Entities.csproj">
+      <Project>{f2341891-7dbe-4a69-a90b-641e4663e24d}</Project>
+      <Name>Sparkle.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Infrastructure\Sparkle.Infrastructure.csproj">
+      <Project>{63efbc4b-cb11-4539-b999-960c1209e696}</Project>
+      <Name>Sparkle.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Lang\Sparkle.Lang.csproj">
+      <Project>{7fb6dda7-7def-4527-8894-be73df0857b0}</Project>
+      <Name>Sparkle.Lang</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Services\Sparkle.Services.csproj">
+      <Project>{949101f1-e574-4a21-a93b-3fbde27875bb}</Project>
+      <Name>Sparkle.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Data.Entity\Sparkle.Data.Entity.csproj">
+      <Project>{a95c5c44-350d-4c57-8454-128516423a20}</Project>
+      <Name>Sparkle.Data.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Helpers\Sparkle.Helpers.csproj">
+      <Project>{e6305d03-84b6-4752-a4f4-77d5ffeef9f4}</Project>
+      <Name>Sparkle.Helpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

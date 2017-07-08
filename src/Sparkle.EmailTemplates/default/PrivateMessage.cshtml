@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "Parent";
+}
+
+<div style="@Model.Styles.StyleContent">
+    <div>@(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null, Model.Message).ToString()))</div>
+
+    <div style="text-align: center"><a style="@Model.Styles.StyleButton" href="@Model.ConversationUrl" class="ReplyToPrivateMessage PrivateMessageId@(Model.MessageId)" name="PrivateMessageId@(Model.MessageId)">Répondre</a></div>
+    @if (Model.IsReplyToEmailEnabled)
+    { 
+        <div style="text-align:center;">Répondez à cet email pour que @Model.ContactFirstName reçoive directement votre message.</div>
+    }
+</div>

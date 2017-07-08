@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "Parent";
+    string sep = "";
+}
+
+<div style="@Model.Styles.StyleContent">
+<p style="@Model.Styles.StyleTour">
+	Bonjour,<br />
+    Un nouvel utilisateur s'est inscrit et doit être validé par vos soins.
+</p>
+
+@if (Model.NewPendingUser != null)
+{
+<div style="@Model.Styles.StyleTour">
+    <p>@Model.NewPendingUser.FirstName @Model.NewPendingUser.LastName vient de s'inscrire avec l'adresse @Model.NewPendingUser.Email</p>
+    <p>
+        Rendez-vous sur la page 
+        <a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")Person/@Model.Sender.Login">de validation des nouveux utilisateurs</a>
+        afin de confirmer ou de refuser son inscription.
+    </p>
+</div>
+}
+
+<table><tr>
+	<td valign="top" style="vertical-align:top;padding-right:10px;height:285px;">
+		<div style="overflow:hidden;border:5px solid #fff;box-shadow:0 0 5px #888;width:170px;height:200px">
+			<img alt="@Model.Sender.FirstName @Model.Sender.LastName" src="@Model.Lang.T("AppDomain")Data/PersonPicture/@Model.Sender.Username" />
+		</div>
+	</td>
+	<td valign="top">
+		<p style="@Model.Styles.StyleTour">
+	        Bonjour,<br />
+	        <a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")Person/@Model.Sender.Login">@Model.Sender.FirstName @Model.Sender.LastName</a>
+            a ajouté votre entreprise à @Model.Lang.T("AppName"),
+            le réseau communautaire @Model.Lang.T("CurrentPlace").<br />
+		</p>
+
+        <p>Des invitations personnelles ont été envoyées aux adresses email suivantes.</p>
+
+        @if (Model.AdminEmails != null && Model.AdminEmails.Length > 0) 
+        {
+            sep = "";
+            <p>Ces utilisateurs seront administrateurs de l'entreprise : 
+            @foreach (var email in Model.AdminEmails)
+            {
+                @:@sep<span>@email</span>
+                sep = ", ";
+            }
+            </p>
+        }
+
+        @if (Model.AdminEmails != null && Model.OtherEmails.Length > 0) 
+        {
+            sep = "";
+            <p>Ces utilisateurs seront membre de l'entreprise : 
+            @foreach (var email in Model.OtherEmails)
+            {
+                @:@sep<span>@email</span>
+                sep = ", ";
+            }
+            </p>
+        }
+
+        <p>Ces permissions peuvent être modifiées à tout moment. </p>
+        <p>Bonne journée.</p>
+
+	</td>
+</tr></table>
+
+<p>Bonne journée,<br />
+L'équipe.</p>
+
+<hr style="@Model.Styles.StyleHR" />
+</div>

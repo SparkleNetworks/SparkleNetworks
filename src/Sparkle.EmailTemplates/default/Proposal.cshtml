@@ -1,0 +1,24 @@
+﻿@{Layout = "Parent";}
+
+<div style="@Model.Styles.StyleContent">
+
+    <table style="width:100%">
+        <tr>
+            <td style="width:170px;vertical-align:top"><a href="@Model.ContactUrl" target="_blank" style="display:block;background-image:url(@Model.ContactPictureUrl);width:170px;height:200px;"></a></td>
+            <td style="padding-left:20px;vertical-align:top">
+                <h1><a style="@Model.Styles.StyleLink" href="@Model.ContactUrl">@Model.ContactFirstName @Model.ContactLastName</a></h1>
+                <p>
+                    @Model.EmailText<br />
+                    le <strong>@Model.Date.ToLongDateString()</strong> à <strong>@Model.Date.ToString("H:mm")</strong>.<br />
+                </p>
+                @if (!string.IsNullOrEmpty(Model.Message)) {
+                <h4>Et a rédigé un message :</h4>
+                <p>@(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null,Model.Message).ToString()))</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><p style="text-align:center"><a style="@Model.Styles.StyleButton" href="@Model.ConversationUrl">Répondre</a></p></td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "Parent";
+}
+@* Razor Include: default._Shared.cshtml *@
+
+<div style="@Model.Styles.StyleContent">
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Bonjour {0}", Model.ToUser.FirstName)</p>
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("{0} a reçu un message de la société {1} envoyé par {2}.", Model.ToCompany.Name, Model.FromCompanyName, Model.FromUserName)</p>
+
+@DisplayAction(Model, Model.Lang.T("Lire le message"), Model.ConversationUrl, false)
+
+    <hr style="@Model.Styles.StyleHR" />
+
+    <p>
+        @Model.Lang.T("A bientôt")<br />
+        @Model.Lang.T("L'équipe")
+    </p>
+</div>

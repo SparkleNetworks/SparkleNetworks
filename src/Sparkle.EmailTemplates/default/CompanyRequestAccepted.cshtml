@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "Parent";
+    string sep = "";
+}
+
+<div style="@Model.Styles.StyleContent">
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Bonjour,")</p>
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T(
+        @"Vous avez demandé à inscrire l'entreprise {0} sur {1}.",
+        Model.Name,
+        Model.Lang.T("AppName"))</p>
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T(@"Votre demande a été acceptée. Bienvenue parmis nous !")</p>
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T(@"Des invitations ont été envoyées aux adresses email précisées lors de votre demande.")</p>
+
+    
+@if (Model.AdminEmails != null && Model.AdminEmails.Length > 0) 
+{
+    sep = "";
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Ces utilisateurs seront administrateurs de l'entreprise : ")
+    @foreach (var email in Model.AdminEmails)
+    {
+        @:@sep<code>@email</code>
+        sep = ", ";
+    }
+    </p>
+}
+
+@if (Model.AdminEmails != null && Model.OtherEmails.Length > 0) 
+{
+    sep = "";
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Ces utilisateurs seront membre de l'entreprise : ")
+    @foreach (var email in Model.OtherEmails)
+    {
+        @:@sep<code>@email</code>
+        sep = ", ";
+    }
+    </p>
+}
+
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Ces permissions peuvent être modifiées à tout moment. ")</p>
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Bonne journée.")</p>
+
+</div>

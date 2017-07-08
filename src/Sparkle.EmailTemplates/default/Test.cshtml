@@ -1,0 +1,15 @@
+﻿@{Layout = "Parent";}
+
+TESTTEST
+@SuperHelper("world")
+TESTTEST
+
+@helper SuperHelper(string message){
+    if (message != null){
+<p>@message</p>
+<div>@SuperHelper(null)</div>
+    }
+    else{
+<p>hello</p>
+    }
+}

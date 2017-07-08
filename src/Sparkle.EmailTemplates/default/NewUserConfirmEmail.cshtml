@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "Parent";
+}
+
+<div style="@Model.Styles.StyleContent">
+
+<p style="@Model.Styles.StyleTour">
+	Bonjour,<br />
+    Vous avez demandé à vous inscrire sur 
+    <a style='@Model.Styles.StyleLink' href='@Model.Lang.T("AppDomain")'>@Model.Lang.T("AppName")</a>.
+</p>
+
+@*<p style="@Model.Styles.StyleTour">@Model.Lang.T("AppName") est le portail communautaire @Model.Lang.T("CurrentPlace") regroupant les projets dans l'incubateur, les startups, les entreprises, et l'ensemble des collaborateurs travaillant sur @Model.Lang.T("CurrentPlaceAlone").</p>*@
+
+<p>
+    Pour que tout se déroule au mieux, nous vous demandons de confirmer votre demande en suivant le lien suivant.
+</p>
+
+<p style="@Model.Styles.StyleTour ;font-size:120%;"><a style="@Model.Styles.StyleLink" href="@Model.ConfirmUrl">Rejoindre @Model.Lang.T("AppName")</a></p>
+
+<hr style="@Model.Styles.StyleHR" />
+</div>

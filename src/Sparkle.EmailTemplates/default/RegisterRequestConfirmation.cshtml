@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "Parent";
+}
+
+<div style="text-align:center; background-color: @Model.Styles.PersonColor">
+    <h1 style="text-align:center; padding: 20px 0; font-weight: lighter; color: #fff">Votre demande d'inscription</h1>
+</div>
+
+<div style="@Model.Styles.StyleContent">
+<p>Bonjour,</p>
+<p>
+    Vous avez demandé à vous inscrire sur @Model.Lang.T("AppName") dans l'entreprise @Model.Request.DisplayCompanyName.
+</p>
+<p>
+    Des responsables de l'entreprise @Model.Request.DisplayCompanyName vont s'assurer que vos coordonnées sont correctes et valideront votre inscription.
+    Vous pouvez <a href="@Model.Lang.T("AppDomain")Account/RegisterRequestResult/@Model.Request.Code">suivre la demande d'inscription</a>.
+</p>
+@*<p>
+    <img src="@Model.Lang.T("AppDomain")Companies/RegistrationRequestEmailPicture/@Model.RequestUniqueId" alt="[image] etat de la demande" />
+</p>*@
+<p>
+    Une fois votre inscription validée, vous recevrez une invitation à rejoindre le réseau. 
+<p>
+
+<p>Bonne journée,<br />
+L'équipe.</p>
+
+<hr style="@Model.Styles.StyleHR" />
+</div>

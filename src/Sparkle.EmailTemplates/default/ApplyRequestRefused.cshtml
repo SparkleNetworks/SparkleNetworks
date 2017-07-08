@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "Parent";
+}
+@* Razor Include: default._Shared.cshtml *@
+
+<div style="text-align:center; background-color: @Model.Styles.PersonColor">
+    <h1 style="text-align:center; padding: 20px 0; font-weight: lighter; color: #fff">@Model.Lang.T("Demande refusée")</h1>
+</div>
+
+<div style="@Model.Styles.StyleContent">
+    <p>@Model.Lang.T("Bonjour {0}", Model.Model.UserDataModel.User.FirstName)</p>
+
+    <p>
+        @Model.Lang.T("Merci de l'intérêt que vous portez à notre communauté.")<br />
+        @Model.Lang.T("Malheureusement votre candidature a été refusée.")
+    </p>
+
+    @if (!string.IsNullOrEmpty(Model.Model.RefusedRemark))
+    {
+        <div style="display:block;">
+            <p>@Model.Lang.T("L'administrateur a laissé une remarque à votre attention")</p>
+            <blockquote style="@Model.Styles.StyleQuote">@Model.Model.RefusedRemark</blockquote>
+        </div>
+    }
+
+    <p>@Model.Lang.T("Nous sommes disponibles pour échanger avec vous et vous donner plus d'informations si besoin.")</p>
+    <hr style="@Model.Styles.StyleHR" />
+
+    <p>
+        @Model.Lang.T("A bientôt")<br />
+        @Model.Lang.T("L'équipe")
+    </p>
+</div>

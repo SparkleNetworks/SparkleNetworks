@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "Parent";
+    var linkUrl = Model.Data["RequestLink"];
+}
+@* Razor Include: default._Shared.cshtml *@
+
+<div style="text-align:center; background-color: @Model.Styles.PersonColor">
+    <h1 style="text-align:center; padding: 20px 0; font-weight: lighter; color: #fff">@Model.Lang.T("Votre demande d'inscription")</h1>
+</div>
+
+<div style="@Model.Styles.StyleContent">
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Bonjour,")</p>
+
+    <p style="@Model.Styles.StyleTour">
+        @Model.Lang.T("Vous avez demandé à vous inscrire sur {0}.", Model.Lang.T("AppName"))<br />
+        @Model.Lang.T("Vous devez valider votre adresse email en suivant le lien ci-dessous.")
+    </p>
+    <div style="text-align:center;">
+        <p><a style="@Model.Styles.StyleButton" href="@linkUrl">@Model.Lang.T("Confirm your email address")</a></p>
+        <p>@Model.Lang.T("Ou copiez ce lien dans votre navigateur")</p>
+        <pre>@linkUrl</pre>
+    </div>
+    <hr style="@Model.Styles.StyleHR" />
+
+    <p>
+        @Model.Lang.T("A bientôt")<br />
+        @Model.Lang.T("L'équipe")
+    </p>
+</div>

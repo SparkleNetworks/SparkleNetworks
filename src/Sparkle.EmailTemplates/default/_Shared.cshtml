@@ -1,0 +1,12 @@
+﻿
+@helper DisplayAction(Sparkle.Services.EmailTemplates.BaseEmailModel emailModel, string text, string url, bool showUrl)
+{
+    <p style="text-align:center;">
+        <a style="@Model.Styles.StyleButton" href="@url">@text</a>
+    </p>
+    if (showUrl)
+    {
+    <p>@Model.Lang.T("Ou copiez ce lien dans votre navigateur")</p>
+    <pre>@url</pre>
+    }
+}

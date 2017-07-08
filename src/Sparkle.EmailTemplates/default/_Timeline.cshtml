@@ -1,0 +1,91 @@
+﻿
+@helper DisplayTimeline(Sparkle.Services.Networks.Timelines.BasicTimelineItemModel model, Sparkle.Services.EmailTemplates.BaseEmailModel emailModel)
+{
+    if (model.IsRootNode && model.Items != null)
+    {
+        foreach (var item in model.Items)
+        {
+@DisplayTimeline(item, emailModel)
+        }
+    }
+    else if (!model.IsRootNode && model.IsVisible)
+    {
+<div class="timelineitem">
+    <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+        <tr>
+            <td rowspan="3" valign="top" style="padding-left:2px;padding-right:5px;width:55px;"><a href="@(model.PostedByUrl)?@(emailModel.TrackerFollow)" target="_blank" style="border:0; display:block; float:left; width: 50px; height: 50px; background-color: #f2f2f2;"><img style="width: 50px; height: 50px; display:block;" alt="" src="@(model.PostedByPictureUrl)" /></a></td>
+            <td colspan="2" style="border-left:5px solid @(model.ForegroundColor);background-color:@(model.ForegroundColor);padding:10px;color:#fff;font-family: Arial;font-size:16px;font-weight: lighter;text-align: left;">
+                <span style="color: #fff;"><a href="@(model.PostedByUrl)?@(emailModel.TrackerFollow)" target="_blank" style="color: #fff;font-weight:bold; text-decoration:none;">@(model.PostedByName)</a></span>
+        @if (model.PostedIntoName != null)
+        {
+            if (model.PostedIntoVerb != null)
+            {
+                <span style="color: #fff;">@(model.PostedIntoVerb) @(model.PostedIntoContainerName)</span>
+            }
+                <span style="color: #fff;"><a href="@(model.PostedIntoUrl)?@(emailModel.TrackerFollow)" target="_blank" style="color: #fff;font-weight:bold; text-decoration:none;">@(model.PostedIntoName)</a></span>
+        }
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="border-left:5px solid @(model.ForegroundColor);background-color:#fff;padding:10px 10px 0 10px">
+                <div style="@(emailModel.Styles.StyleTour)">
+                    @if (model.Text != null && model.IsHighlighted)
+                    {@(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null, model.Text).ToString()))}
+                    else if (model.Text != null)
+                    {@(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null, model.Text.TrimTextRight(600)).ToString()))}
+                @if (model.Text != null && model.Text.Length > 600 && !model.IsHighlighted)
+                { <a href="@(model.Url)?@(emailModel.TrackerFollow)" target="_blank" style="text-decoration:none;font-weight:normal;color:@(model.ForegroundColor)">@(Model.Lang.T("Lire la suite..."))</a> }
+                </div>
+@DisplayExtra(model.Attachments)
+            </td>
+        </tr>
+        <tr style="font-size:80%;">
+            <td style="border-left:5px solid @(model.ForegroundColor);background-color:@(emailModel.Styles.FooterBackground);padding:10px;color:#aaaaaa"><div class="wallItemActions">
+                <span>@(model.LikesCount)</span><span class="likeCount" style="background:url(@(emailModel.Lang.T("AppDomain"))Content/Site/Timelines/like_outline-16.png) no-repeat right center;padding-right:20px;height:16px;font-size:1.2em;"></span>
+            </div>
+            </td>
+            <td align="right" style="background-color:@(emailModel.Styles.FooterBackground);padding:10px;"><a href="@(model.Url)?@(emailModel.TrackerFollow)" target="_blank" style="border:0;font-weight:normal;text-decoration:none;color:#AAAAAA">@(new RazorEngine.Text.RawString(System.Web.Mvc.SrkHtmlExtensions.DisplayDateTime(Html, model.DateUtc, true).ToString()))</a>
+            </td>
+        </tr>
+        <tr style="height:10px"><td></td><td colspan="2" style="border-left:5px solid #a5a5a5;"></td></tr>
+        <tr><td></td><td colspan="2" style="border-left:5px dashed #a5a5a5;">
+        @if (model.Items != null && model.Items.Count > 0)
+        {
+            foreach (var item in model.Items)
+            {
+<div>
+@DisplayTimeline(item, emailModel)
+</div>
+            }
+        }
+        </td></tr>
+    </table>
+</div>
+    }
+}
+
+@helper DisplayExtra(IList<Sparkle.Services.Networks.Timelines.BasicTimelineItemAttachmentModel> extras)
+{
+    if (extras != null)
+    {
+        foreach (Sparkle.Services.Networks.Timelines.BasicTimelineItemAttachmentModel extra in extras)
+        {
+    <hr />
+    <div class="@(extra.ExtraType == Sparkle.Entities.Networks.TimelineItemExtraType.OpenGraphDescription ? "opengraphView" : "")">
+        <div class="ogTitle">
+        @if (extra.Url != null)
+        {
+            <a href="@(extra.Url)">@(extra.Title)</a>
+        }
+        else
+        {
+            <span>@(extra.Title)</span>
+        }
+        </div>
+        <div class="ogDescription">
+            @(extra.Description)
+        </div>
+    </div>
+        }
+    }
+}

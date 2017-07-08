@@ -1,0 +1,60 @@
+﻿@{Layout = "Parent";}
+
+<div style="text-align:center; background-color: @Model.Styles.PersonColor">
+    @Model.Lang.T("")
+	<h1 style="text-align:center; padding: 20px 0; font-weight: lighter; color: #fff">@Model.Lang.T("Demande de contact")</h1>
+
+</div>
+
+<div style="@Model.Styles.StyleContent">
+<p style="@Model.Styles.StyleTour">
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Bonjour {0}", Model.FirstName)</p>
+	<p>
+	<a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")Person/@Model.Contact.Login">@Model.Contact.FirstName @Model.Contact.LastName</a>@if (Model.ContactJob != null) {@:, <a style='@Model.Styles.StyleLink' href="@Model.Lang.T("AppDomain")Job/@Model.ContactJob.Alias">@Model.ContactJob.Libelle</a>
+} @if (Model.AppConfiguration.Tree.Features.EnableCompanies)
+       { @:chez <a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")Person/@Model.ContactCompany.Alias">@Model.ContactCompany.Name</a> 
+       } souhaite vous ajouter à ses contacts.<br />
+	Vous pouvez <a style="text-decoration:none; color:@Model.Lang.T("AccentColor");" href="@Model.Lang.T("AppDomain")Home/NotificationCenter">cliquer ici</a> pour accepter ou refuser cette demande.
+</p>
+
+<table><tr>
+	<td valign="top" style="vertical-align:top;padding-right:10px;height:285px;">
+		<a target="_blank" href="@Model.Lang.T("AppDomain")Person/@Model.Contact.Login">
+			<div style="overflow:hidden;border:5px solid #fff;box-shadow:0 0 5px #888;width:170px;height:200px">
+				<img alt="@Model.Contact.FirstName @Model.Contact.LastName" src="@Model.Contact.Picture" />
+			</div>
+		</a>
+	</td>
+	<td valign="top">
+		<p style="@Model.Styles.StyleTour">
+			<a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")Person/@Model.Contact.Login">@Model.Contact.FirstName @Model.Contact.LastName</a><br />
+			@if (Model.ContactJob != null) {<a style='@Model.Styles.StyleLink' href="@Model.Lang.T("AppDomain")Job/@Model.ContactJob.Alias">@Model.ContactJob.Libelle</a>} @if (Model.AppConfiguration.Tree.Features.EnableCompanies) { @:chez <a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")/Company/@Model.ContactCompany.Alias">@Model.ContactCompany.Name</a>
+                                                       }
+		</p>
+		<table>
+        @if(!string.IsNullOrEmpty(Model.Contact.CurrentTarget)) {
+            <tr>
+	            <td valign="top" style="color:#33ab46;width:160px">Objectif actuel</td>
+	            <td valign="top">@Model.Contact.CurrentTarget</td>
+            </tr>
+        }
+        @if(!string.IsNullOrEmpty(Model.Contact.About)) {
+            <tr>
+	            <td valign="top" style="color:#33ab46">Présentation</td>
+	            <td valign="top">@(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null,Model.Contact.About).ToString()))</td>
+            </tr>
+        }
+		</table>
+				
+		<p style="@Model.Styles.StyleTour">
+		</p>
+	</td>
+</tr></table>
+    
+    <hr style="@Model.Styles.StyleHR" />
+
+    <p>
+        @Model.Lang.T("A bientôt")<br />
+        @Model.Lang.T("L'équipe")
+    </p>
+</div>

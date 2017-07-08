@@ -1,0 +1,15 @@
+﻿@{Layout = "Parent";}
+
+<div style="@Model.Styles.StyleContent">
+	<p>Bonjour @Model.FirstName,<br />
+	<a style='@Model.Styles.StyleLink' href='@Model.ContactUrl'>@Model.ContactFirstName @Model.ContactLastName</a> vous suggère de compléter votre profil.</p>
+
+	<div style="border-left:2px solid @Model.Lang.T("AccentColor"); padding-left:5px; margin-bottom:4px">
+		<div>@(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null,Model.Comment).ToString()))</div>
+		<br />
+		<a style='@Model.Styles.StyleLink' href='@Model.CompleteProfileUrl'>Cliquez-ici</a> pour la compléter maintenant et vous montrer sous votre meilleur profil.
+	</div>
+	<br />
+	Bonne journée,<br />
+	L'équipe.
+</div>

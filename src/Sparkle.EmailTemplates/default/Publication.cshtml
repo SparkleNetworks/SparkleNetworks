@@ -1,0 +1,36 @@
+﻿@{Layout = "Parent";}
+@* Razor Include: default._Timeline.cshtml *@
+
+@*{
+    var color = this.Model.Styles.PersonColor;
+    var bgColor = this.Model.Styles.PersonBackground;
+        
+    if(this.Model.WallItem.CompanyId.HasValue)
+    {
+        color = this.Model.Styles.CompanyColor;
+        bgColor = this.Model.Styles.CompanyBackground;
+    }
+    else if(this.Model.Event != null)
+    {
+        color = this.Model.Styles.EventColor;
+    }
+}*@
+
+<div style="@Model.Styles.StyleContent">
+@*<p>Bonjour @Model.FirstName, <br />
+<a style="@Model.Styles.StyleLink" href='@Model.ContactUrl'>@Model.ContactFirstName @Model.ContactLastName</a> @Model.Intro.
+</p>*@
+
+@DisplayTimeline(this.Model.TimelineItem, Model)
+
+
+    <div style="text-align: center">
+        <a style="@Model.Styles.StyleButton" href="@Model.LinkUrl" class="ReplyToTimelineItem Item@(Model.TimelineItem.Id)" name="Item@(Model.TimelineItem.Id)">@Model.LinkName</a>
+    </div>
+    @if (Model.IsReplyToEmailEnabled)
+    { 
+        <p style="@Model.Styles.StyleTour">@Model.Lang.T("Répondez directement à cet email pour que votre message soit publié en tant que commentaire.")</p>
+    }
+</div>
+
+

@@ -1,0 +1,18 @@
+﻿@{Layout = "Parent";}
+@* Razor Include: default._Timeline.cshtml *@
+
+<div style="@Model.Styles.StyleContent">
+@foreach (var item in Model.Groups)
+{
+    <h1 style="@Model.Styles.StyleH1">@item.Group.Name</h1>
+
+    if (item.PendingRequestsCount > 0)
+    {
+        <p>Vous avez @item.PendingRequestsCount demandes d'ajout <a href="@Model.Lang.T("AppDomain")Groups/Requests/@item.Group.Id" style="@this.Model.TrackerFollow">en attente</a> pour ce groupe.</p>
+    }
+
+    @DisplayTimeline(item.Timeline, Model)
+    
+    <br />
+}
+</div>

@@ -1,0 +1,23 @@
+﻿@{Layout = "Parent";}
+
+<div style="@Model.Styles.StyleContent">
+	<p style="@Model.Styles.StyleTour">Bonjour @Model.FirstName,</p>
+@if (Model.Message != null) {
+	@(new RazorEngine.Text.RawString(Html.Markdown(Model.Message).ToString()))
+}else{
+	<p>Vous venez juste de rejoindre le portail communautaire pour les collaborateurs @Model.Lang.T("CurrentPlace").<br />
+	Par quoi voulez-vous commencer ?</p>
+	<ul>
+		<li><a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")Companies">Découvrir les entreprises</a></li>
+		<li><a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")Peoples">Parcourir l'annuaire des personnes</a></li>
+		<li><a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")Events">Consulter l'agenda</a></li>
+		<li><a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")Groups">Rejoindre des groupes</a></li>
+	</ul>
+}
+	<hr style="@Model.Styles.StyleHR" />
+
+	<p style="@Model.Styles.StyleTour">Si vous avez des questions, n'hésitez pas à nous contacter. Nous ferons de notre mieux pour vous aider.<br />
+	Pour vous connecter, utilisez votre adresse <b>email professionnelle</b> ou simplement "<b>@Model.Login</b>".</p>
+
+	<p>Bonne découverte,<br />L'équipe.</p>
+</div>

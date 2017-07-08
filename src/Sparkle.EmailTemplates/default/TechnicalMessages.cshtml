@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "Parent";
+    string sep = "";
+}
+
+<div style="@Model.Styles.StyleContent">
+
+<h2>Messages techniques</h2>
+
+<ul>
+@foreach (var message in Model.Messages)
+{
+    <li>@message</li>
+}
+</ul>
+    
+<h3>Destinataires</h3>
+
+<ul>
+@foreach (var user in Model.Recipients)
+{
+    <li><a style="@Model.Styles.StyleLink" href="@Model.Lang.T("AppDomain")Person/@user.Username">@user.FirstName @user.LastName</a></li>
+}
+</ul>
+
+<hr style="@Model.Styles.StyleHR" />
+</div>

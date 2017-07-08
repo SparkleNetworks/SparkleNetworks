@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "Parent";
+}
+
+<div style="@Model.Styles.StyleContent">
+    <div>
+        <p>Bonjour @Model.FirstName,<br /></p>
+        @if (!Model.Success)
+        {
+            <p>
+                Votre demande pour rejoindre le groupe <span style="font-weight:bold;">@Model.GroupName</span> a été rejetée.<br />
+                Ne désespérez pas ! Vous pouvez toujours rejoindre d'autres groupes ou créer le votre !<br />
+            </p>
+            <div style="text-align:center;"><a style="@Model.Styles.StyleButton" href="@Model.GroupListLink">Voir les groupes.</a></div>
+        }
+        else
+        {
+            <p>
+                Bienvenue dans le groupe <span style="font-weight:bold;">@Model.GroupName</span>, votre demande a été acceptée !<br />
+                Commencez à échanger avec votre nouveau groupe dés à présent !<br />
+            </p>
+            <div style="text-align:center;"><a style="@Model.Styles.StyleButton" href="@Model.GroupLink">@Model.GroupName</a></div>
+        }
+        <br />
+    </div>
+</div>

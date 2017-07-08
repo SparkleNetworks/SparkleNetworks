@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "Parent";
+    string sep = "";
+}
+
+<div style="@Model.Styles.StyleContent">
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Bonjour,")</p>
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T(
+        @"Vous avez demandé à inscrire l'entreprise {0} sur {1}.",
+        Model.Name,
+        Model.Lang.T("AppName"))</p>
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T(@"Votre demande a été refusée.")</p>
+
+
+@if (Model.Reason != null){
+<div style="margin:8px;padding:8px;border: 1px solid #C0C0C0; background:#EEEEEE;">
+<p>@Model.Reason</p>
+</div>
+}else{
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T(@"Le modérateur n'a pas précisé de raison à ce refus. Souvent des entreprises n'appartenant pas à {0} demandent à s'inscrire ; ceci n'est pas autorisé par les conditions d'utilisation.", Model.Lang.T("CurrentPlaceAlone"))</p>
+}
+
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T(@"Si vous pensez que votre entreprise à sa place sur {0}, vous pouvez justifier votre demande sur la page de suivi. Un autre modérateur vérifiera les informations communiquées. ", Model.Lang.T("AppName"))</p>
+    <p style="@Model.Styles.StyleTour">
+        <a href="@Model.Lang.T("AppDomain")Companies/RegistrationRequest/@Model.RequestUniqueId">@Model.Lang.T("Voir la demande d'inscription")</a>.
+    </p>
+
+@*<p>
+    <img src="@Model.Lang.T("AppDomain")Companies/RegistrationRequestEmailPicture/@Model.RequestUniqueId" alt="[image] etat de la demande" />
+</p>*@
+    
+    <p style="@Model.Styles.StyleTour">@Model.Lang.T("Bonne journée.")</p>
+</div>

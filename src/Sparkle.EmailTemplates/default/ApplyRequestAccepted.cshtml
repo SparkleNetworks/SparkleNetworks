@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "Parent";
+    var linkUrl = Model.Data["RequestLink"];
+}
+@* Razor Include: default._Shared.cshtml *@
+
+<div style="text-align:center; background-color: @Model.Styles.PersonColor">
+    <h1 style="text-align:center; padding: 20px 0; font-weight: lighter; color: #fff">@Model.Lang.T("Demande acceptée !")</h1>
+</div>
+
+<div style="@Model.Styles.StyleContent">
+    <p>@Model.Lang.T("Bonjour {0}", Model.Model.UserDataModel.User.FirstName)</p>
+
+    <p>
+        @Model.Lang.T("Merci de l'intérêt que vous portez à notre communauté.")<br />
+        @Model.Lang.T("Votre candidature a été validée !")
+        @Model.Lang.T("Vous pouvez dès maintenant vous connecter.")
+    </p>
+
+    <div style="text-align:center;">
+        <p><a style="@Model.Styles.StyleButton" href="@linkUrl">@Model.Lang.T("Se connecter")</a></p>
+        <p>
+            @Model.Lang.T("Ou copiez ce lien dans votre navigateur")<br />
+            <pre>@linkUrl</pre>
+        </p>
+    </div>
+    <hr style="@Model.Styles.StyleHR" />
+
+    <p>
+        @Model.Lang.T("A bientôt")<br />
+        @Model.Lang.T("L'équipe")
+    </p>
+</div>
