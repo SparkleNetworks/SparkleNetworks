@@ -271,7 +271,6 @@
     <Compile Include="Networks\Timelines\TimelineOwnerChangeModel.cs" />
     <Compile Include="Networks\Places\EditPlaceRequest.cs" />
     <Compile Include="Networks\Places\EditPlaceResult.cs" />
-    <None Include="app.config" />
     <None Include="Networks\SparkleNetworksApplicationConfigurationTree.cs" />
     <None Include="Networks\SparkleNetworksApplicationConfigurationTree.tt.cs">
       <DependentUpon>SparkleNetworksApplicationConfigurationTree.tt</DependentUpon>
