@@ -1,6 +1,11 @@
 ﻿
 namespace Sparkle.Services.Networks.Models.Profile
 {
+    using Sparkle.Entities.Networks;
+    using SrkToolkit.Domain;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class EditProfileFieldsRequest : BaseRequest
     {

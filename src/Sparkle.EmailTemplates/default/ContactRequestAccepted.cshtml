@@ -7,10 +7,17 @@
 </div>
 
 <div style="@Model.Styles.StyleContent">
-	<p>Bonjour @Model.FirstName,<br />
-	Bonne nouvelle, <a style="text-decoration:none; color:@Model.Lang.T("AccentColor");" href="@Model.Lang.T("AppDomain")Person/@Model.Contact.Login">@Model.Contact.FirstName @Model.Contact.LastName</a> a accepté votre demande.</p>
-	<br />
+	<p>Bonjour @Model.FirstName,</p>
 
-	Bonne journée<br />
-	L'équipe.
+    <p></p>
+	    Bonne nouvelle, 
+        <a style="text-decoration:none; color:@Model.Lang.T("AccentColor");" href="@Model.Lang.T("AppDomain")Person/@Model.Contact.Login">@Model.Contact.FirstName @Model.Contact.LastName</a>
+        a accepté votre demande.
+    </p>
+	
+    
+    <p>
+        @Model.Lang.T("A bientôt")<br />
+        @Model.Lang.T("L'équipe")
+    </p>
 </div>

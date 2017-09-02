@@ -68,7 +68,8 @@ namespace Sparkle.EmailTemplates
                     template.AddNamespace("SrkToolkit.Web");
                     template.AddNamespace("Sparkle.Helpers");
 
-                    // those useless invocation make sure all the necessary assemblies are loaded during razor runtime
+                    // those invocations make sure all the necessary assemblies are loaded during razor runtime
+                    // not doing that triggers exceptions
                     // I can't explain this phenomena.
                     System.Web.Mvc.SrkHtmlExtensions.TrimText(null, string.Empty, 1);
                     System.Web.HtmlString htmlString = new System.Web.HtmlString("hello");

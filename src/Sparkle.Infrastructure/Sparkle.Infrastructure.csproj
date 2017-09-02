@@ -86,7 +86,7 @@
     <Compile Include="Contracts\Names.cs" />
     <Compile Include="Crypto\SimpleCrypt.cs" />
     <Compile Include="Crypto\SimpleHash.cs" />
-    <None Include="Crypto\SimpleSecrets.cs" />
+    <Compile Include="Crypto\SimpleSecrets.cs" />
     <Compile Include="Data\AppConfigurationEntry.cs" />
     <Compile Include="Data\CompositeConfigurationRepository.cs" />
     <Compile Include="Data\FileCachedConfigurationFactory.cs" />

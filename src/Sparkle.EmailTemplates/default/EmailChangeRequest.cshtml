@@ -4,7 +4,9 @@
 	<p>Bonjour @Model.FirstName,</p>
     <p>Vous avez demandé un changement d'e-mail le @Model.CreateDateUtc. Si vous n'avez pas fait cette demande, ignorez simplement ce message. Sinon suivez ce lien pour confirmer le changement.</p>
 	<p><a style='@Model.Styles.StyleLink' href='@Model.Link'>@Model.Link</a></p>
-
-	<p>Bonne journée,<br />
-	L'équipe.</p>
+    
+    <p>
+        @Model.Lang.T("A bientôt")<br />
+        @Model.Lang.T("L'équipe")
+    </p>
 </div>

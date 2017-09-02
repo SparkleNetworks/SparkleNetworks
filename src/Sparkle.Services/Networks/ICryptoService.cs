@@ -36,5 +36,22 @@ namespace Sparkle.Services.Networks
         /// <exception cref="InvalidOperationException">Something went wrong</exception>
         /// <returns></returns>
         byte[] ComputeStaticUserHash(string purpose, int userId, DateTime dateUserCreatedUtc);
+
+        /// <summary>
+        /// Encrypts binary data with the specified IV.
+        /// </summary>
+        /// <param name="purpose"></param>
+        /// <param name="iv"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        byte[] EncryptWithIV(string purpose, byte[] data);
+
+        /// <summary>
+        /// Decrypts binary data encrypted with <see cref="EncryptWithIV"/>.
+        /// </summary>
+        /// <param name="purpose"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        byte[] DecryptWithIV(string purpose, byte[] data);
     }
 }

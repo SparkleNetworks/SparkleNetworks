@@ -2,9 +2,12 @@
 
 <div style="@Model.Styles.StyleContent">
 	<p style="@Model.Styles.StyleTour">Bonjour @Model.FirstName,</p>
-@if (Model.Message != null) {
+@if (Model.Message != null)
+{
 	@(new RazorEngine.Text.RawString(Html.Markdown(Model.Message).ToString()))
-}else{
+}
+else
+{
 	<p>Vous venez juste de rejoindre le portail communautaire pour les collaborateurs @Model.Lang.T("CurrentPlace").<br />
 	Par quoi voulez-vous commencer ?</p>
 	<ul>
@@ -19,5 +22,8 @@
 	<p style="@Model.Styles.StyleTour">Si vous avez des questions, n'hésitez pas à nous contacter. Nous ferons de notre mieux pour vous aider.<br />
 	Pour vous connecter, utilisez votre adresse <b>email professionnelle</b> ou simplement "<b>@Model.Login</b>".</p>
 
-	<p>Bonne découverte,<br />L'équipe.</p>
+    <p>
+        @Model.Lang.T("Bonne découverte,")<br />
+        @Model.Lang.T("L'équipe")
+    </p>
 </div>

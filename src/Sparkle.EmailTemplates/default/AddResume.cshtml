@@ -1,11 +1,16 @@
 ﻿@{Layout = "Parent";}
 
-<p>Bonjour @Model.FirstName,</p>
+<div style="@Model.Styles.StyleContent">
+    <p>Bonjour @Model.FirstName,</p>
 
-<p>Nous vous remercions de l'intérêt que vous portez à @Model.Lang.T("CurrentPlaceAlone"). Votre profil a bien été enregistré.<br />
-Après validation par nos équipes il sera diffusé à toutes les entreprises @Model.Lang.T("CurrentPlace") recherchant un profil comme le votre.<br />
-<br />
-Vous pouvez modifier votre profil sur <b><a style="@Model.Styles.StyleLink" target="_blank" href="@Model.Lang.T("AppDomain")WorkHere/Edit/@Model.Id">cette page</a></b> en vous identifiant avec votre adresse email et le code : <b>@Model.Pin</b></p>
+    <p>Nous vous remercions de l'intérêt que vous portez à @Model.Lang.T("CurrentPlaceAlone"). Votre profil a bien été enregistré.<br />
+    Après validation par nos équipes il sera diffusé à toutes les entreprises @Model.Lang.T("CurrentPlace") recherchant un profil comme le votre.</p>
 
-<br />
-A très bientôt,<br />
+    <p>
+    Vous pouvez modifier votre profil sur <b><a style="@Model.Styles.StyleLink" target="_blank" href="@Model.Lang.T("AppDomain")WorkHere/Edit/@Model.Id">cette page</a></b> en vous identifiant avec votre adresse email et le code : <b>@Model.Pin</b></p>
+
+    <p>
+        @Model.Lang.T("A bientôt")<br />
+        @Model.Lang.T("L'équipe")
+    </p>
+</div>

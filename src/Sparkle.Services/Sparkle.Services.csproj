@@ -453,6 +453,7 @@
     <None Include="packages.config" />
     <Compile Include="Networks\IWallCommentsService.cs" />
     <Compile Include="Networks\IWallService.cs" />
+    <Compile Include="Networks\Users\ValidateUserToken.cs" />
     <Compile Include="Objects\NewsletterSubscriber.cs" />
     <Compile Include="Objects\WeeklyMailSubscriber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

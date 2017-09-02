@@ -1,12 +1,15 @@
 ﻿@{Layout = "Parent";}
 
-<p>Bonjour,</p>
+<div style="@Model.Styles.StyleContent">
+    <p>Bonjour,</p>
 
-<p>Vous avez reçu une réponse de la société @Model.FromCompanyName envoyée par @Model.FromUserName</a>.</p>
+    <p>Vous avez reçu une réponse de la société @Model.FromCompanyName envoyée par @Model.FromUserName</a>.</p>
 
-<p>@(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null,Model.Message).ToString()))</p>
-<p><a href="@Model.ResponseUrl" target="_blank" style="color: @Model.Lang.T("AccentColor");font-weight:normal; text-decoration:none;">Répondre</a></p>
+    <p>@(new RazorEngine.Text.RawString(Sparkle.Helpers.HtmlExtention.Markdown(null,Model.Message).ToString()))</p>
+    <p><a href="@Model.ResponseUrl" target="_blank" style="color: @Model.Lang.T("AccentColor");font-weight:normal; text-decoration:none;">Répondre</a></p>
 
-<br />
-Bonne journée,<br />
-@Model.Lang.T("AppName")
+    <p>
+        @Model.Lang.T("A bientôt")<br />
+        @Model.Lang.T("L'équipe")
+    </p>
+</div>

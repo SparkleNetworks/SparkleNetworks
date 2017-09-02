@@ -1,7 +1,12 @@
 ﻿
 namespace Sparkle.Services.Networks.Mocks
 {
+    using Sparkle.Data.Networks;
+    using Sparkle.Entities.Networks;
+    using Sparkle.Services.Networks.Models;
+    using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
 
     /// <summary>
     /// Basic implementation of <see cref="IServiceFactory"/> for unit tests.
