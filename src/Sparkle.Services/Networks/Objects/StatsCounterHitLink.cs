@@ -13,7 +13,7 @@ namespace Sparkle.Services.Networks.Objects
     public class StatsCounterHitLink
     {
         // TODO: [OSP-Security] StatsCounterHitLink.statsTrackingMotDePasse: NO. 
-        private static readonly string statsTrackingMotDePasse = "12IUGBH345765ghfghv768678IUHGYUT4567NJHGYFTYCGVHJB3456iuytfdfvghikjghkjbghkjgJHBVFDErtyuIJHGVFDe456789876rf";
+        private static readonly string statsTrackingMotDePasse = "hLW3pfyorRuXcEdM5Ey6BThibLbttXPmyHwnvfhwzkuFdxs6m8dXRWApKWfcrBWwZbb8w2hvomvpj7n87APL9nomKBgzXx4qqWwYnXQGdRTqLgZEkTmMrJvtWHS6kRAF";
 
         [Obsolete("For deserialization only")]
         public StatsCounterHitLink()

@@ -151,7 +151,7 @@ namespace Sparkle.Infrastructure {
         /// <summary>
         /// The Google Analytics account.
         /// </summary>
-        // default value: UA-27693530-1
+        // default value: UA-123456789-1
         public string AccountId {
           get { return ConfigTree.GetValue<string>(this.values, "Externals.GoogleAnalytics.AccountId"); }
         }
@@ -304,7 +304,7 @@ namespace Sparkle.Infrastructure {
         /// <summary>
         /// Consumer Key for Twitter account which will be used to hold the list of accounts to sync.
         /// </summary>
-        // default value: 57DeEV5XtHGTQrS4J6RA
+        // default value: xxxxxxxxxx
         public string TwitterConsumerKey {
           get { return ConfigTree.GetValue<string>(this.values, "Externals.Twitter.TwitterConsumerKey"); }
         }
@@ -312,7 +312,7 @@ namespace Sparkle.Infrastructure {
         /// <summary>
         /// Consumer Secret key for Twitter account which will be used to hold the list of accounts to sync.
         /// </summary>
-        // default value: XMG2yrnQ3RzWkojcUBlYLsqfEQcH1ZTAb31gKrq3Y
+        // default value: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         public string TwitterConsumerSecret {
           get { return ConfigTree.GetValue<string>(this.values, "Externals.Twitter.TwitterConsumerSecret"); }
         }
@@ -746,7 +746,7 @@ namespace Sparkle.Infrastructure {
         /// <summary>
         /// Contains to API key to use Mapbox.
         /// </summary>
-        // default value: sparklenetworks1.ihhk2c3g
+        // default value: 
         public string MapboxApiKey {
           get { return ConfigTree.GetValue<string>(this.values, "Features.Places.MapboxApiKey"); }
         }

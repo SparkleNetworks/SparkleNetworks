@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SrkToolkit.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
-      <HintPath>..\packages\SrkToolkit.Common.1.1.131\lib\net45\SrkToolkit.Common.dll</HintPath>
+      <HintPath>..\packages\SrkToolkit.Common.1.1.135\lib\net45\SrkToolkit.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -187,6 +187,7 @@
     <Compile Include="Networks\TouchCommunicationRepository.cs" />
     <Compile Include="Networks\WallCommentsRepository.cs" />
     <Compile Include="Networks\WallRepository.cs" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
@@ -194,7 +195,6 @@
     <None Include="Networks\Model\NetworksModel.edmx.diagram">
       <DependentUpon>NetworksModel.edmx</DependentUpon>
     </None>
-    <None Include="packages.config" />
     <None Include="Networks\EntityRepositoryFactory.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EntityRepositoryFactory.tt.cs</LastGenOutput>

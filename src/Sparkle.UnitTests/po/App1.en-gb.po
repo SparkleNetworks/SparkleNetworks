@@ -1,0 +1,36 @@
+﻿#: src/name.c:36
+msgid "My name is %s.\n"
+msgstr "Je m'appelle %s.\n"
+
+#: src/name.c:122
+msgid "Lang"
+msgstr "Lang: English UK"
+
+#: src/name.c:122
+msgid "Lang1"
+msgstr "App1 {0} en-gb"
+
+#: src/name.c:122
+msgid "Lang {0}"
+msgstr "App1 {0} en-gb"
+
+#: src/name.c:122
+msgid "Open contact"
+msgstr "Open contact (uk)"
+
+msgid "Open contacts"
+msgstr "Open contacts (uk)"
+
+#: src/name.c:122
+msgid "Open {0} contact"
+msgstr "Open {0} contact (uk)"
+
+msgid "Open {0} contacts"
+msgstr "Open {0} contacts (uk)"
+
+#: src/name.c:122
+msgid "Open {0} contact {1}"
+msgstr "Open {0} contact {1} (uk)"
+
+msgid "Open {0} contacts {1}"
+msgstr "Open {0} contacts {1} (uk)"

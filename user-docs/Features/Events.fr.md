@@ -23,57 +23,7 @@ Le formulaire va demander des informations sur l'événement à créer.
 
 Vous pourrez changer les détails de l'événement tant qu'il n'est pas révolu. Passé la date de fin, vous ne pourrez plus le modifier.
 
-### Nom et description
-
-Le nom de l'événement et le début de sa description vont apparaître à de multiples endroits. Assurez-vous que le nom est pertinent et que le début de la description contient quelques phrases d'accroche. 
-
-### Date et heure de début et de fin
-
-Il faut définir quand l'événement va survenir. Cela va aider le système à :
-
-* n'afficher que les événements futurs dans les listes, 
-* afficher les événements proches dans la newsletter et sur la page d'accueil, 
-* permettre l'accès à l'historique des événements sur la page dédiée.
-
-Vérifiez que l'heure de l'événement correspond au fuseau horaire en fin de formulaire. 
-
-### Catégorie
-
-Conférence, afterwork, salon, sortie, atelier, rencontre sportive, formation... La catégorie va aider les membres de la communauté à déterminer le type de rencontre.
-
-### Audience ("pour")
-
-Choisissez qui pourra voir l'événement :
-
-* seulement vous, invitez les personnes individuellement ;
-* un de vos [groupes](Groups.fr.md) ;
-* le réseau complet (tous les membres) ;
-* les membres de votre [entreprise](Companies.fr.md) ;
-* tout le monde, incluant les membres et les visiteurs anonymes.
-
-### Site web et tickets
-
-**Si votre événement nécessite l'acquisition ou l'achat d'un ticket d'entrée, il est important de spécifier l'adresse de la page permettant l'obtention du ticket.** La fiche comportera alors un bouton de réservation. En cas d'oubli, les utilisateurs intéressés risquent de se présenter à l'événement sans ticket car il n'aura pas été mentionné clairement qu'il fallait réserver. Ne pas hésiter à rappeler la nécessité de l'achat d'un ticket dans la description de l'événement.
-
-![Screenshot Obtenir des tickets](gettickets.fr.png)
-
-Il est possible de spécifier l'adresse d'un site web pour obtenir plus d'informations sur l'événement.
-
-### Lieu
-
-Choisir le lieu affichera une petite carte dans la fiche de l'événement. Cela aidera les membres à trouver les événements à proximité.
-
-Le réseau comporte une liste de [lieux](Places.fr.md) qui sont pertinents pour la communauté. Lors du choix du lieu, cette liste apparaît. Si le lieu n'existe pas, il suffit de faire une recherche : des descriptifs de lieux sont proposés par nos partenaires.
-
-Lors de la sélection d'un lieu qui n'existe pas dans le réseau, le descriptif du lieu est automatiquement importé depuis la fiche du partenaire. Cela permet d'éviter la saisie manuelle du descriptif du lieu. Il est aussi possible de créer un nouveau lieu manuellement.   
-
-### Fuseau horaire
-
-Ce choix est présélectionné sur le fuseau du réseau. Pour créer un événement dans un autre fuseau horaire, il suffit de sélectionner le bon fuseau et de saisir l'heure de l'événement dans le fuseau correspondant.
-
-Les dates et heures sur le réseau s'affichent toujours dans votre fuseau horaire préféré ou celui du réseau si nous n'avez rien choisi. Le fuseau courant est rappelé en bas de toutes les pages du site.
-
-
+En savoir plus sur la [création d'un événement](Events/Create.fr.md).
 
 
 La page de l'événement

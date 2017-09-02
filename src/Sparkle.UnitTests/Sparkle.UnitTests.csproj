@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FAB66EF2-ACC7-4E27-BD81-9BB4C9F579A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sparkle.UnitTests</RootNamespace>
+    <AssemblyName>Sparkle.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <WebGreaseLibPath>..\..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.1.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.1.1\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Gettext.Cs">
+      <HintPath>..\..\Public\Resources\NET40\Gettext.Cs.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq, Version=4.7.99.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.99\lib\net45\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SrkToolkit.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SrkToolkit.Common.1.1.135\lib\net45\SrkToolkit.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SrkToolkit.Domain, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SrkToolkit.Domain.1.1.129\lib\net45\SrkToolkit.Domain.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SrkToolkit.Domain.AspMvc4, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SrkToolkit.Domain.AspMvc4.1.1.130\lib\net45\SrkToolkit.Domain.AspMvc4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SrkToolkit.Web.Mvc4, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SrkToolkit.Web.AspMvc4.1.1.127\lib\net45\SrkToolkit.Web.Mvc4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.4.0.40804.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiKeyPayloadTests.cs" />
+    <Compile Include="AuthorizeByNetworkAccessAttributeTests.cs" />
+    <Compile Include="AuthorizeUserAttributeTests.cs" />
+    <Compile Include="Commands\CsvUserImportTests.cs" />
+    <Compile Include="Crypto\SimpleHashTests.cs" />
+    <Compile Include="DefaultEmailTemplateProviderTests.cs" />
+    <Compile Include="Fakes\FakeLogger.cs" />
+    <Compile Include="JsObscureStringTransform.cs" />
+    <Compile Include="Mocks\SimpleEmailModel.cs" />
+    <Compile Include="Mocks\TestStrings.cs" />
+    <Compile Include="Models\ProfileFieldModelTests.cs" />
+    <Compile Include="NetworksEmailTests.cs" />
+    <Compile Include="NetworkServices\CompanyServiceTests.cs" />
+    <Compile Include="NetworkServices\CryptoServiceTests.cs" />
+    <Compile Include="NiceDateTests.cs" />
+    <None Include="PhoneNumberAttributeTests.cs" />
+    <Compile Include="PotironRegexTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CalendarKeyTests.cs" />
+    <Compile Include="Stubs\BasicHttpContext.cs" />
+    <Compile Include="Stubs\BasicHttpSessionState.cs" />
+    <Compile Include="UrlAttributeTests.cs" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="StaticDataTests.cs" />
+    <Compile Include="SimpleCryptTests.cs" />
+    <Compile Include="StringsTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="po\App1.de.po" />
+    <None Include="po\App1.en-gb.po" />
+    <None Include="po\App1.fr-fr.po" />
+    <None Include="po\App1.po" />
+    <None Include="po\default.de.po" />
+    <None Include="po\default.en-gb.po" />
+    <None Include="po\default.fr-fr.po" />
+    <None Include="po\default.po" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Files\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\External\vCalendar.Mvc\vCalendar.Mvc.csproj">
+      <Project>{31b716ac-4e7c-4d9e-866d-d56b784dc6d8}</Project>
+      <Name>vCalendar.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\External\vCalendar\vCalendar.csproj">
+      <Project>{1427842c-da88-4da6-9f4f-41fa1e5d5173}</Project>
+      <Name>vCalendar</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Common\Sparkle.Common.csproj">
+      <Project>{e2445875-e89b-403d-8721-a97e120b01d5}</Project>
+      <Name>Sparkle.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Data\Sparkle.Data.csproj">
+      <Project>{f3bbc3e7-ba09-43f4-a32c-9d77a7e0d4be}</Project>
+      <Name>Sparkle.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Entities\Sparkle.Entities.csproj">
+      <Project>{f2341891-7dbe-4a69-a90b-641e4663e24d}</Project>
+      <Name>Sparkle.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Infrastructure\Sparkle.Infrastructure.csproj">
+      <Project>{63efbc4b-cb11-4539-b999-960c1209e696}</Project>
+      <Name>Sparkle.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Lang\Sparkle.Lang.csproj">
+      <Project>{7fb6dda7-7def-4527-8894-be73df0857b0}</Project>
+      <Name>Sparkle.Lang</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Services\Sparkle.Services.csproj">
+      <Project>{949101f1-e574-4a21-a93b-3fbde27875bb}</Project>
+      <Name>Sparkle.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.WebBase\Sparkle.WebBase.csproj">
+      <Project>{95c75988-47bc-45d6-9e24-172431d49f20}</Project>
+      <Name>Sparkle.WebBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Commands\Sparkle.Commands.csproj">
+      <Project>{9a6332f5-d982-4c4d-84ed-3a257e41e79e}</Project>
+      <Name>Sparkle.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Data.Entity\Sparkle.Data.Entity.csproj">
+      <Project>{a95c5c44-350d-4c57-8454-128516423a20}</Project>
+      <Name>Sparkle.Data.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.EmailTemplates\Sparkle.EmailTemplates.csproj">
+      <Project>{d82f5d27-7968-47b6-95f8-de7593426341}</Project>
+      <Name>Sparkle.EmailTemplates</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Helpers\Sparkle.Helpers.csproj">
+      <Project>{e6305d03-84b6-4752-a4f4-77d5ffeef9f4}</Project>
+      <Name>Sparkle.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Services.Main\Sparkle.Services.Main.csproj">
+      <Project>{d35072f1-8e7c-4a30-8714-25d4d15833ad}</Project>
+      <Name>Sparkle.Services.Main</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Web\Sparkle.Web.csproj">
+      <Project>{a7fd77d0-8900-4386-bf36-ea2bbdb603da}</Project>
+      <Name>Sparkle.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

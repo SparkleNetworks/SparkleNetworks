@@ -1,0 +1,11 @@
+﻿#: src/name.c:36
+msgid "My name is %s.\n"
+msgstr "Je m'appelle %s.\n"
+
+#: src/name.c:122
+msgid "Lang"
+msgstr "Fallback: German"
+
+#: src/name.c:122
+msgid "LangF"
+msgstr "Fallback: German"
