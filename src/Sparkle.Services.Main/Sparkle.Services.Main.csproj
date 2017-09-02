@@ -201,7 +201,6 @@
     <Compile Include="Networks\NotificationsService.cs" />
     <Compile Include="Networks\NumbersService.cs" />
     <Compile Include="Networks\RegisterRequestsService.cs" />
-    <Compile Include="Networks\RequestsForProposalService.cs" />
     <Compile Include="Networks\SocialNetworkCompanySubscriptionsService.cs" />
     <Compile Include="Networks\SocialNetworkConnectionsService.cs" />
     <Compile Include="Networks\SocialNetworkStatesService.cs" />
@@ -237,8 +236,6 @@
     <Compile Include="Networks\SeekFriendsService.cs" />
     <Compile Include="Networks\ServiceBase.cs" />
     <Compile Include="Networks\SkillsService.cs" />
-    <Compile Include="Networks\TeamsMembersService.cs" />
-    <Compile Include="Networks\TeamsService.cs" />
     <Compile Include="Networks\TouchCommunicationItemsService.cs" />
     <Compile Include="Networks\TouchCommunicationsService.cs" />
     <Compile Include="Networks\WallCommentsService.cs" />

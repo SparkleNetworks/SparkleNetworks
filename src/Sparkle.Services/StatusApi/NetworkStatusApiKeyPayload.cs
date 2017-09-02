@@ -10,6 +10,9 @@ namespace Sparkle.Services.StatusApi
     using System.Text;
     using System.Web;
 
+    /// <summary>
+    /// ApiKeyPayload for the STATUS website's API.
+    /// </summary>
     public class NetworkStatusApiKeyPayload
     {
         public const string ApiKeyHeaderName = "X-SparkleStatus-Key";

@@ -350,18 +350,12 @@
     <Compile Include="Networks\IInvitedService.cs" />
     <Compile Include="Networks\IJobService.cs" />
     <Compile Include="Networks\ILikesService.cs" />
-    <Compile Include="Networks\ILinksService.cs" />
-    <Compile Include="Networks\IListsService.cs" />
     <Compile Include="Networks\ILiveService.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="Networks\ILostItemsService.cs" />
-    <Compile Include="Networks\IMembersService.cs" />
-    <Compile Include="Networks\IMenusPlanningService.cs" />
-    <Compile Include="Networks\IMenusService.cs" />
     <Compile Include="Networks\INetworksService.cs" />
     <Compile Include="Networks\IPeopleVisitsService.cs" />
     <Compile Include="Networks\IRegisterRequestsService.cs" />
-    <Compile Include="Networks\IRequestsForProposalService.cs" />
     <Compile Include="Networks\IServiceFactory.cs" />
     <Compile Include="Networks\ISocialNetworkCompanySubscriptionsService.cs" />
     <Compile Include="Networks\ISocialNetworkConnectionsService.cs" />
@@ -420,16 +414,10 @@
     <Compile Include="Networks\IPeoplesInterestsService.cs" />
     <Compile Include="Networks\IPeoplesRecreationsService.cs" />
     <Compile Include="Networks\IPeoplesSkillsService.cs" />
-    <Compile Include="Networks\IPicturesService.cs" />
     <Compile Include="Networks\IPlacesCategoriesService.cs" />
     <Compile Include="Networks\IPlacesHistoryService.cs" />
     <Compile Include="Networks\IPlacesService.cs" />
-    <Compile Include="Networks\IPollsAnswersService.cs" />
-    <Compile Include="Networks\IPollsChoicesService.cs" />
-    <Compile Include="Networks\IPollsService.cs" />
     <Compile Include="Networks\IPrivateMessageService.cs" />
-    <Compile Include="Networks\IProjectsMembersService.cs" />
-    <Compile Include="Networks\IProjectsService.cs" />
     <Compile Include="Networks\IRecreationsService.cs" />
     <Compile Include="Networks\IRelationshipService.cs" />
     <Compile Include="Networks\ISeekFriendsService.cs" />
@@ -440,8 +428,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Networks\ISkillsService.cs" />
-    <Compile Include="Networks\ITeamsMembersService.cs" />
-    <Compile Include="Networks\ITeamsService.cs" />
     <None Include="Networks\SparkleNetworksApplicationConfigurationTree.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SparkleNetworksApplicationConfigurationTree.tt.cs</LastGenOutput>

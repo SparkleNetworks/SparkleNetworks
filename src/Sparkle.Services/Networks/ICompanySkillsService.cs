@@ -5,6 +5,9 @@ namespace Sparkle.Services.Networks
     using System.Collections.Generic;
     using Sparkle.Entities.Networks;
 
+    /// <summary>
+    /// THIS IS PART OF TAGS V1 PACKAGE. THIS HAS TO BE REMOVED.
+    /// </summary>
     public interface ICompanySkillsService
     {
         /// <summary>

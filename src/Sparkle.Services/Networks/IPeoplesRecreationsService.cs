@@ -5,6 +5,9 @@ using Sparkle.Services.Networks.Models.Tags;
 
 namespace Sparkle.Services.Networks
 {
+    /// <summary>
+    /// THIS IS PART OF TAGS V1 PACKAGE. THIS HAS TO BE REMOVED.
+    /// </summary>
     public interface IPeoplesRecreationsService
     {
         void DeletePeoplesSkill(UserRecreation item);

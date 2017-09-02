@@ -35,13 +35,10 @@ namespace Sparkle.Services.Networks
 		IActivitiesService                        Activities                        { get; }
 		IAdsCategoriesService                     AdsCategories                     { get; }
 		IAdsService                               Ads                               { get; }
-		IAlbumsService                            Albums                            { get; }
 		IApiKeysService                           ApiKeys                           { get; }
 		IBuildingService                          Building                          { get; }
-		ICareerOpportunitiesService               CareerOpportunities               { get; }
 		IClubsService                             Clubs                             { get; }
 		ICompaniesVisitsService                   CompaniesVisits                   { get; }
-		ICompanyAdminService                      CompanyAdmin                      { get; }
 		ICompanyContactsService                   CompanyContacts                   { get; }
 		ICompanyRelationshipsService              CompanyRelationships              { get; }
 		ICompanyService                           Company                           { get; }
@@ -74,13 +71,8 @@ namespace Sparkle.Services.Networks
 		IInvitedService                           Invited                           { get; }
 		IJobService                               Job                               { get; }
 		ILikesService                             Likes                             { get; }
-		ILinksService                             Links                             { get; }
-		IListsService                             Lists                             { get; }
 		ILiveService                              Live                              { get; }
 		ILostItemsService                         LostItems                         { get; }
-		IMembersService                           Members                           { get; }
-		IMenusPlanningService                     MenusPlanning                     { get; }
-		IMenusService                             Menus                             { get; }
 		INetworksService                          Networks                          { get; }
 		INotificationsService                     Notifications                     { get; }
 		INumbersService                           Numbers                           { get; }
@@ -90,21 +82,14 @@ namespace Sparkle.Services.Networks
 		IPeoplesRecreationsService                PeoplesRecreations                { get; }
 		IPeoplesSkillsService                     PeoplesSkills                     { get; }
 		IPeopleVisitsService                      PeopleVisits                      { get; }
-		IPicturesService                          Pictures                          { get; }
 		IPlacesCategoriesService                  PlacesCategories                  { get; }
 		IPlacesHistoryService                     PlacesHistory                     { get; }
 		IPlacesService                            Places                            { get; }
-		IPollsAnswersService                      PollsAnswers                      { get; }
-		IPollsChoicesService                      PollsChoices                      { get; }
-		IPollsService                             Polls                             { get; }
 		IPrivateMessageService                    PrivateMessage                    { get; }
 		IProfileFieldsService                     ProfileFields                     { get; }
-		IProjectsMembersService                   ProjectsMembers                   { get; }
-		IProjectsService                          Projects                          { get; }
 		IRecreationsService                       Recreations                       { get; }
 		IRegisterRequestsService                  RegisterRequests                  { get; }
 		IRelationshipService                      Relationship                      { get; }
-		IRequestsForProposalService               RequestsForProposal               { get; }
 		IResumeSkillsService                      ResumeSkills                      { get; }
 		IResumesService                           Resumes                           { get; }
 		ISeekFriendsService                       SeekFriends                       { get; }
@@ -117,8 +102,6 @@ namespace Sparkle.Services.Networks
 		ISubscriptionsService                     Subscriptions                     { get; }
 		ISubscriptionTemplatesService             SubscriptionTemplates             { get; }
 		ITagsService                              Tags                              { get; }
-		ITeamsMembersService                      TeamsMembers                      { get; }
-		ITeamsService                             Teams                             { get; }
 		ITextService                              Text                              { get; }
 		ITouchCommunicationItemsService           TouchCommunicationItems           { get; }
 		ITouchCommunicationsService               TouchCommunications               { get; }
@@ -155,13 +138,10 @@ namespace Sparkle.Services.Networks.Mocks
 		public IActivitiesService                        Activities                        { get; set; }
 		public IAdsCategoriesService                     AdsCategories                     { get; set; }
 		public IAdsService                               Ads                               { get; set; }
-		public IAlbumsService                            Albums                            { get; set; }
 		public IApiKeysService                           ApiKeys                           { get; set; }
 		public IBuildingService                          Building                          { get; set; }
-		public ICareerOpportunitiesService               CareerOpportunities               { get; set; }
 		public IClubsService                             Clubs                             { get; set; }
 		public ICompaniesVisitsService                   CompaniesVisits                   { get; set; }
-		public ICompanyAdminService                      CompanyAdmin                      { get; set; }
 		public ICompanyContactsService                   CompanyContacts                   { get; set; }
 		public ICompanyRelationshipsService              CompanyRelationships              { get; set; }
 		public ICompanyService                           Company                           { get; set; }
@@ -194,13 +174,8 @@ namespace Sparkle.Services.Networks.Mocks
 		public IInvitedService                           Invited                           { get; set; }
 		public IJobService                               Job                               { get; set; }
 		public ILikesService                             Likes                             { get; set; }
-		public ILinksService                             Links                             { get; set; }
-		public IListsService                             Lists                             { get; set; }
 		public ILiveService                              Live                              { get; set; }
 		public ILostItemsService                         LostItems                         { get; set; }
-		public IMembersService                           Members                           { get; set; }
-		public IMenusPlanningService                     MenusPlanning                     { get; set; }
-		public IMenusService                             Menus                             { get; set; }
 		public INetworksService                          Networks                          { get; set; }
 		public INotificationsService                     Notifications                     { get; set; }
 		public INumbersService                           Numbers                           { get; set; }
@@ -210,21 +185,14 @@ namespace Sparkle.Services.Networks.Mocks
 		public IPeoplesRecreationsService                PeoplesRecreations                { get; set; }
 		public IPeoplesSkillsService                     PeoplesSkills                     { get; set; }
 		public IPeopleVisitsService                      PeopleVisits                      { get; set; }
-		public IPicturesService                          Pictures                          { get; set; }
 		public IPlacesCategoriesService                  PlacesCategories                  { get; set; }
 		public IPlacesHistoryService                     PlacesHistory                     { get; set; }
 		public IPlacesService                            Places                            { get; set; }
-		public IPollsAnswersService                      PollsAnswers                      { get; set; }
-		public IPollsChoicesService                      PollsChoices                      { get; set; }
-		public IPollsService                             Polls                             { get; set; }
 		public IPrivateMessageService                    PrivateMessage                    { get; set; }
 		public IProfileFieldsService                     ProfileFields                     { get; set; }
-		public IProjectsMembersService                   ProjectsMembers                   { get; set; }
-		public IProjectsService                          Projects                          { get; set; }
 		public IRecreationsService                       Recreations                       { get; set; }
 		public IRegisterRequestsService                  RegisterRequests                  { get; set; }
 		public IRelationshipService                      Relationship                      { get; set; }
-		public IRequestsForProposalService               RequestsForProposal               { get; set; }
 		public IResumeSkillsService                      ResumeSkills                      { get; set; }
 		public IResumesService                           Resumes                           { get; set; }
 		public ISeekFriendsService                       SeekFriends                       { get; set; }
@@ -237,8 +205,6 @@ namespace Sparkle.Services.Networks.Mocks
 		public ISubscriptionsService                     Subscriptions                     { get; set; }
 		public ISubscriptionTemplatesService             SubscriptionTemplates             { get; set; }
 		public ITagsService                              Tags                              { get; set; }
-		public ITeamsMembersService                      TeamsMembers                      { get; set; }
-		public ITeamsService                             Teams                             { get; set; }
 		public ITextService                              Text                              { get; set; }
 		public ITouchCommunicationItemsService           TouchCommunicationItems           { get; set; }
 		public ITouchCommunicationsService               TouchCommunications               { get; set; }

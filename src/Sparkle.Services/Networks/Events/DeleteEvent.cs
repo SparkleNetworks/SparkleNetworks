@@ -1,12 +1,12 @@
 ﻿
 namespace Sparkle.Services.Networks.Events
 {
+    using Sparkle.Entities.Networks;
+    using SrkToolkit.Domain;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using Sparkle.Entities.Networks;
-    using SrkToolkit.Domain;
 
     public class DeleteEventRequest : BaseRequest
     {

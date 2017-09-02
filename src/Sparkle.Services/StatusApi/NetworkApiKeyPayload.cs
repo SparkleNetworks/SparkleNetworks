@@ -10,6 +10,9 @@ namespace Sparkle.Services.StatusApi
     using System.Text;
     using System.Web;
 
+    /// <summary>
+    /// ApiKeyPayload for the NetworkRootApi and ClientRootApi.
+    /// </summary>
     public class NetworkApiKeyPayload
     {
         public const string NetworkNameHeaderName = "X-SparkleNetworksApi-NetworkName";
@@ -80,70 +83,6 @@ namespace Sparkle.Services.StatusApi
         public string Content { get; set; }
 
         public Guid? ClientRequestId { get; set; }
-
-        [Obsolete("What is that?")]
-        public bool Verify(string key, string secret, DateTime now)
-        {
-            if (string.IsNullOrEmpty(key))
-                throw new ArgumentException("The value cannot be empty", "key");
-            if (string.IsNullOrEmpty(secret))
-                throw new ArgumentException("The value cannot be empty", "secret");
-            if (now.Kind != DateTimeKind.Utc)
-                throw new ArgumentException("The now DateTime.Kind must be UTC", "now");
-
-            this.VerificationErrors = new List<KeyValuePair<string, string>>();
-
-            DateTime specifiedTime;
-            if (!DateTime.TryParseExact(this.Time, "o", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal, out specifiedTime))
-            {
-                this.AddVerificationErrors("InvalidTime", "The specified time format is not valid.");
-                return false;
-            }
-
-            var minTime = now.AddMinutes(-10);
-            if (specifiedTime < minTime)
-            {
-                this.AddVerificationErrors("InvalidTime", "The specified time is too far in the past.");
-                return false;
-            }
-
-            var maxTime = now.AddMinutes(10);
-            if (maxTime < specifiedTime)
-            {
-                this.AddVerificationErrors("InvalidTime", "The specified time is too far in the future.");
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(this.Key))
-            {
-                this.AddVerificationErrors("MissingKey", "The Key is missing in '" + ApiKeyHeaderName + "'.");
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(this.Hash))
-            {
-                this.AddVerificationErrors("MissingHash", "The Hash is missing in '" + HashHeaderName + "'.");
-                return false;
-            }
-
-            var computed = this.ComputeHash(key, secret);
-            if (this.IsVerified = computed.Equals(this.Hash, StringComparison.OrdinalIgnoreCase))
-            {
-            }
-            else
-            {
-                this.AddVerificationErrors("InvalidHash", "The Hash is wrong.");
-            }
-
-            return this.IsVerified;
-        }
-
-        [Obsolete("What is that?")]
-        public string ComputeHash(string secret)
-        {
-            var value = this.ComputeHash(this.Key, secret);
-            return value;
-        }
 
         private void AddVerificationErrors(string p1, string p2)
         {

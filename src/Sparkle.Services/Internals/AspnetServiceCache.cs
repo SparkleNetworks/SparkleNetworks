@@ -7,6 +7,8 @@ namespace Sparkle.Services.Internals
     using System.Linq;
     using System.Web.Caching;
 
+    // TODO: this is not the right place for this class and the associated references. move to webbase?
+
     /// <summary>
     /// Allows usage of the ASP.NET cache objet as global service cache.
     /// </summary>

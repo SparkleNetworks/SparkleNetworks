@@ -1,19 +1,19 @@
 ﻿
 namespace Sparkle.Services.Main.Networks
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using Sparkle.Data.Filters;
     using Sparkle.Data.Networks;
     using Sparkle.Entities.Networks;
+    using Sparkle.Infrastructure;
     using Sparkle.Services.Networks;
-    using System.Collections;
+    using Sparkle.Services.Networks.Lang;
     using Sparkle.Services.Networks.Models.Tags;
     using Sparkle.Services.Networks.Tags;
-    using Sparkle.Services.Networks.Lang;
     using SrkToolkit.Domain;
-    using Sparkle.Infrastructure;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// THIS IS PART OF TAGS V1 PACKAGE. THIS HAS TO BE REMOVED.

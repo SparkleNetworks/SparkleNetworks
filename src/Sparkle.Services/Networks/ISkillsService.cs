@@ -7,6 +7,9 @@ namespace Sparkle.Services.Networks
     using Sparkle.Services.Networks.Models.Tags;
     using Sparkle.Services.Networks.Tags;
 
+    /// <summary>
+    /// THIS IS PART OF TAGS V1 PACKAGE. THIS HAS TO BE REMOVED.
+    /// </summary>
     public interface ISkillsService
     {
         Skill Insert(Skill item);

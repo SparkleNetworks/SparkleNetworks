@@ -1,13 +1,13 @@
 ﻿
 namespace Sparkle.Services.Networks.Events
 {
+    using Sparkle.Entities.Networks;
+    using Sparkle.Services.Networks.Models;
+    using SrkToolkit.Domain;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using Sparkle.Entities.Networks;
-    using Sparkle.Services.Networks.Models;
-    using SrkToolkit.Domain;
 
     public class InviteToEventRequest : BaseRequest
     {

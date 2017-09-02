@@ -18,8 +18,6 @@ namespace Sparkle.Services.Networks
         IList<Network> GetAllActive();
 
         Network GetById(int networkId);
-        
-        //NetworkType GetNetworkType(int p);
 
         NetworkType GetNetworksType(int networkId);
 

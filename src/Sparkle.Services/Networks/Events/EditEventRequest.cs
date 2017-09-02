@@ -1,18 +1,18 @@
 ﻿
 namespace Sparkle.Services.Networks.Events
 {
+    using Sparkle.Common.DataAnnotations;
+    using Sparkle.Entities.Networks;
+    using Sparkle.Services.Networks.Lang;
+    using Sparkle.Services.Networks.Models;
+    using Sparkle.Services.Resources;
+    using SrkToolkit.DataAnnotations;
+    using SrkToolkit.Domain;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Text;
-    using Sparkle.Common.DataAnnotations;
-    using Sparkle.Entities.Networks;
-    using Sparkle.Services.Networks.Models;
-    using Sparkle.Services.Resources;
-    using SrkToolkit.DataAnnotations;
-    using SrkToolkit.Domain;
-    using Sparkle.Services.Networks.Lang;
 
     public class EditEventRequest : BaseRequest
     {

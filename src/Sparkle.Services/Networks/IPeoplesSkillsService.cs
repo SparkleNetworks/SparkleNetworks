@@ -6,6 +6,9 @@ namespace Sparkle.Services.Networks
     using Sparkle.Entities.Networks;
     using Sparkle.Services.Networks.Models.Tags;
 
+    /// <summary>
+    /// THIS IS PART OF TAGS V1 PACKAGE. THIS HAS TO BE REMOVED.
+    /// </summary>
     public interface IPeoplesSkillsService
     {
         /// <summary>

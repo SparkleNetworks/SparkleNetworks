@@ -74,6 +74,7 @@ namespace Sparkle.Services.Networks.Tags.EntityWithTag
 
         private SqlEntityWithTag GetEntityTag(IServiceFactory services, IEntityWithTag item)
         {
+            // TODO: move this SQL code in the DAL
             var sql = "SELECT * FROM dbo." + this.entityTagTableName + " WHERE " + this.entityForeignKeyToTable + " = @EntityId AND TagId = @TagId";
             var cmd = services.Repositories
                 .CreateStoreCommand()
@@ -130,6 +131,7 @@ namespace Sparkle.Services.Networks.Tags.EntityWithTag
 
         public void Insert(IServiceFactory services, string foreignKeyToEntityName, int entityId, int tagId, int createdByUserId)
         {
+            // TODO: move this SQL code in the DAL
             var sql = string.Format(
                 "INSERT INTO dbo.{0} ({1}, TagId, DateCreatedUtc, CreatedByUserId) VALUES (@EntityId, @TagId, @DateCreatedUtc, @CreatedByUserId)",
                 this.entityTagTableName,
@@ -147,6 +149,7 @@ namespace Sparkle.Services.Networks.Tags.EntityWithTag
 
         public void Update(IServiceFactory services, int entityTagId, DateTime? dateDeletedUtc, int? deletedByUserId, WallItemDeleteReason? deleteReason)
         {
+            // TODO: move this SQL code in the DAL
             var sql = string.Format(
                 "UPDATE dbo.{0} SET DateDeletedUtc = @DateDeletedUtc, DeletedByUserId = @DeletedByUserId, DeleteReason = @DeleteReason WHERE Id = @EntityTagId",
                 this.entityTagTableName);
@@ -168,6 +171,7 @@ namespace Sparkle.Services.Networks.Tags.EntityWithTag
 
         public IList<Tag2Model> GetEntityTagsForCategory(IServiceFactory services, int categoryId, int entityId)
         {
+            // TODO: move this SQL code in the DAL
             var sql = string.Format(
                 "SELECT TagId FROM dbo.{0} WHERE {1} = @EntityId AND DateDeletedUtc IS NULL",
                 this.entityTagTableName,
@@ -191,6 +195,7 @@ namespace Sparkle.Services.Networks.Tags.EntityWithTag
 
         public IList<Tag2Model> GetUsedEntityTags(IServiceFactory services)
         {
+            // TODO: move this SQL code in the DAL
             var sql = string.Format(
                 "SELECT DISTINCT TagId FROM dbo.{0} WHERE DateDeletedUtc IS NULL",
                 this.entityTagTableName);
@@ -212,6 +217,7 @@ namespace Sparkle.Services.Networks.Tags.EntityWithTag
 
         public IDictionary<int, int[]> GetEntitiesIdsByUsedTagsIds(IServiceFactory services, int[] tagIds)
         {
+            // TODO: move this SQL code in the DAL
             var sql = string.Format(
                 "SELECT {0}, TagId FROM dbo.{1} WHERE TagId IN ({2}) AND DateDeletedUtc IS NULL ORDER BY {0}",
                 this.entityForeignKeyToTable,

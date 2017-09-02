@@ -7,9 +7,16 @@ namespace Sparkle.Services.Networks.Models.Profile
 
     public class LanguageProfileFieldModel
     {
+        public LanguageProfileFieldModel()
+        {
+        }
+
         public int?     LinkedInId { get; set; }
+
         public string   Name { get; set; }
+
         public string   ProficiencyLevel { get; set; }
+
         public string   ProficiencyLevelFriendly { get; set; }
 
         public void UpdateFrom(LinkedInNET.Profiles.Language item)

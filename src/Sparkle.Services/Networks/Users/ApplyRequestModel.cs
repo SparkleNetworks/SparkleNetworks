@@ -221,17 +221,11 @@ namespace Sparkle.Services.Networks.Users
         public UserModel InvitedByUser { get; set; }
 
         public UserModel AcceptedByUser { get; set; }
-
+        /*
         public string GetSecretKey()
-        {
-            return MultiHash.EmailSecret(this.Key.ToString());
-        }
 
         public bool CheckSecretKey(string secret)
-        {
-            return MultiHash.EmailSecretCheck(this.Key.ToString(), secret);
-        }
-
+        */
         public void UpdateFrom(ApplyRequestRequest request)
         {
             if (request == null)
