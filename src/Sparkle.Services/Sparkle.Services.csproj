@@ -58,7 +58,7 @@
       <HintPath>..\Libraries\NET40\Sparkle.LinkedInNET.dll</HintPath>
     </Reference>
     <Reference Include="SrkToolkit.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
-      <HintPath>..\packages\SrkToolkit.Common.1.1.131\lib\net45\SrkToolkit.Common.dll</HintPath>
+      <HintPath>..\packages\SrkToolkit.Common.1.1.135\lib\net45\SrkToolkit.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SrkToolkit.Domain, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
@@ -271,6 +271,7 @@
     <Compile Include="Networks\Timelines\TimelineOwnerChangeModel.cs" />
     <Compile Include="Networks\Places\EditPlaceRequest.cs" />
     <Compile Include="Networks\Places\EditPlaceResult.cs" />
+    <None Include="app.config" />
     <None Include="Networks\SparkleNetworksApplicationConfigurationTree.cs" />
     <None Include="Networks\SparkleNetworksApplicationConfigurationTree.tt.cs">
       <DependentUpon>SparkleNetworksApplicationConfigurationTree.tt</DependentUpon>

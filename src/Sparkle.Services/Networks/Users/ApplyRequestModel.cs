@@ -221,11 +221,19 @@ namespace Sparkle.Services.Networks.Users
         public UserModel InvitedByUser { get; set; }
 
         public UserModel AcceptedByUser { get; set; }
-        /*
+        
         public string GetSecretKey()
+        {
+            // TODO: put the code back here!
+            throw new NotSupportedException();
+        }
 
         public bool CheckSecretKey(string secret)
-        */
+        {
+            // TODO: put the code back here!
+            throw new NotSupportedException();
+        }
+        
         public void UpdateFrom(ApplyRequestRequest request)
         {
             if (request == null)

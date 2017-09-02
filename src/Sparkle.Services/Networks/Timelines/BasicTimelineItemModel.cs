@@ -153,18 +153,20 @@ namespace Sparkle.Services.Networks.Timelines
                     this.PostedIntoUrl = services.Ads.GetProfileUrl(ad, UriKind.Absolute);
                     break;
                 case TimelineType.Project:
-                    project = project ?? item.Project;
-                    this.PostedIntoVerb = "dans";
-                    this.PostedIntoContainerName = "le projet";
-                    this.PostedIntoName = project.Name;
-                    this.PostedIntoUrl = services.Projects.GetProfileUrl(project, UriKind.Absolute);
+                    // throw new NotSupportedException("The type '" + type + "' is not supported because the module has been deleted.");
+                    ////project = project ?? item.Project;
+                    ////this.PostedIntoVerb = "dans";
+                    ////this.PostedIntoContainerName = "le projet";
+                    ////this.PostedIntoName = project.Name;
+                    ////this.PostedIntoUrl = services.Projects.GetProfileUrl(project, UriKind.Absolute);
                     break;
                 case TimelineType.Team:
-                    team = team ?? item.Team;
-                    this.PostedIntoVerb = "dans";
-                    this.PostedIntoContainerName = "l'équipe";
-                    this.PostedIntoName = team.Name;
-                    this.PostedIntoUrl = services.Teams.GetProfileUrl(team, UriKind.Absolute);
+                    // throw new NotSupportedException("The type '" + type + "' is not supported because the module has been deleted.");
+                    ////team = team ?? item.Team;
+                    ////this.PostedIntoVerb = "dans";
+                    ////this.PostedIntoContainerName = "l'équipe";
+                    ////this.PostedIntoName = team.Name;
+                    ////this.PostedIntoUrl = services.Teams.GetProfileUrl(team, UriKind.Absolute);
                     break;
                 default:
                     break;

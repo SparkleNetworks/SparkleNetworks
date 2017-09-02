@@ -11,7 +11,7 @@ namespace Sparkle.Services.Networks.Objects
     public class ApplyInviteCode
     {
         // TODO: [OSP-Security] ApplyInviteCode.superSecretKey: NO. 
-        private static readonly string superSecretKey = ;
+        private static readonly string superSecretKey = "mvfdhxjhtGi57HhrC3zCdwG7j4CUWP6iDTgXDSWdLPrCCW8Gxa3SoiCuBXWkZL8243dnk3XMKgSbaxa6UG3RcaeaHiSXMcJCd5KK5WTrMbpajBx8KAhSj7MzQZYqbHPW";
 
         public ApplyInviteCode(int userId, DateTime date, int networkId)
         {

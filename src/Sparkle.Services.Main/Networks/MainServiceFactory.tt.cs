@@ -205,9 +205,6 @@ namespace Sparkle.Services.Main.Networks
         private IRelationshipService _Relationship;
         IRelationshipService IServiceFactory.Relationship { get { return this._Relationship ?? (this._Relationship = new RelationshipService(this.MySelf.Repositories, this)); } }
 
-        private IRequestsForProposalService _RequestsForProposal;
-        IRequestsForProposalService IServiceFactory.RequestsForProposal { get { return this._RequestsForProposal ?? (this._RequestsForProposal = new RequestsForProposalService(this.MySelf.Repositories, this)); } }
-
         private IResumeSkillsService _ResumeSkills;
         IResumeSkillsService IServiceFactory.ResumeSkills { get { return this._ResumeSkills ?? (this._ResumeSkills = new ResumeSkillsService(this.MySelf.Repositories, this)); } }
 
@@ -243,12 +240,6 @@ namespace Sparkle.Services.Main.Networks
 
         private ITagsService _Tags;
         ITagsService IServiceFactory.Tags { get { return this._Tags ?? (this._Tags = new TagsService(this.MySelf.Repositories, this)); } }
-
-        private ITeamsMembersService _TeamsMembers;
-        ITeamsMembersService IServiceFactory.TeamsMembers { get { return this._TeamsMembers ?? (this._TeamsMembers = new TeamsMembersService(this.MySelf.Repositories, this)); } }
-
-        private ITeamsService _Teams;
-        ITeamsService IServiceFactory.Teams { get { return this._Teams ?? (this._Teams = new TeamsService(this.MySelf.Repositories, this)); } }
 
         private ITextService _Text;
         ITextService IServiceFactory.Text { get { return this._Text ?? (this._Text = new TextService(this.MySelf.Repositories, this)); } }

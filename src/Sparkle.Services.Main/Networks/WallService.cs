@@ -1640,16 +1640,17 @@ namespace Sparkle.Services.Main.Networks
                 }
 
                 // get polls
-                pollIds = pollIdsList.ToArray();
-                if (pollIds.Length > 0)
-                {
-                    polls = this.Services.Polls.GetById(pollIds);
-                    pollChoicess = new Dictionary<int, IList<PollChoice>>(polls.Count);
-                    for (int i = 0; i < polls.Count; i++)
-                    {
-                        pollChoicess.Add(polls[i].Id, this.Repo.PollsChoices.GetByPollId(polls[i].Id));
-                    }
-                }
+                // module has been removed
+                ////pollIds = pollIdsList.ToArray();
+                ////if (pollIds.Length > 0)
+                ////{
+                ////    polls = this.Services.Polls.GetById(pollIds);
+                ////    pollChoicess = new Dictionary<int, IList<PollChoice>>(polls.Count);
+                ////    for (int i = 0; i < polls.Count; i++)
+                ////    {
+                ////        pollChoicess.Add(polls[i].Id, this.Repo.PollsChoices.GetByPollId(polls[i].Id));
+                ////    }
+                ////}
 
                 // get places
                 placeIds = placeIdsList.ToArray();
