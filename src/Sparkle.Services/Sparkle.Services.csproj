@@ -325,12 +325,9 @@
     <Compile Include="Networks\IActivitiesService.cs" />
     <Compile Include="Networks\IAdsCategoriesService.cs" />
     <Compile Include="Networks\IAdsService.cs" />
-    <Compile Include="Networks\IAlbumsService.cs" />
     <Compile Include="Networks\IBuildingService.cs" />
-    <Compile Include="Networks\ICareerOpportunitiesService.cs" />
     <Compile Include="Networks\ICompaniesVisitsService.cs" />
     <Compile Include="Networks\ICompanySkillsService.cs" />
-    <Compile Include="Networks\ICompanyAdminService.cs" />
     <Compile Include="Networks\ICompanyService.cs" />
     <Compile Include="Networks\IDeviceConfigurationService.cs" />
     <Compile Include="Networks\IDevicePlanningService.cs" />
@@ -445,7 +442,6 @@
     <Compile Include="Networks\ISkillsService.cs" />
     <Compile Include="Networks\ITeamsMembersService.cs" />
     <Compile Include="Networks\ITeamsService.cs" />
-    <None Include="app.config" />
     <None Include="Networks\SparkleNetworksApplicationConfigurationTree.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SparkleNetworksApplicationConfigurationTree.tt.cs</LastGenOutput>

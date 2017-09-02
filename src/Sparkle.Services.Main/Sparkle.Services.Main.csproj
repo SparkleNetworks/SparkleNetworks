@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D35072F1-8E7C-4A30-8714-25D4D15833AD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sparkle.Services.Main</RootNamespace>
+    <AssemblyName>Sparkle.Services.Main</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ARSoft.Tools.Net">
+      <HintPath>..\packages\ARSoft.Tools.Net.1.8.1\lib\ARSoft.Tools.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Mandrill, Version=2.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mandrill.2.4.1.0\lib\net45\Mandrill.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MimeDetective">
+      <HintPath>..\Libraries\NET40\MimeDetective.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpSquare">
+      <HintPath>..\Libraries\NET40\SharpSquare.dll</HintPath>
+    </Reference>
+    <Reference Include="Sparkle.LinkedInNET, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ce73a39745302302, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\NET40\Sparkle.LinkedInNET.dll</HintPath>
+    </Reference>
+    <Reference Include="SparkPost, Version=1.9.2.23039, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SparkPost.1.9.2\lib\net45\SparkPost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Srk.BetaServices.ClientApi">
+      <HintPath>..\Libraries\NET45\Srk.BetaServices.ClientApi.dll</HintPath>
+    </Reference>
+    <Reference Include="SrkToolkit.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SrkToolkit.Common.1.1.131\lib\net45\SrkToolkit.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SrkToolkit.Common.Unsafe">
+      <HintPath>..\Libraries\NET40\SrkToolkit.Common.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="SrkToolkit.Domain, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SrkToolkit.Domain.1.1.129\lib\net45\SrkToolkit.Domain.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Stripe.net, Version=2.3.3.0, Culture=neutral, PublicKeyToken=06cffbf44276acc5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Stripe.net.2.3.3\lib\net40\Stripe.net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EmailModels\CompanyEmailModel.cs" />
+    <Compile Include="EmailModels\ContactRequestAcceptedEmailModel.cs" />
+    <Compile Include="EmailModels\CompanyContactEmailModel.cs" />
+    <Compile Include="EmailModels\AddResumeConfirmationEmailModel.cs" />
+    <Compile Include="EmailModels\EmailChangeEmailModel.cs" />
+    <Compile Include="EmailModels\ExternalCompanyContactEmailModel.cs" />
+    <Compile Include="EmailModels\GroupJoinRequestEmailModel.cs" />
+    <Compile Include="EmailModels\ProposalEmailModel.cs" />
+    <Compile Include="EmailModels\RecoverPasswordEmailModel.cs" />
+    <Compile Include="Internal\EmailContactExtensions.cs" />
+    <Compile Include="Internal\IEmailProvider.cs" />
+    <Compile Include="Internal\IFilesystemProvider.cs" />
+    <Compile Include="Internal\PictureTransformer.cs" />
+    <Compile Include="Internal\ServiceFactoryAssertion.cs" />
+    <Compile Include="Internal\ServiceFactoryExtensions.cs" />
+    <Compile Include="Internal\StripeExceptionExtensions.cs" />
+    <Compile Include="Networks\AchievementsService.cs" />
+    <Compile Include="Networks\AchievementsUsersService.cs" />
+    <Compile Include="AclEnforcer.cs" />
+    <Compile Include="Networks\ActivitiesService.cs" />
+    <Compile Include="Networks\AdsCategoriesService.cs" />
+    <Compile Include="Networks\AdsService.cs" />
+    <Compile Include="Authentication\AccountMembershipService.cs" />
+    <Compile Include="Authentication\FormsAuthenticationService.cs" />
+    <Compile Include="Authentication\Keys.cs" />
+    <Compile Include="Networks\ApiKeysService.cs" />
+    <Compile Include="Networks\BaseSparkleCommand.cs" />
+    <Compile Include="Networks\BuildingService.cs" />
+    <Compile Include="Networks\CacheService.cs" />
+    <Compile Include="Networks\ClubsService.cs" />
+    <Compile Include="Networks\CompaniesVisitsService.cs" />
+    <Compile Include="Networks\CompanyRelationshipsService.cs" />
+    <Compile Include="Networks\CompanySkillsService.cs" />
+    <Compile Include="Networks\CompanyService.cs" />
+    <Compile Include="Networks\CompanyContactsService.cs" />
+    <Compile Include="Networks\AchievementsCompanyService.cs" />
+    <Compile Include="Networks\CryptoService.cs" />
+    <Compile Include="Networks\EmailMessagesService.cs" />
+    <Compile Include="Networks\GroupsTagsService.cs" />
+    <Compile Include="Networks\HintsService.cs" />
+    <Compile Include="Networks\I18NService.cs" />
+    <Compile Include="Networks\ICommandsInitializer.cs" />
+    <Compile Include="Networks\InboundEmailMessagesService.cs" />
+    <Compile Include="Networks\InfrastructureService.cs" />
+    <Compile Include="Networks\ISparkleCommand.cs" />
+    <Compile Include="Networks\NetworksTransaction.cs" />
+    <Compile Include="Networks\PartnerResourcesService.cs" />
+    <Compile Include="Networks\ResumeSkillsService.cs" />
+    <Compile Include="Networks\CreateNetworkRequestsService.cs" />
+    <Compile Include="Networks\PeopleService.cs" />
+    <Compile Include="Networks\ResumesService.cs" />
+    <Compile Include="Networks\DeviceConfigurationService.cs" />
+    <Compile Include="Networks\DevicePlanningService.cs" />
+    <Compile Include="Networks\DevicesService.cs" />
+    <Compile Include="EmailModels\AlsoCommentEmailModel.cs" />
+    <Compile Include="EmailModels\CoffeeEmailModel.cs" />
+    <Compile Include="EmailModels\CompleteProfileEmailModel.cs" />
+    <Compile Include="EmailModels\ContactRequestEmailModel.cs" />
+    <Compile Include="EmailModels\EventEmailModel.cs" />
+    <Compile Include="EmailModels\GroupEmailModel.cs" />
+    <Compile Include="EmailModels\GroupNewsletterEmailModel.cs" />
+    <Compile Include="EmailModels\InviteEmailModel.cs" />
+    <Compile Include="EmailModels\LunchEmailModel.cs" />
+    <Compile Include="EmailModels\PrivateMessageEmailModel.cs" />
+    <Compile Include="EmailModels\PublicationEmailModel.cs" />
+    <Compile Include="EmailModels\RegisterEmailModel.cs" />
+    <Compile Include="EmailModels\ReminderEmailModel.cs" />
+    <Compile Include="Networks\EventPublicMembersService.cs" />
+    <Compile Include="Networks\EventsCategoriesService.cs" />
+    <Compile Include="Networks\EventsMembersService.cs" />
+    <Compile Include="Networks\EventsService.cs" />
+    <Compile Include="Networks\ExchangeMaterialsService.cs" />
+    <Compile Include="Networks\ExchangeSkillsService.cs" />
+    <Compile Include="Networks\ExchangeSurfacesService.cs" />
+    <Compile Include="Networks\FriendService.cs" />
+    <Compile Include="Networks\GroupsCategoriesService.cs" />
+    <Compile Include="Networks\GroupsMembersService.cs" />
+    <Compile Include="Networks\GroupsService.cs" />
+    <Compile Include="Networks\InformationNotesService.cs" />
+    <Compile Include="Networks\LiveService.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Networks\InterestsService.cs" />
+    <Compile Include="Networks\InvitedService.cs" />
+    <Compile Include="Networks\JobService.cs" />
+    <Compile Include="Networks\LikesService.cs" />
+    <Compile Include="Networks\EmailService.cs" />
+    <Compile Include="Networks\LostItemsService.cs" />
+    <Compile Include="Networks\MainServiceFactory.cs" />
+    <Compile Include="Networks\MainServiceFactory.tt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainServiceFactory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Networks\NetworksService.cs" />
+    <Compile Include="Networks\NotificationsService.cs" />
+    <Compile Include="Networks\NumbersService.cs" />
+    <Compile Include="Networks\RegisterRequestsService.cs" />
+    <Compile Include="Networks\RequestsForProposalService.cs" />
+    <Compile Include="Networks\SocialNetworkCompanySubscriptionsService.cs" />
+    <Compile Include="Networks\SocialNetworkConnectionsService.cs" />
+    <Compile Include="Networks\SocialNetworkStatesService.cs" />
+    <Compile Include="Networks\SocialNetworkUserSubscriptionsService.cs" />
+    <Compile Include="Networks\SparkleCommandArgs.cs" />
+    <Compile Include="Networks\SparkleCommandErrorEventArgs.cs" />
+    <Compile Include="Networks\SparkleCommandRegistry.cs" />
+    <Compile Include="Networks\SparkleLang.cs" />
+    <Compile Include="Networks\SparkleNetworksApplication.cs" />
+    <Compile Include="Networks\StatsCountersService.cs" />
+    <Compile Include="Networks\SubscriptionsService.cs" />
+    <Compile Include="Networks\SubscriptionTemplatesService.cs" />
+    <Compile Include="Networks\TagsService.cs" />
+    <Compile Include="Networks\TextService.cs" />
+    <Compile Include="Networks\UserActionKeysService.cs" />
+    <Compile Include="Networks\UserEmailChangeRequestService.cs" />
+    <Compile Include="Networks\ProfileFieldsService.cs" />
+    <Compile Include="Networks\UserSettingsService.cs" />
+    <Compile Include="Networks\PeoplesInterestsService.cs" />
+    <Compile Include="Networks\PeoplesRecreationsService.cs" />
+    <Compile Include="Networks\PeoplesSkillsService.cs" />
+    <Compile Include="Networks\PeopleVisitsService.cs" />
+    <Compile Include="Networks\PlacesCategoriesService.cs" />
+    <Compile Include="Networks\PlacesHistoryService.cs" />
+    <Compile Include="Networks\PlacesService.cs" />
+    <Compile Include="Networks\PrivateMessageService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Networks\RecreationsService.cs" />
+    <Compile Include="Networks\RelationshipService.cs" />
+    <Compile Include="Networks\SeekFriendsService.cs" />
+    <Compile Include="Networks\ServiceBase.cs" />
+    <Compile Include="Networks\SkillsService.cs" />
+    <Compile Include="Networks\TeamsMembersService.cs" />
+    <Compile Include="Networks\TeamsService.cs" />
+    <Compile Include="Networks\TouchCommunicationItemsService.cs" />
+    <Compile Include="Networks\TouchCommunicationsService.cs" />
+    <Compile Include="Networks\WallCommentsService.cs" />
+    <Compile Include="Networks\WallService.cs" />
+    <Compile Include="Providers\IOFilesystemProvider.cs" />
+    <Compile Include="Providers\LoggingEmailProvider.cs" />
+    <Compile Include="Providers\SparkpostApiEmailProvider.cs" />
+    <Compile Include="Providers\MandrillApiEmailProvider.cs" />
+    <Compile Include="Providers\MandrillSmtpEmailProvider.cs" />
+    <Compile Include="Providers\SmtpEmailProvider.cs" />
+    <Compile Include="Providers\VoidEmailProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Networks\MainServiceFactory.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MainServiceFactory.tt.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MultiNetwork\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\External\Sparkle.EmailUtility\Sparkle.EmailUtility.csproj">
+      <Project>{a0546335-9574-41af-8c66-b77e6870b82c}</Project>
+      <Name>Sparkle.EmailUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Common\Sparkle.Common.csproj">
+      <Project>{e2445875-e89b-403d-8721-a97e120b01d5}</Project>
+      <Name>Sparkle.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Data\Sparkle.Data.csproj">
+      <Project>{f3bbc3e7-ba09-43f4-a32c-9d77a7e0d4be}</Project>
+      <Name>Sparkle.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Entities\Sparkle.Entities.csproj">
+      <Project>{f2341891-7dbe-4a69-a90b-641e4663e24d}</Project>
+      <Name>Sparkle.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Infrastructure\Sparkle.Infrastructure.csproj">
+      <Project>{63efbc4b-cb11-4539-b999-960c1209e696}</Project>
+      <Name>Sparkle.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Lang\Sparkle.Lang.csproj">
+      <Project>{7fb6dda7-7def-4527-8894-be73df0857b0}</Project>
+      <Name>Sparkle.Lang</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Services\Sparkle.Services.csproj">
+      <Project>{949101f1-e574-4a21-a93b-3fbde27875bb}</Project>
+      <Name>Sparkle.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Data.Entity\Sparkle.Data.Entity.csproj">
+      <Project>{a95c5c44-350d-4c57-8454-128516423a20}</Project>
+      <Name>Sparkle.Data.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

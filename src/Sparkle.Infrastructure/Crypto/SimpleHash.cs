@@ -283,33 +283,11 @@ namespace Sparkle.Infrastructure.Crypto
 
             return hashed.Trim() == value.Trim();
         }
-
+        /*
         public static string EmailSecret(string challenge)
-        {
-            var start = DateTime.UtcNow;
-            var salt1 = new byte[] { 87, 2, 123, 156, 254, 36, };
-            var salt2 = new byte[] { 45, 23, 53, 214, 8, 7, };
-
-            string hashed = DoSHA1(challenge, salt1, 4);
-            hashed = DoReverse(hashed);
-            hashed = DoSHA1(challenge, salt2, 3);
-
-            var time = DateTime.UtcNow - start;
-            Trace.TraceInformation("MultiHash.EmailSecret took " + time.Milliseconds + " ms to complete");
-
-            return hashed;
-        }
 
         public static bool EmailSecretCheck(string challenge, string secret)
-        {
-            if (string.IsNullOrEmpty(challenge) || string.IsNullOrEmpty(secret))
-                return false;
-
-            string hashed = EmailSecret(challenge);
-
-            return hashed.Trim() == secret.Trim();
-        }
-
+        */
         private static string DoReverse(string value)
         {
             var chars = new char[value.Length];
