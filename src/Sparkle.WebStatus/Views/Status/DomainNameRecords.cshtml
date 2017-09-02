@@ -1,0 +1,33 @@
+﻿@model ICollection<Sparkle.WebStatus.Domain.DomainNameRecord>
+@{
+    ViewBag.Title = "DomainNameRecords";
+}
+
+
+<section class="content">
+    <h2>List</h2>
+    <table class="dashbaord">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Expected</th>
+                <th>Error</th>
+            </tr>
+        </thead>
+        <tbody>
+@foreach (var item in this.Model)
+{
+            <tr>
+                <th>@item.Name</th>
+                <td>@item.Type</td>
+                @*<td>@string.Join(",", item.Values ?? new string[0])</td>*@
+                <td>@string.Join(",", item.ExpectedValues ?? new string[0])</td>
+                <td>@Html.ActionLink("Edit", "EditDomainNameRecord", new { id = item.Guid, })</td>
+            </tr>
+}
+        </tbody>
+    </table>
+    <h2>Create new</h2>
+
+</section>

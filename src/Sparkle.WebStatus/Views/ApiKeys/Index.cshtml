@@ -1,0 +1,39 @@
+﻿@model IList<Sparkle.WebStatus.Domain.ApiKeyModel>
+
+@{
+    ViewBag.Title = "API keys";
+}
+
+<section class="content">
+<h2>API keys</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Edit")
+</p>
+
+<table class="dashboard">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>IsEnabled</th>
+        <th>DateCreatedUtc</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+        <td>@(item.IsEnabled ? "YES" : "NO")</td>
+        <td>@Html.DisplayFor(modelItem => item.DateCreatedUtc)</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Guid, }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Guid }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Guid })
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
+</section>

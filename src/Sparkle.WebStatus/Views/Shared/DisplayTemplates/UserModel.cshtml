@@ -1,0 +1,29 @@
+﻿@model UserModel
+@using Sparkle.NetworksStatus.Domain.Models
+
+<dl class="srkdl">
+    <dt class="label">@Html.LabelFor(m => m.Country)</dt>
+    <dd class="input">@Html.DisplayFor(m => m.Country)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.Culture)</dt>
+    <dd class="input">@Html.DisplayFor(m => m.Culture)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.DisplayName)</dt>
+    <dd class="input">@Html.DisplayFor(m => m.DisplayName)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.EmailAddressString)</dt>
+    <dd class="input">@Html.DisplayFor(m => m.EmailAddressString)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.Firstname)</dt>
+    <dd class="input">@Html.DisplayFor(m => m.Firstname)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.Lastname)</dt>
+    <dd class="input">@Html.DisplayFor(m => m.Lastname)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.Status)</dt>
+    <dd class="input">@Html.DisplayFor(m => m.Status)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.Timezone)</dt>
+    <dd class="input">@Html.DisplayFor(m => m.Timezone)</dd>
+</dl>
+<div class="clear"></div>

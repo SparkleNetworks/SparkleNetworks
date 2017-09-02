@@ -1,0 +1,53 @@
+﻿@model SrkToolkit.Web.Models.HttpErrorModel
+@{
+    ViewBag.Title = this.Model.Title;
+    Exception except = Model.Exception;
+}
+
+<style type="text/css">
+pre {
+    font-family: “Consolas”,monospace;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+blockquote {
+    margin: 1em 3em;
+    padding: .5em 1em;
+    border-left: 5px solid #fce27c;
+}
+blockquote p {
+    margin: 0; }
+</style>
+
+<article class="content">
+
+<h1>@Model.Title</h1>
+<p>@Model.Message</p>
+
+<h2>Technical details</h2>
+
+<dl class="srkdl">
+    <dt>HTTP error code</dt>
+    <dd>@Model.Code</dd>
+    
+    <dt>URL</dt>
+    <dd>@Model.UrlPath</dd>
+
+    <dt>Error description</dt>
+    <dd>@Model.CodeName<br />@Model.CodeDefinition</dd>
+
+@if (@Model.Exception != null)
+{
+    <dt>Exception</dt>
+    <dd>
+    @do
+    {<pre class="nowrap">@except.GetTypeAndMessage()
+
+@except.StackTrace</pre>} while ((except = except.InnerException) != null);</dd>
+
+}
+</dl>
+</article>

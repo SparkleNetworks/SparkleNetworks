@@ -1,0 +1,118 @@
+﻿@{
+    var messages = this.TempMessages();
+    var webDependencies = this.WebDependencies();
+    var navigation = Html.NavigationLine();
+
+    bool isAuth = this.ViewData.ContainsKey("IsAuthenticated") ? (bool)this.ViewData["IsAuthenticated"] : false;
+    var controller = this.ViewContext.RouteData.Values["controller"] as string;
+    var action = this.ViewContext.RouteData.Values["action"] as string;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="@ViewBag.Description" />
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <script type="text/javascript" src="/Scripts/modernizr.custom.35245.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery-1.11.1.min.js"></script>
+    <link href="@Url.Content("/Content/WebStatus.min.css")?v=@Html.FlatVersionOfFile("/Content/WebStatus.min.css")" rel="stylesheet" type="text/css" />
+</head>
+<body id="body">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="header">
+    <header id="mainheader">
+        <hgroup>
+            <h1><a href="/">sparklenetworks.net</a></h1>
+            <h2>Networks management, monitoring and APIs</h2>
+        </hgroup>
+        <div class="info">
+            <p>All rights reserved.<br />Sparkle World SAS.<br />Build @Html.FlatVersionOfFile("~/bin/Sparkle.WebStatus.dll")</p>
+        </div>
+    </header>
+@if (isAuth)
+{
+    <nav id="hnav1" class="sitenav"><div><ul>
+        <li class="@Html.CssClass(controller == "Home",  "active")">@Html.ActionLink("Home" , "Index", "Home")</li>
+        <li class="@Html.CssClass(controller == "Auth",  "active")">@Html.ActionLink("Auth" , "Index", "Auth")</li>
+        <li class="@Html.CssClass(controller == "Networks", "active")">@Html.ActionLink("Networks", "Index", "Networks")</li>
+        <li class="@Html.CssClass(controller == "Hooks", "active")">@Html.ActionLink("Hooks", "Index", "Hooks")</li>
+        <li class="@Html.CssClass(controller == "ApiKeys", "active")">@Html.ActionLink("API keys", "Index", "ApiKeys")</li>
+    </ul></div></nav>
+}
+@if (isAuth)
+{
+    <nav id="hnav2" class="sitenav"><div><ul>
+        <li>@Html.ActionLink(controller + " >", "Index", controller)</li>
+    @if (controller == "Auth")
+    {
+        <li>@Html.ActionLink("Off", "Off", "Auth")</li>
+        <li>@Html.ActionLink("Basic", "Basic", "Auth")</li>
+    }
+    else if (controller == "Networks")
+    {
+        <li>@Html.ActionLink("Status", "Status", "Networks")</li>
+    }
+    else if (controller == "Hooks")
+    {
+        <li>@Html.ActionLink("TemporaryData", "TemporaryData", "Hooks")</li>
+    }
+    else if (controller == "ApiKeys")
+    {
+        <li>@Html.ActionLink("Index", "Index", "ApiKeys")</li>
+    }
+    </ul></div></nav>
+}
+    <nav id="rootnav" class="sitenav">
+        <div><ul>
+            <li>@Html.ActionLink("/", "Index", "Home")</li>
+            
+@if (navigation != null && navigation.Count > 0)
+{
+    foreach (var item in navigation)
+    {
+        if (item.Url != null)
+        {
+        <li><a href="@item.Url">@item.Name</a></li>
+        }
+        else
+        {
+        <li>@item.Name</li>
+        }
+    }
+}
+        </ul></div>
+    </nav>
+    </div>
+
+    @if (messages.Count > 0)
+    {
+        <div class="tempData">
+           <ul>
+            @foreach (var message in messages)
+            {
+                <li class="@message.Kind">@{ if (message.IsMarkup) { this.Write(new MvcHtmlString(message.Message)); } else { this.Write(message.Message); }}</li>
+            }
+            </ul> 
+        </div>
+        <script type="text/javascript">setTimeout("ShowTempData()", 700);</script>
+    }
+
+    <div id="main">
+@RenderBody()
+        <div class="clear"></div>
+    </div>
+
+<footer>
+
+</footer>
+    
+    <noscript>
+        <div id="noscript-warning">Javascript is required in order for this website to work.</div>
+    </noscript>
+
+@this.WebDependencies().RenderIncludes(WebDependencyPosition.EndOfPage)
+</body>
+</html>

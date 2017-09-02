@@ -1,0 +1,17 @@
+﻿@model Sparkle.WebStatus.Domain.NetworkModel
+@{
+    ViewBag.Title = "EditNetwork";
+}
+
+<section class="content">
+<h2>AddNetwork</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.EditorForModel()
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+</section>

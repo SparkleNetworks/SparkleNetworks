@@ -1,0 +1,21 @@
+﻿@{
+    this.ViewBag.Title = "Index";
+    bool isAuthenticated = this.ViewBag.IsAuthenticated;
+}
+
+<article class="content">
+@if (isAuthenticated)
+{
+    <h1>@this.ViewBag.Title</h1>
+    <h2>Mandrill hooks</h2>
+    <ul>
+        <li><code>POST /Hooks/InboundTest</code>: Mandrill test URL</li>
+        <li><code>GET /Hooks/InboundEmail</code>: empty page (allows Mandrill to validate the URL)</li>
+        <li><code>POST /Hooks/InboundEmail</code>: Mandrill inbound email URL</li>
+    </ul>
+}
+else
+{
+    <h1>Index</h1>
+}
+</article>

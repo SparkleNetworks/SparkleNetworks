@@ -1,0 +1,53 @@
+﻿@model Sparkle.WebStatus.Domain.NetworkModel
+
+
+@Html.ValidationSummary(true)
+@Html.HiddenFor(m => m.Guid)
+
+<fieldset>
+    <legend>NetworkModel</legend>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.InstanceName)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.InstanceName)
+        @Html.ValidationMessageFor(model => model.InstanceName)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.NetworkName)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.NetworkName)
+        @Html.ValidationMessageFor(model => model.NetworkName)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.UniverseName)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.UniverseName)
+        @Html.ValidationMessageFor(model => model.UniverseName)
+    </div>
+        
+    <div class="editor-label">
+        @Html.LabelFor(model => model.MainDomainName)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.MainDomainName)
+        @Html.ValidationMessageFor(model => model.MainDomainName)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.InternalDomainName)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.InternalDomainName)
+        @Html.ValidationMessageFor(model => model.InternalDomainName)
+    </div>
+
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+</fieldset>

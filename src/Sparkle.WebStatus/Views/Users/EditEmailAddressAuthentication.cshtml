@@ -1,0 +1,19 @@
+﻿@model EmailAddressAuthenticationModel
+@using Sparkle.NetworksStatus.Domain.Models
+@{
+}
+
+<section class="content">
+<h1>@ViewBag.Title</h1>
+
+@using (Html.BeginFormEx(new { @class = "srkform", }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummaryEx()
+    @Html.EditorForModel()
+}
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+</section>

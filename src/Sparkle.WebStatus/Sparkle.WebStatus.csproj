@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2F2047F0-911C-47B9-AF7F-9FB84484BA58}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sparkle.WebStatus</RootNamespace>
+    <AssemblyName>Sparkle.WebStatus</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <PublishDatabases>false</PublishDatabases>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PublishDatabases>false</PublishDatabases>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\packages\HtmlAgilityPack.1.4.6\lib\Net20\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sparkle.LinkedInNET, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ce73a39745302302, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\NET40\Sparkle.LinkedInNET.dll</HintPath>
+    </Reference>
+    <Reference Include="Srk.BetaServices.ClientApi">
+      <HintPath>..\..\Libs\NET45\Srk.BetaServices.ClientApi.dll</HintPath>
+    </Reference>
+    <Reference Include="SrkToolkit.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SrkToolkit.Common.1.1.131\lib\net45\SrkToolkit.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SrkToolkit.Domain, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SrkToolkit.Domain.1.1.129\lib\net45\SrkToolkit.Domain.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SrkToolkit.Domain.AspMvc4, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SrkToolkit.Domain.AspMvc4.1.1.130\lib\net45\SrkToolkit.Domain.AspMvc4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SrkToolkit.Web.Mvc4, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SrkToolkit.Web.AspMvc4.1.1.127\lib\net45\SrkToolkit.Web.Mvc4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.4.0.40804.0\lib\net40\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\Extensions.cs" />
+    <Compile Include="App_Start\LocalConfig.cs" />
+    <Compile Include="Areas\NetworkRootApi\Controllers\ApiController.cs" />
+    <Compile Include="Areas\NetworkRootApi\Controllers\CompaniesController.cs" />
+    <Compile Include="Areas\NetworkRootApi\Controllers\CompanyCategoriesController.cs" />
+    <Compile Include="Areas\NetworkRootApi\Controllers\InformationNotesController.cs" />
+    <Compile Include="Areas\NetworkRootApi\Controllers\TagDefinitionsController.cs" />
+    <Compile Include="Areas\NetworkRootApi\Controllers\TagCategoriesController.cs" />
+    <Compile Include="Areas\NetworkRootApi\Controllers\UsersController.cs" />
+    <Compile Include="Areas\NetworkRootApi\Controllers\UtilController.cs" />
+    <Compile Include="Areas\NetworkRootApi\NetworkRootApiAreaRegistration.cs" />
+    <Compile Include="Controllers\ApiKeysController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\AuthorizeAttribute.cs" />
+    <Compile Include="Controllers\CacheController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HooksController.cs" />
+    <Compile Include="Controllers\NetworksController.cs" />
+    <Compile Include="Controllers\RedirectController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Domain\ApiKeyModel.cs" />
+    <Compile Include="Domain\ApiKeysService.cs" />
+    <Compile Include="Domain\BaseService.cs" />
+    <Compile Include="Domain\BaseService_2.cs" />
+    <Compile Include="Domain\BasicUserModel.cs" />
+    <Compile Include="Domain\BasicUsersService.cs" />
+    <Compile Include="Domain\DomainHttpContextExtensions.cs" />
+    <Compile Include="Domain\DomainNameRecord.cs" />
+    <Compile Include="Domain\DomainNameRecordsService.cs" />
+    <Compile Include="Domain\DomainNameRecordStatusModel.cs" />
+    <Compile Include="Domain\EditNetworkRequest.cs" />
+    <Compile Include="Domain\EmailService.cs" />
+    <Compile Include="Domain\IEmailProvider.cs" />
+    <Compile Include="Domain\NetworkModel.cs" />
+    <Compile Include="Domain\NetworksService.cs" />
+    <Compile Include="Domain\NetworkStatusModel.cs" />
+    <Compile Include="Domain\ServiceConfiguration.cs" />
+    <Compile Include="Domain\ServiceContext.cs" />
+    <Compile Include="Domain\ServiceFactory.cs" />
+    <Compile Include="Domain\SmtpEmailProvider.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\RequestValidator.cs" />
+    <Compile Include="Services\ResultService.cs" />
+    <Compile Include="ViewModels\HttpRequestModel.cs" />
+    <Compile Include="ViewModels\TemporaryDataModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\LogoFooter.png" />
+    <Content Include="Content\stuff.js" />
+    <Content Include="Content\WebStatus.css">
+      <DependentUpon>WebStatus.less</DependentUpon>
+    </Content>
+    <Content Include="Content\WebStatus.min.css">
+      <DependentUpon>WebStatus.less</DependentUpon>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="robots.txt" />
+    <Content Include="Scripts\jquery-1.11.1.js" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\modernizr.custom.35245.js" />
+    <Content Include="Scripts\jquery-1.11.1.min.map" />
+    <Content Include="Views\Status\DomainNameRecords.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DomainNameRecord.cshtml" />
+    <Content Include="Views\Networks\OnlineUsers.cshtml" />
+    <Content Include="Views\Networks\Edit.cshtml" />
+    <Content Include="Views\Networks\EditorTemplates\NetworkModel.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\UserModel.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\UserModel.cshtml" />
+    <Content Include="Views\Users\EditEmailAddressAuthentication.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EmailAddressAuthenticationModel.cshtml" />
+    <Content Include="Views\Status\Index.cshtml" />
+    <Content Include="App_Data\ServicesConfiguration.Sample.json" />
+    <None Include="App_Data\ServicesConfiguration.json" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Networks\NetworkStatus.cshtml" />
+    <Content Include="Content\WebStatus.css.map">
+      <DependentUpon>WebStatus.css</DependentUpon>
+    </Content>
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Auth\Basic.cshtml" />
+    <Content Include="Views\Auth\Index.cshtml" />
+    <Content Include="Views\ApiKeys\Index.cshtml" />
+    <Content Include="Views\ApiKeys\Edit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ApiKeyModel.cshtml" />
+    <Content Include="Views\ApiKeys\Details.cshtml" />
+    <Content Include="Views\Shared\JsonView.cshtml" />
+    <None Include="Web.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WE-settings.xml" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\NetworkUserApi\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Networks\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Hooks\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Hooks\Mandrill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\WebStatus.less" />
+    <Content Include="Views\Networks\Add.cshtml" />
+    <Content Include="Views\Networks\Status.cshtml" />
+    <Content Include="Views\Hooks\TemporaryData.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sparkle.Common\Sparkle.Common.csproj">
+      <Project>{e2445875-e89b-403d-8721-a97e120b01d5}</Project>
+      <Name>Sparkle.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Data\Sparkle.Data.csproj">
+      <Project>{f3bbc3e7-ba09-43f4-a32c-9d77a7e0d4be}</Project>
+      <Name>Sparkle.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Entities\Sparkle.Entities.csproj">
+      <Project>{f2341891-7dbe-4a69-a90b-641e4663e24d}</Project>
+      <Name>Sparkle.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Infrastructure\Sparkle.Infrastructure.csproj">
+      <Project>{63efbc4b-cb11-4539-b999-960c1209e696}</Project>
+      <Name>Sparkle.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Lang\Sparkle.Lang.csproj">
+      <Project>{7fb6dda7-7def-4527-8894-be73df0857b0}</Project>
+      <Name>Sparkle.Lang</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Services\Sparkle.Services.csproj">
+      <Project>{949101f1-e574-4a21-a93b-3fbde27875bb}</Project>
+      <Name>Sparkle.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.WebBase\Sparkle.WebBase.csproj">
+      <Project>{95c75988-47bc-45d6-9e24-172431d49f20}</Project>
+      <Name>Sparkle.WebBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Data.Entity\Sparkle.Data.Entity.csproj">
+      <Project>{a95c5c44-350d-4c57-8454-128516423a20}</Project>
+      <Name>Sparkle.Data.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.EmailTemplates\Sparkle.EmailTemplates.csproj">
+      <Project>{d82f5d27-7968-47b6-95f8-de7593426341}</Project>
+      <Name>Sparkle.EmailTemplates</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Helpers\Sparkle.Helpers.csproj">
+      <Project>{e6305d03-84b6-4752-a4f4-77d5ffeef9f4}</Project>
+      <Name>Sparkle.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.NetworksStatus\Sparkle.NetworksStatus.csproj">
+      <Project>{2e0b532f-d587-40b6-9c1b-75c37cb36d29}</Project>
+      <Name>Sparkle.NetworksStatus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Services.Main\Sparkle.Services.Main.csproj">
+      <Project>{d35072f1-8e7c-4a30-8714-25d4d15833ad}</Project>
+      <Name>Sparkle.Services.Main</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1370</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1370/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

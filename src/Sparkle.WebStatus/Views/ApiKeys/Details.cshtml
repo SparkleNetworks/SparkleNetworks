@@ -1,0 +1,14 @@
+﻿@model Sparkle.WebStatus.Domain.ApiKeyModel
+@{
+    ViewBag.Title = "API key " + Model.Guid;
+}
+
+<section class="content">
+<h2>@ViewBag.Title</h2>
+
+    @Html.Partial("JsonView", Model)
+
+
+
+
+</section>

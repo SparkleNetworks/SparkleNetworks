@@ -1,0 +1,52 @@
+﻿@model IList<Sparkle.WebStatus.Domain.DomainNameRecord>
+@using GML = GetMeLunch.ApiClient.FrontApi;
+@{
+    ViewBag.Title = "DomainNameRecords";
+    var gml = (Dictionary<string, Sparkle.WebStatus.Controllers.StatusController.DataOrException<Guid, Guid, GML.BuildInfo>>)this.ViewBag.GmlApps;
+    var now = DateTime.UtcNow;
+}
+
+
+<section class="content">
+<article>
+    <h2>GML apps</h2>
+    <table class="dashboard evenodd">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Build date</th>
+                <th>Build age</th>
+                <th>Build version</th>
+                <th>Users</th>
+                <th>Services</th>
+            </tr>
+        </thead>
+        <tbody>
+@foreach (var kvp in gml)
+{
+    var item = kvp.Value != null ? kvp.Value.Data3 : null;
+    var buildDiff = now - (item != null && item.App != null ? item.App.BuildDateUtc : now);
+    var buildDiffHours = buildDiff.TotalHours;
+    var buildDiffDays = buildDiff.TotalDays;
+            <tr>
+                <th>@kvp.Key</th>
+    @if (kvp.Value.Exception != null)
+    {
+                <td class="error">ERROR</td>
+                <td class="error" colspan="5">@kvp.Value.Exception.Message</td>
+    }
+    else
+    {
+        <td>@Html.DisplayDateTime(item.App.BuildDateUtc, displayDateFormat: "g")</td>
+        <td class="@Html.CssClass(buildDiffDays <= 7, "ok") @Html.CssClass(buildDiffDays > 7 & buildDiffDays < 20, "warning") @Html.CssClass(buildDiffDays >= 20, "error")">@(buildDiff.TotalDays >= 1 ? (Math.Round(buildDiff.TotalDays) + " d") : (Math.Round(buildDiff.TotalHours) + " h"))</td>
+        <td>@item.App.AssemblyFileVersion</td>
+        <td></td>
+        <td style="max-width:400px;" class="@Html.CssClass(item.App.ServicesVerified == true, "", "error")">@(item.App.ServicesVerified == null ? "?" : item.App.ServicesVerified ? "ok" : item.App.ServicesVerifyErrors != null && item.App.ServicesVerifyErrors.Length > 0 ? "" : "error")@if (item.App.ServicesVerifyErrors != null) { foreach (var error in item.App.ServicesVerifyErrors) { <div class="ellipsis" title="@error">@error</div> } }</td>
+    }
+            </tr>
+}
+        </tbody>
+    </table>
+</article>
+
+</section>

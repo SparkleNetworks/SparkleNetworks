@@ -1,0 +1,44 @@
+﻿@model IList<Sparkle.WebStatus.Domain.NetworkModel>
+
+@{
+    ViewBag.Title = "Networks";
+}
+
+<section class="content">
+<h2>Networks</h2>
+
+<p>
+    @Html.ActionLink("Status", "Status") | 
+    @Html.ActionLink("Create New", "Add")
+</p>
+
+<table class="dashboard">
+    <thead>
+    <tr>
+        <th>InstanceName</th>
+        <th>NetworkName</th>
+        <th>UniverseName</th>
+        <th>MainDomainName</th>
+        <th>DateCreatedUtc</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.InstanceName)</td>
+        <td>@Html.DisplayFor(modelItem => item.NetworkName)</td>
+        <td>@Html.DisplayFor(modelItem => item.UniverseName)</td>
+        <td>@Html.DisplayFor(modelItem => item.MainDomainName)</td>
+        <td>@Html.DisplayFor(modelItem => item.DateCreatedUtc)</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Guid, }) |
+            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
+</section>

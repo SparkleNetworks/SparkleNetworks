@@ -1,0 +1,23 @@
+﻿@model Sparkle.WebStatus.Domain.DomainNameRecord
+
+@using (Html.BeginFormEx(new { @class = "srkform", }))
+{
+    @Html.HiddenFor(m => m.Guid)
+<dl>
+    <dt class="label">@Html.LabelFor(m => m.Name)</dt>
+    <dd class="input">@Html.TextBoxFor(m => m.Name)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.Name)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.Type)</dt>
+    <dd class="input">@Html.TextBoxFor(m => m.Type)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.Type)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.ExpectedValues)</dt>
+    <dd class="input">@Html.TextBoxFor(m => m.ExpectedValues)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.ExpectedValues)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.Name)</dt>
+    <dd class="input">@Html.TextBoxFor(m => m.Name)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.Name)</dd>
+</dl>
+}

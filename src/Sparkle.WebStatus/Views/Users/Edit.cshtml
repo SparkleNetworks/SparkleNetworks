@@ -1,0 +1,20 @@
+﻿@model UserModel
+@using Sparkle.NetworksStatus.Domain.Models
+@{
+    ViewBag.Title = "Edit user";
+}
+
+<section class="content">
+<h1>@ViewBag.Title</h1>
+
+@using (Html.BeginFormEx(new { @class = "srkform", }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummaryEx()
+    @Html.EditorForModel()
+}
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+</section>

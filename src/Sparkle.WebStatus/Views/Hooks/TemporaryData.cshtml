@@ -1,0 +1,120 @@
+﻿@model List<Sparkle.WebStatus.ViewModels.HttpRequestModel>
+@{
+    var isEnabled = (bool)this.ViewBag.IsEnabled;
+}
+
+<article>
+    <h1>Inbound messages</h1>
+    <p>
+        IsTraceEnabled: @(isEnabled ? "true" : "false"). 
+    @if (isEnabled)
+    {
+        @:@Html.ActionLink("Disable", "TemporaryData", new { ChangeStatus = "False", }) | 
+            }
+    else
+    { 
+        @:@Html.ActionLink("Enable", "TemporaryData", new { ChangeStatus = "True", }) | 
+        }
+        @Html.ActionLink("Clear", "ClearTemporaryData")<br />
+        HandleInboundEmails: @this.ViewBag.HandleInboundEmails.
+    </p>
+</article>
+
+<style type="text/css">
+    article
+    {
+        margin:10px 40px 10px 10px;
+        padding:5px;
+        background:#F4F4F4;
+    }
+        article p, article h2, article h3
+        {
+            margin:5px;
+            padding:0px;
+        }
+        article pre
+        {
+            margin: 5px;
+            padding: 5px;
+
+            max-height: 250px;
+            border: 2px solid gray;
+        }
+        article ul
+        {
+            margin: 5px;
+            padding: 5px;
+            border: 2px solid gray;
+        }
+        article ul > li
+        {
+            margin: 0px;
+            padding: 5px;
+
+            white-space: pre-wrap; /* CSS 3 */
+            white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+            white-space: -pre-wrap; /* Opera 4-6 */
+            white-space: -o-pre-wrap; /* Opera 7 */
+            word-wrap: break-word; /* Internet Explorer 5.5+ */
+            overflow-y: auto;
+            max-height: 50px;
+        }
+</style>
+
+@foreach (var item in this.Model)
+{
+    int length = 240;
+    var citation = (item.Messages.Count > 0) ? item.Messages.Last().TrimToLength(length)
+        : (item.PostContent.NullIfEmptyOrWhitespace() != null) ? item.PostContent.TrimToLength(length)
+        : "";
+<article>
+<h2 class="ellipsis"><a href="#@item.Id" onclick="Toggle('@item.Id')">@item.DateUtc - @citation</a></h2>
+<div id="@item.Id" class="js-hide">
+    <pre>@item.Headers</pre>
+    @if (item.PostContent != null) {
+    <pre>@item.PostContent</pre>
+    }
+    <p>
+    @if (item.PostBytes != null && item.PostBytes.Length > 0){
+    <span>@Html.ActionLink("Download binary post data", "TemporaryDataFile", new { id = item.Id.ToString(), })</span> 
+    } else{
+        <span>no post data</span>
+    }
+    </p>
+    <div class="repost"></div>
+    @if (item.Messages.Count > 0)
+    {
+    <h4>Debug messages</h4>
+        foreach (var message in item.Messages)
+	    {
+	<pre>@message</pre>
+	    }
+    }
+    @if (item.Files.Count > 0)
+    {
+    <h4>Files</h4>
+    <ul>
+        @foreach (var message in item.Files)
+        {
+	<li><a href="file:///@message" target="_blank">@message</a></li>
+        }
+    </ul>
+    }
+</div>
+</article>
+}
+
+<script type="text/javascript">
+    $().ready(function () {
+        $('.js-hide').hide();
+    });
+    function Toggle(id) {
+        var element = $('#' + id).toggle();
+    }
+</script>
+
+<noscript>
+    <style type="text/css">
+
+    </style>
+</noscript>

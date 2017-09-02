@@ -1,0 +1,52 @@
+﻿@model UserModel
+@using Sparkle.NetworksStatus.Domain.Models
+@{
+    ViewBag.Title = "Display user";
+}
+
+<section class="content">
+<h1>@ViewBag.Title</h1>
+
+@Html.DisplayForModel()
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+    <h2>Email authentications</h2>
+
+    <p>
+        @Html.ActionLink("Create", "EditEmailAddressAuthentication", new { id = 0, UserId = Model.Id, })
+    </p>
+
+    <table class="dashboard">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Address</th>
+                <th>Date created</th>
+                <th>Confirmed</th>
+                <th>Deleted</th>
+                <th>Email closed</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+@foreach (var email in Model.EmailAddressAuthentications)
+{
+<tr>
+    <th>@email.EmailAddressId</th>
+    <td>@email.EmailAddress.EmailAddress.Value</td>
+    <td>@Html.DisplayDate(email.DateCreatedUtc)</td>
+    <td>@(email.EmailAddress.DateConfirmedUtc != null)</td>
+    <td>@email.IsDeleted</td>
+    <td>@email.EmailAddress.IsClosed</td>
+    <td>
+        @Html.ActionLink("Edit", "EditEmailAddressAuthentication", new { id = email.Id, UserId = Model.Id, })
+    </td>
+</tr>
+}
+        </tbody>
+    </table>
+
+</section>

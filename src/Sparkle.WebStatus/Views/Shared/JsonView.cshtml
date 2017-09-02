@@ -1,0 +1,23 @@
+﻿@model object
+@{
+    var now = DateTime.UtcNow;
+}
+
+<pre class="format-json">@Newtonsoft.Json.JsonConvert.SerializeObject(Model, Newtonsoft.Json.Formatting.Indented)</pre>
+
+<script type="text/javascript" src="@Url.Content("/Content/stuff.js")"></script>
+<script type="text/javascript">
+    (function () {
+        try {
+            $('.format-json').each(function (item) {
+                var $i = $(this);
+                var text = $i.text();
+                var json = JSON.parse(text);
+                text = FormatJSON(json, '  ', true);
+                $i.html(text);
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    })();
+</script>

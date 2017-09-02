@@ -1,0 +1,15 @@
+﻿{
+    "DatabaseConnectionString": "Data source=SparkleSqlDev;Initial catalog=SparkleNetworksStatus;Integrated security=True",
+    "AppName" : "sparklenetworks.net",
+    "AppUrl" : "http://networks.mysparklenetworks.net/",
+    "AppCompanyName": "My company",
+    "AppCompanyLegalName": "My company, ID 1231231234, 123 mystery road, Cityville, France",
+    "SupportEmail": "support@mysparklenetworks.net",
+    "EmailSenderDisplayName": "mysparklenetworks.net",
+    "EmailSenderEmail": "support@mysparklenetworks.net",
+    "SmtpHost": "localhost",
+    "SmtpPort": "25",
+    "SmtpUsername": null,
+    "SmtpPassword": null,
+    "SmtpSsl": true
+}

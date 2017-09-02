@@ -1,0 +1,42 @@
+﻿@model IList<UserModel>
+@using Sparkle.NetworksStatus.Domain.Models
+@{
+    ViewBag.Title = "Users";
+}
+
+<section class="content">
+<h1>@ViewBag.Title</h1>
+
+<p>
+    @Html.ActionLink("Status", "Status") | 
+    @Html.ActionLink("Create New", "Edit", new { id = 0, })
+</p>
+
+    <h2>List</h2>
+<table class="dashboard">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>DisplayName</th>
+        <th>DateCreatedUtc</th>
+        <th>Email</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+        <td>@Html.DisplayFor(modelItem => item.DisplayName)</td>
+        <td>@Html.DisplayFor(modelItem => item.DateCreatedUtc)</td>
+        <td>@Html.DisplayFor(modelItem => item.EmailAddressString)</td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.Id, }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id, })
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
+</section>

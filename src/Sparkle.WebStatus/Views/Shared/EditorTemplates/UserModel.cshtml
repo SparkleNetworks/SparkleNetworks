@@ -1,0 +1,42 @@
+﻿@model UserModel
+@using Sparkle.NetworksStatus.Domain.Models
+
+@Html.ValidationSummary(true)
+
+<dl class="srkdl">
+    <dt class="label">@Html.LabelFor(m => m.Country)</dt>
+    <dd class="input">@Html.EditorFor(m => m.Country)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.Country)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.Culture)</dt>
+    <dd class="input">@Html.EditorFor(m => m.Culture)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.Culture)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.DisplayName)</dt>
+    <dd class="input">@Html.EditorFor(m => m.DisplayName)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.DisplayName)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.EmailAddressString)</dt>
+    <dd class="input">@Html.EditorFor(m => m.EmailAddressString)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.EmailAddressString)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.Firstname)</dt>
+    <dd class="input">@Html.EditorFor(m => m.Firstname)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.Firstname)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.Lastname)</dt>
+    <dd class="input">@Html.EditorFor(m => m.Lastname)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.Lastname)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.Status)</dt>
+    <dd class="input">@Html.EditorFor(m => m.Status)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.Status)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.Timezone)</dt>
+    <dd class="input">@Html.EditorFor(m => m.Timezone)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.Timezone)</dd>
+
+    <dt class="label"></dt>
+    <dd class="input">@Html.Submit("Save")</dd>
+</dl>
+<div class="clear"></div>

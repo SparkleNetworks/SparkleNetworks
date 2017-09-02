@@ -1,0 +1,108 @@
+﻿@model IList<Sparkle.WebStatus.Domain.NetworkStatusModel>
+@{
+    ViewBag.Title = "NetworksStatus";
+    var now = DateTime.UtcNow;
+    var crashes = (IList<Srk.BetaServices.ClientApi.AssemblyStat>)this.ViewBag.Crashes;
+    var jsonSettings = new Newtonsoft.Json.JsonSerializerSettings
+    {
+        DateFormatHandling = Newtonsoft.Json.DateFormatHandling.MicrosoftDateFormat,
+    };
+}
+<meta http-equiv="refresh" content="50"> 
+
+
+<section class="content">
+<h2>NetworksStatus</h2>
+
+<table class="dashboard evenodd">
+    <thead>
+        <tr>
+            <th>Network</th>
+            <th>Build date</th>
+            <th>Build age</th>
+            <th>Build version</th>
+            <th>Users</th>
+            <th>Services</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@{
+    var buildDiffs = new List<TimeSpan>(this.Model.Count);
+}
+@foreach (var item in this.Model)
+{
+    var buildDiff = now - (item.BuildDateUtc ?? now);
+    if (item.BuildDateUtc != null)
+    {
+        buildDiffs.Add(buildDiff);
+    }
+    var buildDiffHours = buildDiff.TotalHours;
+    var buildDiffDays = buildDiff.TotalDays;
+    <tr>
+        <th>@Html.ActionLink(item.Network.ToString(), "Edit", new { id = item.Network.Guid, })</th>
+    @if (item.StatusException != null)
+    {
+        <td class="error">@Html.ActionLink("ERROR", "NetworkStatus", new { id = item.Network.Guid, })</td>
+        <td class="error " colspan="6"><code class="ellipsis">@item.StatusException.Message</code></td>
+    }
+    else
+    {
+        <td>@Html.DisplayDateTime(item.BuildDateUtc.Value, displayDateFormat: "g")</td>
+        <td class="@Html.CssClass(buildDiffHours <= 2D, "ok") @Html.CssClass(buildDiffDays > 3 & buildDiffDays < 10, "warning") @Html.CssClass(buildDiffDays >= 10, "error")">@(buildDiff.TotalDays >= 1 ? (Math.Round(buildDiff.TotalDays) + " d") : (Math.Round(buildDiff.TotalHours) + " h"))</td>
+        <td>@item.AssemblyFileVersion</td>
+        <td>@if (item.OnlineUsers != null)
+            { @Html.ActionLink(item.OnlineUsers.ToString(), "OnlineUsers", new { id = item.Network.Guid, }) }</td>
+        @*<td style="max-width:400px;" class="@Html.CssClass(item.ServicesVerified == true, "", "error")">@(item.ServicesVerified == null ? "?" : item.ServicesVerified.GetValueOrDefault() ? "ok" : item.ServicesVerifyErrors != null && item.ServicesVerifyErrors.Length > 0 ? "" : "error")@if (item.ServicesVerifyErrors != null) { foreach (var error in item.ServicesVerifyErrors) { <div class="ellipsis" title="@error">@error</div> } }</td>*@
+        <td class="@Html.CssClass(item.ServicesVerified == true, "", "error")">@Html.ActionLink((item.ServicesVerified == false || item.ServicesVerifyErrors != null && item.ServicesVerifyErrors.Length > 0) ? ((item.ServicesVerifyErrors != null ? item.ServicesVerifyErrors.Length.ToString() : "some") + " ERRORS") : "ok", "NetworkStatus", new { id = item.Network.Guid, })</td>
+        <td>@if (item.ActiveUsers != null || item.ActivitiesH24 != null){
+            @:@item.ActiveUsers | @item.ActivitiesH24
+        }</td>
+    }
+<!--
+@item.RawStatus
+-->
+    </tr>
+}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td class="number">count: @this.Model.Count</td>
+            <td></td>
+            <td class="number">avg: ~@Math.Round(buildDiffs.Select(d => d.TotalDays).Average()) d</td>
+            <td></td>
+            <td class="number">@this.Model.Sum(n => n.OnlineUsers.GetValueOrDefault())</td>
+            <td></td>
+            <td>@(this.Model.Where(i => i.ActiveUsers != null).Sum(i => i.ActiveUsers.Value)) | @(this.Model.Where(i => i.ActivitiesH24 != null).Sum(i => i.ActivitiesH24.Value))</td>
+        </tr>
+    </tfoot>
+</table>
+    <p>&nbsp;</p>
+    <div id="chart_div"></div>
+</section>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    var crashes = [[
+        @Html.Raw(string.Join("],[", crashes.Where(x => now < x.Date.AddDays(50)).Select(x => "new Date(" + x.Date.Year + "," + (x.Date.Month - 1) + "," + x.Date.Day + "), " + x.Reports).ToArray()))
+    ]];
+
+    (function (crashes) {
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(function() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('date', 'Date');
+            data.addColumn('number', 'Exceptions');
+            data.addRows(crashes);
+
+            var options = {
+                legend: "Last 50 days",
+                series: {
+                    0: { color: "red" }
+                }
+            };
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        });
+    })(crashes);
+</script>

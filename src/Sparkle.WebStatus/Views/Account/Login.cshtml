@@ -1,0 +1,33 @@
+﻿@model EmailPasswordAuthenticateRequest
+@using Sparkle.NetworksStatus.Domain.Messages
+@{
+    //this.WebDependencies().Include(LocalWebDependencies.ClientValidation);
+    
+}
+
+<article class="content">
+    <h1>@this.ViewBag.Title</h1>
+@using (Html.BeginFormEx(new { @class = "srkform", }))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("ReturnUrl", (string)this.ViewBag.ReturnUrl)
+    @Html.ValidationSummaryEx()
+    <dl>
+        <dt class="label">@Html.LabelFor(m => m.Email)</dt>
+        <dd class="input">@Html.EditorFor(m => m.Email)</dd>
+        <dd class="validation">@Html.ValidationMessageFor(m => m.Email)</dd>
+
+        <dt class="label">@Html.LabelFor(m => m.Password)</dt>
+        <dd class="input">@Html.EditorFor(m => m.Password)</dd>
+        <dd class="validation">@Html.ValidationMessageFor(m => m.Password)</dd>
+
+        <dt class="label">@Html.Label("RememberMe")</dt>
+        <dd class="input">@Html.CheckBox("RememberMe", (bool)this.ViewBag.RememberMe)</dd>
+
+        <dt class="label"></dt>
+        <dd class="input">@Html.Submit("Go")</dd>
+
+    </dl>
+}
+
+</article>

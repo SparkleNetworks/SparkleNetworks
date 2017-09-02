@@ -1,0 +1,56 @@
+﻿@model EmailAddressAuthenticationModel
+@using Sparkle.NetworksStatus.Domain.Models
+
+@Html.ValidationSummary(true)
+
+<dl class="srkdl">
+    <dt class="label">@Html.LabelFor(m => m.Id)</dt>
+    <dd class="input">@Html.EditorFor(m => m.Id)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.Id)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.UserId)</dt>
+    <dd class="input">@Html.EditorFor(m => m.UserId)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.UserId)</dd>
+    
+    <dt class="label">@Html.LabelFor(m => m.EmailAddressString)</dt>
+    <dd class="input">@Html.EditorFor(m => m.EmailAddressString)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.EmailAddressString)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.IsDeleted)</dt>
+    <dd class="input">@Html.EditorFor(m => m.IsDeleted)</dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.IsDeleted)</dd>
+
+    <dt class="label">@Html.LabelFor(m => m.EmailAddress.DateConfirmedUtc)</dt>
+    <dd class="input">@Html.EditorFor(m => m.EmailAddress.DateConfirmedUtc) <a href="javascript:void(0);" class="js-now" data-name="EmailAddress_DateConfirmedUtc">now</a></dd>
+    <dd class="validation">@Html.ValidationMessageFor(m => m.EmailAddress.DateConfirmedUtc)</dd>
+
+    <dt class="label"></dt>
+    <dd class="input">@Html.Submit("Save")</dd>
+</dl>
+<div class="clear"></div>
+
+<script type="text/javascript">
+    function EmailAddressAuthenticationModel(document) {
+        var me = this;
+
+        return {
+            Init: function () {
+                var elements = document.getElementsByClassName('js-now');
+                for (var i = 0; i < elements.length; i++) {
+                    var element = elements[i];
+                    var name = element.getAttribute('data-name');
+                    element.onclick = function () {
+                        var target = document.getElementById(name);
+                        if (target != null) {
+                            target.value = '@DateTime.UtcNow.ToString("o")';
+                        }
+                    };
+                }
+            }
+        };
+    }
+
+    var model = new EmailAddressAuthenticationModel(document);
+    model.Init();
+
+</script>

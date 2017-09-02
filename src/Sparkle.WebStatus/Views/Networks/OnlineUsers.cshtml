@@ -1,0 +1,31 @@
+﻿@model Sparkle.WebStatus.Domain.NetworkStatusModel
+@{
+    ViewBag.Title = "NetworksStatus";
+    var now = DateTime.UtcNow;
+}
+
+<section class="content">
+<h2>NetworksStatus</h2>
+
+@if (Model.OnlineUsernames != null)
+{
+<table class="dashboard">
+    <thead>
+        <tr>
+            <th>Username</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in this.Model.OnlineUsernames)
+    {
+    <tr>
+        <th>@item</th>
+    </tr>
+    }
+    </tbody>
+</table>
+}
+<!--
+@Model.RawStatus
+-->
+</section>

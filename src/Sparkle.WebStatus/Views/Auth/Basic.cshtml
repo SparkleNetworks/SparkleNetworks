@@ -1,0 +1,24 @@
+﻿@{
+    bool isAuth = this.ViewBag.IsAuth;
+}
+
+<article class="content">
+@if (isAuth)
+{
+    <p>You are authenticated as @this.ViewBag.CurrentUser.</p>
+    <p>@Html.ActionLink("Log off", "Off")</p>
+}
+else
+{
+    using (Html.BeginForm())
+    {
+        <p>
+            <label>
+                Password: <input type="password" name="password" value="" />
+            </label>
+        </p>
+        <p>@Html.Submit("Go")</p>
+    }
+}
+
+</article>
