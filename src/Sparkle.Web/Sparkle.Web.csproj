@@ -1,0 +1,2073 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A7FD77D0-8900-4386-BF36-EA2BBDB603DA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sparkle</RootNamespace>
+    <AssemblyName>Sparkle.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SilverlightApplicationList>
+    </SilverlightApplicationList>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <WebGreaseLibPath>..\..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PublishDatabases>false</PublishDatabases>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxMin">
+      <HintPath>..\..\packages\AjaxMin.5.11.5295.12309\lib\net40\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="ARSoft.Tools.Net, Version=1.8.1.0, Culture=neutral, PublicKeyToken=1940454cd762ec57, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\ARSoft.Tools.Net.1.8.1\lib\ARSoft.Tools.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.Core">
+      <HintPath>..\..\packages\BundleTransformer.Core.1.9.25\lib\net40\BundleTransformer.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.Less">
+      <HintPath>..\..\packages\BundleTransformer.Less.1.9.25\lib\net40\BundleTransformer.Less.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.MicrosoftAjax">
+      <HintPath>..\..\packages\BundleTransformer.MicrosoftAjax.1.9.25\lib\net40\BundleTransformer.MicrosoftAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Gettext.Cs">
+      <HintPath>..\..\Public\Resources\NET40\Gettext.Cs.dll</HintPath>
+    </Reference>
+    <Reference Include="JavaScriptEngineSwitcher.Core">
+      <HintPath>..\..\packages\JavaScriptEngineSwitcher.Core.1.2.0\lib\net40\JavaScriptEngineSwitcher.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="JavaScriptEngineSwitcher.Msie">
+      <HintPath>..\..\packages\JavaScriptEngineSwitcher.Msie.1.2.0\lib\net40\JavaScriptEngineSwitcher.Msie.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqToTwitter, Version=2.1.3.0, Culture=neutral, PublicKeyToken=957107be965c25d9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\linqtotwitter.2.1.11\lib\net40\LinqToTwitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\NET40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MimeDetective, Version=0.1.0.0, Culture=neutral, PublicKeyToken=06cffbf44276acc5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\NET40\MimeDetective.dll</HintPath>
+    </Reference>
+    <Reference Include="MsieJavaScriptEngine">
+      <HintPath>..\..\packages\MsieJavaScriptEngine.1.5.0\lib\net40\MsieJavaScriptEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenGraphNET.Lib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06cffbf44276acc5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\External\FX35\OpenGraphNET.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="SgmlReaderDll">
+      <HintPath>..\..\External\FX35\SgmlReaderDll.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpSquare">
+      <HintPath>..\..\Libs\NET40\SharpSquare.dll</HintPath>
+    </Reference>
+    <Reference Include="Sparkle.LinkedInNET">
+      <HintPath>..\..\Libs\NET40\Sparkle.LinkedInNET.dll</HintPath>
+    </Reference>
+    <Reference Include="Srk.BetaServices.ClientApi">
+      <HintPath>..\..\Libs\NET45\Srk.BetaServices.ClientApi.dll</HintPath>
+    </Reference>
+    <Reference Include="SrkToolkit.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SrkToolkit.Common.1.1.135\lib\net45\SrkToolkit.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SrkToolkit.Common.Unsafe">
+      <HintPath>..\..\Libs\SrkToolkit\NET4\SrkToolkit.Common.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="SrkToolkit.Domain, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SrkToolkit.Domain.1.1.129\lib\net45\SrkToolkit.Domain.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SrkToolkit.Domain.AspMvc4, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SrkToolkit.Domain.AspMvc4.1.1.130\lib\net45\SrkToolkit.Domain.AspMvc4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SrkToolkit.Web.Mvc4, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3dd292c2c460793a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SrkToolkit.Web.AspMvc4.1.1.127\lib\net45\SrkToolkit.Web.Mvc4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Stripe.net, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\Stripe.net.2.3.3\lib\net40\Stripe.net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.4.0.40804.0\lib\net40\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Thought.vCards">
+      <HintPath>..\..\Libs\NET20\Thought.vCards.dll</HintPath>
+    </Reference>
+    <Reference Include="Twitterizer2">
+      <HintPath>..\..\Libs\NET40\Twitterizer2.dll</HintPath>
+    </Reference>
+    <Reference Include="Twitterizer2.Asynchronous">
+      <HintPath>..\..\Libs\NET40\Twitterizer2.Asynchronous.dll</HintPath>
+    </Reference>
+    <Reference Include="Twitterizer2.Streaming">
+      <HintPath>..\..\Libs\NET40\Twitterizer2.Streaming.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AchievementsController.cs" />
+    <Compile Include="Controllers\AdsController.cs" />
+    <Compile Include="Controllers\AjaxController.cs" />
+    <Compile Include="Controllers\Api10Controller.cs" />
+    <Compile Include="Controllers\ApplyController.cs" />
+    <Compile Include="Controllers\BoxController.cs" />
+    <Compile Include="Controllers\ClubsController.cs" />
+    <Compile Include="Controllers\CoffeeRouletteController.cs" />
+    <Compile Include="Controllers\FilesController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
+    <Compile Include="Controllers\InboxController.cs" />
+    <Compile Include="Controllers\NetworkController.cs" />
+    <Compile Include="Controllers\ModerateController.cs" />
+    <Compile Include="Controllers\PagesController.cs" />
+    <Compile Include="Controllers\PartnerResourcesController.cs" />
+    <Compile Include="Controllers\BenefitsController.cs" />
+    <Compile Include="Controllers\QuickStartController.cs" />
+    <Compile Include="Controllers\SubscriptionsController.cs" />
+    <Compile Include="Controllers\SupportController.cs" />
+    <Compile Include="Controllers\Suppressions.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
+    <Compile Include="Controllers\ToolboxController.cs" />
+    <Compile Include="Controllers\TopicsController.cs" />
+    <Compile Include="Controllers\UserDataController.cs" />
+    <Compile Include="Controllers\WorkHereController.cs" />
+    <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\CompaniesController.cs" />
+    <Compile Include="Controllers\ControllerExtensions.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DataController.cs" />
+    <Compile Include="Controllers\DealsController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\ExchangeController.cs" />
+    <Compile Include="Controllers\FeedsController.cs" />
+    <Compile Include="Controllers\GroupsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\JsonController.cs" />
+    <Compile Include="Controllers\LostItemsController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\NetworksController.cs" />
+    <Compile Include="Controllers\PeoplesController.cs" />
+    <Compile Include="Controllers\PicturesController.cs" />
+    <Compile Include="Controllers\PlacesController.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\LocalSparkleController.cs" />
+    <Compile Include="Controllers\SetupController.cs" />
+    <Compile Include="Controllers\SideBarController.cs" />
+    <Compile Include="Controllers\TagsController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\TvController.cs" />
+    <Compile Include="Filters\AuthorizeAttribute.cs" />
+    <Compile Include="Filters\AuthorizeByNetworkAccessAttribute.cs" />
+    <Compile Include="Filters\AuthorizeDeviceAttribute.cs" />
+    <Compile Include="Filters\AuthorizeByCompanyAccessAttribute.cs" />
+    <Compile Include="Filters\SubscriberAccessAttribute.cs" />
+    <Compile Include="Models\Account\EmailChangeConfirmedModel.cs" />
+    <Compile Include="Models\AchievementsEditListModel.cs" />
+    <Compile Include="Models\Box\ManageTagModel.cs" />
+    <Compile Include="Models\Cache\CompanyPicturesCache.cs" />
+    <Compile Include="Models\Cache\ObjectCache.cs" />
+    <Compile Include="Models\Cache\GroupPicturesCache.cs" />
+    <Compile Include="Models\Cache\PartnerResourcePicturesCache.cs" />
+    <Compile Include="Models\Cache\PersonPicturesCache.cs" />
+    <Compile Include="Models\Cache\ObjectListCache.cs" />
+    <Compile Include="Models\Cache\SubscriberAccessCache.cs" />
+    <Compile Include="Models\Cache\TimelineItemPicturesCache.cs" />
+    <Compile Include="Models\Common\InformationModel.cs" />
+    <Compile Include="Models\CompanyAchievements.cs" />
+    <Compile Include="Models\CookieConsentModel.cs" />
+    <Compile Include="Models\Dashboard\ApplyRequestModels.cs" />
+    <Compile Include="Models\Dashboard\CompanyDetailsModel.cs" />
+    <Compile Include="Models\Dashboard\DashboardStatusModel.cs" />
+    <Compile Include="Models\Dashboard\UserDetailsModel.cs" />
+    <Compile Include="Models\Files\NetworkFile.cs" />
+    <Compile Include="Models\Help\HelpContent.cs" />
+    <Compile Include="Models\InboxModels.cs" />
+    <Compile Include="Models\ModelStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelStrings.fr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelStrings.fr.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Setup\SetupLinkedInModel.cs" />
+    <Compile Include="Models\Tags\TagsIndexModel.cs" />
+    <Compile Include="Resources\Alerts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Alerts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AboutModels.cs" />
+    <Compile Include="Models\Account\AccountRecoveryModel.cs" />
+    <Compile Include="Models\Account\JoinModel.cs" />
+    <Compile Include="Models\Account\RecoverPasswordModel.cs" />
+    <Compile Include="Models\AchievementsModels.cs" />
+    <Compile Include="Models\AddMemberModel.cs" />
+    <Compile Include="Models\AdsModels.cs" />
+    <Compile Include="Models\AlbumsModels.cs" />
+    <Compile Include="Models\BoxModels.cs" />
+    <Compile Include="Models\ConfirmFormModel.cs" />
+    <Compile Include="Models\Dashboard\DashboardAttribute.cs" />
+    <Compile Include="Models\Dashboard\DashboardMenuModel.cs" />
+    <Compile Include="Models\Dashboard\DisplayNewsletterModel.cs" />
+    <Compile Include="Models\Files\FileManifest.cs" />
+    <Compile Include="Models\GroupListModel.cs" />
+    <Compile Include="Models\GroupsListModel.cs" />
+    <Compile Include="Models\HRModels.cs" />
+    <Compile Include="Models\WebDependencies.cs" />
+    <Compile Include="Models\Maintenance\LogModel.cs" />
+    <Compile Include="Models\Messages\MessagesIndexModel.cs" />
+    <Compile Include="Models\NetworkModels.cs" />
+    <Compile Include="Models\NetworksModels.cs" />
+    <Compile Include="Models\OomanCheckModel.cs" />
+    <Compile Include="Models\QuickStartModels.cs" />
+    <Compile Include="Models\CommonModels.cs" />
+    <Compile Include="Models\CompaniesListModel.cs" />
+    <Compile Include="Models\CompaniesModels.cs" />
+    <Compile Include="Models\CompanyListModel.cs" />
+    <Compile Include="Models\DashboardModels.cs" />
+    <Compile Include="Models\Dashboard\RegisterRequestModel.cs" />
+    <Compile Include="Models\Dashboard\RegisterRequestsModel.cs" />
+    <Compile Include="Models\EventsModels.cs" />
+    <Compile Include="Models\ExchangeModels.cs" />
+    <Compile Include="Models\FifiModels.cs" />
+    <Compile Include="Models\GenericSkillModel.cs" />
+    <Compile Include="Models\GroupsModels.cs" />
+    <Compile Include="Models\InvitationModel.cs" />
+    <Compile Include="Models\JobsModels.cs" />
+    <Compile Include="Models\KickstarterModels.cs" />
+    <Compile Include="Models\LiveModels.cs" />
+    <Compile Include="Models\LostItemsModels.cs" />
+    <Compile Include="Models\ModelWithServices.cs" />
+    <Compile Include="Models\PeopleListEditableModel.cs" />
+    <Compile Include="Models\PeoplesModels.cs" />
+    <Compile Include="Models\PersonListModel.cs" />
+    <Compile Include="Models\PersonsListModel.cs" />
+    <Compile Include="Models\PicturesModels.cs" />
+    <Compile Include="Models\PlacesModels.cs" />
+    <Compile Include="Models\ProjectsModels.cs" />
+    <Compile Include="Models\ResumesModels.cs" />
+    <Compile Include="Models\SeekFriendModel.cs" />
+    <Compile Include="Models\Setup\SetupItem.cs" />
+    <Compile Include="Models\Setup\SetupTwitterModel.cs" />
+    <Compile Include="Models\Setup\SocialNetworksModel.cs" />
+    <Compile Include="Models\SkillModel.cs" />
+    <Compile Include="Models\TagsModels.cs" />
+    <Compile Include="Models\TopicsModel.cs" />
+    <Compile Include="Models\Urls.cs" />
+    <Compile Include="Resources\Alerts.fr.Designer.cs">
+      <DependentUpon>Alerts.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Services\CacheAccessor.cs" />
+    <Compile Include="Services\FakeView.cs" />
+    <Compile Include="Services\FakeViewDataContainer.cs" />
+    <Compile Include="Services\FeedResult.cs" />
+    <Compile Include="Services\HtmlExtensions.cs" />
+    <Compile Include="Services\LocalConfiguration.cs" />
+    <Compile Include="Services\ResultService.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Ajax.cs" />
+    <Compile Include="Models\AutoSuggestModel.cs" />
+    <Compile Include="Models\CityModel.cs" />
+    <Compile Include="Models\IndexModel.cs" />
+    <Compile Include="Models\LinkModel.cs" />
+    <Compile Include="Models\MessagesModel.cs" />
+    <Compile Include="Models\PostMessageModel.cs" />
+    <Compile Include="Models\SearchModel.cs" />
+    <Compile Include="Models\TimelineModels.cs" />
+    <Compile Include="Models\WallModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Services\ViewExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="clientaccesspolicy.xml" />
+    <Content Include="Content\Audio\notification.wav" />
+    <Content Include="Content\icones\appbar.add.light.png" />
+    <Content Include="Content\icones\appbar.add.png" />
+    <Content Include="Content\icones\idea.gif" />
+    <Content Include="Content\icones\LinkedIn.png" />
+    <Content Include="Content\images\appbar.sort.dark.png" />
+    <Content Include="Content\images\appbar.sort.light.png" />
+    <Content Include="Content\images\background.png" />
+    <Content Include="Content\images\Buttons\about-26.png" />
+    <Content Include="Content\images\Buttons\about-32.png" />
+    <Content Include="Content\images\Buttons\about-48.png" />
+    <Content Include="Content\images\Buttons\about-64.png" />
+    <Content Include="Content\images\Buttons\add_user-26.png" />
+    <Content Include="Content\images\Buttons\add_user-32.png" />
+    <Content Include="Content\images\Buttons\add_user-48.png" />
+    <Content Include="Content\images\Buttons\add_user-64.png" />
+    <Content Include="Content\images\Buttons\at-40.png" />
+    <Content Include="Content\images\Buttons\at-no-40.png" />
+    <Content Include="Content\images\Buttons\beer_glass-26.png" />
+    <Content Include="Content\images\Buttons\beer_glass-32.png" />
+    <Content Include="Content\images\Buttons\beer_glass-48.png" />
+    <Content Include="Content\images\Buttons\beer_glass-64.png" />
+    <Content Include="Content\images\Buttons\box-26.png" />
+    <Content Include="Content\images\Buttons\box-32.png" />
+    <Content Include="Content\images\Buttons\box-48.png" />
+    <Content Include="Content\images\Buttons\box-64.png" />
+    <Content Include="Content\images\Buttons\bra-26.png" />
+    <Content Include="Content\images\Buttons\bra-32.png" />
+    <Content Include="Content\images\Buttons\bra-48.png" />
+    <Content Include="Content\images\Buttons\bra-64.png" />
+    <Content Include="Content\images\Buttons\calculator-26.png" />
+    <Content Include="Content\images\Buttons\calculator-32.png" />
+    <Content Include="Content\images\Buttons\calculator-48.png" />
+    <Content Include="Content\images\Buttons\calculator-64.png" />
+    <Content Include="Content\images\Buttons\calendar0-26.png" />
+    <Content Include="Content\images\Buttons\calendar1-26.png" />
+    <Content Include="Content\images\Buttons\calendar7-26.png" />
+    <Content Include="Content\images\Buttons\calendar-32.png" />
+    <Content Include="Content\images\Buttons\calendar-48.png" />
+    <Content Include="Content\images\Buttons\calendar-64.png" />
+    <Content Include="Content\images\Buttons\calendarAlert-26.png" />
+    <Content Include="Content\images\Buttons\checked_user-26.png" />
+    <Content Include="Content\images\Buttons\checked_user-32.png" />
+    <Content Include="Content\images\Buttons\checked_user-48.png" />
+    <Content Include="Content\images\Buttons\checked_user-64.png" />
+    <Content Include="Content\images\Buttons\check_book-26.png" />
+    <Content Include="Content\images\Buttons\check_book-32.png" />
+    <Content Include="Content\images\Buttons\check_book-48.png" />
+    <Content Include="Content\images\Buttons\check_book-64.png" />
+    <Content Include="Content\images\Buttons\coffee-26.png" />
+    <Content Include="Content\images\Buttons\coffee-32.png" />
+    <Content Include="Content\images\Buttons\coffee-48.png" />
+    <Content Include="Content\images\Buttons\coffee-64.png" />
+    <Content Include="Content\images\Buttons\conference-26.png" />
+    <Content Include="Content\images\Buttons\conference-32.png" />
+    <Content Include="Content\images\Buttons\conference-48.png" />
+    <Content Include="Content\images\Buttons\conference-64.png" />
+    <Content Include="Content\images\Buttons\decision-26.png" />
+    <Content Include="Content\images\Buttons\decision-32.png" />
+    <Content Include="Content\images\Buttons\decision-48.png" />
+    <Content Include="Content\images\Buttons\decision-64.png" />
+    <Content Include="Content\images\Buttons\delete-26.png" />
+    <Content Include="Content\images\Buttons\delete-32.png" />
+    <Content Include="Content\images\Buttons\delete-48.png" />
+    <Content Include="Content\images\Buttons\delete-64.png" />
+    <Content Include="Content\images\Buttons\edit-26.png" />
+    <Content Include="Content\images\Buttons\edit-32.png" />
+    <Content Include="Content\images\Buttons\edit-48.png" />
+    <Content Include="Content\images\Buttons\edit-64.png" />
+    <Content Include="Content\images\Buttons\facebook-26.png" />
+    <Content Include="Content\images\Buttons\google_plus-26.png" />
+    <Content Include="Content\images\Buttons\group-26.png" />
+    <Content Include="Content\images\Buttons\group-32.png" />
+    <Content Include="Content\images\Buttons\group-48.png" />
+    <Content Include="Content\images\Buttons\group-64.png" />
+    <Content Include="Content\images\Buttons\info-26.png" />
+    <Content Include="Content\images\Buttons\info-32.png" />
+    <Content Include="Content\images\Buttons\info-48.png" />
+    <Content Include="Content\images\Buttons\info-64.png" />
+    <Content Include="Content\images\Buttons\left-26.png" />
+    <Content Include="Content\images\Buttons\left-32.png" />
+    <Content Include="Content\images\Buttons\left-48.png" />
+    <Content Include="Content\images\Buttons\left-64.png" />
+    <Content Include="Content\images\Buttons\linkedin-26.png" />
+    <Content Include="Content\images\Buttons\map_marker-32.png" />
+    <Content Include="Content\images\Buttons\menu.png" />
+    <Content Include="Content\images\Buttons\mind_map-26.png" />
+    <Content Include="Content\images\Buttons\mind_map-32.png" />
+    <Content Include="Content\images\Buttons\mind_map-48.png" />
+    <Content Include="Content\images\Buttons\mind_map-64.png" />
+    <Content Include="Content\images\Buttons\newspaper-26.png" />
+    <Content Include="Content\images\Buttons\newspaper-32.png" />
+    <Content Include="Content\images\Buttons\newspaper-48.png" />
+    <Content Include="Content\images\Buttons\newspaper-64.png" />
+    <Content Include="Content\images\Buttons\ok-26.png" />
+    <Content Include="Content\images\Buttons\ok-32.png" />
+    <Content Include="Content\images\Buttons\ok-48.png" />
+    <Content Include="Content\images\Buttons\ok-64.png" />
+    <Content Include="Content\images\Buttons\organization-26.png" />
+    <Content Include="Content\images\Buttons\organization-32.png" />
+    <Content Include="Content\images\Buttons\organization-48.png" />
+    <Content Include="Content\images\Buttons\organization-64.png" />
+    <Content Include="Content\images\Buttons\pizza-26.png" />
+    <Content Include="Content\images\Buttons\pizza-32.png" />
+    <Content Include="Content\images\Buttons\pizza-48.png" />
+    <Content Include="Content\images\Buttons\pizza-64.png" />
+    <Content Include="Content\images\Buttons\read_message-26.png" />
+    <Content Include="Content\images\Buttons\read_message-32.png" />
+    <Content Include="Content\images\Buttons\read_message-48.png" />
+    <Content Include="Content\images\Buttons\read_message-64.png" />
+    <Content Include="Content\images\Buttons\remove_user-26.png" />
+    <Content Include="Content\images\Buttons\remove_user-32.png" />
+    <Content Include="Content\images\Buttons\remove_user-48.png" />
+    <Content Include="Content\images\Buttons\remove_user-64.png" />
+    <Content Include="Content\images\Buttons\repeat-26.png" />
+    <Content Include="Content\images\Buttons\restaurant-26.png" />
+    <Content Include="Content\images\Buttons\restaurant-32.png" />
+    <Content Include="Content\images\Buttons\restaurant-48.png" />
+    <Content Include="Content\images\Buttons\restaurant-64.png" />
+    <Content Include="Content\images\Buttons\reviewer-26.png" />
+    <Content Include="Content\images\Buttons\reviewer-32.png" />
+    <Content Include="Content\images\Buttons\reviewer-48.png" />
+    <Content Include="Content\images\Buttons\reviewer-64.png" />
+    <Content Include="Content\images\Buttons\right-26.png" />
+    <Content Include="Content\images\Buttons\right-32.png" />
+    <Content Include="Content\images\Buttons\right-48.png" />
+    <Content Include="Content\images\Buttons\right-64.png" />
+    <Content Include="Content\images\Buttons\roller_brush-26.png" />
+    <Content Include="Content\images\Buttons\roller_brush-32.png" />
+    <Content Include="Content\images\Buttons\roller_brush-48.png" />
+    <Content Include="Content\images\Buttons\roller_brush-64.png" />
+    <Content Include="Content\images\Buttons\settings-26.png" />
+    <Content Include="Content\images\Buttons\settings-32.png" />
+    <Content Include="Content\images\Buttons\settings-48.png" />
+    <Content Include="Content\images\Buttons\settings-64.png" />
+    <Content Include="Content\images\Buttons\speech_bubble-26.png" />
+    <Content Include="Content\images\Buttons\speech_bubble-32.png" />
+    <Content Include="Content\images\Buttons\speech_bubble-48.png" />
+    <Content Include="Content\images\Buttons\speech_bubble-64.png" />
+    <Content Include="Content\images\Buttons\statistics-26.png" />
+    <Content Include="Content\images\Buttons\statistics-32.png" />
+    <Content Include="Content\images\Buttons\statistics-48.png" />
+    <Content Include="Content\images\Buttons\statistics-64.png" />
+    <Content Include="Content\images\Buttons\stop.38.png" />
+    <Content Include="Content\images\Buttons\stop.40.png" />
+    <Content Include="Content\images\Buttons\switch_off-26.png" />
+    <Content Include="Content\images\Buttons\switch_on-26.png" />
+    <Content Include="Content\images\Buttons\tennis-48.png" />
+    <Content Include="Content\images\Buttons\ticket-26.png" />
+    <Content Include="Content\images\Buttons\ticket-32.png" />
+    <Content Include="Content\images\Buttons\ticket-48.png" />
+    <Content Include="Content\images\Buttons\ticket-64.png" />
+    <Content Include="Content\images\Buttons\twitter-26.png" />
+    <Content Include="Content\images\Buttons\widescreen_tv-26.png" />
+    <Content Include="Content\images\Buttons\widescreen_tv-32.png" />
+    <Content Include="Content\images\Buttons\widescreen_tv-48.png" />
+    <Content Include="Content\images\Buttons\widescreen_tv-64.png" />
+    <Content Include="Content\images\camera.png" />
+    <Content Include="Content\images\close.png" />
+    <Content Include="Content\images\Companies\SyncTwitter.jpg" />
+    <Content Include="Content\images\default\Company\Large.gif" />
+    <Content Include="Content\images\default\Company\Medium.gif" />
+    <Content Include="Content\images\default\Company\Small.gif" />
+    <Content Include="Content\images\delete.png" />
+    <Content Include="Content\images\external-link-ltr-icon.png" />
+    <Content Include="Content\images\external-link-ltr-icon.svg" />
+    <Content Include="Content\images\Flags\fr-CA.gif" />
+    <Content Include="Content\images\Flags\en-CA.gif" />
+    <Content Include="Content\images\Flags\en-GB.gif" />
+    <Content Include="Content\images\Flags\en-US.gif" />
+    <Content Include="Content\images\Flags\fr-FR.gif" />
+    <Content Include="Content\images\Flags\intlTelInput-flags.png" />
+    <Content Include="Content\images\Flags\nl-BE.gif" />
+    <Content Include="Content\images\Flags\nl-NL.gif" />
+    <Content Include="Content\images\gridbg.png" />
+    <Content Include="Content\images\LogoFooter.png" />
+    <Content Include="Content\images\Pictos\admin_off.png" />
+    <Content Include="Content\images\Pictos\admin_yes.png" />
+    <Content Include="Content\images\Pictos\delete-26.png" />
+    <Content Include="Content\images\Pictos\emailConfirmed.png" />
+    <Content Include="Content\images\Pictos\emailNotConfirmed.png" />
+    <Content Include="Content\images\Pictos\external-link.png" />
+    <Content Include="Content\images\Pictos\user.png" />
+    <Content Include="Content\images\Pictos\user_no.png" />
+    <Content Include="Content\images\Pictos\user_off.png" />
+    <Content Include="Content\images\Pictos\user_yes.png" />
+    <Content Include="Content\images\pixel.png" />
+    <Content Include="Content\images\Resumes\Resume1.png" />
+    <Content Include="Content\images\trash.png" />
+    <Content Include="Content\images\twitter-link-ltr-icon.png" />
+    <Content Include="Content\images\WorkHere\Resumes.jpg" />
+    <Content Include="Content\intlTelInput.css" />
+    <Content Include="Content\jquery.mentionsInput.css" />
+    <Content Include="Content\jquery.mobile-1.2.0.css" />
+    <Content Include="Content\jquery.multiselect.css" />
+    <Content Include="Content\jquery.multiselect.filter.css" />
+    <Content Include="Content\mapbox.css" />
+    <Content Include="Content\NetworkDefaults\Continents\Asia.jpg" />
+    <Content Include="Content\NetworkDefaults\Continents\Australia.jpg" />
+    <Content Include="Content\NetworkDefaults\Continents\Europe.jpg" />
+    <Content Include="Content\NetworkDefaults\Continents\North America.jpg" />
+    <Content Include="Content\NetworkDefaults\Styles\HeaderLogo.png" />
+    <Content Include="Content\NetworkDefaults\Styles\Logo.png" />
+    <Content Include="Content\Networks\Common\Companies\Default-Large.png" />
+    <Content Include="Content\Networks\Common\Companies\Default-Medium.png" />
+    <Content Include="Content\Networks\Common\Companies\Default-Small.png" />
+    <Content Include="Content\Networks\Common\Groups\Default-Large.png" />
+    <Content Include="Content\Networks\Common\Groups\Default-Medium.png" />
+    <Content Include="Content\Networks\Common\Groups\Default-Small.png" />
+    <Content Include="Content\Networks\Common\PartnerResources\Default-Large.jpg" />
+    <Content Include="Content\Networks\Common\PartnerResources\Default-Medium.jpg" />
+    <Content Include="Content\Networks\Common\PartnerResources\Default-Original.jpg" />
+    <Content Include="Content\Networks\Common\PartnerResources\Default-Small.jpg" />
+    <Content Include="Content\Networks\Common\Peoples\Medium-Female.jpg" />
+    <Content Include="Content\Networks\Common\Peoples\Medium-Male.jpg" />
+    <Content Include="Content\Networks\Common\Peoples\Medium-Unspecified.jpg" />
+    <Content Include="Content\Networks\Common\Peoples\Small-Female.jpg" />
+    <Content Include="Content\Networks\Common\Peoples\Small-Male.jpg" />
+    <Content Include="Content\Networks\Common\Peoples\Small-Unspecified.jpg" />
+    <Content Include="Content\Dashboard.less" />
+    <Content Include="Content\Fonts\Hand.license" />
+    <None Include="Content\Networks\ConnecteoCamp\Styles\HeaderLogo.png" />
+    <None Include="Content\Networks\ConnecteoCamp\Styles\hero.jpg" />
+    <None Include="Content\Networks\ConnecteoCamp\Styles\MailLogo.gif" />
+    <None Include="Content\Networks\Euratech\Styles\HeaderLogoCompaniesContext.png" />
+    <None Include="Content\Networks\Euratech\Styles\HeaderLogoEventsContext.png" />
+    <None Include="Content\Networks\Euratech\Styles\HeaderLogoGroupsContext.png" />
+    <None Include="Content\Networks\Euratech\Styles\HeaderLogoPeopleContext.png" />
+    <None Include="Content\Networks\Euratech\Styles\HeaderLogoTopicsContext.png" />
+    <None Include="Content\Networks\LConnect\Documents\robots.txt" />
+    <None Include="Content\Networks\LConnect\Sponsors\cdd.png" />
+    <None Include="Content\Networks\LConnect\Sponsors\deloitte.png" />
+    <None Include="Content\Networks\LConnect\Sponsors\edf.png" />
+    <None Include="Content\Networks\LConnect\Sponsors\eiffage.png" />
+    <None Include="Content\Networks\LConnect\Sponsors\mazars.png" />
+    <None Include="Content\Networks\LConnect\Sponsors\primagaz.png" />
+    <None Include="Content\Networks\LConnect\Sponsors\veolia.png" />
+    <None Include="Content\Networks\LConnect\Styles\favicon.ico" />
+    <None Include="Content\Networks\LConnect\Styles\Hero.jpg" />
+    <None Include="Content\Networks\LConnect\Styles\Hero-forum.jpg" />
+    <None Include="Content\Networks\LConnect\Styles\Logo.png" />
+    <None Include="Content\Networks\LConnect\Styles\StripeLogo.png" />
+    <None Include="Content\Networks\LeCamping\Styles\LogOn.jpg" />
+    <None Include="Content\Networks\LeCamping\Styles\Hero.jpg" />
+    <None Include="Content\Networks\LeCamping\Styles\HeaderLogo.png" />
+    <None Include="Content\Networks\LeCamping\Styles\MailLogo.gif" />
+    <None Include="Content\Networks\LeCamping\Styles\Startup.png" />
+    <None Include="Content\Networks\LeCamping\Styles\Startup_dark.png" />
+    <None Include="Content\Networks\RenoAQT\Styles\Colors.less" />
+    <None Include="Content\Networks\RenoAQT\Styles\Site.less" />
+    <None Include="Content\Networks\SparkLabs\Styles\Hero.jpg" />
+    <None Include="Content\Networks\SparkLabs\Styles\MailLogo.gif" />
+    <None Include="Content\Networks\SparkLabs\Styles\SparkLabs.png" />
+    <None Include="Content\Networks\SparkLabs\Tags\Amsterdam\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Austin\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Barcelona\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Berlin\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Boston\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Hong-Kong\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\London\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Los-Angeles\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Miami\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Milan\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Montreal\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\New-York\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Paris\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\San-Francisco\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Seattle\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Singapore\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Sydney\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Tel-Aviv\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Toronto\big.jpg" />
+    <None Include="Content\Networks\SparkLabs\Tags\Washington-DC\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Styles\HeaderLogo.png" />
+    <None Include="Content\Networks\SparkleDemo\Styles\hero.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Amsterdam\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Austin\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Barcelona\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Berlin\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Boston\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Hong-Kong\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\London\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Los-Angeles\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Miami\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Milan\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Montreal\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\New-York\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Paris\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\San-Francisco\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Seattle\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Singapore\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Sydney\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Tel-Aviv\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Toronto\big.jpg" />
+    <None Include="Content\Networks\SparkleDemo\Tags\Washington-DC\big.jpg" />
+    <None Include="Content\Networks\SparkleInside\Styles\HeaderLogo.png" />
+    <None Include="Content\Networks\SparkleInside\Styles\hero.jpg" />
+    <None Include="Content\Networks\SparklePremium\Styles\HeaderLogo.png" />
+    <None Include="Content\Networks\SparklePremium\Styles\hero.jpg" />
+    <None Include="Content\Networks\SparklePreview\Documents\robots.txt" />
+    <None Include="Content\Networks\SparklePreview\Styles\background.gif" />
+    <None Include="Content\Networks\SparklePreview\Styles\HeaderLogo.png" />
+    <None Include="Content\Networks\SparklePreview\Styles\Hero.jpg" />
+    <None Include="Content\Networks\SparklePreview\Styles\Logo.png" />
+    <None Include="Content\Networks\SparklePreview\Styles\MailLogo.gif" />
+    <None Include="Content\Networks\TrialiMuFab\Styles\HeaderLogo.png" />
+    <None Include="Content\Networks\TrialiMuFab\Styles\hero.jpg" />
+    <None Include="Content\Networks\RenoAQT\Styles\feder.png" />
+    <None Include="Content\Networks\RenoAQT\Styles\HeaderLogo.png" />
+    <None Include="Content\Networks\RenoAQT\Styles\hero.jpg" />
+    <None Include="Content\Networks\RenoAQT\Styles\MailLogo.gif" />
+    <None Include="Content\Networks\RenoAQT\Styles\renoaqt.logo.alpha.png" />
+    <None Include="Content\Networks\RenoAQT\Styles\renoaqt.logo.blanc.png" />
+    <Content Include="Content\places\arts_entertainment_aquarium.png" />
+    <Content Include="Content\places\arts_entertainment_arcade.png" />
+    <Content Include="Content\places\arts_entertainment_artgallery.png" />
+    <Content Include="Content\places\arts_entertainment_billiards.png" />
+    <Content Include="Content\places\arts_entertainment_bowling.png" />
+    <Content Include="Content\places\arts_entertainment_casino.png" />
+    <Content Include="Content\places\arts_entertainment_comedyclub.png" />
+    <Content Include="Content\places\arts_entertainment_default.png" />
+    <Content Include="Content\places\arts_entertainment_historicsite.png" />
+    <Content Include="Content\places\arts_entertainment_movietheater.png" />
+    <Content Include="Content\places\arts_entertainment_museum.png" />
+    <Content Include="Content\places\arts_entertainment_museum_art.png" />
+    <Content Include="Content\places\arts_entertainment_museum_history.png" />
+    <Content Include="Content\places\arts_entertainment_museum_planetarium.png" />
+    <Content Include="Content\places\arts_entertainment_museum_science.png" />
+    <Content Include="Content\places\arts_entertainment_musicvenue.png" />
+    <Content Include="Content\places\arts_entertainment_musicvenue_jazzclub.png" />
+    <Content Include="Content\places\arts_entertainment_musicvenue_pianobar.png" />
+    <Content Include="Content\places\arts_entertainment_musicvenue_rockclub.png" />
+    <Content Include="Content\places\arts_entertainment_performingarts.png" />
+    <Content Include="Content\places\arts_entertainment_performingarts_dancestudio.png" />
+    <Content Include="Content\places\arts_entertainment_performingarts_indieoffbroadway.png" />
+    <Content Include="Content\places\arts_entertainment_performingarts_operahouse.png" />
+    <Content Include="Content\places\arts_entertainment_performingarts_theater.png" />
+    <Content Include="Content\places\arts_entertainment_racetrack.png" />
+    <Content Include="Content\places\arts_entertainment_stadium.png" />
+    <Content Include="Content\places\arts_entertainment_stadium_baseball.png" />
+    <Content Include="Content\places\arts_entertainment_stadium_basketball.png" />
+    <Content Include="Content\places\arts_entertainment_stadium_cricket.png" />
+    <Content Include="Content\places\arts_entertainment_stadium_football.png" />
+    <Content Include="Content\places\arts_entertainment_stadium_hockey.png" />
+    <Content Include="Content\places\arts_entertainment_stadium_soccer.png" />
+    <Content Include="Content\places\arts_entertainment_stadium_tennis.png" />
+    <Content Include="Content\places\arts_entertainment_stadium_track.png" />
+    <Content Include="Content\places\arts_entertainment_themepark.png" />
+    <Content Include="Content\places\arts_entertainment_waterpark.png" />
+    <Content Include="Content\places\arts_entertainment_zoo.png" />
+    <Content Include="Content\places\building_animalshelter.png" />
+    <Content Include="Content\places\building_apartment.png" />
+    <Content Include="Content\places\building_auditorium.png" />
+    <Content Include="Content\places\building_cityhall.png" />
+    <Content Include="Content\places\building_conventioncenter.png" />
+    <Content Include="Content\places\building_conventioncenter_meetingroom.png" />
+    <Content Include="Content\places\building_default.png" />
+    <Content Include="Content\places\building_eventspace.png" />
+    <Content Include="Content\places\building_factory.png" />
+    <Content Include="Content\places\building_fair.png" />
+    <Content Include="Content\places\building_funeralhome.png" />
+    <Content Include="Content\places\building_government.png" />
+    <Content Include="Content\places\building_government_capitolbuilding.png" />
+    <Content Include="Content\places\building_government_courthouse.png" />
+    <Content Include="Content\places\building_government_firestation.png" />
+    <Content Include="Content\places\building_government_monument.png" />
+    <Content Include="Content\places\building_government_policestation.png" />
+    <Content Include="Content\places\building_gym.png" />
+    <Content Include="Content\places\building_home.png" />
+    <Content Include="Content\places\building_housingdevelopment.png" />
+    <Content Include="Content\places\building_library.png" />
+    <Content Include="Content\places\building_medical.png" />
+    <Content Include="Content\places\building_medical_dentist.png" />
+    <Content Include="Content\places\building_medical_doctorsoffice.png" />
+    <Content Include="Content\places\building_medical_ems.png" />
+    <Content Include="Content\places\building_medical_opticalshop.png" />
+    <Content Include="Content\places\building_medical_veterinarian.png" />
+    <Content Include="Content\places\building_militarybase.png" />
+    <Content Include="Content\places\building_office_conferenceroom.png" />
+    <Content Include="Content\places\building_office_coworkingspace.png" />
+    <Content Include="Content\places\building_parking.png" />
+    <Content Include="Content\places\building_postoffice.png" />
+    <Content Include="Content\places\building_religious.png" />
+    <Content Include="Content\places\building_religious_church.png" />
+    <Content Include="Content\places\building_religious_mosque.png" />
+    <Content Include="Content\places\building_religious_shrine.png" />
+    <Content Include="Content\places\building_religious_synagogue.png" />
+    <Content Include="Content\places\building_religious_temple.png" />
+    <Content Include="Content\places\building_school.png" />
+    <Content Include="Content\places\building_school_music.png" />
+    <Content Include="Content\places\building_votingbooth.png" />
+    <Content Include="Content\places\default.png" />
+    <Content Include="Content\places\education_academicbuilding.png" />
+    <Content Include="Content\places\education_administrativebuilding.png" />
+    <Content Include="Content\places\education_cafeteria.png" />
+    <Content Include="Content\places\education_classroom.png" />
+    <Content Include="Content\places\education_collegeacademicbuildings_communications.png" />
+    <Content Include="Content\places\education_collegeacademicbuildings_engineering.png" />
+    <Content Include="Content\places\education_collegeacademicbuildings_history.png" />
+    <Content Include="Content\places\education_collegeacademicbuildings_math.png" />
+    <Content Include="Content\places\education_collegeacademicbuildings_science.png" />
+    <Content Include="Content\places\education_collegeacademicbuildings_technology.png" />
+    <Content Include="Content\places\education_communitycollege.png" />
+    <Content Include="Content\places\education_default.png" />
+    <Content Include="Content\places\education_frathouse.png" />
+    <Content Include="Content\places\education_lab.png" />
+    <Content Include="Content\places\education_lawschool.png" />
+    <Content Include="Content\places\education_other.png" />
+    <Content Include="Content\places\education_quad.png" />
+    <Content Include="Content\places\education_reccenter.png" />
+    <Content Include="Content\places\education_residencehall.png" />
+    <Content Include="Content\places\education_studentcenter.png" />
+    <Content Include="Content\places\education_tradeschool.png" />
+    <Content Include="Content\places\event_default.png" />
+    <Content Include="Content\places\food_afghan.png" />
+    <Content Include="Content\places\food_african.png" />
+    <Content Include="Content\places\food_arepas.png" />
+    <Content Include="Content\places\food_argentinian.png" />
+    <Content Include="Content\places\food_asian.png" />
+    <Content Include="Content\places\food_australian.png" />
+    <Content Include="Content\places\food_austrian.png" />
+    <Content Include="Content\places\food_bagels.png" />
+    <Content Include="Content\places\food_bakery.png" />
+    <Content Include="Content\places\food_bbq.png" />
+    <Content Include="Content\places\food_breakfast.png" />
+    <Content Include="Content\places\food_brewery.png" />
+    <Content Include="Content\places\food_bubble.png" />
+    <Content Include="Content\places\food_burger.png" />
+    <Content Include="Content\places\food_burrito.png" />
+    <Content Include="Content\places\food_cafe.png" />
+    <Content Include="Content\places\food_cajun.png" />
+    <Content Include="Content\places\food_caribbean.png" />
+    <Content Include="Content\places\food_caucasian.png" />
+    <Content Include="Content\places\food_coffeeshop.png" />
+    <Content Include="Content\places\food_creperie.png" />
+    <Content Include="Content\places\food_cuban.png" />
+    <Content Include="Content\places\food_cupcakes.png" />
+    <Content Include="Content\places\food_default.png" />
+    <Content Include="Content\places\food_deli.png" />
+    <Content Include="Content\places\food_dessert.png" />
+    <Content Include="Content\places\food_dimsum.png" />
+    <Content Include="Content\places\food_diner.png" />
+    <Content Include="Content\places\food_donuts.png" />
+    <Content Include="Content\places\food_dumplings.png" />
+    <Content Include="Content\places\food_ethiopian.png" />
+    <Content Include="Content\places\food_falafel.png" />
+    <Content Include="Content\places\food_fastfood.png" />
+    <Content Include="Content\places\food_filipino.png" />
+    <Content Include="Content\places\food_fishandchips.png" />
+    <Content Include="Content\places\food_french.png" />
+    <Content Include="Content\places\food_friedchicken.png" />
+    <Content Include="Content\places\food_frozenyogurt.png" />
+    <Content Include="Content\places\food_gastropub.png" />
+    <Content Include="Content\places\food_german.png" />
+    <Content Include="Content\places\food_glutenfree.png" />
+    <Content Include="Content\places\food_greek.png" />
+    <Content Include="Content\places\food_halal.png" />
+    <Content Include="Content\places\food_hotdog.png" />
+    <Content Include="Content\places\food_icecream.png" />
+    <Content Include="Content\places\food_indian.png" />
+    <Content Include="Content\places\food_indonesian.png" />
+    <Content Include="Content\places\food_italian.png" />
+    <Content Include="Content\places\food_japanese.png" />
+    <Content Include="Content\places\food_juicebar.png" />
+    <Content Include="Content\places\food_korean.png" />
+    <Content Include="Content\places\food_latinamerican.png" />
+    <Content Include="Content\places\food_macandcheese.png" />
+    <Content Include="Content\places\food_malaysian.png" />
+    <Content Include="Content\places\food_mediterranean.png" />
+    <Content Include="Content\places\food_mexican.png" />
+    <Content Include="Content\places\food_middleeastern.png" />
+    <Content Include="Content\places\food_moleculargastronomy.png" />
+    <Content Include="Content\places\food_mongolian.png" />
+    <Content Include="Content\places\food_moroccan.png" />
+    <Content Include="Content\places\food_newamerican.png" />
+    <Content Include="Content\places\food_paella.png" />
+    <Content Include="Content\places\food_persian.png" />
+    <Content Include="Content\places\food_peruvian.png" />
+    <Content Include="Content\places\food_pieshop.png" />
+    <Content Include="Content\places\food_pizza.png" />
+    <Content Include="Content\places\food_portuguese.png" />
+    <Content Include="Content\places\food_ramen.png" />
+    <Content Include="Content\places\food_russian.png" />
+    <Content Include="Content\places\food_salad.png" />
+    <Content Include="Content\places\food_scandinavian.png" />
+    <Content Include="Content\places\food_seafood.png" />
+    <Content Include="Content\places\food_snacks.png" />
+    <Content Include="Content\places\food_soup.png" />
+    <Content Include="Content\places\food_southern.png" />
+    <Content Include="Content\places\food_souvlaki.png" />
+    <Content Include="Content\places\food_spanish.png" />
+    <Content Include="Content\places\food_steakhouse.png" />
+    <Content Include="Content\places\food_streetfood.png" />
+    <Content Include="Content\places\food_sushi.png" />
+    <Content Include="Content\places\food_swiss.png" />
+    <Content Include="Content\places\food_taco.png" />
+    <Content Include="Content\places\food_tapas.png" />
+    <Content Include="Content\places\food_tearoom.png" />
+    <Content Include="Content\places\food_thai.png" />
+    <Content Include="Content\places\food_tibetan.png" />
+    <Content Include="Content\places\food_turkish.png" />
+    <Content Include="Content\places\food_vegetarian.png" />
+    <Content Include="Content\places\food_vietnamese.png" />
+    <Content Include="Content\places\food_winery.png" />
+    <Content Include="Content\places\food_wings.png" />
+    <Content Include="Content\places\nightlife_beergarden.png" />
+    <Content Include="Content\places\nightlife_cocktails.png" />
+    <Content Include="Content\places\nightlife_default.png" />
+    <Content Include="Content\places\nightlife_divebar.png" />
+    <Content Include="Content\places\nightlife_gaybar.png" />
+    <Content Include="Content\places\nightlife_hookahbar.png" />
+    <Content Include="Content\places\nightlife_karaoke.png" />
+    <Content Include="Content\places\nightlife_nightclub.png" />
+    <Content Include="Content\places\nightlife_pub.png" />
+    <Content Include="Content\places\nightlife_sake.png" />
+    <Content Include="Content\places\nightlife_secretbar.png" />
+    <Content Include="Content\places\nightlife_sportsbar.png" />
+    <Content Include="Content\places\nightlife_stripclub.png" />
+    <Content Include="Content\places\nightlife_whiskey.png" />
+    <Content Include="Content\places\parks_outdoors_baseballfield.png" />
+    <Content Include="Content\places\parks_outdoors_basketballcourt.png" />
+    <Content Include="Content\places\parks_outdoors_beach.png" />
+    <Content Include="Content\places\parks_outdoors_botanicalgarden.png" />
+    <Content Include="Content\places\parks_outdoors_bridge.png" />
+    <Content Include="Content\places\parks_outdoors_campground.png" />
+    <Content Include="Content\places\parks_outdoors_cemetery.png" />
+    <Content Include="Content\places\parks_outdoors_default.png" />
+    <Content Include="Content\places\parks_outdoors_divespot.png" />
+    <Content Include="Content\places\parks_outdoors_dogrun.png" />
+    <Content Include="Content\places\parks_outdoors_farm.png" />
+    <Content Include="Content\places\parks_outdoors_field.png" />
+    <Content Include="Content\places\parks_outdoors_garden.png" />
+    <Content Include="Content\places\parks_outdoors_gardencenter.png" />
+    <Content Include="Content\places\parks_outdoors_golfcourse.png" />
+    <Content Include="Content\places\parks_outdoors_gun.png" />
+    <Content Include="Content\places\parks_outdoors_harbor.png" />
+    <Content Include="Content\places\parks_outdoors_hikingtrail.png" />
+    <Content Include="Content\places\parks_outdoors_hotspring.png" />
+    <Content Include="Content\places\parks_outdoors_lake.png" />
+    <Content Include="Content\places\parks_outdoors_lighthouse.png" />
+    <Content Include="Content\places\parks_outdoors_mountain.png" />
+    <Content Include="Content\places\parks_outdoors_naturepreserve.png" />
+    <Content Include="Content\places\parks_outdoors_neighborhood.png" />
+    <Content Include="Content\places\parks_outdoors_outdoors.png" />
+    <Content Include="Content\places\parks_outdoors_park.png" />
+    <Content Include="Content\places\parks_outdoors_playground.png" />
+    <Content Include="Content\places\parks_outdoors_plaza.png" />
+    <Content Include="Content\places\parks_outdoors_pool.png" />
+    <Content Include="Content\places\parks_outdoors_rafting.png" />
+    <Content Include="Content\places\parks_outdoors_river.png" />
+    <Content Include="Content\places\parks_outdoors_rockclimbing.png" />
+    <Content Include="Content\places\parks_outdoors_sceniclookout.png" />
+    <Content Include="Content\places\parks_outdoors_sculpture.png" />
+    <Content Include="Content\places\parks_outdoors_skate_park.png" />
+    <Content Include="Content\places\parks_outdoors_skatingrink.png" />
+    <Content Include="Content\places\parks_outdoors_ski_apresskibar.png" />
+    <Content Include="Content\places\parks_outdoors_ski_chairlift.png" />
+    <Content Include="Content\places\parks_outdoors_ski_chalet.png" />
+    <Content Include="Content\places\parks_outdoors_ski_lodge.png" />
+    <Content Include="Content\places\parks_outdoors_ski_snowboard.png" />
+    <Content Include="Content\places\parks_outdoors_ski_trail.png" />
+    <Content Include="Content\places\parks_outdoors_stable.png" />
+    <Content Include="Content\places\parks_outdoors_surfspot.png" />
+    <Content Include="Content\places\parks_outdoors_vineyard.png" />
+    <Content Include="Content\places\parks_outdoors_volleyballcourt.png" />
+    <Content Include="Content\places\parks_outdoors_well.png" />
+    <Content Include="Content\places\shops_airport_rentalcar.png" />
+    <Content Include="Content\places\shops_antique.png" />
+    <Content Include="Content\places\shops_apparel.png" />
+    <Content Include="Content\places\shops_apparel_accessories.png" />
+    <Content Include="Content\places\shops_apparel_boutique.png" />
+    <Content Include="Content\places\shops_apparel_kids.png" />
+    <Content Include="Content\places\shops_apparel_lingerie.png" />
+    <Content Include="Content\places\shops_apparel_men.png" />
+    <Content Include="Content\places\shops_apparel_shoestore.png" />
+    <Content Include="Content\places\shops_apparel_women.png" />
+    <Content Include="Content\places\shops_artstore.png" />
+    <Content Include="Content\places\shops_automotive.png" />
+    <Content Include="Content\places\shops_beauty_cosmetic.png" />
+    <Content Include="Content\places\shops_bikeshop.png" />
+    <Content Include="Content\places\shops_bookstore.png" />
+    <Content Include="Content\places\shops_bridal.png" />
+    <Content Include="Content\places\shops_camerastore.png" />
+    <Content Include="Content\places\shops_candystore.png" />
+    <Content Include="Content\places\shops_carwash.png" />
+    <Content Include="Content\places\shops_comic.png" />
+    <Content Include="Content\places\shops_conveniencestore.png" />
+    <Content Include="Content\places\shops_daycare.png" />
+    <Content Include="Content\places\shops_default.png" />
+    <Content Include="Content\places\shops_departmentstore.png" />
+    <Content Include="Content\places\shops_design.png" />
+    <Content Include="Content\places\shops_discountstore.png" />
+    <Content Include="Content\places\shops_dispensary.png" />
+    <Content Include="Content\places\shops_drycleaner.png" />
+    <Content Include="Content\places\shops_financial.png" />
+    <Content Include="Content\places\shops_fleamarket.png" />
+    <Content Include="Content\places\shops_flowershop.png" />
+    <Content Include="Content\places\shops_foodanddrink.png" />
+    <Content Include="Content\places\shops_food_butcher.png" />
+    <Content Include="Content\places\shops_food_cheese.png" />
+    <Content Include="Content\places\shops_food_farmersmarket.png" />
+    <Content Include="Content\places\shops_food_fishmarket.png" />
+    <Content Include="Content\places\shops_food_foodcourt.png" />
+    <Content Include="Content\places\shops_food_gourmet.png" />
+    <Content Include="Content\places\shops_food_grocery.png" />
+    <Content Include="Content\places\shops_food_liquor.png" />
+    <Content Include="Content\places\shops_food_wineshop.png" />
+    <Content Include="Content\places\shops_furniture.png" />
+    <Content Include="Content\places\shops_gamingcafe.png" />
+    <Content Include="Content\places\shops_gas.png" />
+    <Content Include="Content\places\shops_giftshop.png" />
+    <Content Include="Content\places\shops_gym_martialarts.png" />
+    <Content Include="Content\places\shops_gym_yogastudio.png" />
+    <Content Include="Content\places\shops_hardware.png" />
+    <Content Include="Content\places\shops_hobbyshop.png" />
+    <Content Include="Content\places\shops_internetcafe.png" />
+    <Content Include="Content\places\shops_jewelry.png" />
+    <Content Include="Content\places\shops_laundry.png" />
+    <Content Include="Content\places\shops_mall.png" />
+    <Content Include="Content\places\shops_market.png" />
+    <Content Include="Content\places\shops_mobilephoneshop.png" />
+    <Content Include="Content\places\shops_motorcycle.png" />
+    <Content Include="Content\places\shops_music_instruments.png" />
+    <Content Include="Content\places\shops_nailsalon.png" />
+    <Content Include="Content\places\shops_newsstand.png" />
+    <Content Include="Content\places\shops_papergoods.png" />
+    <Content Include="Content\places\shops_pet_store.png" />
+    <Content Include="Content\places\shops_pharmacy.png" />
+    <Content Include="Content\places\shops_photographylab.png" />
+    <Content Include="Content\places\shops_piercing.png" />
+    <Content Include="Content\places\shops_realestate.png" />
+    <Content Include="Content\places\shops_record_shop.png" />
+    <Content Include="Content\places\shops_recycling.png" />
+    <Content Include="Content\places\shops_salon_barber.png" />
+    <Content Include="Content\places\shops_spa.png" />
+    <Content Include="Content\places\shops_sports_outdoors.png" />
+    <Content Include="Content\places\shops_storage.png" />
+    <Content Include="Content\places\shops_tanning_salon.png" />
+    <Content Include="Content\places\shops_tattoos.png" />
+    <Content Include="Content\places\shops_technology.png" />
+    <Content Include="Content\places\shops_tobacco.png" />
+    <Content Include="Content\places\shops_toys.png" />
+    <Content Include="Content\places\shops_video.png" />
+    <Content Include="Content\places\shops_videogames.png" />
+    <Content Include="Content\places\travel_airport.png" />
+    <Content Include="Content\places\travel_airport_gate.png" />
+    <Content Include="Content\places\travel_airport_tram.png" />
+    <Content Include="Content\places\travel_bedandbreakfast.png" />
+    <Content Include="Content\places\travel_boat.png" />
+    <Content Include="Content\places\travel_busstation.png" />
+    <Content Include="Content\places\travel_default.png" />
+    <Content Include="Content\places\travel_embassy.png" />
+    <Content Include="Content\places\travel_ferry_pier.png" />
+    <Content Include="Content\places\travel_highway.png" />
+    <Content Include="Content\places\travel_hostel.png" />
+    <Content Include="Content\places\travel_hotel.png" />
+    <Content Include="Content\places\travel_hotel_bar.png" />
+    <Content Include="Content\places\travel_hotel_roofdeck.png" />
+    <Content Include="Content\places\travel_lightrail.png" />
+    <Content Include="Content\places\travel_movingtarget.png" />
+    <Content Include="Content\places\travel_resort.png" />
+    <Content Include="Content\places\travel_restarea.png" />
+    <Content Include="Content\places\travel_subway.png" />
+    <Content Include="Content\places\travel_taxi.png" />
+    <Content Include="Content\places\travel_touristinformation.png" />
+    <Content Include="Content\places\travel_trainstation.png" />
+    <Content Include="Content\places\travel_travelagency.png" />
+    <Content Include="Content\select2.css" />
+    <Content Include="Content\select2.min.css">
+      <DependentUpon>select2.css</DependentUpon>
+    </Content>
+    <Content Include="Content\simple_blue.css" />
+    <Content Include="Content\Site.lteIE7.css">
+      <DependentUpon>Site.lteIE7.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.lteIE7.min.css">
+      <DependentUpon>Site.lteIE7.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Site\activities.png" />
+    <Content Include="Content\Site\activities_dark.png" />
+    <Content Include="Content\Site\admin.png" />
+    <Content Include="Content\Site\admin_dark.png" />
+    <Content Include="Content\Site\ads_dark.png" />
+    <Content Include="Content\Site\ads_light.png" />
+    <Content Include="Content\Site\agenda_dark.png" />
+    <Content Include="Content\Site\benefits.png" />
+    <Content Include="Content\Site\benefits_dark.png" />
+    <Content Include="Content\Site\club.png" />
+    <Content Include="Content\Site\club_dark.png" />
+    <Content Include="Content\Site\companies_dark.png" />
+    <Content Include="Content\Site\groups_dark.png" />
+    <Content Include="Content\Site\inbox.png" />
+    <Content Include="Content\Site\inbox_dark.png" />
+    <Content Include="Content\Site\news_dark.png" />
+    <Content Include="Content\Site\no-activities.png" />
+    <Content Include="Content\Site\no-activities_dark.png" />
+    <Content Include="Content\Site\partnerresource.png" />
+    <Content Include="Content\Site\partnerresource_dark.png" />
+    <Content Include="Content\Site\people_dark.png" />
+    <Content Include="Content\Site\person.png" />
+    <Content Include="Content\Site\person_dark.png" />
+    <Content Include="Content\Site\search.png" />
+    <Content Include="Content\Site\search_dark.png" />
+    <Content Include="Content\Site\Timelines\visible-16.png" />
+    <Content Include="Content\Site\Timelines\visible-26.png" />
+    <Content Include="Content\Site\topics.png" />
+    <Content Include="Content\Site\topics_dark.png" />
+    <Content Include="Content\dummy.txt" />
+    <Content Include="Content\so_tag.css" />
+    <Content Include="Content\themes\sparkle\images\animated-overlay.gif" />
+    <Content Include="Content\themes\sparkle\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\sparkle\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Content\themes\sparkle\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Content\themes\sparkle\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Content\themes\sparkle\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\sparkle\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Content\themes\sparkle\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Content\themes\sparkle\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Content\themes\sparkle\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Content\themes\sparkle\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\sparkle\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Content\themes\sparkle\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Content\themes\sparkle\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\sparkle\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Content\themes\sparkle\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Content\themes\sparkle\jquery-ui-1.10.4.css">
+      <DependentUpon>jquery-ui-1.10.4.less</DependentUpon>
+    </Content>
+    <Content Include="Content\themes\sparkle\jquery-ui-1.10.4.min.css">
+      <DependentUpon>jquery-ui-1.10.4.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Timeline.css">
+      <DependentUpon>Timeline.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Timeline.min.css">
+      <DependentUpon>Timeline.less</DependentUpon>
+    </Content>
+    <None Include="Lang\Networks\README.txt" />
+    <Content Include="Lang\NetworkTypes\LConnect.po" />
+    <TypeScriptCompile Include="Scripts\Editable.ts" />
+    <Content Include="Scripts\Editable.js" />
+    <Content Include="Scripts\intlTelInput-utils.js" />
+    <Content Include="Scripts\intlTelInput.js" />
+    <Content Include="Scripts\intlTelInput.min.js">
+      <DependentUpon>intlTelInput.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery-1.11.1.js" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="Scripts\jquery.caret.js" />
+    <Content Include="Scripts\knob.js" />
+    <Content Include="Scripts\knockout-3.1.0.js" />
+    <Content Include="Scripts\modernizr.custom.35245.js" />
+    <Content Include="Content\NetworkDefaults\Styles\favicon.ico" />
+    <None Include="Content\Networks\LConnect\Styles\HeaderLogo.png" />
+    <None Include="Content\Networks\LConnect\Styles\Hero_bridge.jpg" />
+    <None Include="Content\Networks\LConnect\Styles\MailLogo.gif" />
+    <None Include="Content\Networks\VCH\Styles\background.gif" />
+    <None Include="Content\Networks\VCH\Styles\HeaderLogo.png" />
+    <None Include="Content\Networks\VCH\Styles\Hero.jpg" />
+    <None Include="Content\Networks\VCH\Styles\Logo.png" />
+    <None Include="Content\Networks\Euratech\Styles\Hero.jpg" />
+    <None Include="Content\Networks\Euratech\Styles\MailLogo.gif" />
+    <None Include="Content\Networks\Euratech\Styles\Tile.jpg" />
+    <None Include="Content\Networks\Euratech\Styles\HeaderLogo.png" />
+    <None Include="Content\Networks\Euratech\Styles\Line.png" />
+    <None Include="Content\Networks\HauteBorne\Styles\background.gif" />
+    <None Include="Content\Networks\HauteBorne\Styles\Tile.jpg" />
+    <None Include="Content\Networks\HauteBorne\Styles\HeaderLogo.png" />
+    <None Include="Content\Networks\HauteBorne\Styles\Logo.png" />
+    <None Include="Content\Networks\PlaineImages\Styles\background.gif" />
+    <None Include="Content\Networks\PlaineImages\Styles\HeaderLogo.png" />
+    <None Include="Content\Networks\PlaineImages\Styles\Line.png" />
+    <None Include="Content\Networks\PlaineImages\Styles\Logo.png" />
+    <None Include="Content\Networks\PlaineImages\Styles\Tile.jpg" />
+    <Content Include="Content\expand.css" />
+    <Content Include="Content\icones\company.png" />
+    <Content Include="Content\images\picto-places.png" />
+    <Content Include="Content\images\picto-velo.png" />
+    <Content Include="Content\Lunch.css" />
+    <Content Include="Content\Networks\Common\Groups\11.gif" />
+    <Content Include="Content\Networks\Common\Groups\17.gif" />
+    <Content Include="Content\Networks\Common\Groups\24.gif" />
+    <Content Include="Content\Networks\Common\Groups\25.gif" />
+    <Content Include="Content\Networks\Common\Groups\4.gif" />
+    <Content Include="Content\Networks\Common\Groups\5.gif" />
+    <Content Include="Content\Networks\Common\Groups\6.gif" />
+    <Content Include="Content\Networks\Common\Groups\7.gif" />
+    <Content Include="Content\Networks\Common\Groups\8.gif" />
+    <Content Include="Content\Networks\Euratech_mail.gif" />
+    <Content Include="Content\Partners.css" />
+    <Content Include="Content\Setup.css" />
+    <Content Include="Content\Site\agenda.png" />
+    <Content Include="Content\Site\Book\bg.png" />
+    <Content Include="Content\Site\Book\menuCenterLeft.jpg" />
+    <Content Include="Content\Site\Book\menuCenterLeftBottom.jpg" />
+    <Content Include="Content\Site\Book\menuCenterLeftTop.jpg" />
+    <Content Include="Content\Site\Book\menuCenterRight.jpg" />
+    <Content Include="Content\Site\Book\menuCenterRightBottom.jpg" />
+    <Content Include="Content\Site\Book\menuCenterRightTop.jpg" />
+    <Content Include="Content\Site\companies.png" />
+    <Content Include="Content\Site\Dashboard\marks_no.gif" />
+    <Content Include="Content\Site\Dashboard\marks_yes.gif" />
+    <Content Include="Content\Site\Dashboard\device-config.png" />
+    <Content Include="Content\Site\Events\Visibility1.png" />
+    <Content Include="Content\Site\Events\Visibility0.png" />
+    <Content Include="Content\Site\Events\Visibility2.png" />
+    <Content Include="Content\Site\Events\Visibility-1.png" />
+    <Content Include="Content\Site\Events\Type2.png" />
+    <Content Include="Content\Site\Events\Type1.png" />
+    <Content Include="Content\Site\Events\Type5.png" />
+    <Content Include="Content\Site\Events\Type7.png" />
+    <Content Include="Content\Site\Events\Type3.png" />
+    <Content Include="Content\Site\Account\agenda.png" />
+    <Content Include="Content\Site\Account\car.png" />
+    <Content Include="Content\Site\Account\company.png" />
+    <Content Include="Content\Site\Account\cone.png" />
+    <Content Include="Content\Site\Account\event.png" />
+    <Content Include="Content\Site\Account\gear.png" />
+    <Content Include="Content\Site\Account\ipod.png" />
+    <Content Include="Content\Site\Account\menu.png" />
+    <Content Include="Content\Site\Account\micro.png" />
+    <Content Include="Content\Site\Account\mouse.png" />
+    <Content Include="Content\Site\Account\phone.png" />
+    <Content Include="Content\Site\Account\skull.png" />
+    <Content Include="Content\Site\bg.jpg" />
+    <Content Include="Content\Site\Dashboard\device-news.png" />
+    <Content Include="Content\Site\Dashboard\device-off.png" />
+    <Content Include="Content\Site\Dashboard\device-room.png" />
+    <Content Include="Content\Site\dot.png" />
+    <Content Include="Content\Site\Foursquare\mayor-20.png" />
+    <Content Include="Content\Site\Gray\Bookmark.png" />
+    <Content Include="Content\Site\Gray\Company.png" />
+    <Content Include="Content\Site\Gray\Home.png" />
+    <Content Include="Content\Site\Gray\Person.png" />
+    <Content Include="Content\Site\groups.png" />
+    <Content Include="Content\Site\Groups\group_category.png" />
+    <Content Include="Content\Site\Groups\group_members.png" />
+    <Content Include="Content\Site\HowToStart\sn1.png" />
+    <Content Include="Content\Site\HowToStart\sn2.png" />
+    <Content Include="Content\Site\liveBubble.png" />
+    <Content Include="Content\Site\Maps\icon.png" />
+    <Content Include="Content\Site\Maps\marker-icon.png" />
+    <Content Include="Content\Site\Maps\marker.png" />
+    <Content Include="Content\Site\menu_home.png" />
+    <Content Include="Content\Site\menu_messages.png" />
+    <Content Include="Content\Site\menu_profile.png" />
+    <Content Include="Content\Site\news.png" />
+    <Content Include="Content\Site\people.png" />
+    <Content Include="Content\Site\RFP\pushpin0.png" />
+    <Content Include="Content\Site\RFP\pushpin1.png" />
+    <Content Include="Content\Site\RFP\rfp-details.jpg" />
+    <Content Include="Content\Site\sideBarBg.jpg" />
+    <Content Include="Content\Site\sideBarCoffee.png" />
+    <Content Include="Content\Site\sideBarMessage.png" />
+    <Content Include="Content\Site\sideBarMsgBg.jpg" />
+    <Content Include="Content\Site\sideBarProfile.png" />
+    <Content Include="Content\Site\Sidebar\bg.png" />
+    <Content Include="Content\Site\star.png" />
+    <Content Include="Content\Site\star16.png" />
+    <Content Include="Content\Site\star16_off.png" />
+    <Content Include="Content\Site\Status\0.png" />
+    <Content Include="Content\Site\Status\1.png" />
+    <Content Include="Content\Site\tileBox.png" />
+    <Content Include="Content\Site\Tiles\tileAds.png" />
+    <Content Include="Content\Site\Tiles\tileLostItems.png" />
+    <Content Include="Content\Site\Tiles\tileRestaurants.png" />
+    <Content Include="Content\Site\timelineItemBg.gif" />
+    <Content Include="Content\Site\Timelines\comments-16.png" />
+    <Content Include="Content\Site\Timelines\comments-20.png" />
+    <Content Include="Content\Site\Timelines\comments-26.png" />
+    <Content Include="Content\Site\Timelines\contacts.png" />
+    <Content Include="Content\Site\Timelines\like-26.png" />
+    <Content Include="Content\Site\Timelines\like_outline-16.png" />
+    <Content Include="Content\Site\Timelines\like_outline-20.png" />
+    <Content Include="Content\Site\Timelines\like_outline-26.png" />
+    <Content Include="Content\Site\Timelines\network.png" />
+    <Content Include="Content\Site\Timelines\public.png" />
+    <Content Include="Content\Site\Timelines\devices.png" />
+    <Content Include="Content\Site\timeline_group.png" />
+    <Content Include="Content\Site\Welcome\more.png" />
+    <Content Include="Content\Site\Welcome\shadow.png" />
+    <Content Include="Content\Site\Welcome\shadow_bottom.png" />
+    <Content Include="Content\Site\Welcome\small_shadow_bottom.png" />
+    <Content Include="Content\Site\Welcome\welcome_calendar.png" />
+    <Content Include="Content\Site\Welcome\welcome_companies.png" />
+    <Content Include="Content\Site\Welcome\welcome_groups.png" />
+    <Content Include="Content\Site\Welcome\welcome_peoples.png" />
+    <Content Include="Content\teams\team.gif" />
+    <Content Include="Content\uploadify.css" />
+    <Content Include="Content\Networks\Common\Documents\robots.txt" />
+    <Content Include="Scripts\ajaxupload.min.js" />
+    <Content Include="Scripts\ajaxupload.js" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\Companies\CompanyRequests.js" />
+    <Content Include="Scripts\jquery.DateTimePicker.js" />
+    <Content Include="Scripts\group.js" />
+    <Content Include="Scripts\jquery-ui-timepicker-addon.js" />
+    <Content Include="Scripts\jquery.ba-hashchange.min.js" />
+    <Content Include="Scripts\jquery.elastic.js" />
+    <Content Include="Scripts\jquery.mentionsInput.js" />
+    <Content Include="Scripts\jquery.mobile-1.2.0.min.js" />
+    <Content Include="Scripts\jquery.multiselect.filter.js" />
+    <Content Include="Scripts\jquery.multiselect.filter.min.js" />
+    <Content Include="Scripts\jquery.multiselect.js" />
+    <Content Include="Scripts\jquery.multiselect.min.js" />
+    <Content Include="Scripts\jquery.scrollTo-min.js.js" />
+    <Content Include="Scripts\jquery.ui.datepicker-fr.js" />
+    <Content Include="Scripts\mapbox.js" />
+    <Content Include="Scripts\select2.js" />
+    <Content Include="Scripts\select2.min.js">
+      <DependentUpon>select2.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\so_tag.js" />
+    <Content Include="Scripts\Sparkle\Apply.js">
+      <DependentUpon>Apply.coffee</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Sparkle\Apply.min.js">
+      <DependentUpon>Apply.coffee</DependentUpon>
+    </Content>
+    <Content Include="Scripts\spk.idle.js" />
+    <Content Include="Scripts\spk.live.js" />
+    <Content Include="Scripts\spk.profile.js" />
+    <Content Include="Scripts\public.js" />
+    <Content Include="Scripts\Silverlight.js" />
+    <Content Include="Scripts\timeline.js" />
+    <Content Include="Scripts\underscore-min.js" />
+    <Content Include="Scripts\visualize.jQuery.js" />
+    <Content Include="Views\Ads\Details.cshtml" />
+    <Content Include="Lang\Networks\RenoAQT.RenoAQT.po" />
+    <Content Include="Views\Ads\List.cshtml" />
+    <Content Include="Views\Ajax\TimelineList.cshtml" />
+    <Content Include="Views\Box\BoxExchange.cshtml" />
+    <Content Include="Views\Box\BoxExchangeEdit.cshtml" />
+    <Content Include="Views\Box\BoxJobs.cshtml" />
+    <Content Include="Views\Box\BoxJoinMeeting.cshtml" />
+    <Content Include="Views\Box\BoxLostItem.cshtml" />
+    <Content Include="Views\Box\BoxNotificationCenter.cshtml" />
+    <Content Include="Views\Box\BoxProfile.cshtml" />
+    <Content Include="Views\Box\BoxRecurrence.cshtml" />
+    <Content Include="Views\Box\BoxTimelinePostPicture.cshtml" />
+    <Contentntentone Include="Views\Box\BoxWelcome.cshtml" />
+    <Content Include="Views\Box\BoxLunchInfos.cshtml" />
+    <Content Include="Content\icones\wait.gif" />
+    <Content Include="Content\places\place.gif" />
+    <Content Include="Content\autoSuggest.css" />
+    <Content Include="Content\buttons\message.png" />
+    <Content Include="Content\images\default\contact-0.gif" />
+    <Content Include="Content\images\default\contact-1.gif" />
+    <Content Include="Content\images\default\profile-0.png" />
+    <Content Include="Content\images\default\profile-1.png" />
+    <Content Include="Content\images\job.gif" />
+    <Content Include="Content\images\notify.png" />
+    <Content Include="Content\images\puce.gif" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\validationEngine.jquery.css" />
+    <Content Include="Content\Welcome.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\global.js" />
+    <Content Include="Scripts\jquery.autoSuggest.js" />
+    <Content Include="Scripts\jquery.autoSuggest.minified.js" />
+    <Content Include="Scripts\jquery.autoSuggest.packed.js" />
+    <Content Include="Scripts\jquery.validationEngine-fr.js" />
+    <Content Include="Scripts\jquery.validationEngine.js" />
+    <Content Include="Scripts\other-validations.js" />
+    <Content Include="Scripts\raphael.js" />
+    <Content Include="Views\Box\BoxMessage.cshtml" />
+    <Content Include="Views\Box\BoxCoffee.cshtml" />
+    <Content Include="Views\Box\BoxCompleteProfile.cshtml" />
+    <Content Include="Views\Companies\Edit.cshtml" />
+    <Content Include="Views\Companies\Company.cshtml" />
+    <Content Include="Views\Dashboard\Stats.cshtml" />
+    <Content Include="Views\Box\BoxPlaces.cshtml" />
+    <Content Include="Views\PartnerResources\Local.cshtml" />
+    <Content Include="Views\Events\Types.cshtml" />
+    <Content Include="Views\PartnerResources\Global.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\Lists\PeoplesList2.cshtml" />
+    <Content Include="Views\Clubs\Index.cshtml" />
+    <Content Include="Views\Clubs\Club.cshtml" />
+    <Content Include="Views\Clubs\New.cshtml" />
+    <Content Include="Views\Clubs\Edit.cshtml" />
+    <Content Include="Views\Clubs\Delete.cshtml" />
+    <Content Include="Views\Shared\Lists\ClubsList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ClubTile.cshtml" />
+    <Content Include="Views\Shared\Lists\ClubsListPagination.cshtml" />
+    <Content Include="Views\Dashboard\Network.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EditClubRequest.cshtml" />
+    <None Include="Content\Networks\LConnect\Documents\Terms.md" />
+    <Content Include="Lang\Networks\World.LeCamping.po" />
+    <None Include="Content\Networks\LeCamping\Styles\Site.less" />
+    <Content Include="App_Code\TimelineHelper.cshtml" />
+    <Content Include="Lang\Networks\Sparkle.Demo.po" />
+    <Content Include="Content\Timeline.less" />
+    <Content Include="Content\NetworkDefaults\Documents\Faq.md" />
+    <None Include="packages.config" />
+    <EmbeddedResource Include="Models\ModelStrings.fr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelStrings.fr.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Content\themes\sparkle\jquery-ui-1.10.4.less" />
+    <None Include="Content\Networks\SparkLabs\Styles\Site.less" />
+    <Content Include="Lang\Networks\Spark.SparkLabs.po" />
+    <Content Include="Lang\NetworkTypes\LConnect.en.po" />
+    <Content Include="Lang\Networks\Euratech.en.po" />
+    <Content Include="Lang\Networks\LConnect.LConnect.en.po" />
+    <Content Include="Lang\Networks\Sparkle.Demo.en.po" />
+    <Content Include="Lang\Networks\Sparkle.Preview.en.po" />
+    <Content Include="Lang\Networks\World.LeCamping.en.po" />
+    <Content Include="App_Code\Knob.cshtml" />
+    <Content Include="App_Code\Display.cshtml" />
+    <None Include="BundleTransformer.Configuration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Content\Networks\Euratech\Styles\Site.less" />
+    <None Include="Content\Networks\Euratech\Styles\Colors.less" />
+    <None Include="Content\Networks\HauteBorne\Styles\Colors.less" />
+    <None Include="Content\Networks\HauteBorne\Styles\Site.less" />
+    <None Include="Content\Networks\VCH\Styles\Colors.less" />
+    <None Include="Content\Networks\VCH\Styles\Site.less" />
+    <None Include="Content\Networks\SparklePreview\Styles\Colors.less" />
+    <None Include="Content\Networks\SparklePreview\Styles\Site.less" />
+    <None Include="Content\Networks\SparkLabs\Styles\Colors.less" />
+    <None Include="Content\Networks\PlaineImages\Styles\Colors.less" />
+    <None Include="Content\Networks\PlaineImages\Styles\Site.less" />
+    <None Include="Content\Networks\LeCamping\Styles\Colors.less" />
+    <None Include="Content\Networks\LConnect\Styles\Colors.less" />
+    <None Include="Content\Networks\LConnect\Documents\Faq.md" />
+    <Content Include="Lang\Networks\Sparkle.Premium.en.po" />
+    <Content Include="Lang\Networks\Sparkle.Premium.po" />
+    <None Include="Content\Networks\SparklePremium\Styles\Colors.less" />
+    <None Include="Content\Networks\SparklePremium\Styles\Site.less" />
+    <Content Include="Content\NetworkDefaults\Documents\Markdown.md" />
+    <Content Include="Lang\Networks\Sparkle.Inside.en.po" />
+    <Content Include="Lang\Networks\Sparkle.Inside.po" />
+    <None Include="Content\Networks\SparkleInside\Styles\Colors.less" />
+    <None Include="Content\Networks\SparkleInside\Styles\Site.less" />
+    <Content Include="Content\SparkleShow.less" />
+    <Content Include="Lang\Networks\Trial.TrialDemo.po" />
+    <Content Include="Lang\Networks\Trial.TrialDemo.en.po" />
+    <Content Include="Lang\Networks\Connecteo.ConnecteoCamp.po" />
+    <Content Include="Lang\Networks\Connecteo.ConnecteoCamp.en.po" />
+    <None Include="Content\Networks\ConnecteoCamp\Styles\Colors.less" />
+    <None Include="Content\Networks\ConnecteoCamp\Styles\Site.less" />
+    <Content Include="Lang\Networks\Trial.TrialiMuFab.po" />
+    <Content Include="Lang\Networks\Trial.TrialiMuFab.en.po" />
+    <None Include="Content\Networks\SparkleDemo\Styles\Colors.less" />
+    <None Include="Content\Networks\SparkleDemo\Styles\Site.less" />
+    <None Include="Content\Networks\TrialiMuFab\Styles\Colors.less" />
+    <None Include="Content\Networks\TrialiMuFab\Styles\Site.less" />
+    <None Include="Properties\PublishProfiles\ecw.pubxml" />
+    <None Include="Properties\PublishProfiles\neo.Connecteo.Common.Preview.pubxml" />
+    <None Include="Properties\PublishProfiles\neo.Connecteo.Common.ProdA.pubxml" />
+    <None Include="Properties\PublishProfiles\neo.Trial.Common.ProdA.pubxml" />
+    <None Include="Properties\PublishProfiles\neo.Spark.Common.Preview.pubxml" />
+    <None Include="Properties\PublishProfiles\neo.Spark.Common.ProdA.pubxml" />
+    <None Include="Properties\PublishProfiles\neo.Sparkle.Preview.Preview.pubxml" />
+    <None Include="Properties\PublishProfiles\neo.world.euratech.Preview.pubxml" />
+    <None Include="Properties\PublishProfiles\neo.world.euratech.ProdA.pubxml" />
+    <Content Include="Views\Account\Join.cshtml" />
+    <Content Include="Views\Groups\Rights.cshtml" />
+    <Content Include="Views\Account\Confirm.cshtml" />
+    <Content Include="Views\Dashboard\PendingUser.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EditInformationNoteRequest.cshtml" />
+    <Content Include="Views\Home\TestTempData.cshtml" />
+    <Content Include="Views\Box\ModeratePublication.cshtml" />
+    <Content Include="Views\Box\ModerateTag.cshtml" />
+    <Content Include="Views\Box\BoxInvitePeoples.cshtml" />
+    <Content Include="Scripts\_README.md" />
+    <Content Include="Views\Box\BoxSearch.cshtml" />
+    <Content Include="Views\Ajax\EditItem.cshtml" />
+    <Content Include="Views\Box\BoxAdminProcedures.cshtml" />
+    <Content Include="Views\Account\EmailChangeConfirmed.cshtml" />
+    <Content Include="Views\Account\RegisterError.cshtml" />
+    <Content Include="Views\Ajax\EditItemComment.cshtml" />
+    <Content Include="Views\Box\BoxToggleCompany.cshtml" />
+    <Content Include="Scripts\global.lteIE7.js" />
+    <Content Include="Views\Apply\Index.cshtml" />
+    <Content Include="Views\Ajax\ApplyCompany.cshtml" />
+    <Content Include="Views\Account\Subscribe.cshtml" />
+    <Content Include="Scripts\Sparkle\Apply.coffee" />
+    <Content Include="Views\Apply\Confirm.cshtml" />
+    <Content Include="Views\Apply\Details.cshtml" />
+    <Content Include="Views\Apply\Join.cshtml" />
+    <Content Include="Views\Account\Subscriptions.cshtml" />
+    <Content Include="Views\Account\Region.cshtml" />
+    <Content Include="Scripts\intlTelInput.min.js.map">
+      <DependentUpon>intlTelInput.js</DependentUpon>
+    </Content>
+    <Content Include="Views\Box\BoxPlacePicker.cshtml" />
+    <Content Include="Views\Inbox\Index.cshtml" />
+    <Content Include="Views\Box\BoxPersonPicker.cshtml" />
+    <Content Include="Scripts\select2.min.js.map">
+      <DependentUpon>select2.min.js</DependentUpon>
+    </Content>
+    <Content Include="Views\Dashboard\UserDetailsBox.cshtml" />
+    <Content Include="Views\Box\BoxNetworkRole.cshtml" />
+    <None Include="Properties\PublishProfiles\pkg debug.pubxml" />
+    <None Include="Properties\PublishProfiles\pkg release.pubxml" />
+    <Content Include="Views\Ads\Edit.cshtml" />
+    <Content Include="Themes\LConnect\Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Themes\LConnect\Views\Shared\EditorTemplates\ProfileEditRequest.cshtml" />
+    <Content Include="Themes\LConnect\Views\Peoples\People.cshtml" />
+    <Content Include="Themes\LConnect\Views\_ViewStart.cshtml" />
+    <None Include="Views\Box\Forbidden.cshtml" />
+    <Content Include="Views\Box\NotFound.cshtml" />
+    <Content Include="Views\Home\InformationNote.cshtml" />
+    <Content Include="Views\Groups\Members.cshtml" />
+    <Content Include="Views\Events\Members.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CreateGroupModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EditEventRequest.cshtml" />
+    <Content Include="Views\Files\NetworkFileInfo.cshtml" />
+    <Content Include="Views\Groups\SearchByTags.cshtml" />
+    <Content Include="Views\Peoples\SearchBySkills.cshtml" />
+    <Content Include="Views\QuickStart\Skills.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EditPlaceRequest.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml">
+      <Link>Views\Shared\EditorTemplates\Date.cshtml</Link>
+    </Content>
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\Lists\EventMembersList.cshtml" />
+    <Content Include="Views\Shared\Lists\Achievements.cshtml" />
+    <Content Include="Views\Companies\Achievements.cshtml" />
+    <Content Include="Views\Shared\Lists\AchievementsEdit.cshtml" />
+    <Content Include="Views\Box\ManageTag.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RenameTagRequest.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CreateEmailPassordAccountRequest.cshtml" />
+    <Content Include="Views\Shared\Invitation.cshtml" />
+    <Content Include="Views\Moderate\Index.cshtml" />
+    <Content Include="Views\Moderate\EmailStats.cshtml" />
+    <Content Include="Views\Dashboard\Roles.cshtml" />
+    <Content Include="Views\Setup\ConfigureLinkedIn.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ProfileEditRequest.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\NetworkUserGender.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CreateCompanyRequest.cshtml" />
+    <Content Include="Views\Dashboard\Tasks.cshtml" />
+    <Content Include="Views\Dashboard\ApplyRequest.cshtml" />
+    <Content Include="Views\Dashboard\ApplyRequests.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SubscriptionTemplateModel.cshtml" />
+    <Content Include="Views\Partners\Index.cshtml" />
+    <Content Include="Views\Files\New.cshtml" />
+    <Content Include="Views\Dashboard\More.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SubscriptionModel.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\PartnerResources\Edit.cshtml" />
+    <Content Include="Views\Partners\List.cshtml" />
+    <Content Include="Views\Partners\Item.cshtml" />
+    <Content Include="Views\PartnerResources\Index.cshtml" />
+    <Content Include="Views\PartnerResources\City.cshtml" />
+    <Content Include="Views\PartnerResources\Details.cshtml" />
+    <Content Include="Views\PartnerResources\Delete.cshtml" />
+    <Content Include="Views\PartnerResources\PartnerResourcesList.cshtml" />
+    <Content Include="Views\PartnerResources\All.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PartnerResourceModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AdminWorksModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AdminWorkModel.cshtml" />
+    <Content Include="Views\PartnerResources\Approve.cshtml" />
+    <Content Include="Views\Dashboard\EditText.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EditTextRequest.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\EditTextRequest.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Markdown.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PhoneNumber.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\decimal.cshtml" />
+    <Content Include="Views\Companies\ChangeName.cshtml" />
+    <Content Include="Views\Companies\Edit2.cshtml" />
+    <Content Include="Views\Dashboard\CompanyDetailsBox.cshtml" />
+    <Content Include="Views\Dashboard\Jobs.cshtml" />
+    <Content Include="Views\Dashboard\DeleteJob.cshtml" />
+    <Content Include="Views\Dashboard\EditJob.cshtml" />
+    <Content Include="Views\Help\Page.cshtml" />
+    <None Include="Views\Home\T\LConnect.LConnect\Welcome.cshtml" />
+    <Content Include="Views\Benefits\Index.cshtml" />
+    <Content Include="Views\Benefits\Edit.cshtml" />
+    <Content Include="Views\Shared\ExportPeople.cshtml" />
+    <Content Include="Views\Shared\Messages.cshtml" />
+    <Content Include="Views\Shared\Lists\EventsSummaryList.cshtml" />
+    <Content Include="Views\Shared\Lists\FriendSeekerList.cshtml" />
+    <Content Include="Views\Dashboard\CompanyCategories.cshtml" />
+    <Content Include="Views\Dashboard\EditCompanyCategory.cshtml" />
+    <Content Include="Views\Dashboard\Check.cshtml" />
+    <Content Include="Views\Dashboard\AllCultures.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\TagCategoryModel.cshtml" />
+    <Content Include="Views\Home\CookieConsent.cshtml" />
+    <Content Include="Views\Help\HelpCenterBox.cshtml" />
+    <Content Include="Views\Help\HelpCenterContent.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AjaxTagPickerModel.cshtml" />
+    <Content Include="Views\Dashboard\UserEmailChangeRequest.cshtml" />
+    <Content Include="Views\Dashboard\RegisterRequestAccept.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\UsersWithNetworkRoleList.cshtml" />
+    <Content Include="Views\Dashboard\UserEmailChangeRequests.cshtml" />
+    <Content Include="Views\Setup\Verify.cshtml" />
+    <Content Include="Views\Setup\OneShotPopulateIndustries.cshtml" />
+    <Content Include="Views\Setup\ProfileFields.cshtml" />
+    <Content Include="Views\PartnerResources\T\LConnect.LConnect\Local.cshtml" />
+    <Content Include="Views\Setup\SparkleStatus.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EditAdRequest.cshtml" />
+    <None Include="Views\Home\T\RenoAQT.RenoAQT\Welcome.cshtml">
+      <SubType>Code</SubType>
+    </None>
+    <Content Include="Views\Dashboard\ApiKeys.cshtml" />
+    <Content Include="Views\Dashboard\EditApiKey.cshtml" />
+    <Content Include="Views\Dashboard\ApiKey.cshtml" />
+    <Content Include="Views\Setup\EmailTest.cshtml" />
+    <Content Include="Views\Pages\NetworkFile.cshtml" />
+    <Content Include="Views\Setup\CryptoNoise.cshtml" />
+    <None Include="Views\Shared\Result.cshtml" />
+    <Content Include="Lang\NetworkTypes\default.po" />
+    <Content Include="Lang\NetworkTypes\Excellence.po" />
+    <Content Include="Lang\Common\default.po" />
+    <Content Include="Lang\Networks\VCH.po" />
+    <Content Include="Lang\Networks\LConnect.LConnect.po" />
+    <None Include="Content\Networks\LConnect\Styles\Site.less" />
+    <Content Include="Lang\Common\default.en.po" />
+    <Content Include="Content\Site.lteIE7.less" />
+    <None Include="Properties\PublishProfiles\neo.LConnect.LConnect.Preview.pubxml" />
+    <None Include="Properties\PublishProfiles\neo.LConnect.LConnect.ProdA.pubxml" />
+    <None Include="Properties\PublishProfiles\neo VCH preview.pubxml" />
+    <None Include="Properties\PublishProfiles\neo VCH production.pubxml" />
+    <None Include="Properties\PublishProfiles\neo.Sparkle.Preview.ProdA.pubxml" />
+    <Content Include="Views\Home\Discover.cshtml" />
+    <Content Include="Views\Companies\SearchBySkills.cshtml" />
+    <Content Include="Views\Events\Past.cshtml" />
+    <Content Include="Views\Companies\RegistrationRequest.cshtml" />
+    <Content Include="Views\Dashboard\CompanyRequest.cshtml" />
+    <Content Include="Views\Dashboard\CompanyRequests.cshtml" />
+    <Content Include="Views\Shared\Lists\SkillsEditList.cshtml" />
+    <Content Include="Views\Shared\AddMembers.cshtml" />
+    <Content Include="Views\Shared\Lists\InterestsEditList.cshtml" />
+    <Content Include="Views\Shared\Lists\RecreationsEditList.cshtml" />
+    <Content Include="Views\Account\Roles.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Groups\Delete.cshtml" />
+    <Content Include="Views\About\Terms.md" />
+    <Content Include="Views\Dashboard\DisplayNewsletter.cshtml" />
+    <Content Include="Views\Shared\Lists\JobsList.cshtml" />
+    <Content Include="Views\Shared\_ConfirmDelete.cshtml" />
+    <Content Include="Views\Topics\Index.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_CompanyJoin.cshtml" />
+    <Content Include="Views\Tags\Index.cshtml" />
+    <Content Include="Views\Tags\Interests.cshtml" />
+    <Content Include="Views\Tags\Manage.cshtml" />
+    <Content Include="Views\Tags\Recreations.cshtml" />
+    <Content Include="Views\Tags\Skills.cshtml" />
+    <Content Include="Views\Toolbox\Index.cshtml" />
+    <Content Include="Views\Toolbox\Gus.cshtml" />
+    <Content Include="Views\Toolbox\CaptainContrat.cshtml" />
+    <Content Include="Views\Shared\Timeline\HeaderRight.cshtml" />
+    <Content Include="Views\Moderate\Subscribed.cshtml" />
+    <Content Include="Views\Subscriptions\Templates.cshtml" />
+    <Content Include="Views\Subscriptions\Manage.cshtml" />
+    <Content Include="Views\Subscriptions\Buy.cshtml" />
+    <Content Include="Views\Subscriptions\Subscribe.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_PartnerResourceUpdated.cshtml" />
+    <Content Include="Views\Subscriptions\TemplateTexts.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Subscriptions\EditText.cshtml" />
+    <Content Include="Views\Subscriptions\MassSubscription.cshtml" />
+    <Content Include="Views\Subscriptions\Details.cshtml" />
+    <Content Include="Views\Subscriptions\Status.cshtml" />
+    <Content Include="Views\Tags\Categories.cshtml" />
+    <Content Include="Views\Team\Index.cshtml" />
+    <Content Include="Views\Tags\Category.cshtml" />
+    <Content Include="Views\Tags\Create.cshtml" />
+    <Content Include="Views\Tags\Details.cshtml" />
+    <Content Include="Web.sample.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Web.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Peoples\People.cshtml" />
+    <Content Include="Views\Shared\SideBar\Live.cshtml" />
+    <Content Include="Views\Shared\SideBar\Index.cshtml" />
+    <Content Include="Views\Box\_ViewStart.cshtml" />
+    <Content Include="_App_Offline.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ClientBin\" />
+    <Folder Include="Content\images\About\" />
+    <Folder Include="Content\images\Achievements\" />
+    <Folder Include="Content\images\error\" />
+    <Folder Include="Content\images\Original\" />
+    <Folder Include="Content\Networks\LConnect\Files\" />
+    <Folder Include="Content\Networks\LConnect\Tags\" />
+    <Folder Include="Content\Networks\SparkLabs\PartnerResources\" />
+    <Folder Include="Content\Networks\SparklePreview\Peoples\" />
+    <Folder Include="Models\Error\" />
+    <Folder Include="Models\Partners\Partners\" />
+    <Folder Include="Services\ModelBinders\" />
+    <Folder Include="Views\Test\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lang\Networks\Sparkle.Preview.po" />
+    <Content Include="Content\Fonts\SegoeWPCLight.eot" />
+    <Content Include="Content\Fonts\SegoeWPCLight.otf" />
+    <Content Include="Content\Fonts\SegoeWPCLight.ttf" />
+    <Content Include="Content\Fonts\SegoeWPCLight.woff" />
+    <Content Include="Content\Fonts\SegoeWPCRegular.eot" />
+    <Content Include="Content\Fonts\SegoeWPCRegular.otf" />
+    <Content Include="Content\Fonts\SegoeWPCRegular.ttf" />
+    <Content Include="Content\Fonts\SegoeWPCRegular.woff" />
+    <Content Include="Lang\Networks\HauteBorne.po" />
+    <Content Include="Lang\Networks\PlaineImages.po" />
+    <Content Include="Content\Fonts\Hand.eot" />
+    <Content Include="Content\Fonts\Hand.ttf" />
+    <Content Include="App_Code\AccentColor.cshtml" />
+    <Content Include="App_Code\FocusPage.cshtml" />
+    <Content Include="App_Code\Tags.cshtml" />
+    <Content Include="App_Code\Navigation.cshtml" />
+    <Content Include="App_Code\Tour.cshtml" />
+    <Content Include="App_Code\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\Site.less" />
+    <Content Include="Lang\Networks\3SI.po" />
+    <Content Include="Lang\Networks\Euratech.po" />
+    <Content Include="Lang\Web.config" />
+    <Content Include="Lang\Networks\default.po" />
+    <Content Include="Views\Account\Recover.cshtml" />
+    <Content Include="Views\Account\RecoverSuccess.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Master\Footer.cshtml" />
+    <Content Include="Views\Shared\Master\Header.cshtml" />
+    <Content Include="Views\Account\Recovery.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\Shared\Tracking.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Account\Unregister.cshtml" />
+    <Content Include="Views\Home\SuperSecretNinjaAction.cshtml" />
+    <Content Include="Views\Peoples\Index.cshtml" />
+    <Content Include="Views\Shared\Lists\PeoplesCompleteList.cshtml" />
+    <Content Include="Views\Exchange\Index.cshtml" />
+    <Content Include="Views\Shared\Lists\Management\UserItem.cshtml" />
+    <Content Include="Views\Shared\Lists\ExchangeList.cshtml" />
+    <Content Include="Views\Shared\Lists\HomeNotificationsList.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\Account\RegisterRequest.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\About\Policy.cshtml" />
+    <Content Include="Views\About\Terms.cshtml" />
+    <Content Include="Views\Shared\Lists\Management\AccountClosedItem.cshtml" />
+    <Content Include="Views\About\Contact.cshtml" />
+    <Content Include="Views\Achievements\Index.cshtml" />
+    <Content Include="Views\Shared\PersonItem.cshtml" />
+    <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\Jobs\Job.cshtml" />
+    <Content Include="Views\Jobs\Add.cshtml" />
+    <Content Include="Views\LostItems\Index.cshtml" />
+    <Content Include="Views\Messages\Index.cshtml" />
+    <Content Include="Views\Messages\Conversation.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Shared\Lists\EventsQuickList.cshtml" />
+    <Content Include="Views\Shared\Lists\EventsList.cshtml" />
+    <Content Include="Views\Shared\Timeline\CommentsControl.cshtml" />
+    <Content Include="Views\Home\NotificationCenter.cshtml" />
+    <Content Include="Views\Dashboard\People.cshtml" />
+    <Content Include="Views\Box\BoxVisits.cshtml" />
+    <Content Include="Views\Shared\Indoor\Index.cshtml" />
+    <Content Include="Views\Tv\Run.cshtml" />
+    <Content Include="Views\Dashboard\InformationNotes.cshtml" />
+    <Content Include="Views\Box\BoxDeviceEdit.cshtml" />
+    <Content Include="Views\Box\BoxDevicePlanning.cshtml" />
+    <Content Include="Views\Box\BoxAdBack.cshtml" />
+    <Content Include="Views\Box\BoxBeta.cshtml" />
+    <Content Include="Views\Box\BoxAd.cshtml" />
+    <Content Include="Views\Groups\Index.cshtml" />
+    <Content Include="Views\Setup\Index.cshtml" />
+    <Content Include="Views\Setup\SetupData.cshtml" />
+    <Content Include="Views\Places\Index.cshtml" />
+    <Content Include="Views\Places\Add.cshtml" />
+    <Content Include="Views\Places\Edit.cshtml" />
+    <Content Include="Views\Places\Place.cshtml" />
+    <Content Include="Views\Groups\New.cshtml" />
+    <Content Include="Views\Groups\Edit.cshtml" />
+    <Content Include="Views\Groups\Group.cshtml" />
+    <Content Include="Views\Companies\Index.cshtml" />
+    <Content Include="Views\Events\Event.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Shared\Lists\CompaniesList_Anonymous.cshtml" />
+    <Content Include="Views\Shared\Lists\CompaniesList.cshtml" />
+    <Content Include="Views\Companies\Company_Anonymous.cshtml" />
+    <Content Include="Views\Shared\Timeline.cshtml" />
+    <Content Include="Views\Account\Settings.cshtml" />
+    <Content Include="Views\Dashboard\_Menu.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\Companies.cshtml" />
+    <Content Include="Views\Dashboard\DevicesConfiguration.cshtml" />
+    <Content Include="Views\Dashboard\Subscription.cshtml" />
+    <Content Include="Views\Dashboard\Newsletter.cshtml" />
+    <Content Include="Views\Dashboard\Devices.cshtml" />
+    <Content Include="Views\Dashboard\DevicePlanning.cshtml" />
+    <Content Include="Views\Peoples\NotFound.cshtml" />
+    <Content Include="Views\Dashboard\NetworkAccessCalc.cshtml" />
+    <Content Include="Views\Dashboard\Device.cshtml" />
+    <Content Include="Views\Dashboard\DevicePlanningDelete.cshtml" />
+    <Content Include="Views\Shared\Lists\GroupsList.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_CompanyPublication_Anonymous.cshtml" />
+    <Content Include="Views\Home\Index_Anonymous.cshtml" />
+    <Content Include="Views\Dashboard\InformationNoteAdd.cshtml" />
+    <Content Include="Views\Dashboard\InformationNoteEdit.cshtml" />
+    <Content Include="Views\Dashboard\DeviceDelete.cshtml" />
+    <Content Include="Views\Dashboard\DevicesEx.cshtml" />
+    <Content Include="Views\Dashboard\DisplayTemplates\DevicePlanningModel.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_CompanyProfileUpdated.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_JoinedGroup.cshtml" />
+    <Content Include="Views\Groups\NoGroups.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_InContactWith.cshtml" />
+    <Content Include="Views\Dashboard\DevicePublications.cshtml" />
+    <Content Include="Views\Networks\Index.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_Event.cshtml" />
+    <Content Include="Views\Shared\Timeline\ActionsControl.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_CompanyPublication.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_Publication.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_Joined.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_Ad.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_Deal.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_PeopleProfileUpdated.cshtml" />
+    <Content Include="Views\Shared\Timeline\CommentBoxControl.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_Group.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_Introducing.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_Comment.cshtml" />
+    <Content Include="Views\Box\BoxChooseContacts.cshtml" />
+    <Content Include="Views\Account\RegisterRequestResult.cshtml" />
+    <Content Include="Views\Dashboard\RegisterRequests.cshtml" />
+    <Content Include="Views\Shared\Master\MsgBox.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Ajax\Item.cshtml" />
+    <Content Include="Views\Companies\Management.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Notifications.cshtml" />
+    <Content Include="Views\Box\BoxProposals.cshtml" />
+    <Content Include="Views\Home\MobileNews.cshtml" />
+    <Content Include="Views\Peoples\MobileIndex.cshtml" />
+    <Content Include="Views\Events\New.cshtml" />
+    <Content Include="Views\Events\MyListing.cshtml" />
+    <Content Include="Views\Shared\CoffeeRoulette.cshtml" />
+    <Content Include="Views\Account\Twitter.cshtml" />
+    <Content Include="Views\Events\Event_Anonymous.cshtml" />
+    <Content Include="Views\Events\Join.cshtml" />
+    <Content Include="Views\Shared\Lists\MembersList.cshtml" />
+    <Content Include="Views\Shared\Lists\PeopleList.cshtml" />
+    <Content Include="Views\Box\BoxTags.cshtml" />
+    <Content Include="Views\Shared\Lists\PeopleList2.cshtml" />
+    <Content Include="Views\Shared\Lists\PlacesList.cshtml" />
+    <Content Include="Views\Shared\Lists\PlacesChildrenList.cshtml" />
+    <Content Include="Views\Shared\Timeline\PrivacyIcon.cshtml" />
+    <Content Include="Views\Account\SocialNetworks.cshtml" />
+    <Content Include="Views\Shared\Lists\PeopleListPagination.cshtml" />
+    <Content Include="Views\Shared\Lists\CompaniesListPagination.cshtml" />
+    <Content Include="Views\Account\Visits.cshtml" />
+    <Content Include="Views\About\Faq.cshtml" />
+    <Content Include="Views\Companies\Registration.cshtml" />
+    <Content Include="Views\Companies\Registred.cshtml" />
+    <Content Include="Views\Groups\Requests.cshtml" />
+    <Content Include="Views\Network\PhoneNumbers.cshtml" />
+    <Content Include="Views\Networks\Companies.cshtml" />
+    <Content Include="Views\Shared\Lists\SkillsList.cshtml" />
+    <Content Include="Views\Places\Buildings.cshtml" />
+    <Content Include="Views\Networks\AllCompanies.cshtml" />
+    <Content Include="Views\Networks\Company.cshtml" />
+    <Content Include="Views\Account\ContactRequests.cshtml" />
+    <Content Include="Views\Companies\SocialNetworks.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_Twitter.cshtml" />
+    <Content Include="Views\Shared\Lists\AllCompaniesListPagination.cshtml" />
+    <Content Include="Views\Networks\Network.cshtml" />
+    <Content Include="Views\Setup\SocialNetworks.cshtml" />
+    <Content Include="Views\Setup\ConfigureTwitter.cshtml" />
+    <Content Include="Views\Setup\ConfigureFacebook.cshtml" />
+    <Content Include="Views\Shared\TechLayout.cshtml" />
+    <Content Include="Views\Setup\_ViewStart.cshtml" />
+    <Content Include="Views\Setup\_Nav.cshtml" />
+    <Content Include="Views\Companies\Contact.cshtml" />
+    <Content Include="Views\WorkHere\Index.cshtml" />
+    <Content Include="Views\WorkHere\Join.cshtml" />
+    <Content Include="Views\WorkHere\Edit.cshtml" />
+    <Content Include="Views\WorkHere\Manage.cshtml" />
+    <Content Include="Views\Companies\Messages.cshtml" />
+    <Content Include="Views\WorkHere\Added.cshtml" />
+    <Content Include="Views\Account\Invitations.cshtml" />
+    <Content Include="Views\Shared\Timeline\Timeline_CompanyTwitter.cshtml" />
+    <Content Include="Views\WorkHere\Resume.cshtml" />
+    <Content Include="Views\Shared\Lists\NetworkCompaniesListPagination.cshtml" />
+    <Content Include="Views\Shared\TagsEditor.cshtml" />
+    <Content Include="Views\Dashboard\Resources.cshtml" />
+    <Content Include="Views\Companies\Conversation.cshtml" />
+    <Content Include="Views\CoffeeRoulette\Index.cshtml" />
+    <Content Include="Views\Companies\Visits.cshtml" />
+    <Content Include="Views\Companies\Resumes.cshtml" />
+    <Content Include="Views\QuickStart\Index.cshtml" />
+    <Content Include="Views\QuickStart\Me.cshtml" />
+    <Content Include="Views\QuickStart\MyCompany.cshtml" />
+    <Content Include="Views\QuickStart\MyPicture.cshtml" />
+    <Content Include="Views\QuickStart\Ready.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CompanyTile.cshtml" />
+    <Content Include="Views\QuickStart\MyCompanyTwitter.cshtml" />
+    <Content Include="Views\Networks\Skills.cshtml" />
+    <Content Include="Views\Companies\Arrivals.cshtml" />
+    <Content Include="Views\Jobs\Positions.cshtml" />
+    <Content Include="Views\Jobs\Position.cshtml" />
+    <Content Include="Views\Account\Reload.cshtml" />
+    <Content Include="Views\Box\BoxPermissions.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\External\MarkdownSharp\MarkdownSharp.csproj">
+      <Project>{37619116-cce8-465a-8b1f-081ca53364bb}</Project>
+      <Name>MarkdownSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\External\vCalendar.Mvc\vCalendar.Mvc.csproj">
+      <Project>{31b716ac-4e7c-4d9e-866d-d56b784dc6d8}</Project>
+      <Name>vCalendar.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\External\vCalendar\vCalendar.csproj">
+      <Project>{1427842c-da88-4da6-9f4f-41fa1e5d5173}</Project>
+      <Name>vCalendar</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Common\Sparkle.Common.csproj">
+      <Project>{e2445875-e89b-403d-8721-a97e120b01d5}</Project>
+      <Name>Sparkle.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Data\Sparkle.Data.csproj">
+      <Project>{f3bbc3e7-ba09-43f4-a32c-9d77a7e0d4be}</Project>
+      <Name>Sparkle.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Entities\Sparkle.Entities.csproj">
+      <Project>{f2341891-7dbe-4a69-a90b-641e4663e24d}</Project>
+      <Name>Sparkle.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.WebBase\Sparkle.WebBase.csproj">
+      <Project>{95C75988-47BC-45D6-9E24-172431D49F20}</Project>
+      <Name>Sparkle.WebBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Infrastructure\Sparkle.Infrastructure.csproj">
+      <Project>{63efbc4b-cb11-4539-b999-960c1209e696}</Project>
+      <Name>Sparkle.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Lang\Sparkle.Lang.csproj">
+      <Project>{7fb6dda7-7def-4527-8894-be73df0857b0}</Project>
+      <Name>Sparkle.Lang</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Services\Sparkle.Services.csproj">
+      <Project>{949101f1-e574-4a21-a93b-3fbde27875bb}</Project>
+      <Name>Sparkle.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Data.Entity\Sparkle.Data.Entity.csproj">
+      <Project>{a95c5c44-350d-4c57-8454-128516423a20}</Project>
+      <Name>Sparkle.Data.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.EmailTemplates\Sparkle.EmailTemplates.csproj">
+      <Project>{d82f5d27-7968-47b6-95f8-de7593426341}</Project>
+      <Name>Sparkle.EmailTemplates</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Helpers\Sparkle.Helpers.csproj">
+      <Project>{e6305d03-84b6-4752-a4f4-77d5ffeef9f4}</Project>
+      <Name>Sparkle.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sparkle.Services.Main\Sparkle.Services.Main.csproj">
+      <Project>{d35072f1-8e7c-4a30-8714-25d4d15833ad}</Project>
+      <Name>Sparkle.Services.Main</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Models\ModelStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Alerts.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Alerts.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Alerts.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Alerts.fr.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <Target Name="AfterBuild">
+    <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

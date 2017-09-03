@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <noscript><meta http-equiv="refresh" content="35" /></noscript>
+    <title>Maintenance en cours</title>
+    <style type="text/css">
+        body {
+            background:#ddd;
+            font-family:Verdana, Geneva, 'DejaVu Sans', sans-serif;
+            text-align:center;
+        }
+        header img {
+            width: 120px;
+            height:120px;
+        }
+        .contentbox {
+            width:auto;
+            display:inline-block;
+            margin: auto;
+            padding: 60px;
+            background-color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .center{
+            text-align:center;
+        }
+    </style>
+<!--
+    Learn more about the App_Offline.htm file
+    http://stackoverflow.com/questions/1153449/asp-net-2-0-how-to-use-app-offline-htm
+-->
+</head>
+<body>
+    <header>
+
+        <h1>Maintenance en cours / Website is under maintenance</h1>
+    </header>
+    <div class="contentbox">
+        <p>Nous allons revenir.</p>
+        <p>We will be back.</p>
+        <h2>Nous sommes en train de mettre à jour la plate forme / We are updating the platform</h2>
+        <p>Cette operation ne durera que quelques minutes... Le site s'affichera dès qu'il sera disponible.</p>
+        <p>This is going to take a few minutes... The website will display as soon it is available.</p>
+        <img src="http://sparklenetworks.com/Images/progress.gif" alt="Waiting for website availability" title="" />
+    </div>
+    <footer>
+        <p>
+            <a href="http://sparklenetworks.com/" target="_blank">Sparkle Networks</a>
+        </p>
+    </footer>
+    <script type="text/javascript">
+/*
+ * AJAX helper
+ **/
+var ajax = {};
+ajax.x = function () {
+    if (typeof XMLHttpRequest !== 'undefined') {
+        return new XMLHttpRequest();
+    }
+    var versions = [
+        "MSXML2.XmlHttp.5.0",
+        "MSXML2.XmlHttp.4.0",
+        "MSXML2.XmlHttp.3.0",
+        "MSXML2.XmlHttp.2.0",
+        "Microsoft.XmlHttp"
+    ];
+
+    var xhr;
+    for (var i = 0; i < versions.length; i++) {
+        try {
+            xhr = new ActiveXObject(versions[i]);
+            break;
+        } catch (e) {
+        }
+    }
+    return xhr;
+};
+
+ajax.send = function (url, callback, method, data, sync) {
+    var x = ajax.x();
+    x.open(method, url, sync);
+    x.onreadystatechange = function () {
+        if (x.readyState == 4) {
+            callback(x)
+        }
+    };
+    if (method == 'POST') {
+        x.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    }
+    x.send(data)
+};
+
+ajax.get = function (url, data, callback, sync) {
+    var query = [];
+    for (var key in data) {
+        query.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));
+    }
+    ajax.send(url + '?' + query.join('&'), callback, 'GET', null, sync)
+};
+
+ajax.post = function (url, data, callback, sync) {
+    var query = [];
+    for (var key in data) {
+        query.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));
+    }
+    ajax.send(url, callback, 'POST', query.join('&'), sync)
+};
+
+/*
+ * Options merger
+ **/
+
+function merge_options(obj1, obj2) {
+    var obj3 = {};
+    if (obj1)
+        for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+    if (obj2)
+        for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+    return obj3;
+}
+
+/*
+ * Watcher
+ **/
+
+
+(function () {
+    var WatcherClass = function (options) {
+        var me = this;
+        var defaultOptions = {
+            delayInSeconds: 15,              // check delay
+            okCodes: [200],                  // codes that indicate to continue waiting
+            waitCodes: [500, 501, 502, 503], // codes that indicate to continue waiting
+            url: '/',                        // url to check
+            busyAction:  null,     // action invoked when server is busy
+            readyAction: null,     // action invoked when server is available again
+            otherAction: null      // action invoked when other code is received
+        };
+        this.options = merge_options(defaultOptions, options);
+        this.timeout = null;
+        this.isRunning = false;
+        this.busy = false;
+        this.status = -1; // -1 is the initial state, 0 is available, 1 is busy, 2 is unknown
+
+        this.log = function (value) {
+            if (window.console && window.console.log) {
+                console.log('WatcherClass: ' + value);
+            }
+        };
+
+        this.execute = function () {
+            if (me.busy) {
+                me.log('execute is busy.');
+                return;
+            }
+
+            me.busy = true;
+            me.log('executing check...');
+            ajax.get(me.options.url, { }, function (xhr) {
+                var code = xhr.status;
+                me.log('check pre-result: (' + code + ').');
+                var newStatus = -1;
+
+                if (newStatus == -1) {
+                    for (var i = 0; i < me.options.okCodes.length; i++) {
+                        if (me.options.okCodes[i] == code) {
+                            newStatus = 0;
+                            me.log('check result: server is available (' + code + ').');
+                            break;
+                        }
+                    }
+                }
+
+                if (newStatus == -1) {
+                    for (var i = 0; i < me.options.waitCodes.length; i++) {
+                        if (me.options.waitCodes[i] == code) {
+                            newStatus = 1;
+                            me.log('check result: server is not available (' + code + ').');
+                            break;
+                        }
+                    }
+                }
+
+                if (newStatus == -1) {
+                    me.log('check result: unknown code (' + code + ').');
+                    newStatus = 2;
+                }
+
+                if (me.status != newStatus) {
+                    var eventData = {
+                        code: code
+                    };
+                    if (newStatus == 0) {
+                        if (typeof me.options.readyAction == "function") {
+                            me.log('executing readyAction.');
+                            me.options.readyAction(eventData);
+                        } else {
+                            me.log('cannot execute readyAction because it is null.');
+                        }
+                    } else if (newStatus == 1) {
+                        if (typeof me.options.busyAction == "function") {
+                            me.log('executing busyAction.');
+                            me.options.busyAction(eventData)
+                        } else {
+                            me.log('cannot execute busyAction because it is null.');
+                        }
+                    } else {
+                        if (typeof me.options.otherAction == "function") {
+                            me.log('executing otherAction.');
+                            me.options.otherAction(eventData);
+                        } else {
+                            me.log('cannot execute otherAction because it is null.');
+                        }
+                    }
+                } else {
+                    me.log('no status change')
+                }
+
+                me.status = newStatus;
+                me.busy = false;
+                me.timeout = null;
+                me.run();
+            });
+        };
+
+        this.run = function () {
+            me.isRunning = true;
+            me.log('Running.');
+            if (me.timeout == null) {
+                me.timeout = window.setTimeout(me.execute, me.options.delayInSeconds * 1000);
+            }
+        };
+
+        return {
+            Run: function () {
+                me.run();
+            }
+        };
+    };
+
+    document.watcher = new WatcherClass({
+        url: '/Content/dummy.txt',
+        delay: 35,
+        readyAction: function () {
+            window.location.href = '/';
+        }
+    });
+    document.watcher.Run();
+})();
+    </script>
+</body>
+</html>
