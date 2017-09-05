@@ -1,0 +1,209 @@
+﻿header h1 {
+    margin-top: 34px;
+}
+
+#main {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    background: none;
+    border: 0;
+    box-shadow: none;
+}
+
+h3 {
+    color: #000;
+    font-size: 26px;
+}
+
+#hero {
+    background-position:center center;
+    box-shadow: inset 0 0 75px rgba(0,0,0,.7);
+    overflow: hidden;
+}
+.center-tile{
+    padding-top:40px;
+    text-align:center;
+}
+.center-tags {
+    opacity: 0;
+    -moz-transform: scale(.8);
+    -ms-transform: scale(.8);
+    -o-transform: scale(.8);
+    -webkit-transform: scale(.8);
+    transform: scale(.8);
+    padding-top: 40px;
+    text-align: center;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+#presentation {
+    width: 1000px;
+}
+
+.introBox {
+    font-size: 22px;
+    height: 60px;
+    line-height: 60px;
+    margin-bottom: 140px;
+}
+
+.groupIcon {
+    background-position: left top;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 50px;
+    margin: 20px;
+    width: 50px;
+}
+
+.words {
+    color: #777;
+    font-size: 30px;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    width: 400px;
+}
+
+#FocusPageHero {
+    min-height:600px;
+    background-color:#aaa;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.focusPage div.page {
+    padding: 0 !important;
+}
+#kpi > div.column{
+    padding: 10px 0;
+}
+.domReady .center-tags {
+    opacity: 1;
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.w1 {
+    color: #33ab46;
+}
+.w2 {
+    color: #9A0372;
+}
+.w3 {
+    color: #1774a4;
+}
+
+.welcomeMore {
+    background: url(/Content/Site/Welcome/shadow.png) no-repeat top center;
+    margin: auto;
+    padding-top: 40px;
+    width: 900px;
+}
+
+.pBox {
+    background-position: left 10px;
+    background-repeat: no-repeat;
+    color: #888;
+    display: block;
+    float: left;
+    margin: 0 19px 20px;
+    padding-left: 110px;
+    text-align: left;
+    text-decoration: none;
+    width: 350px;
+    height: 140px;
+}
+
+    .pBox h4 {
+        color: #000;
+        font-family: "Segoe WPC";
+        font-size: 18px;
+        text-transform: none;
+    }
+
+.showFeature {
+    display: none;
+}
+
+    .showFeature h3 {
+        text-transform: lowercase;
+    }
+
+    .showFeature h4 {
+        font-size: 20px;
+        text-transform: none;
+    }
+
+    .showFeature p {
+        color: #333;
+        margin: 0;
+    }
+
+    .showFeature div {
+        background-position: left top;
+        background-repeat: no-repeat;
+        min-height: 60px;
+        padding-left: 60px;
+    }
+
+.hero {
+    text-align: right;
+    width: 970px;
+    height: 400px;
+}
+
+    .hero .inputs {
+        float: right;
+        overflow: hidden;
+        margin: auto;
+        background: #ddd;
+        width: 260px;
+        font-size: 16px;
+        border: 1px solid #888;
+        border-radius: 6px;
+    }
+
+    .hero .input {
+        width: 260px;
+        font-size: 16px;
+        border: none;
+        margin: 0;
+        padding: 8px;
+        float: left;
+        margin-bottom: 1px;
+    }
+
+    .hero .submit {
+        display: block;
+        width: 260px;
+        font-size: 16px;
+        padding: 8px;
+        border: 1px solid #888;
+        border-radius: 6px;
+        color: #fff;
+    }
+
+    .hero .register {
+        display: block;
+        text-align: center;
+        font-size: 16px;
+        padding: 8px 0;
+        border: 1px solid #888;
+        margin-top: 10px;
+        border-radius: 6px;
+        color: #fff;
+    }
+
+    .hero .controls {
+        float: right;
+        overflow: hidden;
+        margin: 20px auto;
+        width: 260px;
+        font-size: 16px;
+    }

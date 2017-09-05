@@ -619,10 +619,8 @@
     <Content Include="Content\images\WorkHere\Resumes.jpg" />
     <Content Include="Content\intlTelInput.css" />
     <Content Include="Content\jquery.mentionsInput.css" />
-    <Content Include="Content\jquery.mobile-1.2.0.css" />
     <Content Include="Content\jquery.multiselect.css" />
     <Content Include="Content\jquery.multiselect.filter.css" />
-    <Content Include="Content\mapbox.css" />
     <Content Include="Content\NetworkDefaults\Continents\Asia.jpg" />
     <Content Include="Content\NetworkDefaults\Continents\Australia.jpg" />
     <Content Include="Content\NetworkDefaults\Continents\Europe.jpg" />
@@ -1097,13 +1095,6 @@
     <Content Include="Content\select2.min.css">
       <DependentUpon>select2.css</DependentUpon>
     </Content>
-    <Content Include="Content\simple_blue.css" />
-    <Content Include="Content\Site.lteIE7.css">
-      <DependentUpon>Site.lteIE7.less</DependentUpon>
-    </Content>
-    <Content Include="Content\Site.lteIE7.min.css">
-      <DependentUpon>Site.lteIE7.less</DependentUpon>
-    </Content>
     <Content Include="Content\Site\activities.png" />
     <Content Include="Content\Site\activities_dark.png" />
     <Content Include="Content\Site\admin.png" />
@@ -1151,18 +1142,6 @@
     <Content Include="Content\themes\sparkle\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Content\themes\sparkle\images\ui-icons_d8e7f3_256x240.png" />
     <Content Include="Content\themes\sparkle\images\ui-icons_f9bd01_256x240.png" />
-    <Content Include="Content\themes\sparkle\jquery-ui-1.10.4.css">
-      <DependentUpon>jquery-ui-1.10.4.less</DependentUpon>
-    </Content>
-    <Content Include="Content\themes\sparkle\jquery-ui-1.10.4.min.css">
-      <DependentUpon>jquery-ui-1.10.4.less</DependentUpon>
-    </Content>
-    <Content Include="Content\Timeline.css">
-      <DependentUpon>Timeline.less</DependentUpon>
-    </Content>
-    <Content Include="Content\Timeline.min.css">
-      <DependentUpon>Timeline.less</DependentUpon>
-    </Content>
     <None Include="Lang\Networks\README.txt" />
     <Content Include="Lang\NetworkTypes\LConnect.po" />
     <TypeScriptCompile Include="Scripts\Editable.ts" />
@@ -1202,11 +1181,9 @@
     <None Include="Content\Networks\PlaineImages\Styles\Line.png" />
     <None Include="Content\Networks\PlaineImages\Styles\Logo.png" />
     <None Include="Content\Networks\PlaineImages\Styles\Tile.jpg" />
-    <Content Include="Content\expand.css" />
     <Content Include="Content\icones\company.png" />
     <Content Include="Content\images\picto-places.png" />
     <Content Include="Content\images\picto-velo.png" />
-    <Content Include="Content\Lunch.css" />
     <Content Include="Content\Networks\Common\Groups\11.gif" />
     <Content Include="Content\Networks\Common\Groups\17.gif" />
     <Content Include="Content\Networks\Common\Groups\24.gif" />
@@ -1217,83 +1194,37 @@
     <Content Include="Content\Networks\Common\Groups\7.gif" />
     <Content Include="Content\Networks\Common\Groups\8.gif" />
     <Content Include="Content\Networks\Euratech_mail.gif" />
-    <Content Include="Content\Partners.css" />
     <Content Include="Content\Setup.css" />
     <Content Include="Content\Site\agenda.png" />
-    <Content Include="Content\Site\Book\bg.png" />
-    <Content Include="Content\Site\Book\menuCenterLeft.jpg" />
-    <Content Include="Content\Site\Book\menuCenterLeftBottom.jpg" />
-    <Content Include="Content\Site\Book\menuCenterLeftTop.jpg" />
-    <Content Include="Content\Site\Book\menuCenterRight.jpg" />
-    <Content Include="Content\Site\Book\menuCenterRightBottom.jpg" />
-    <Content Include="Content\Site\Book\menuCenterRightTop.jpg" />
     <Content Include="Content\Site\companies.png" />
     <Content Include="Content\Site\Dashboard\marks_no.gif" />
     <Content Include="Content\Site\Dashboard\marks_yes.gif" />
     <Content Include="Content\Site\Dashboard\device-config.png" />
-    <Content Include="Content\Site\Events\Visibility1.png" />
-    <Content Include="Content\Site\Events\Visibility0.png" />
-    <Content Include="Content\Site\Events\Visibility2.png" />
-    <Content Include="Content\Site\Events\Visibility-1.png" />
-    <Content Include="Content\Site\Events\Type2.png" />
-    <Content Include="Content\Site\Events\Type1.png" />
-    <Content Include="Content\Site\Events\Type5.png" />
-    <Content Include="Content\Site\Events\Type7.png" />
-    <Content Include="Content\Site\Events\Type3.png" />
-    <Content Include="Content\Site\Account\agenda.png" />
-    <Content Include="Content\Site\Account\car.png" />
-    <Content Include="Content\Site\Account\company.png" />
-    <Content Include="Content\Site\Account\cone.png" />
-    <Content Include="Content\Site\Account\event.png" />
-    <Content Include="Content\Site\Account\gear.png" />
-    <Content Include="Content\Site\Account\ipod.png" />
-    <Content Include="Content\Site\Account\menu.png" />
-    <Content Include="Content\Site\Account\micro.png" />
-    <Content Include="Content\Site\Account\mouse.png" />
-    <Content Include="Content\Site\Account\phone.png" />
-    <Content Include="Content\Site\Account\skull.png" />
     <Content Include="Content\Site\bg.jpg" />
     <Content Include="Content\Site\Dashboard\device-news.png" />
     <Content Include="Content\Site\Dashboard\device-off.png" />
     <Content Include="Content\Site\Dashboard\device-room.png" />
     <Content Include="Content\Site\dot.png" />
-    <Content Include="Content\Site\Foursquare\mayor-20.png" />
-    <Content Include="Content\Site\Gray\Bookmark.png" />
-    <Content Include="Content\Site\Gray\Company.png" />
-    <Content Include="Content\Site\Gray\Home.png" />
-    <Content Include="Content\Site\Gray\Person.png" />
     <Content Include="Content\Site\groups.png" />
     <Content Include="Content\Site\Groups\group_category.png" />
     <Content Include="Content\Site\Groups\group_members.png" />
-    <Content Include="Content\Site\HowToStart\sn1.png" />
-    <Content Include="Content\Site\HowToStart\sn2.png" />
     <Content Include="Content\Site\liveBubble.png" />
-    <Content Include="Content\Site\Maps\icon.png" />
-    <Content Include="Content\Site\Maps\marker-icon.png" />
-    <Content Include="Content\Site\Maps\marker.png" />
     <Content Include="Content\Site\menu_home.png" />
     <Content Include="Content\Site\menu_messages.png" />
     <Content Include="Content\Site\menu_profile.png" />
     <Content Include="Content\Site\news.png" />
     <Content Include="Content\Site\people.png" />
-    <Content Include="Content\Site\RFP\pushpin0.png" />
-    <Content Include="Content\Site\RFP\pushpin1.png" />
-    <Content Include="Content\Site\RFP\rfp-details.jpg" />
     <Content Include="Content\Site\sideBarBg.jpg" />
     <Content Include="Content\Site\sideBarCoffee.png" />
     <Content Include="Content\Site\sideBarMessage.png" />
     <Content Include="Content\Site\sideBarMsgBg.jpg" />
     <Content Include="Content\Site\sideBarProfile.png" />
-    <Content Include="Content\Site\Sidebar\bg.png" />
     <Content Include="Content\Site\star.png" />
     <Content Include="Content\Site\star16.png" />
     <Content Include="Content\Site\star16_off.png" />
     <Content Include="Content\Site\Status\0.png" />
     <Content Include="Content\Site\Status\1.png" />
     <Content Include="Content\Site\tileBox.png" />
-    <Content Include="Content\Site\Tiles\tileAds.png" />
-    <Content Include="Content\Site\Tiles\tileLostItems.png" />
-    <Content Include="Content\Site\Tiles\tileRestaurants.png" />
     <Content Include="Content\Site\timelineItemBg.gif" />
     <Content Include="Content\Site\Timelines\comments-16.png" />
     <Content Include="Content\Site\Timelines\comments-20.png" />
@@ -1315,8 +1246,6 @@
     <Content Include="Content\Site\Welcome\welcome_companies.png" />
     <Content Include="Content\Site\Welcome\welcome_groups.png" />
     <Content Include="Content\Site\Welcome\welcome_peoples.png" />
-    <Content Include="Content\teams\team.gif" />
-    <Content Include="Content\uploadify.css" />
     <Content Include="Content\Networks\Common\Documents\robots.txt" />
     <Content Include="Scripts\ajaxupload.min.js" />
     <Content Include="Scripts\ajaxupload.js" />
@@ -1381,7 +1310,6 @@
     <Content Include="Content\images\job.gif" />
     <Content Include="Content\images\notify.png" />
     <Content Include="Content\images\puce.gif" />
-    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\validationEngine.jquery.css" />
     <Content Include="Content\Welcome.css" />
     <Content Include="Global.asax" />
@@ -1703,20 +1631,6 @@
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Content\themes\base\jquery-ui.css" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -1812,7 +1726,6 @@
     <Content Include="Views\Messages\Index.cshtml" />
     <Content Include="Views\Messages\Conversation.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
-    <Content Include="Views\Shared\Lists\EventsQuickList.cshtml" />
     <Content Include="Views\Shared\Lists\EventsList.cshtml" />
     <Content Include="Views\Shared\Timeline\CommentsControl.cshtml" />
     <Content Include="Views\Home\NotificationCenter.cshtml" />

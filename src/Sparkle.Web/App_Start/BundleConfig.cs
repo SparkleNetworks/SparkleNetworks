@@ -17,6 +17,7 @@ namespace Sparkle.App_Start
         public const string PublicLibScripts = "~/b/Styles/publiclibs.js";
         public const string PublicScripts = "~/b/Styles/public.js";
         public const string DefaultStyles = "~/b/Styles/default.css";
+        public const string DefaultLteIE7Styles = "~/b/Styles/default.lteIE7.css";
 
         public static void ConfigureStaticBundles(BundleCollection collection)
         {
@@ -83,6 +84,12 @@ namespace Sparkle.App_Start
                 .Include("~/Content/Dashboard.less");
             dashboardStyles.Orderer = new NullOrderer();
             BundleTable.Bundles.Add(dashboardStyles);
+
+            // site.less extension for IE <= 7
+            var siteLteIE7Styles = new CustomStyleBundle(BundleConfig.DefaultLteIE7Styles)
+                .Include("~/Content/Site.lteIE7.less");
+            siteLteIE7Styles.Orderer = new NullOrderer();
+            BundleTable.Bundles.Add(siteLteIE7Styles);
         }
 
         public static void ConfigureNetworkBundles(BundleCollection collection, HttpServerUtility server, string networkName)
@@ -96,7 +103,7 @@ namespace Sparkle.App_Start
             else
                 siteCssBundle.Include("~/Content/Site.less");
             siteCssBundle.Include("~/Content/Timeline.less");
-            siteCssBundle.Include("~/Content/themes/sparkle/jquery-ui-1.10.4.min.css");
+            siteCssBundle.Include("~/Content/themes/sparkle/jquery-ui-1.10.4.less");
             siteCssBundle.Include("~/Content/jquery.mentionsInput.css");
             BundleTable.Bundles.Add(siteCssBundle);
         }
