@@ -1,0 +1,26 @@
+﻿@model Sparkle.Models.VisitsModel
+@{
+    this.ViewBag.Title = Lang.T("Visites");
+    this.SetHelpPage("Features/Companies");
+    this.SetAccentColor(SparkleAccentColor.Companies);
+}
+
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title, Lang.T("Ils ont visité le profil de l'entreprise..."))
+}
+<div class="space20"></div>
+
+<div class="peopleTiles">
+@foreach (var item in Model.Visits)
+{
+    <div class="contentItem">
+        <a href="/Person/@item.Login"><div style="background-image:url(@item.Picture)" class="Avatar-SizeLarge">@item.Date.ToShortDateString()</div></a>
+        <div style="margin:0 0 5px 10px;padding-top:2px;height:57px; overflow:hidden">
+            <a class="accentProfileColor" style="font-size:17px" href="/Person/@item.Login">@item.Name</a>
+            <a class="itemLinkJob" href="/Job/@item.JobAlias">@item.JobName</a>
+            <a class="itemLinkCompany" href="/Company/@item.CompanyAlias">@item.CompanyName</a>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+}
+</div>

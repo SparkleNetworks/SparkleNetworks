@@ -1,0 +1,99 @@
+﻿@model Sparkle.Models.CompanyProfileModel
+@{
+    this.ViewBag.Title = Model.Company.Name + " - " + Model.Company.Baseline + " - " + Lang.T("AppName");
+    this.ViewBag.Description = Model.Company.Name + " : une entreprise à " + Lang.T("CurrentPlaceAlone") + " sur " + Lang.T("AppName");
+    this.ViewBag.Picture = this.Model.PictureUrl;
+    this.SetHelpPage("Features/Companies");
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+    this.SetAccentColor(SparkleAccentColor.Companies);
+}
+
+@section CustomFocus{
+<div style="height:140px;margin-left:220px">
+
+@*@if (Model.AltNetwork != null)
+{
+    <div class="altNetwork" style="border:1px solid @Model.AltNetwork.Color">
+        Située au pôle @Html.ActionLink(Model.AltNetwork.DisplayName, "Network", "Networks", new { id = Model.AltNetwork.Name}, new { @style = "color:" + Model.AltNetwork.Color })
+    </div>
+}*@
+
+@FocusPage.Custom(Model.Company.Name)
+    @if (this.Model.People.Count > 0 || this.Model.Skills != null && this.Model.Skills.Count > 0)
+    {
+<ul class="company-stats">
+    @*<li>
+        <span class="count">0</span>
+        <span class="title">actualités</span>
+    </li>*@
+    @if(this.Model.People.Count > 0)
+    {
+    <li>
+        <span class="count">@Model.People.Count</span>
+        <span class="title">@Lang.T("PeoplesLabel")</span>
+    </li>
+    }
+    @if (this.Model.Skills != null && this.Model.Skills.Count > 0)
+    {
+    <li>
+        <span class="count">@Model.Skills.Count</span>
+        <span class="title">@Lang.T("Compétences")</span>
+    </li>
+    }
+</ul>
+}
+
+<div>@Model.Company.Baseline</div>
+<a class="accentColor" href="@Html.AbsoluteHttpUrl(Model.Website)" target="_blank" rel="external">@Model.Website</a>
+</div>
+}
+<div class="space20"></div>
+
+<div class="pageTitle">
+    <img class="avatar avatarShadow" style="margin-top:-145px;margin-right:10px" height="200" width="200" alt="@Model.Company.Name" src='@Model.PictureUrl' />
+    @Html.ActionLink(Lang.T("Contacter"), "Contact", new { id = Model.Company.Alias }, new { @class = "button accentColor" })
+    @Html.ActionLink("RSS", "Company", "Feeds", new { id = Model.Company.Alias }, new { target = "_blank", @class = "button", })
+</div>
+<br />
+
+<div class="clear"></div>
+
+<nav class="tabs">
+    <ul class="tabs">
+        <li><a href="#Tab-Presentation" class="bottomAccentColor" onClick="Spk.UI.TabManager.Switch('Tab-Presentation');">@Lang.T("Présentation")</a></li>
+        <li><a href="#Tab-News" class="info" onClick="Spk.UI.TabManager.Switch('Tab-News');">@Lang.T("Actus")</a></li>
+    </ul>
+    <hr class="tabs clear" />
+</nav>
+
+<!-- Vues -->
+<div id="vue">
+<div id="vues">
+<div class="vue">
+    <div class="vue-content">
+        <div class="content">
+            <label class="accentColor">@Lang.T("Présentation")</label>
+            <div class="labelInputs">
+                @Html.Markdown(Model.About)
+            </div>
+            <hr />
+
+@if (Model.Skills != null && Model.Skills.Count > 0)
+{
+    <label>@Lang.T("Compétences")</label>
+    <div class="labelInputs">
+        @Tags.List(Model.Skills)
+    </div>
+}
+        </div>
+    </div>
+</div>
+<div class="vue">
+    <div class="vue-content">
+        <div class="content">
+            @Html.Partial("Timeline", Model.ExternalTimeline)
+        </div>
+    </div>
+</div>
+</div>
+</div>

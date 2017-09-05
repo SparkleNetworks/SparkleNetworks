@@ -1,0 +1,417 @@
+﻿@model Sparkle.Models.CompanyProfileModel
+@{
+    this.WebDependencies()
+        .Include(MyWebDependencies.Select2, WebDependencyPosition.StartOfPage)
+        .Include(MyWebDependencies.SparkleShow);
+    
+    this.ViewBag.Title = Model.Company.Name;
+    this.SetHelpPage("Features/Companies");
+    
+    var configTree = this.Services() != null ? this.Services().AppConfigTree : null;
+    var isAchievementsEnabled = configTree != null ? configTree.Features.Companies.Achievements.IsEnabled : false;
+    bool isCompanyAccelerator = false;
+    if (this.Model.Category != null)
+    {
+        isCompanyAccelerator = this.Model.Category.KnownCategory == Sparkle.Entities.Networks.KnownCompanyCategory.CompanyAccelerator;
+        this.SetAccentColor(SparkleAccentColor.Companies);
+    }
+    
+    this.SetAccentColor(SparkleAccentColor.Companies);
+}
+
+@section CustomFocus{
+<div style="margin-left:220px">
+
+    @if (Model.AltNetwork != null)
+    {
+        <div class="altNetwork" style="border:1px solid @Model.AltNetwork.Color">
+            Située au pôle @Html.ActionLink(Model.AltNetwork.DisplayName, "Network", "Networks", new { id = Model.AltNetwork.Name }, new { @style = "color:" + Model.AltNetwork.Color })
+        </div>
+    }
+
+    @FocusPage.Custom(Model.Company.Name)
+    <div class="baseline">@Model.Company.Baseline</div>
+    @if (!string.IsNullOrEmpty(this.Model.Website))
+    {
+        <a class="accentColor" href="@Html.AbsoluteHttpUrl(Model.Website)" target="_blank" rel="external">@this.Model.Website</a><br />
+    }
+    <div class="secondaryInfos">
+        @if(this.Model.Category != null) {
+            <span class="tag-bullet company-category-@this.Model.Category.Id">@this.Model.Category.Name</span>
+        }
+        @foreach (var industry in this.Model.Industry)
+        {
+            <span>@industry</span> 
+        }
+
+        @foreach (var location in this.Model.Location)
+        {
+            <span>@location</span> 
+        }
+    </div>
+    <ul class="toolbox">
+    @if (Model.IsNetworkAdmin)
+    {
+        <li>
+            @Html.ActionLink(Lang.T("Modifier"), "Edit", new { id = Model.Company.Alias, }, new { @class = "accentAdminColor", })
+            @if (isAchievementsEnabled) { Html.ActionLink(Lang.T("Succès"), "Achievements", new { id = Model.Company.Alias, }, new { @class = "accentAdminColor", }); }
+            @Html.ActionLink(Lang.T("PeopleLabel"), "Management", new { id = Model.Company.Alias, }, new { @class = "accentAdminColor", })
+            @Html.ActionLink(Lang.T("Visites"), "Visits", new { id = Model.Company.Alias, }, new { @class = "accentAdminColor", })
+        </li>
+    }
+
+    @if (Model.IsAdmin)
+    {
+        <li>
+        @if (!Model.IsNetworkAdmin)
+        {
+            @Html.ActionLink(Lang.T("Modifier"), "Edit", new { id = Model.Company.Alias, }, new { @class = "accentColor", })
+            @Html.ActionLink(Lang.T("Collaborateurs"), "Management", new { id = Model.Company.Alias, }, new { @class = "accentColor", })
+            @Html.ActionLink(Lang.T("Visites"), "Visits", new { id = Model.Company.Alias, }, new { @class = "accentColor", })
+        }
+            @*@Html.ActionLink(Lang.T("Messages"), "Messages", new { id = Model.Company.Alias, }, new { @class = "accentColor", })*@@* TASK 426 plans will rebuild this feature *@
+        </li>
+    }
+    else
+    {
+        @*<li>@Html.ActionLink(Lang.T("Contacter"), "Contact", new { id = Model.Company.Alias ,}, new { @class = "accentColor", })</li>*@@* TASK 426 plans will rebuild this feature *@
+    }
+
+    @if (Model.CanAddPlace)
+    {
+        <li>
+            @Html.ActionLink(Lang.T("Ajouter un lieu"), "Add", "Places", new { Company = Model.Company.Alias, }, new { @class = "accentColor", })
+        </li>
+    }
+    </ul>
+<div class="clear"></div>
+</div>
+}
+
+<div class="pageTitle" style="margin-top:10px">
+    <img class="avatar avatarShadow" style="margin-top:-180px;margin-right:10px" height="200" width="200" alt="@Model.Company.Name" src='@Model.PictureUrl' />
+</div>
+<br />
+
+<div class="clear"></div>
+@if (!this.Model.Company.IsApproved)
+{
+<aside class="NoticeBlock Error">
+    <p>@Lang.T("Cette entreprise est en attente de validation pour entrer sur le réseau.")</p>
+</aside>
+}
+
+@if (!this.Model.Company.IsEnabled)
+{
+<aside class="NoticeBlock Error">
+    <p>@Lang.T("Cette entreprise ne fait plus partie du réseau.")</p>
+</aside>
+}
+
+<nav class="tabs">
+    <ul class="tabs">
+        <li><a href="#Tab-Presentation" class="bottomAccentColor" onClick="Spk.UI.TabManager.Switch('Tab-Presentation');">@Lang.T("Présentation")</a></li>
+@if (true)
+{
+    if (isAchievementsEnabled)
+    {<li><a href="#Tab-Achievments" class="info" onClick="Spk.UI.TabManager.Switch('Tab-Achievments');">@Lang.M("1 Succès", "{0} Succès", this.Model.Achievements.Where(a => a.Unlocked).Count())</a></li>}
+    if (Model.People != null)
+    {<li><a href="#Tab-People" onClick="Spk.UI.TabManager.Switch('Tab-People');">@Lang.T("Equipe")</a></li>}
+    if (isCompanyAccelerator)
+    {
+    <li><a href="#Tab-Companies" class="info" onClick="Spk.UI.TabManager.Switch('Tab-Companies');">@Lang.T("Startups")</a></li>
+    }
+    if (Model.IsMyCompany && Model.InternalTimeline != null)
+    {<li><a href="#Tab-Internal" onClick="Spk.UI.TabManager.Switch('Tab-Internal');">@Lang.T("Communication interne")</a></li>}
+    <li><a href="#Tab-News" class="info" onClick="Spk.UI.TabManager.Switch('Tab-News');">@Lang.T("Actus")</a></li>
+    if (this.Model.CompanyRelationships != null && this.Model.CompanyRelationships.Count > 0)
+    {
+    <li><a href="#Tab-Relationships" onclick="Spk.UI.TabManager.Switch('Tab-Relationships');">@Lang.T("Relationships")</a></li>
+    }
+}
+    </ul>
+    <hr class="tabs clear" />
+</nav>
+
+<!-- Vues -->
+<div id="vue" class="SpkShow-Opening">
+<div id="vues">
+<div class="vue">
+<div class="vue-content flex-content">
+
+    <div class="content-left">
+    @if (!string.IsNullOrEmpty(Model.About))
+    {
+    <label>@Lang.T("Présentation")</label>
+    <div class="labelInputs">@Html.Markdown(Model.About)</div>
+    <div class="space30"></div>
+    }
+
+    @if (!configTree.Features.Tags.DisableV1 && Model.Skills != null && Model.Skills.Count > 0)
+    {
+    <label>@Lang.T("CompanySkills")</label>
+    <div id="skillList" class="labelInputs left">
+        @Tags.List(Model.Skills)
+    <div class="clear"></div>
+    </div>
+    <div class="space30"></div>
+    }
+
+    @if (Model.Tags != null)
+    {
+    @:@Html.EditorFor(m => m.Tags, new { EntityName = "Company", })
+    }
+
+    @if (Model.CompanyPlaces.Count > 0)
+    {
+    <label>@Lang.T("Lieux associés")</label>
+    <div class="labelInputs">
+        <ul>
+        @foreach (var item in Model.CompanyPlaces)
+        {
+            <li style="display:inline;"><a href="@item.Place.RelativePlaceUrl">
+                <img src="@item.Place.SymbolRelativeUrl" class="avatar" style="width:40px;height:40px;" />
+                <div style="margin-left:80px;">
+                    <label style="cursor:auto;">
+                        @item.Place.Name
+            @if (item.Place.AddressString != null)
+            {
+                        <span class="positions-date">@item.Place.AddressString</span>
+            }
+                    </label>
+                    <p>@item.Place.Description<br /></p>
+                </div>
+            </a></li>
+        }
+        </ul>
+    </div>
+    <div class="space30"></div>
+    }
+
+    @if (Model.Contacts.Count > 0)
+    {
+    <label>@Lang.T("Contacts directs")</label>
+    <div class="labelInputs peopleTiles">
+        @Html.Partial("Lists/PeopleList2", Model.Contacts.Where(p => p.NetworkAccessLevel > 0 && p.CompanyAccessLevel > 0).ToList())
+        <div class="clear"></div>
+    </div>
+    }
+    </div>
+    <div class="content-right">
+        @if (!string.IsNullOrWhiteSpace(this.Model.Phone) || !string.IsNullOrWhiteSpace(this.Model.Facebook) || !string.IsNullOrWhiteSpace(this.Model.Twitter) || !string.IsNullOrWhiteSpace(this.Model.AngelList))
+        {
+        <div class="rightBox">
+            <h3 class="boxTitle">@Lang.T("Contact info")</h3>
+            <div>
+            @if (!string.IsNullOrEmpty(this.Model.Phone))
+            {
+                <a class="accentColor" href="tel:@this.Model.Phone">@this.Model.Phone</a><br />
+            }
+            @if (!string.IsNullOrEmpty(this.Model.Facebook))
+            {
+                <a class="accentColor" href="@Html.AbsoluteHttpUrl(Model.Facebook)" target="_blank" rel="external">Facebook</a><br />
+            }
+            @if (!string.IsNullOrEmpty(this.Model.Twitter))
+            {
+                <a class="accentColor" href="https://twitter.com/@this.Model.Twitter" target="_blank" rel="external">Twitter</a><br />
+            }
+            @if (!string.IsNullOrEmpty(this.Model.AngelList))
+            {
+                <a class="accentColor" href="@Html.AbsoluteHttpUrl(Model.AngelList)" target="_blank" rel="external">AngelList</a>
+            }
+            </div>
+        </div>
+        }
+
+        @if (!string.IsNullOrEmpty(this.Model.Twitter))
+        {
+        <div class="rightBox">
+            <h3 class="boxTitle">@Lang.T("Twitter")</h3>
+            <div>
+                <a class="twitter-timeline" href="https://twitter.com/@this.Model.Twitter" data-widget-id="522008465862959104" data-screen-name="@this.Model.Twitter" height="400" data-chrome="noheader noborders transparent">Tweets</a>
+<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+            </div>
+        </div>
+        }
+    </div>
+
+    <div class="clear"></div>
+    </div>
+</div>
+
+@if (isAchievementsEnabled)
+{
+<div class="vue">
+<div class="vue-content">
+    <div class="content">
+        @Html.Partial("Lists/Achievements", Model.Achievements)
+    </div>
+</div>
+</div>
+}
+
+@if (Model.People != null && Model.People.Count > 0)
+{
+<div class="vue">
+<div class="vue-content">
+    <div class="content">
+        @if (Model.IsAdmin)
+        {
+            <div>
+            @Html.ActionLink(Lang.T("Inviter des collègues"), "Invitations", "Account", new { id = "Team" }, new { @class = "button accentColor" })
+            </div>
+            <br />
+        }
+        <div class="peopleTiles">
+            @Html.Partial("Lists/PeopleList2", Model.People.Where(p => p.CompanyAccessLevel > 0 && p.NetworkAccessLevel > 0).ToList())
+        </div>
+
+        @*@if (Model.People.Where(p => p.CompanyAccessLevel == 0).ToList().Count > 0)
+        {
+        <div class="separator"></div>
+        <h3>@Lang.T("Anciens collaborateurs")</h3>
+        <div class="peopleTiles">
+            @Html.Partial("Lists/PeopleList2", Model.People.Where(p => p.CompanyAccessLevel == 0).ToList())
+        </div>
+        }*@
+    </div>
+</div>
+</div>
+}
+@if (isCompanyAccelerator)
+{
+    <div class="vue">
+        @if (Model.IsAdmin)
+        {
+            <div>
+            @Html.ActionLink(Lang.T("Inviter les entreprises de mon écosystème"), "Invitations", "Account", new { id = "Ecosystem" }, new { @class = "button accentColor" })
+            </div>
+            <br />
+        }
+
+    <!-- fake data start -->
+    <ul class="companies">
+        <li class="tile category1">
+            <a href="/Company/Spark-Labs-1"><img class="avatar" alt="Spark Labs" height="100" width="100" src="/Data/CompanyPicture/Spark-Labs-1/Medium/00010101T000000Z"></a>
+            <a href="/Company/Spark-Labs-1"><h2 class="accentCompanyColor">Spark Labs</h2></a>
+            <div style="padding-left:110px;">
+                <div class="baseline">bla</div>
+                <div class="secondaryInfos">
+                    <div class="">Tech Company</div>
+                                </div>
+            </div>
+            <div class="clear"></div>
+        </li>
+<li class="tile category1">
+    <a href="/Company/sparklenetworks"><img class="avatar" alt="Sparkle Networks" height="100" width="100" src="/Data/CompanyPicture/sparklenetworks/Medium/20141009T141818Z"></a>
+    <a href="/Company/sparklenetworks"><h2 class="accentCompanyColor">Sparkle Networks</h2></a>
+    <div style="padding-left:110px;">
+        <div class="baseline">We connect your community members</div>
+        <div class="secondaryInfos">
+            <div class="">Tech Company</div>
+                        </div>
+    </div>
+    <div class="clear"></div>
+
+    <ul class="tags">
+        <li><a href="/Tags/Skills/110"><span>Communities</span></a></li>
+    </ul>
+</li>
+<li class="tile category1">
+    <a href="/Company/Vodeclic"><img class="avatar" alt="Vodeclic" height="100" width="100" src="/Data/CompanyPicture/Vodeclic/Medium/00010101T000000Z"></a>
+    <a href="/Company/Vodeclic"><h2 class="accentCompanyColor">Vodeclic</h2></a>
+    <div style="padding-left:110px;">
+        <div class="baseline">eLearning solution for Desktop Applications</div>
+        <div class="secondaryInfos">
+            <div class="">Tech Company</div>
+                        </div>
+    </div>
+    <div class="clear"></div>
+</li>
+</ul>
+    <!-- fake data end -->
+</div>
+}
+
+@if (Model.IsMyCompany && Model.InternalTimeline != null)
+{
+<div class="vue">
+<div class="vue-content">
+    <div class="content">
+        @Html.Partial("Timeline", Model.InternalTimeline)
+        @*<h5>Confidentialité</h5>
+        Les messages publiés ici sont visibles aux @Model.People.Count personnes de @Model.Company.Name.*@
+    </div>
+</div>
+</div>
+}
+<div class="vue">
+<div class="vue-content">
+    <div class="content">
+        @Html.Partial("Timeline", Model.ExternalTimeline)
+        <div>&nbsp;</div>
+    </div>
+</div>
+</div>
+
+@if (this.Model.CompanyRelationships != null && this.Model.CompanyRelationships.Count > 0)
+{
+<div class="vue">
+<div class="vue-content">
+    <div class="content">
+        <table class="dashboard full-width">
+            <thead>
+                <tr class="left accentBgColor">
+                    <th>@Lang.T("Type")</th>
+                    <th>@Lang.T("Détails")</th>
+                    <th>@Lang.T("CreationDate")</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+    @foreach (var type in this.Model.CompanyRelationships)
+    {
+            <tr>
+                <td style="font:caption;font-size:large">@type.Key.Name</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>@Html.ActionLink(Lang.T("Inviter"), "Invitations", "Account", new { CompanyRelationshipTypeId = type.Key.Id, }, new { @class = "button accentColor", @title = Lang.T("Inviter avec ce type") })</td>
+            </tr>
+        foreach (var item in type.Value)
+        {
+            <tr>
+                <td>&nbsp;</td>
+                <td>@Html.ActionLink(item.Master.Name, "Company", new { id = item.Master.Alias, }) @Lang.T(type.Key.Verb.ToLower()) @Html.ActionLink(item.Slave.Name, "Company", new { id = item.Slave.Alias, })</td>
+                <td>@Html.DisplayDate(item.DateCreatedUtc)</td>
+                <td>&nbsp;</td>
+            </tr>
+        }
+    }
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+}
+
+</div>
+</div>
+
+<script type="text/javascript">
+@if (Model.Tags != null)
+{
+    <text>
+    (function () {
+        Spk.UI.AjaxTagPicker.Init(@Model.Tags.IsFilterBox.ToString().ToLower(), 'Company', '@this.Model.Company.Alias');
+    })();
+    </text>
+}
+@if (Model.IsMyCompany)
+{
+    @:menu('mainNavMyProfile');
+}
+else
+{
+    @:menu('mainNavCompanies');
+}
+</script>

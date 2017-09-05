@@ -1,0 +1,37 @@
+﻿@model IList<Sparkle.Services.Networks.Subscriptions.SubscriptionTemplateModel>
+@{
+    this.SetAccentColor(SparkleAccentColor.Account);
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+    this.SetPageCssClass("SubscriptionContext");
+}
+@section CustomFocus{
+    @FocusPage.Custom(this.ViewBag.Title)
+    <p>@Html.ActionLink(Lang.T("Mes abonnements"), "Subscriptions", "Account")</p>
+}
+
+@if (Model.Count == 0) { 
+<aside class="NoticeBlock Error"><p>@Lang.T("Aucun modèle d'abonnement n'a été défini.")</p></aside>
+}
+
+<div class="center ChooseModel">
+    <div class="flexItems">
+@foreach (var item in Model)
+{
+<div class="plan">
+    <h2 class="headFont">@item.Name</h2>
+    @if (item.PriceEurWithVat != null)
+    {
+    <p class="AmountCurrency">@Html.DisplayAmount(item.PriceEurWithVat.Value, AmountCurrency.EUR)</p>
+    }
+    @if (item.PriceUsdWithVat != null)
+    {
+    <p class="AmountCurrency">@Html.DisplayAmount(item.PriceUsdWithVat.Value, AmountCurrency.USD)</p>
+    }
+    <hr />
+    <p>@Html.ActionLink(Lang.T("Acheter [abonnement]"), "Buy", "Subscriptions", new { id = item.Id, ReturnUrl = this.Request.Url.LocalPath, }, new { @class = "button large accentColor", })</p>
+    <p>@Lang.T("(Abonnement) Durée :") @item.DurationKind.Display(item.DurationValue)</p>
+</div>
+}
+    </div>
+</div>
+

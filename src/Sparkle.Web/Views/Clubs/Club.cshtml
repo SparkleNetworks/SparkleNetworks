@@ -1,0 +1,51 @@
+﻿@model Sparkle.Services.Networks.Models.ClubModel
+@{
+    ViewBag.Title = Model.Name;
+}
+@{ this.SetAccentColor("#038a9a"); }
+
+@section CustomFocus{
+    @if (this.ViewBag.CanEdit)
+    {
+    <div style="float: right;margin-top: 23px;">
+    @Html.ActionLink(Lang.T("Supprimer"), "Delete", new { id = this.Model.Id }, new { @class = "button accentColor" })
+    @Html.ActionLink(Lang.T("Modifier"), "Edit", new { id = this.Model.Id }, new { @class = "button accentColor" })
+    </div>
+    }
+
+    @FocusPage.Custom(ViewBag.Title, Model.Baseline)
+}
+<div class="space20"></div>
+
+<!-- Vues -->
+<div id="vue">
+<div id="vues">
+<div class="vue">
+<div class="vue-content olddays">
+
+    <label>@Lang.T("Présentation")</label>
+    <div class="labelInputs">@Html.Markdown(Model.About)&nbsp;</div>
+    <hr />
+
+    <label>@Lang.T("Site")</label>
+    <div class="labelInputs">
+        <a class="accentColor" href="@Html.AbsoluteHttpUrl(Model.Website)" target="_blank" rel="external">@Model.Website&nbsp;</a>
+    </div>
+    <hr />
+
+    <label>@Lang.T("Téléphone")</label>
+    <div class="labelInputs">@Html.Text(Model.Phone)&nbsp;</div>
+    <hr />
+
+    <label>@Lang.T("Email")</label>
+    <div class="labelInputs">@Html.Text(Model.Email)&nbsp;</div>
+    <hr />
+
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+    menu('mainNavClubs');
+</script>

@@ -1,0 +1,139 @@
+﻿@model Sparkle.Models.RegisterRequestModel
+@{
+    this.ViewBag.Title = Lang.T("Inscription");
+    this.WebDependencies().Include(MyWebDependencies.JqueryValidationEngine);
+    this.SetHelpPage("Features/UserAccount");
+    bool useApply = this.ViewBag.UseApply;
+    
+    string title = this.ViewBag.Title;
+
+    if (Model.HttpPost)
+    {
+        if (this.Services().AppConfigTree.Features.EnableCompanies)
+        {
+
+            if (Model.Invited)
+            {
+                title = Lang.T("Invitation en attente");
+            }
+            else if (Model.Registred)
+            {
+                title = Lang.T("Vraiment !?");
+            }
+            else
+            {
+                title = Lang.T("Invité");
+            }
+        }
+        else
+        {
+            title = "Patience...";
+        }
+    }
+}
+
+@if (Model.HttpPost)
+{
+    if (Model.ValideCompany)
+    {
+        if (Model.Invited)
+        {
+    <div style="width:430px; margin:auto">
+        <p><b>@Lang.T("Vous êtes déjà invité.")</b><br />
+        @Lang.T("Nous vous avons tout de même envoyé une nouvelle invitation par email.")</p>
+        <p>@Lang.T("Cliquez sur le lien contenu dans cet email pour vous inscrire.")</p>
+    </div>
+    <div class="shadow"></div>
+        }
+        else if (Model.Registred)
+        {
+    <div style="width:430px; margin:auto">
+        <p>@Lang.T("Vous êtes déjà inscrit.")</p>
+        @Html.ActionLink(Lang.T("Mot de passe oublié ?"), "Recover", new { email = Model.Email }, new { @class = "centerButton networkAccentBgColor" })
+    </div>
+    <div class="shadow"></div>
+        }
+        else
+        {
+            switch (this.Model.InviteCode.Value)
+            {
+                case Sparkle.Services.Networks.Users.InvitePersonResult.ResultCode.Error:
+                case Sparkle.Services.Networks.Users.InvitePersonResult.ResultCode.SmtpError:
+    <div class="pageTitle">
+        <h2>oops !</h2>
+    </div>
+    <p>@Lang.T("Une erreur est survenue. L'équipe de développement en a été informée.")</p>
+                    break;
+                case Sparkle.Services.Networks.Users.InvitePersonResult.ResultCode.Done:
+                default:
+    <div class="pageTitle">
+        <h2>@Lang.T("Parfait !")</h2>
+    </div>
+    <p>@Lang.T("Une invitation vous a été envoyée.")</p>
+                    break;
+            }
+        }
+    }
+    else
+    {
+    <div style="width:430px; margin:auto">
+        <p><b>@Lang.T("Votre entreprise n'est pas encore enregistrée.")</b><br />
+        @Lang.T("Un membre de l'équipe vous contactera pour enregistrer votre entreprise.")
+        </p>
+        <p>@Lang.T("Vous recevrez ensuite votre invitation.")</p>
+    </div>
+    <div class="shadow"></div>
+    }
+}
+else
+{
+<div class="center">
+<div class="inBox center">
+    <div class="hero">
+        <p>Begin your own<br />
+                success story.</p>
+    </div>
+    @using (Html.BeginFormEx(new { @class = "olddays", }))
+    {
+        @Html.Hidden("UseApply", useApply)
+        <div class="padding">
+        <h1>@title</h1>
+        <label>@Lang.T("Adresse email")</label>
+        @Html.TextBox("Email", this.Model.Email, new { placeholder = Lang.T("Votre email professionnelle"), @class = "textbox validate[required,custom[email]]" })
+        @Html.ValidationMessageFor(m => m.Email)<br />
+    <br />
+
+        @if (!string.IsNullOrWhiteSpace(this.Model.Email))
+        {
+        <hr />
+        <p>@Lang.T("Si votre {0} est inscrite, selectionnez là dans la liste ci-dessous.", Lang.T("CompanyLabel").ToLower())</p>
+        @Html.DropDownListFor(model => model.CompanyId, (IList<SelectListItem>)ViewBag.Companies, new { @class = "textbox" })  
+        <input type="submit" class="button accentColor" value="@Lang.T("Continuer")" />
+            
+        <hr />
+        <p>@Lang.T("Sinon, vous pouvez procéder à son inscription.")</p>
+        @Html.ActionLink(Lang.T("Inscrire mon entreprise"), "Registration", "Companies", null, new { @class = "button accentColor" })
+        }
+            
+        @if (string.IsNullOrWhiteSpace(this.Model.Email))
+        {
+        <input type="submit" class="button accentColor" value="@Lang.T("Continuer")" />
+    
+            if (this.Services().AppConfigTree.Features.EnableCompanies)
+            {
+        <hr />
+        <p style="margin:10px 0; font-size:14px">@Lang.T("Votre {0} n'est pas inscrite ?", Lang.T("CompanyLabel").ToLower())</p>
+        @Html.ActionLink(Lang.T("Inscription"), "Registration", "Companies", null, new { @class = "button" })
+            }
+        }
+        </div>
+    }
+</div>
+</div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Email').focus();
+    });
+</script>

@@ -1,0 +1,61 @@
+﻿@model Sparkle.Models.BoxPermissionsModel
+@{
+    Layout = null;
+}
+<h3 class="networkAccentBgColor">Droits de @Model.Person.FirstName @Model.Person.LastName</h3>
+
+<div class="largeAvatarBackground" style="float:left;margin-top:20px">
+    <div class="largeAvatar" style='background-image:url(@Model.Person.ProfilePictureUrl)'></div>
+</div>
+
+<div style="margin-left:210px; margin-top:20px;">
+    <p>
+        <input id="r1" type="radio" name="right" onclick="ChangeRight(1)" style="" @(Model.Person.CompanyAccessLevel == 1 ? "checked=checked" : "") />
+        <label class="normal" for="r1"> Collaborateur</label>
+        <br />Utilisateur classique.
+    </p>
+
+    <p>
+        <input id="r2" type="radio" name="right" onclick="ChangeRight(2)" style="" @(Model.Person.CompanyAccessLevel == 2 ? "checked=checked" : "") />
+        <label class="normal" for="r2"> Community Manager</label>
+        <br />Peut communiquer en tant que @Model.CompanyName.
+    </p>
+
+    <p>
+    <input id="r3" type="radio" name="right" onclick="ChangeRight(3)" style="" @(Model.Person.CompanyAccessLevel == 3 ? "checked=checked" : "") />
+        <label class="normal" for="r3"> Administrateur</label>
+        <br />Peut commuiquer en tant que @Model.CompanyName et gérer les collaborateurs.
+    </p>
+
+    <p>
+    <input id="r4" type="radio" name="right" onclick="ChangeRight(0)" style="" @(Model.Person.CompanyAccessLevel == 0 ? "checked=checked" : "") />
+        <label class="normal" for="r4"> Compte désactivé</label>
+        <br />Bloque le compte et empêche l'utilisateur de se connecter ou de recevoir des notifications.
+    </p>
+
+    <p>
+        <a href="javascript:void(0)" class="button accentColor" onclick="ValidePermissions(this.attributes['data-username'].value)" data-username="@Model.Login">Valider</a>
+    </p>
+
+    <input type="hidden" id="right" value="@this.Model.Person.CompanyAccessLevel" />
+</div>
+
+<script type="text/javascript">
+    function ChangeRight(value) {
+        $('#right').val(value);
+    }
+
+    function ValidePermissions(login) {
+        var value = $('#right').val();
+
+        var id = '@Model.Person.ProfileShortId';
+        var item = $('.manageUser' + id);
+
+        SendPermissions(login, value, function (success, data) {
+            if (success) {
+                item.clone().prependTo('#mCat' + value);
+                item.remove();
+            }
+        });
+    }
+</script>

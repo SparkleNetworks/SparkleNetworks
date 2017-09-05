@@ -1,0 +1,110 @@
+﻿@model Sparkle.Services.Networks.Team.EditNetworkRoleRequest
+@{
+    this.ViewBag.Title = Lang.T("Modifier le role de {0}", this.Model.Firstname);
+
+    this.SetAccentColor(SparkleAccentColor.Dashboard);
+    var groupSelectList = new SelectList(this.Model.Groups, "Key", "Value");
+}
+<h3 class="accentBgColor">@this.ViewBag.Title</h3>
+
+<div class="page" style="overflow-y:scroll;max-height:27em">
+    <img src="@this.Model.PictureUrl" class="large-avatar" style="float:left;" />
+    <div style="margin-left:12em;min-height:200px">
+        <h2 class="title">@this.Model.DisplayName</h2>
+        @if (!Model.IsNewRole)
+        {
+        <a href="javascript:void(0);" title="@Lang.T("Supprimer le rôle de {0}", this.Model.Firstname)" class="button delNetworkRole" data-login="@this.Model.Login">&#10008;</a>
+        }
+        <p style="display:inline-block;margin-top:1em">
+            @Lang.T("Cette fenêtre permet d'ajouter ou d'éditer le role sur le réseau d'un utilisateur.")<br />
+            @Lang.T("Les champs ci-dessous sont facultatifs, vous pouvez marquer un utilisateur comme animateur du réseau sans pour autant les remplir.")<br />
+            @Lang.T("Si vous souhaitiez supprimer un rôle, utilisez le bouton de suppression à côté du nom de l'utilisateur.")
+        </p>
+    </div>
+    <div class="clear"></div>
+    <div class="space10"></div>
+
+    @using (Html.BeginFormEx(new { @class = "normal actionForm", @id = "EditNetworkRoleForm" }))
+    {
+        @Html.HiddenFor(m => m.Login)
+        @Html.HiddenFor(m => m.Firstname)
+        @Html.HiddenFor(m => m.Lastname)
+        @Html.HiddenFor(m => m.PictureUrl)
+
+        <div class="olddays">
+            @Html.LabelFor(m => m.RoleTitle)
+            <div class="labelInputs">
+                @Html.TextBoxFor(m => m.RoleTitle, new { @class = "textbox", @list = "existingRoleTitles", })
+                <datalist id="existingRoleTitles">
+                    @foreach (var item in this.Model.ExistingRoleNames)
+                    {
+                        <option value="@item" />
+                    }
+                </datalist>
+                @Html.ValidationMessageFor(m => m.RoleTitle)
+            </div>
+
+            @Html.LabelFor(m => m.RoleDescription)
+            <div class="labelInputs">
+                @Html.TextAreaFor(m => m.RoleDescription, new { @class = "textbox", })
+                @Html.ValidationMessageFor(m => m.RoleDescription)
+            </div>
+
+            @Html.LabelFor(m => m.ActualGroup)
+            <div class="labelInputs">
+                @Html.DropDownListFor(m => m.ActualGroup, groupSelectList, new { @class = "textbox", })
+                @Html.ValidationMessageFor(m => m.ActualGroup)
+            </div>
+
+            @Html.Submit(Lang.T("Accepter"), Lang.T("Accepter"), new { @class = "button accentColor", })
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+
+    (function () {
+        $('#EditNetworkRoleForm').submit(function (event) {
+            event.preventDefault();
+
+            var form = $('#EditNetworkRoleForm');
+            var formData = $(form).serialize();
+            $.ajax({
+                type: 'POST',
+                url: '/Box/BoxNetworkRole',
+                data: formData,
+                success: function (data) {
+                    var boxOptions = Spk.UI.Box.GetActualOptions();
+                    Spk.UI.Box.Close();
+                    boxOptions.OnAddRole();
+                },
+                error: function (request) {
+                    var error = GetErrorMessageFromAjax(request);
+                    DisplayErrorMessage(error);
+                }
+            });
+        });
+        $('a.delNetworkRole').on('click', function (event) {
+            event.preventDefault();
+
+            var login = event.target.dataset.login;
+            $.ajax({
+                type: 'POST',
+                url: '/Team/DeleteNetworkRole',
+                data: { login: login },
+                success: function (data) {
+                    var boxOptions = Spk.UI.Box.GetActualOptions();
+                    Spk.UI.Box.Close();
+                    if ($.isFunction(boxOptions.OnDelRole)) {
+                        boxOptions.OnDelRole();
+                    }
+                },
+                error: function (request) {
+                    var error = GetErrorMessageFromAjax(request);
+                    DisplayErrorMessage(error);
+                }
+            });
+        });
+    })();
+
+</script>

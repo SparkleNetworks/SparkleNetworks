@@ -1,0 +1,211 @@
+﻿@model Sparkle.Models.Recurrence
+<h3 class="accentBgColor">Récurrence</h3>
+
+<p class="accentBorderColor">
+    <span style="font-weight:bold;" class="accentColor">Répeter chaque</span><br />
+    @*<input type="radio" name="group1" value="1" id="g1" onclick="recurrenceChoice(this.value)"><label class="normal" for="g1"> Jour</label>*@
+    <input type="radio" name="group1" value="2" id="g2" onclick="recurrenceChoice('Weekly')" checked="checked"><label class="normal" for="g2"> Semaine</label>
+    <input type="radio" name="group1" value="3" id="g3" onclick="recurrenceChoice('Monthly')"><label class="normal" for="g3"> Mois</label>
+    @*<input type="radio" name="group1" value="4" id="g4" onclick="recurrenceChoice(this.value)"><label class="normal" for="g4"> Année</label>*@
+</p>
+
+<div id="daily" style="display:none">
+    <input type="radio" name="group3" value="1">Tous les <input type="text" class="textbox textboxShort" id="DailyEvery" value="" /> jour(s)<br />
+    <input type="radio" name="group3" value="2">Tous les jours de la semaine<br />
+</div>
+
+<div id="weekly">
+    <div style="float:left; width:200px">
+    <p class="accentBorderColor"><span style="font-weight:bold;" class="accentColor">Jours de la semaine</span><br />
+    <input type="checkbox" name="group2" value="1" id="j1" onclick="Weekly()"><label for="j1" style="font-weight:normal"> Lundi</label><br />
+    <input type="checkbox" name="group2" value="2" id="j2" onclick="Weekly()"><label for="j2" style="font-weight:normal"> Mardi</label><br />
+    <input type="checkbox" name="group2" value="3" id="j3" onclick="Weekly()"><label for="j3" style="font-weight:normal"> Mercredi</label><br />
+    <input type="checkbox" name="group2" value="4" id="j4" onclick="Weekly()"><label for="j4" style="font-weight:normal"> Jeudi</label><br />
+    <input type="checkbox" name="group2" value="5" id="j5" onclick="Weekly()"><label for="j5" style="font-weight:normal"> Vendredi</label><br />
+    <input type="checkbox" name="group2" value="6" id="j6" onclick="Weekly()"><label for="j6" style="font-weight:normal"> Samedi</label><br />
+    <input type="checkbox" name="group2" value="7" id="j7" onclick="Weekly()"><label for="j7" style="font-weight:normal"> Dimanche</label></p>
+    </div>
+    <div style="float:left; width:300px; color:#555">
+        <p class="accentBorderColor"><span style="font-weight:bold;" class="accentColor">Fréquence et quantité</span><br />
+            Répéter toutes les <input id="WeeklyEvery" type="text" class="textbox textboxShort" value="2" onchange="Weekly();" /> semaines<br />
+            pendant <input id="WeeklyEndAfter" type="text" class="textbox textboxShort" value="2" onchange="WeeklyRecurrence();" /> semaines.
+        </p>
+    </div>
+    <div style="clear:both"></div>
+</div>
+
+<div id="monthly" style="display:none">
+    <p class="accentBorderColor"><span style="font-weight:bold;" class="accentColor">Fréquence</span><br />
+    <input type="radio" name="group4" value="1" id="m1" onclick="Monthly()">Le <input type="text" class="textbox textboxShort" id="MonthlyDay" onchange="Monthly()" /> tous les <input type="text" class="textbox textboxShort" id="MonthlyEvery" onchange="Monthly()" /> mois<br />
+    <br />
+    <input type="radio" name="group4" value="2" id="m2" onclick="Monthly()">Le 
+    <select id="MonthlyThe" onchange="Monthly()">
+        <option value="1">premier</option>
+        <option value="2">deuxième</option>
+        <option value="3">troisième</option>
+        <option value="4">quatrième</option>
+        <option value="5">dernier</option>
+    </select>
+    <select id="MonthlyDay2" onchange="Monthly()">
+        <option value="1">lundi</option>
+        <option value="2">mardi</option>
+        <option value="3">mercredi</option>
+        <option value="4">jeudi</option>
+        <option value="5">vendredi</option>
+        <option value="6">samedi</option>
+        <option value="7">dimanche</option>
+    </select> de tous les <input type="text" class="textbox textboxShort" id="MonthlyEvery2" onchange="Monthly()" /> mois<br />
+    </p>
+    <p class="accentBorderColor"><span style="font-weight:bold;" class="accentColor">Quantité</span><br />
+    pendant <input id="MonthlyEndAfter" type="text" class="textbox textboxShort" value="2" onchange="MonthlyRecurrence();" /> mois.
+    </p>
+    <br />
+</div>
+
+<div id="yearly" style="display:none">
+    Tous les <input type="text" class="textbox textboxShort" /> an(s)<br />
+    <input type="radio" name="group5" value="1">Le <input type="text" class="textbox textboxShort" /> <select><option>novembre</option></select><br />
+    <input type="radio" name="group5" value="2">Le <select><option value="1">premier</option><option value="2">deuxième</option><option value="3">troisième</option><option value="4">quatrième</option><option value="5">dernier</option></select> <select><option value="1">lundi</option><option value="2">mardi</option><option value="3">mercredi</option><option value="4">jeudi</option><option value="5">vendredi</option><option value="6">samedi</option><option value="7">dimanche</option></select> de ...<br />
+</div>
+
+<input type="hidden" id="EndAfter" />
+
+<a class="button accentBgColor" href="javascript:void(0)" onclick="Valide(); return false;">Valider</a> <a class="button accentBgColor" href="#" onclick="Cancel(); return false;">Annuler la récurrence</a> 
+
+<script type="text/javascript">
+
+    function Valide() {
+        $("#Recurrence_UseRecurrence").val("1");
+        CloseMsgBox();
+    }
+
+    function Cancel() {
+        $("#Recurrence_UseRecurrence").val("0");
+        CloseMsgBox();
+    }
+
+    function recurrenceChoice(index) {
+        $('#daily').hide();
+        $('#weekly').hide();
+        $('#monthly').hide();
+        $('#yearly').hide();
+        if (index == "Daily") {
+            $('#daily').show();
+            $('#Recurrence_Pattern').val("Daily");
+        }
+        if (index == "Weekly") {
+            $('#weekly').show();
+            $("#g2").attr("checked", "checked");
+            $('#Recurrence_Pattern').val("Weekly");
+            WeeklyRecurrence();
+        }
+        if (index == "Monthly") {
+            $('#monthly').show();
+            $("#g3").attr("checked", "checked");
+            $('#Recurrence_Pattern').val("Monthly");
+            MonthlyRecurrence();
+        }
+        if (index == "Yearly") {
+            $('#yearly').show();
+            $('#Recurrence_Pattern').val("Yearly");
+        }
+    }
+
+    function Daily(){
+        $("#Recurrence_DailyEvery").val($("#DailyEvery").val());
+        $("#Recurrence_DailyEveryWeek").val();
+
+        $("#Recurrence_EndAfter").val($("#EndAfter").val());
+    }
+
+    function Weekly() {
+        $("#Recurrence_WeeklyEvery").val($("#WeeklyEvery").val());
+        var monday = 0;
+        if ($("#j1").attr("checked") == "checked") monday = 1;
+        $("#Recurrence_WeeklyMonday").val(monday);        
+
+        var thuesday = 0;
+        if ($("#j2").attr("checked") == "checked") thuesday = 1;
+        $("#Recurrence_WeeklyThuesday").val(thuesday);        
+
+        var wednesday = 0;
+        if ($("#j3").attr("checked") == "checked") wednesday = 1;
+        $("#Recurrence_WeeklyWednesday").val(wednesday);        
+
+        var thursday = 0;
+        if ($("#j4").attr("checked") == "checked") thursday = 1;
+        $("#Recurrence_WeeklyThursday").val(thursday);        
+
+        var friday = 0;
+        if ($("#j5").attr("checked") == "checked") friday = 1;
+        $("#Recurrence_WeeklyFriday").val(friday);        
+
+        var saturday = 0;
+        if ($("#j6").attr("checked") == "checked") saturday = 1;
+        $("#Recurrence_WeeklySaturday").val(saturday);        
+
+        var sunday = 0;
+        if ($("#j7").attr("checked") == "checked") sunday = 1;
+        $("#Recurrence_WeeklySunday").val(sunday);
+
+        $("#Recurrence_EndAfter").val($("#EndAfter").val());
+    }
+
+    function Monthly() {
+        $("#Recurrence_MonthlyChoice").val($("input[name='group4']:checked").val());
+        $("#Recurrence_MonthlyDay").val($("#MonthlyDay").val());
+        $("#Recurrence_MonthlyEvery").val($("#MonthlyEvery").val());
+
+        $("#Recurrence_MonthlyThe").val($("#MonthlyThe").val());
+        $("#Recurrence_MonthlyDay2").val($("#MonthlyDay2").val());
+        $("#Recurrence_MonthlyEvery2").val($("#MonthlyEvery2").val());
+    }
+
+    function WeeklyRecurrence() {
+        $("#EndAfter").val($("#WeeklyEndAfter").val());
+        Recurrence();
+    }
+
+    function MonthlyRecurrence() {
+        $("#EndAfter").val($("#MonthlyEndAfter").val());
+        Recurrence();
+    }
+
+
+    function Recurrence() {
+        $("#Recurrence_EndAfter").val($("#EndAfter").val());
+    }
+
+    function LoadData() {
+        var pattern = $('#Recurrence_Pattern').val();
+        recurrenceChoice(pattern);
+
+
+        $("#DailyEvery").val($("#Recurrence_DailyEvery").val());
+
+
+        $("#WeeklyEvery").val($("#Recurrence_WeeklyEvery").val());
+
+        if ($("#Recurrence_WeeklyMonday").val() == 1) $("#j1").attr("checked", "checked");
+        if ($("#Recurrence_WeeklyThuesday").val() == 1) $("#j2").attr("checked", "checked");
+        if ($("#Recurrence_WeeklyWednesday").val() == 1) $("#j3").attr("checked", "checked");
+        if ($("#Recurrence_WeeklyThursday").val() == 1) $("#j4").attr("checked", "checked");
+        if ($("#Recurrence_WeeklyFriday").val() == 1) $("#j5").attr("checked", "checked");
+        if ($("#Recurrence_WeeklySaturday").val() == 1) $("#j6").attr("checked", "checked");
+        if ($("#Recurrence_WeeklySunday").val() == 1) $("#j7").attr("checked", "checked");
+
+        if ($("#Recurrence_MonthlyChoice").val() == 1) $("#m1").attr("checked", "checked");
+        if ($("#Recurrence_MonthlyChoice").val() == 2) $("#m2").attr("checked", "checked");
+
+        $("#MonthlyDay").val($("#Recurrence_MonthlyDay").val());
+        $("#MonthlyEvery").val($("#Recurrence_MonthlyEvery").val());
+
+        $("#MonthlyThe").val($("#Recurrence_MonthlyThe").val());
+        $("#MonthlyDay2").val($("#Recurrence_MonthlyDay2").val());
+        $("#MonthlyEvery2").val($("#Recurrence_MonthlyEvery2").val());
+
+        $("#EndAfter").val($("#Recurrence_EndAfter").val());
+
+    }
+    LoadData();
+</script>

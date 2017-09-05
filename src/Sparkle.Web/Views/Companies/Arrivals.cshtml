@@ -1,0 +1,14 @@
+﻿@model Sparkle.Models.CompaniesListModel
+@{
+    ViewBag.Title = Lang.T("Nouveaux arrivants");
+    this.SetAccentColor(SparkleAccentColor.Companies);
+}
+
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title)
+}
+
+@foreach (var company in Model)
+{
+    @Tour.Company(company, false)
+}

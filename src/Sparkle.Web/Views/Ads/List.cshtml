@@ -1,0 +1,106 @@
+﻿@model AdsModel
+@using Sparkle.Services.Networks.Ads
+@{
+    this.ViewBag.Title = Lang.T("Ads");
+    this.SetAccentColor(SparkleAccentColor.Groups);
+    this.SetHelpPage("Features/Ads");
+    
+    bool isModerator = this.ViewBag.IsModerator;
+    bool isAdmin = this.ViewBag.IsAdmin;
+}
+@section CustomFocus
+{
+    @*@FocusPage.Custom(this.ViewBag.Title)*@
+    <ul class="toolbox">
+    @if (Model.Types.Count < 5)
+    {
+        <li>
+        @foreach (var adType in Model.Types)
+        {
+            var label =  Lang.T("New " + adType.Name + " ad");
+            @Html.ActionLink(label, "Edit", new { TypeId = adType.Id, }, new { @class = "accentColor", title = label, })
+        }
+        </li>
+    }
+    else
+    {
+        <li>@Html.ActionLink(Lang.T("New ad"), "Edit", new { }, new { @class = "accentColor", title = Lang.T("New ad"), })</li>
+    }
+    @if (isModerator)
+    {
+        <li>
+        @if (Model.ShowAll)
+        {
+            @:@Html.ActionLink(Lang.T("Show active (Ads)"), "List", new { ShowAll = false, }, new { @class = "accentAdminColor", })
+        }
+        else
+        {
+            @:@Html.ActionLink(Lang.T("Show all (Ads)"), "List", new { ShowAll = true, }, new { @class = "accentAdminColor", })
+        }
+        </li>
+    }
+        @*<li><input class="filterBox" type="text" placeholder="@Lang.T("Rechercher un groupe")" onchange="filter(this.value)" onkeyup="filter(this.value)" /></li>*@
+    </ul>
+    <div class="clear"></div>
+}
+<div class="space20"></div>
+
+@if (Model.ItemsTotal == 0)
+{
+    <p>@Lang.T("There are no adds or they have all been closed.")</p>
+}
+else
+{
+    var now = this.Services().Timezone.ConvertFromUtc(DateTime.UtcNow);
+<table class="dashboard full-width">
+    <thead>
+        <tr class="accentBgColor left">
+            <th>@Lang.T("Date")</th>
+            <th>@Lang.T("Title")</th>
+            <th>@Lang.T("Owner")</th>
+    @if (isModerator)
+    {
+            <th>@Lang.T("Status (Ad)")</th>
+    }
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Items)
+{
+    var date = item.UpdateDateUtc ?? item.Date;
+        <tr>
+            <td title="@Html.DisplayDateTime(date, useTimeTag: false)">@Html.Raw(date.ToNiceDelay(now))</td>
+            <td>
+    @if (item.IsNewForUser == true)
+    {
+        <span class="TagImportant">@Lang.T("TagImportant NEW")</span>
+    }
+                @Html.ActionLink(item.Title, "Details", new { id = item.Alias, })
+            </td>
+            <td>
+                <div class="avatar" style="background-image:url(@item.Owner.SmallProfilePictureUrl); margin: 0 10px 0 0;"></div>
+                <a data-type="person" data-userid="@item.Owner.Id" href="@Url.Action("People", "Peoples", new { id = item.Owner.Username, })">@item.Owner.FirstName @item.Owner.LastName</a>
+            </td>
+    @if (isModerator)
+    {
+            <td class="accentAdminColor">
+        @if (item.IsOpen)
+        {
+                @:@(item.IsValidated == true ? Lang.T("Open (Ad Status)") : item.IsValidated == false ? Lang.T("Rejected (Ad Status)") : Lang.T("Pending validation (Ad Status)"))
+        }
+        else
+        {
+                @:@Lang.T("Closed (Ad Status)")
+        }
+                @(item.PendingEditDate != null && item.IsValidated != null ? Lang.T("Pending edit (Ad Status)") : null)
+            </td>
+    }
+        </tr>
+}
+    </tbody>
+</table>
+
+}
+
+
+

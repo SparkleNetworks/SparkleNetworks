@@ -1,0 +1,23 @@
+﻿@model List<Sparkle.Services.Networks.Models.AchievementModel>
+@{
+    Layout = null;
+}
+<div class="center">
+    @if(this.Model.Count > 0) {
+<ul class="achievements">
+@foreach (var item in Model) {
+        <li class="@Html.CssClass(!item.Unlocked, "locked", "")">
+        <span>@item.Title</span>
+            @if(item.Unlocked) {
+        <div>@item.DateEarned.ToShortDateString()</div>
+            } else {
+        <div>Bloqué</div>   
+            }
+    <img alt="" src="/Content/images/Achievements/@(item.Key).png" />
+</li>
+}
+</ul>
+    } else {
+     <p>@Lang.T("Aucun succès à afficher pour le moment.")</p>   
+    }
+</div>

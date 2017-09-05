@@ -1,0 +1,116 @@
+﻿@model Sparkle.Models.Account.JoinModel
+@{
+    this.ViewBag.Title = Lang.T("Rejoindre {0}", Lang.T("AppName"));
+    bool useApply = this.ViewBag.UseApply;
+    this.SetAccentColor(SparkleAccentColor.Account);
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+    this.SetHelpPage("Features/UserAccount");
+    this.WebDependencies()
+        .Include(MyWebDependencies.JqueryDateAndTimePicker, WebDependencyPosition.EndOfPage)
+        .Include(MyWebDependencies.JqueryValidationEngine, WebDependencyPosition.EndOfPage);
+}
+
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title)
+}
+<div class="space30"></div>
+
+<div class="center">
+@using (Html.BeginFormEx(new { @class = "center", }))
+{
+    @Html.Hidden("UseApply", useApply)
+    @Html.HiddenFor(m => m.OomanChallenge)
+<div class="inBox center">
+    <div>
+        @Html.ValidationSummaryEx()
+    </div>
+
+    @if (this.Model.ConfirmEmailAction != null)
+    { 
+    <div class="center">
+        <p>@Lang.T("Vous avez déjà créé un compte mais vous n'avez pas confirmé votre adresse email.")</p>
+        @if (this.Model.ConfirmEmailAction.Result == null)
+        {
+        <p>@Lang.T("Désirez vous recevoir à nouveau un email de confirmation ?") @Html.ActionLink("Envoyer un nouvel email de confirmation", "SendActivationEmail", new { email = this.Model.Request.Email, })</p>
+        }
+        else
+        {
+        <p>@Lang.T("Merci de contacter le support.")</p>
+        }
+    </div>
+    }
+
+    @if (Lang.T("AppNameKey") == "LConnect")
+    {
+        <br />
+        @Html.HiddenFor(m => m.Request.Gender, new { @checked = "checked" })
+    }
+    else
+    {
+    <div class="center">
+        <label class="normal">@Lang.T("Vous êtes ? (gender)")</label>
+        <div class="clear"></div>
+        @Html.EditorFor(m => m.Request.Gender)
+    </div>
+    <div class="clear"></div>
+    <hr />
+    }
+
+    <div class="form2col olddays">
+        <div class="form2col-item">
+        @Html.LabelFor(m => m.Request.FirstName)
+        <div class="">@Html.TextBoxFor(m => m.Request.FirstName, new { @class = "textbox", })</div>
+        @Html.ValidationMessageFor(m => m.Request.FirstName)
+        <hr />
+        </div>
+        <div class="form2col-item">
+        @Html.LabelFor(m => m.Request.LastName)
+        <div class="">@Html.TextBoxFor(m => m.Request.LastName, new { @class = "textbox", })</div>
+        @Html.ValidationMessageFor(m => m.Request.LastName)
+        <hr />
+        </div>
+        <div class="form2col-item">
+        @Html.LabelFor(m => m.Request.Email)
+        @Html.TextBoxFor(m => m.Request.Email, new { @class = "textbox", })
+        @Html.ValidationMessageFor(m => m.Request.Email)
+        <hr />
+        </div>
+        <div class="form2col-item">
+        @Html.LabelFor(m => m.Request.Password)
+        @Html.PasswordFor(m => m.Request.Password, new { @class = "textbox validate[required,minSize[6]]", })
+        @Html.ValidationMessageFor(m => m.Request.Password)
+        <hr />
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    
+    <div class="center">
+        @Html.LabelFor(m => m.OomanCheck)
+        <div class="labelInputs OomanCheck-Hide">
+        <div class="space30"></div>
+            <p>@Lang.T("Afin de vérifier que vous êtes humain(e) (et non un robot), veuillez copier le texte ci-dessous dans la case en dessous.")</p>
+            <pre id="@Html.GetFullHtmlFieldName(m => m.OomanCheck)-Clue">@this.Model.OomanClue</pre>
+            @Html.TextBoxFor(m => m.OomanCheck, new { @class = "textbox textbox480" })<br />
+            @Html.ValidationMessageFor(m => m.OomanCheck)
+        <div class="space30"></div>
+        </div>
+    </div>
+    
+    <div class="center">
+        <input type="submit" class="button accentColor" value="@Lang.T("Continuer")" />
+    </div>
+</div>
+}
+</div>
+
+<aside class="NoticeBlock Information">
+    <p>@Html.Raw(Lang.T(@"{0} est un réseau privé, ces informations ne seront visibles que par les membres et les équipes de {1}. Pour plus d'informations, vous pouvez consulter les {2}.", Lang.T("AppName"), Lang.T("CurrentPlaceAlone"), Html.ActionLink(Lang.T("conditions générales d'utilisation"), "Terms", "About").ToString()))</p>
+    <p>@Lang.T("Une fois inscrit vous recevrez des emails de notre part ; vous pourrez vous en désabonner dans les préférences de votre compte.")</p>
+</aside>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        JavascriptIsOoman()
+    });
+</script>

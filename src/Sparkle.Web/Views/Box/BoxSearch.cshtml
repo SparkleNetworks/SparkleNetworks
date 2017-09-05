@@ -1,0 +1,91 @@
+﻿<h3 class="accentBgColor">Recherche</h3>
+
+    
+    <input id="search" type="text" placeholder="@Lang.T("Rechercher")" />
+    
+<ul id="search-results">
+    <li class="result-category">
+        <h4>@Lang.T("PeopleLabel")</h4>
+    </li>
+    <li class="result-item">
+        <a class="accentProfileColor" href="#">Prénom nom</a>
+    </li>
+    <li class="result-category">
+        <h4>@Lang.T("CompaniesLabel")</h4>
+    </li>
+    <li>
+
+    </li>
+</ul>
+
+<script type="text/javascript">
+
+
+
+    $.ajax({
+        type: 'POST',
+        url: '/SideBar/SendIM',
+        data: { id: key, message: message },
+        success: function (data) {
+            if (data && data.Success) {
+                $('.im' + key + ' input').val("");
+                $('.im' + key + ' .sending').hide();
+                $('.im' + key + ' input').show();
+                var conv = $('.im' + key + ' .live');
+                conv.append('<div class="live-message"><div class="avatar" style="background-image:url(' + data.Data + ')"></div><div class="networkAccentColor liveBubbleLeft"></div><div class="clear"></div></div>');
+                var bubble = $('.im' + key + ' .live div.networkAccentColor').last();
+                bubble.append(document.createTextNode(message));
+
+                // auto scroll
+                try {
+                    $('.im' + key + ' .live').scrollTo($('.im' + key + ' .live .liveBubbleLeft:last'), 400)
+                }
+                catch (err) {
+                }
+
+                // set focus
+                $('.im' + key + ' input').focus();
+
+                sessionStorage.setItem('Conversation' + key, conv.html());
+                sessionStorage.setItem('SideBar', $('.sideBar').html());
+            } else {
+                DisplayErrorMessage(GetErrorMessageFromAjax(data));
+                onError();
+            }
+        },
+        error: function (a, b, c) {
+            DisplayErrorMessage(GetErrorMessageFromAjax(a));
+            onError();
+        }
+    });
+</script>
+
+<style type="text/css">
+    #search {
+        width:100%;
+        border:0;
+        background:#efefef;
+        padding:10px 0;
+        font-size: 16px;
+    }
+
+    #search-results {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: left;
+    }
+
+        #search-results h4 {
+            color:#aaa;
+            text-transform: uppercase;
+        }
+
+    .result-category {
+        padding-top: 20px;
+    }
+    .result-item {
+        padding: 10px;
+        background:#efefef;
+    }
+</style>

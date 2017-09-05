@@ -1,0 +1,71 @@
+﻿@{
+    this.ViewBag.Title = Lang.T("Mon compte");
+    this.SetHelpPage("Features/UserAccount");
+    this.SetAccentColor(SparkleAccentColor.Account);
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+    
+    var me = this.Services().Session.User;
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
+    var tz = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+    var mbs = (Sparkle.Services.Authentication.MembershipUser)this.ViewBag.MbsUser;
+    var isSubscriptionsEnabled = this.Services() != null && this.Services().AppConfigTree != null ? this.Services().AppConfigTree.Features.Subscriptions.IsEnabled : false;
+
+}
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title)
+}
+<div class="space20"></div>
+<div class="center">
+    <section>
+        <h4>@Lang.T("Gérer mon compte")</h4>
+        <ul class="account-items">
+@*@if(this.ViewBag.IsSocialAvailable) { <li>@Html.ActionLink(Lang.T("Mes connexions aux réseaux sociaux"), "SocialNetworks", null, new { @class = "button accentColor" })</li> }*@
+            <li>@Html.ActionLink(Lang.T("Paramètres de notifications et newsletters"), "Settings", null, new { @class = "button large accentColor" })</li>
+            <li>@Html.ActionLink(Lang.T("Changer mes options régionales"), "Region", new { ReturnUrl = "/Account", }, new { @class = "button large accentColor" })</li>
+            <li>@Html.ActionLink(Lang.T("Changer mon mot de passe"), "ChangePassword", null, new { @class = "button large accentColor" })</li>
+            @if (isSubscriptionsEnabled) { <li>@Html.ActionLink(Lang.T("Mon abonnement"), "Subscriptions", null, new { @class = "button large accentColor" })</li> }
+            @*<li>@Html.ActionLink(Lang.T("Déconnexion"), "LogOff", null, new { @class = "button accentColor" })</li>*@
+        </ul>
+    </section>
+
+    @*<div class="space20"></div>*@
+
+    @*<section>
+        <h4>@Lang.T("Mes relations")</h4>
+        <ul class="account-items">
+            <li>@Html.ActionLink(Lang.T("Demandes de contact en attente"), "ContactRequests", null, new { @class = "button accentColor" })</li>
+            <li>@Html.ActionLink(Lang.T("Notifications"), "Notifications", "Home", null, new { @class = "button accentColor" })</li>
+        </ul>
+    </section>*@
+
+    @*<section>
+        <h3>@Lang.T("Gérer votre profil")</h3>
+        <ul>
+            <li>@Html.ActionLink(Lang.T("Voir mon profil"), "People", new { controller = "Peoples", id = this.Services().Session.User.Login, })</li>
+            <li>@Html.ActionLink(Lang.T("Modifier mon profil"), "Profile")</li>
+            <li>@Html.ActionLink(Lang.T("Visites sur mon profil"), "Visits")</li>
+        </ul>
+    </section>*@
+
+    @*<section>
+        <h4>@Lang.T("Préférences et informations")</h4>
+        <dl class="srkdl">
+            <dt>@Lang.T("Culture")</dt>
+            <dd>@culture.DisplayName</dd>
+            <dd>@culture.NativeName</dd>
+
+            <dt>@Lang.T("Fuseau horaire")</dt>
+            <dd>@tz.StandardName</dd>
+            <dd>@tz.DisplayName</dd>
+
+            <dt>@Lang.T("EmailAddress")</dt>
+            <dd>@me.Email</dd>
+
+            <dt>@Lang.T("Username")</dt>
+            <dd>@me.Login</dd>
+
+            <dt>@Lang.T("CreationDate")</dt>
+            <dd>@Html.DisplayDate(mbs.CreationDate)</dd>
+        </dl>
+    </section>*@
+</div>

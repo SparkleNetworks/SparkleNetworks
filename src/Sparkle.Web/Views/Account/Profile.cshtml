@@ -1,0 +1,141 @@
+﻿@model Sparkle.Services.Networks.Users.ProfileEditRequest
+@{
+    this.ViewBag.Title = Lang.T("Modifier mon profil");
+    this.SetHelpPage("Features/Users");
+    this.SetAccentColor(SparkleAccentColor.Account);
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+    this.WebDependencies()
+        .Include(MyWebDependencies.AjaxUpload)
+        .Include(MyWebDependencies.JqueryValidationEngine)
+        .Include(MyWebDependencies.JqueryAutoSuggest);
+
+    var configTree = this.Services() != null ? this.Services().AppConfigTree : null;
+    dynamic variable = System.Configuration.ConfigurationManager.GetSection("system.web/httpRuntime");
+    var limit = (int)variable.MaxRequestLength * 1000;
+    var inputId = Guid.NewGuid();
+
+    var useLinkedIn = configTree != null ? configTree.Externals.LinkedIn.AllowLogin : false;
+}
+
+@section CustomFocus{
+
+<div style="float: left; margin-right: 10px;" id="PictureView">
+<div class="largeAvatarBackground">
+    <div class="loadingPicture">Chargement...</div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.Spk.UI.ProfilePicture.SetupUploader({
+                PictureContainerSelector: '.largeAvatar',
+                UploadFormSelector: '#newHotnessForm',
+                UploadInputId: 'imageUpload',
+                MaxFileSize: @(limit),
+            InputId: '@inputId',
+            UploadProgressSelector: '.loadingPicture'
+        });
+    });
+    </script>
+    <div class="large-avatar largeAvatar" style='background-image:url(@Model.Picture)'>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <form id="newHotnessForm" action="/Account/UploadProfilePicture" enctype="multipart/form-data">
+            <input class="uploadFileObject" type="file" id="imageUpload" name="imageUpload" style="width:0px;height:0px"/>
+            <label for="@inputId" class="button accentColor" style="height:26px;margin-left:-5px">@Lang.T("Choisir une photo")</label>
+            <button type="submit" class="large" style="display:none">Save</button>
+        </form>
+    </div>
+</div>
+</div>
+
+<div style="height: 90px;margin-left:190px">
+    @FocusPage.Custom(ViewBag.Title)
+
+    <ul class="toolbox">
+        <li>
+            <a href="@Url.Action("People", "Peoples", new { id = Model.Login, })" class="accentColor">@Lang.T("Voir mon profil")</a>
+            <a href="@Url.Action("ChangePassword", "Account")" class="accentColor">@Lang.T("Changer mon mot de passe")</a>
+            <a href="@Url.Action("Index", "Account")" class="accentColor">@Lang.T("Mon compte")</a>
+        </li>
+    </ul>
+
+    <div class="space10"></div>
+    <div class="space20"></div>
+    <div class="space20"></div>
+
+@if (this.Model.IsLinkedInConfigured)
+{ 
+    <a href="@Url.Action("LinkedInConnect", "Account", new { ReturnUrl = "/Account/Profile?LinkedInConnect=True", })" class="button accentColor LinkedIn"><span>@Lang.T("Compléter mon profil avec LinkedIn")</span></a>
+}
+
+</div>
+}
+<div class="clear"></div>
+<div class="space20"></div>
+
+@using (Html.BeginFormEx(new { action = "/Account/Profile/?login=" + this.Model.Login, @class = "olddays", }))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Login)
+
+    @Html.EditorForModel()
+    
+    if (Model.Skills != null)
+    {
+    @Html.LabelFor(m => m.Skills)
+    <div class="left">
+        <div class="editTagList">
+            @Html.Partial("Lists/SkillsEditList", Model.Skills)
+            <div style="clear: both"></div>
+        </div>
+        @Html.Partial("AddMembers", new Sparkle.Models.AddMemberModel(0, "/Account/GetSkills", "skill", "SkillClass", "Entrez une compétence", userId: this.Model.Id))
+        @Html.HiddenFor(m => m.RemoveSkillsString)
+    </div>
+    @Html.ValidationMessageFor(m => m.Skills)
+    }
+
+    if (Model.Interests != null)
+    {
+    @Html.LabelFor(m => m.Interests)
+    <div class="left">
+        <div class="editTagList">
+            @Html.Partial("Lists/InterestsEditList", Model.Interests)
+            <div style="clear: both"></div>
+        </div>
+        @Html.Partial("AddMembers", new Sparkle.Models.AddMemberModel(0, "/Account/GetInterests", "interest", "InterestClass", "Entrez un centre d'intérêt", userId: this.Model.Id))
+        @Html.HiddenFor(m => m.RemoveInterestsString)
+    </div>
+    }
+
+
+    if (Model.Recreations != null)
+    {
+    @Html.LabelFor(m => m.Recreations)
+    <div class="left">
+        <div class="editTagList">
+            @Html.Partial("Lists/RecreationsEditList", Model.Recreations)
+            <div style="clear: both"></div>
+        </div>
+        @Html.Partial("AddMembers", new Sparkle.Models.AddMemberModel(0, "/Account/GetRecreations", "recreation", "RecreationClass", "Entrez un loisir", userId: this.Model.Id))
+        @Html.HiddenFor(m => m.RemoveRecreationsString)
+    </div>
+    }
+
+    <hr />
+    <div class="center">
+        <br />
+        <input type="submit" value="@Lang.T("Enregistrer")" class="button large accentColor" />
+    </div>
+}
+
+<script type="text/javascript">
+    menu('mainNavMyProfile');
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#Birthday').datepicker('option', 'yearRange', '1940:+0');
+    });
+</script>

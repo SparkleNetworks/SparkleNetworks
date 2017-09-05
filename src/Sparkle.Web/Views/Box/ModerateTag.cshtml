@@ -1,0 +1,50 @@
+﻿@model ModerateTagModel
+
+<h3 class="accentBgColor">Modérer un tag</h3>
+
+
+@using (Html.BeginFormEx(new { @class = "actionform", id = "ModerateTagDeleteForm-" + this.Model.TagId, }, new { controller = "Tags", action = "Remove" }))
+{
+    @Html.Hidden("id", this.Model.TagId)
+    @Html.Hidden("category", this.Model.Category);
+    @Html.Hidden("group", this.Model.GroupId);
+    @Html.Hidden("command", "Delete")
+    
+    <p>Sélectionnez la raison de la suppression</p>
+    <div class="choiceList col2">
+    @foreach (var item in this.Model.DeleteReasons)
+    {
+    <div class="choiceItem">
+        <input type="radio" name="reason" value="@item.Value" id="DeleteReason_@(item.Value)" />
+        <label for="DeleteReason_@(item.Value)">@item.Text</label>
+    </div>
+    }
+    </div>
+    
+    <p>@Html.Submit("Valider", null, new { @class = "button accentColor", })</p>
+}
+
+<script type="text/javascript">
+$('#Subject').focus();
+
+(function () {
+    $('#@("ModerateTagDeleteForm-" + this.Model.TagId)').submit(function(event) {
+        event.preventDefault();
+
+        var dataContainer = $(this).parents('.MsgBox');
+        var containerData = dataContainer.data('PopinData');
+
+        
+
+        var $me = $(this);
+        var action = $me.prop('action');
+
+        // validate
+
+        // submit
+        var formData = $me.serialize();
+        TagPicker.Items.Remove(containerData.id, containerData.category, containerData.tagId, containerData.companyId, containerData.userId, containerData.groupId, this.elements["reason"].value);
+        CloseMsgBox();
+    });
+})();
+</script>

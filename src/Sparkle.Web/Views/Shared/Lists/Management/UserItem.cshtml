@@ -1,0 +1,31 @@
+﻿@model IList<Sparkle.Models.PeopleModel>
+@{
+    var showRightsButton = true;
+    
+    if (this.ViewData.ContainsKey("ShowRightsButton"))
+    {
+        showRightsButton = (bool)this.ViewData["ShowRightsButton"];
+    }
+}
+<div class="tile">
+@foreach (var ppl in Model)
+{
+    var onclick = @"onclick=""BoxOption('BoxPermissions', this.attributes['data-BoxOption'].value); return false; """; // http://stackoverflow.com/a/12322496/282105
+    
+<div class="contentItem manageUser@(ppl.ProfileShortId)">
+
+    <div class="large-avatar center" style='background-image:url(@ppl.ProfilePictureUrl)'>
+    @if (showRightsButton)
+    {
+        <div style="padding-top:150px"><a href="javascript:void(0)" class="button accentColor" @Html.Raw(onclick) data-BoxOption="@ppl.Login">@Lang.T("Droits")</a></div>
+    }
+    </div>
+    <div style="margin:0 0 5px 10px;padding-top:2px;height:57px; overflow:hidden">
+        <a class="accentProfileColor" style="font-size:17px" href="/Person/@ppl.Login">@ppl.FirstName @ppl.LastName</a><br />
+        <a href="@Url.Action("Position", "Jobs", new { id = ppl.JobAlias})">@ppl.JobName</a>
+    </div>
+    <div class="clear"></div>
+</div>
+}
+</div>
+<div class="clear"></div>

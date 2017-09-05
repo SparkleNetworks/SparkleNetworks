@@ -1,0 +1,103 @@
+﻿@model Sparkle.Models.BoxProposalsModel
+@{
+    Layout = null;
+}
+<style type="text/css">
+    .ProposalForm
+    {
+        padding: 20px;
+        font-size:17px;
+    }
+        .ProposalForm input
+        {
+            width: 120px;
+            min-width: 0;
+        }
+        .ProposalForm select
+        {
+            width: 100px;
+            min-width: 0;
+        }
+        .ProposalForm #proposalHours, .ProposalForm #proposalMinutes
+        {
+            width: 60px;
+        }
+</style>
+
+<h3 class="accentBgColor">@Lang.T("Proposer à {0} {1}", Model.Message.FirstName, Model.Message.LastName)</h3>
+
+<div id="ProposalForm" class="center ProposalForm">
+
+    <div style="">
+        <label for="proposalC" class="box-choice choice-C"><img alt="" src="/Content/images/Buttons/coffee-48.png" />@Lang.T("Un café")</label>
+        <label for="proposalL" class="box-choice choice-L"><img alt="" src="/Content/images/Buttons/restaurant-48.png" />@Lang.T("Un déjeuner")</label>
+        <label for="proposalB" class="box-choice choice-B"><img alt="" src="/Content/images/Buttons/beer_glass-48.png" />@Lang.T("Une bière")</label>
+        <label for="proposalO" class="box-choice choice-O"><img alt="" src="/Content/images/Buttons/tennis-48.png" />@Lang.T("Autre chose...")</label>
+    </div>
+    
+    <div style="display: none">
+        <input id="proposalC" type="radio" name="proposalType" value="1" />
+        <input id="proposalL" type="radio" name="proposalType" value="2" />
+        <input id="proposalB" type="radio" name="proposalType" value="3" />
+        <input id="proposalO" type="radio" name="proposalType" value="4" />
+    </div>
+
+    <div style="padding:20px 0">
+        @Lang.T("le [date]")  
+        <input class="textbox" type="text" id="proposalDate" placeholder="Choisir le jour" value="@Model.CurrentDate">
+        @Lang.T("à [heure]") 
+        <select class="selectbox" id="proposalHours">
+            @for (int i = 0; i < 24; i++)
+            { 
+                <option value="@i.ToString("D2")" @(Model.Hour == i ? "selected='selected'" : "")>@i.ToString("D2")</option>
+            }
+        </select> 
+        <select class="selectbox" id="proposalMinutes">
+            <option value="00" @(Model.Minute == 00 ? "selected=\"selected\"" : "")>00</option>
+            <option value="05" @(Model.Minute == 05 ? "selected=\"selected\"" : "")>05</option>
+            <option value="10" @(Model.Minute == 10 ? "selected=\"selected\"" : "")>10</option>
+            <option value="15" @(Model.Minute == 15 ? "selected=\"selected\"" : "")>15</option>
+            <option value="20" @(Model.Minute == 20 ? "selected=\"selected\"" : "")>20</option>
+            <option value="25" @(Model.Minute == 25 ? "selected=\"selected\"" : "")>25</option>
+            <option value="30" @(Model.Minute == 30 ? "selected=\"selected\"" : "")>30</option>
+            <option value="35" @(Model.Minute == 35 ? "selected=\"selected\"" : "")>35</option>
+            <option value="40" @(Model.Minute == 40 ? "selected=\"selected\"" : "")>40</option>
+            <option value="45" @(Model.Minute == 45 ? "selected=\"selected\"" : "")>45</option>
+            <option value="50" @(Model.Minute == 50 ? "selected=\"selected\"" : "")>50</option>
+            <option value="55" @(Model.Minute == 55 ? "selected=\"selected\"" : "")>55</option>
+        </select>
+    </div>
+
+    <div class="addCustomMessage"><a class="accentColor" href="javascript:void(0)" onclick="addCustomMessage()">@Lang.T("Vous pouvez ajouter un message.")</a></div>
+    <div class="customMessage" style="display:none">@Html.TextAreaFor(m => m.Message.Text, new { @class = "textarea textarea480 validate[required]", style = "padding:0; width:467px; height:72px" })</div>
+    <input type="hidden" id="proposalLogin" value="@Model.Message.ToUserLogin" />
+    @*<input type="hidden" id="proposalType" value="@Model.Type" />*@
+
+    <input type="button" class="button accentColor" value="@Lang.T("Envoyer")" onclick="Profile.Actions.Proposal();" />
+</div>
+<div class="boxPostBack" style="text-align:center">
+    <div class="spkIcon spkPeople"></div>
+    <div class="spkIcon spkPeople"></div>
+    <div class="boxPostBackMessage">@Lang.T("Super ! Envoi de la proposition à {0}...", Model.Message.FirstName)</div>
+</div>
+
+<script type="text/javascript">
+    function addCustomMessage() {
+        $('.addCustomMessage').hide();
+        $('.customMessage').slideDown();
+        $('#Message_Text').focus();
+    }
+
+    $('#proposalDate').datepicker({
+            minDate: @Html.JsDate(DateTime.Now),
+        dateFormat: "dd/mm/yy",
+        timeFormat: "hh:mm tt"
+    });
+
+    $('.box-choice').click(function() {
+        $('.box-choice').removeClass('selected');
+        $(this).addClass('selected');
+    });
+
+    $('.choice-@Model.Type').click();
+</script>

@@ -1,0 +1,26 @@
+﻿@model Sparkle.Services.Networks.Clubs.EditClubRequest
+@{
+    ViewBag.Title = Lang.T("Nouveau");
+}
+@{ this.SetAccentColor("#038a9a"); }
+
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title)
+}
+<div class="space20"></div>
+
+<div class="vue">
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+
+    <div class="center">
+        <input type="submit" class="button accentColor" value="@Lang.T("Créer")" />
+    </div>
+}
+</div>
+
+<script type="text/javascript">
+    $('#Name').focus();
+    menu('mainNavClubs');
+</script>

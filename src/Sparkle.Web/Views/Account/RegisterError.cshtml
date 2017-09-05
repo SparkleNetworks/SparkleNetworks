@@ -1,0 +1,8 @@
+﻿@{
+    this.ViewBag.Title = Lang.T("Rejoindre {0}", Lang.T("AppName"));
+    this.SetHelpPage("Features/UserAccount");
+}
+
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title, this.ViewBag.Message ?? "")
+}

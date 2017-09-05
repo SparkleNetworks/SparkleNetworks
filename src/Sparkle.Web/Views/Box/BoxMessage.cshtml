@@ -1,0 +1,32 @@
+﻿@model Sparkle.Models.MessageModel
+<h3 class="accentBgColor">@Model.FirstName @Model.LastName</h3>
+<div id="BoxMessage-Notification">
+
+    <div id="PrivateMessageAlert" style="display:none">Pensez à écrire un message.</div>
+</div>
+<div class="center">
+    <div id="sending" style="display:none" class="introducing-title"><br /><br />@Lang.T("Envoi du message...")</div>
+    <div id="sent" style="display:none" class="introducing-title"><br /><br />@Lang.T("Message envoyé !")</div>
+@using (Html.BeginFormEx(new { @class = "olddays", id = "SendMessageForm", }))
+{
+    @Html.HiddenFor(m => m.ToUserId)
+    @*<div style="padding:10px; font-size:2em;">@Model.FirstName @Model.LastName</div>
+    @Html.TextBoxFor(m => m.Subject, new { placeholder = "Sujet", style = "width:590px", @class = "textbox validate[required]" })<br />
+    *@
+    @Html.TextAreaFor(m => m.Text, new { placeholder = Lang.T("Message"), id = "BoxMessage-Message", @class = "textarea validate[required]", style = "width:95%; height:210px;margin-bottom: 12px" })
+    <br />
+    @Html.Submit(Lang.T("Envoyer"), null, new { @class = "button large accentColor", })
+}
+</div>
+
+<script type="text/javascript">
+    $('#BoxMessage-Message').focus();
+
+    $('#SendMessageForm').submit(function (event) {
+        event.preventDefault();
+
+        var message = $('#BoxMessage-Message').val();
+
+        SendMessage('@Model.ToUserLogin', '', message);
+    });
+</script>

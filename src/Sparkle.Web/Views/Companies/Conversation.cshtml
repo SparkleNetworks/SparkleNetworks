@@ -1,0 +1,46 @@
+﻿@model Sparkle.Models.CompanyMessagesModel
+@{
+    Layout = null;
+}
+@{ this.SetAccentColor(SparkleAccentColor.Companies); }
+
+@if (this.Model.Messages != null && this.Model.Messages.Count > 0){
+    @:<p>@Lang.T("Retrouvez ici les messages adressés à votre entreprise.")</p>
+    foreach (var item in Model.Messages) {
+       
+        if(item.FromUser != null) { 
+            <div class="messageItem @((item.FromCompanyId == Model.Company.ID) ? " messageItemMe" : " messageItemOther")">
+                @Html.ActionLink(item.FromCompany.Name, "Company", new { id = item.FromCompany.Alias }, new { @class = "accentCompanyColor" })<br />
+                @Lang.T("Message envoyé le") @item.Date.ToShortDateString() à @item.Date.ToShortTimeString() par @Html.ActionLink(item.FromUser.FirstName + " " + item.FromUser.LastName, "People", "Peoples", new { id = item.FromUser.Username}, new { @class = "accentProfileColor" }).<br />
+                <br />
+
+                @Html.Markdown(item.Message)
+
+                @Html.ActionLink("Répondre", "Contact", new { id = item.FromCompany.Alias}, new { @class = "flatButtonInline accentColor"})
+            </div>
+            <div class="separator"></div>
+        } else {
+            <div class="messageItem @((item.FromCompanyId == Model.Company.ID) ? " messageItemMe" : " messageItemOther")">
+                @item.FromCompanyName<br />
+                @Lang.T("Message envoyé le") @item.Date.ToShortDateString() à @item.Date.ToShortTimeString() par @item.FromUserName.<br />
+                <br />
+
+                @Html.Markdown(item.Message)
+
+                @*@Html.ActionLink("Répondre", "Contact", new { id = item.FromCompany.Alias}, new { @class = "flatButtonInline accentColor"})*@
+            </div>
+            <div class="separator"></div>
+        }
+    
+    }
+}else {
+    <p>@Lang.T("Retrouvez ici les messages adressés à votre entreprise. Il n'y en a aucun pour le moment :(")</p>
+}
+
+<div class="messageItem messageItemMe">
+    <div id="mi2">
+        <input type="hidden" id="IdForResponse" value="@Model.IdForResponse" />
+        <textarea id="Text" class="textarea" style="height:52px;width:541px;margin-bottom:4px"></textarea><br />
+        <a href="javascript:void(0)" style="float:right" onclick="SendMessage(); return false;" class="flatButtonInline networkAccentColor">@Lang.T("Envoyer")</a>
+    </div>   
+</div>

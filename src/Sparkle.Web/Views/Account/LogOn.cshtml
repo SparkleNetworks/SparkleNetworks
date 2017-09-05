@@ -1,0 +1,112 @@
+﻿@model Sparkle.Models.LogOnModel
+@{
+    this.ViewBag.Title = Lang.T("Connexion");
+    this.SetAccentColor(SparkleAccentColor.Default);
+    this.SetHelpPage("Features/UserAccount");
+
+    var config = this.Services().AppConfigTree;
+    var useLinkedIn = config != null ? config.Externals.LinkedIn.AllowLogin : false;
+}
+
+<div class="center">
+@using (Html.BeginFormEx(new { @class = "olddays", }))
+{
+    @Html.HiddenFor(m => m.ReturnUrl)
+    <div class="inBox center">
+        <div class="hero">
+            <p>Your Legends<br />are built there.</p>
+        </div>
+    @if (Model.PasswordChanged)
+    {
+        <div class="validation-summary-errors">
+            @Lang.T("Votre mot de passe a bien été changé !")
+        </div>
+    }
+            
+    @if (this.Model.User != null && this.Model.EmailActivationAction != null)
+    {
+        <p>Vous n'avez pas reçu d'email de notre part lors de votre inscription ?<br />
+            Pensez à vérifier dans les courriers indésirables. 
+            @Html.ActionLink("Recevoir à nouveau l'email d'activation de votre compte.", "SendActivationEmail", new { returnUrl = "LogOn", email = this.Model.User.Email, }, new { @class = "accentColor" })</p>
+    }
+
+        <div id="FormContent" class="padding" style="margin:auto">
+            <h1>@ViewBag.Title</h1>
+            @Html.ValidationSummary(true, Model.ValidateMessage)
+
+            <div style="" class="column half first left">
+                @Html.TextBoxFor(m => m.UserName, new { placeholder = "Email professionnel", @class = "textbox textbox-networkAccentColor" })<br />
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
+
+            <div style="" class="column half left">
+                @Html.PasswordFor(m => m.Password, new { placeholder = "Mot de passe", @class = "textbox textbox-networkAccentColor" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div class="clear"></div>
+
+            <div>
+                @Html.CheckBoxFor(m => m.RememberMe, new { @checked = "checked" })
+                <label for="RememberMe" style="display:inline-block;float:none">@Lang.T("Se souvenir de moi")</label><br />
+            </div>
+
+            <input id="SubmitLogOn" class="button @Html.CssClass(ViewData.ModelState.IsValid, "accentColor")" type="submit" value="@Lang.T("Connexion")" />
+
+            <div>
+                <br />
+    @if (ViewData.ModelState.IsValid)
+    {
+                @Html.ActionLink(Lang.T("Mot de passe oublié ?"), "Recover", new { controller = "Account", }, new { @class = "" })<br />
+    }
+    else
+    {
+                    @Html.ActionLink(Lang.T("Mot de passe oublié ?"), "Recover", new { id = Model.UserName, }, new { @class = "" })<br />
+    }
+            </div>
+    @if (!ViewData.ModelState.IsValid)
+    {
+                <h2>@Lang.T("Besoin d'aide pour vous connecter ?")</h2>
+                @Html.ActionLink(Lang.T("Recevoir un lien de connexion par email"), "Recover", new { email = Model.UserName, autoRecover = true }, new { @class = "button accentColor" })<br />
+    }
+
+    @if (useLinkedIn)
+    {
+            <hr />
+            <a href="@Url.Action("LinkedInLogOn", "Account", new { ReturnUrl = Model.ReturnUrl, })" id="LinkedInLogOn" style="margin-bottom:0px;" class="button accentColor LinkedIn"><span>@Lang.T("Connexion via LinkedIn")</span></a>
+    }
+
+        </div>
+        <div id="Logining" style="display:none">
+            <br />
+            <h1>Identification...</h1>
+            <br />
+        </div>
+    </div>
+}
+</div>
+
+<script type="text/javascript">
+    $('#UserName').focus();
+    $('#form0').submit(function (event) {
+        //event.preventDefault();
+        $('#FormContent').hide();
+        $('#Logining').show();
+
+        //$("#form0").submit();
+    });
+
+    $('#LinkedInLogOn').click(function (event) {
+        event.preventDefault();
+
+        var location = '@Url.Action("LinkedInLogOn", "Account", new { ReturnUrl = Model.ReturnUrl, })';
+        var returnUrl = '@Model.ReturnUrl';
+        var remember = $('#RememberMe').is(':checked');
+
+        if (returnUrl === undefined || returnUrl == "")
+            location += '?RememberMe=' + remember;
+        else
+            location += '?ReturnUrl=' + returnUrl + '&RememberMe=' + remember;
+
+        window.location.href = location;
+    });
+</script>

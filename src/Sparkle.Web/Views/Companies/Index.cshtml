@@ -1,0 +1,277 @@
+﻿@model Sparkle.Models.CompaniesListModel
+@{
+    this.WebDependencies()
+        .Include(MyWebDependencies.Select2);
+    
+    this.ViewBag.Title = Lang.T("CompaniesLabel");
+    this.ViewBag.Description = "Les " + Lang.T("CompaniesLabel") + " à " + Lang.T("CurrentPlaceAlone") + " sur " + Lang.T("AppName");
+    this.SetAccentColor(SparkleAccentColor.Companies);
+    this.SetHelpPage("Features/Companies");
+
+    var configTree = this.Services().AppConfigTree;
+    var showTagsV1 = !configTree.Features.Tags.DisableV1;
+    var isAuthenticated = this.Services().Session.User != null;
+}
+
+<nav class="tabs">
+    <ul class="tabs">
+        <li><a href="#Tab-Directory" class="bottomAccentColor" onClick="Spk.UI.TabManager.Switch('Tab-Directory');">@Lang.T("Annuaire")</a></li>
+@if(Model.Count > 0 && showTagsV1)
+{
+        <li><a href="#Tab-Skills" class="info" onClick="Spk.UI.TabManager.Switch('Tab-Skills');">@Lang.T("Recherche par compétences (entreprise)")</a></li>
+}
+    </ul>
+    <hr class="tabs clear" />
+</nav>
+
+<!-- Vues -->
+<div id="vue">
+<div id="vues">
+<div class="vue">
+<div class="vue-content">
+    <div class="content">
+@if (Model.Count > 0 && isAuthenticated)
+{
+        <div class="center">
+            <div style="width:50em;margin-left:25em;">
+                <input class="textbox filterBox" type="text" placeholder="@Lang.T("Rechercher")" id="directorySearchQueryInput" />
+
+                <input class="textbox filterBox" type="text" placeholder="@Lang.T("Proche d'une ville")" id="directorySearchLocationInput" list="directorySuggestedLocations" value="@Model.UserLocation" />
+                <datalist id="directorySuggestedLocations">
+                    @foreach (var item in Model.SuggestedPlaces)
+                    {
+                        <option value="@item" />
+                    }
+                </datalist>
+                <div class="space10"></div>
+
+                @Html.EditorFor(m => m.UsedCompanyTags, new { FilterCallback = "ThisPage.QueueDirectorySearch", })
+            </div>
+        </div>
+}
+        <div id="companiesListBusy" style="display:none;">
+            <img src="/Content/icones/wait.gif" /></div>
+        <div id="companiesList" class="tile">
+@if(Model.Count > 0)
+{
+        @Html.Partial("Lists/CompaniesListPagination", Model)
+        @Html.Partial("Lists/CompaniesList", Model)
+        @Html.Partial("Lists/CompaniesListPagination", Model)
+}
+else
+{
+        <p class="center">@Lang.T("Aucune entreprise présente.")</p>
+}
+        </div>
+        <div id="companiesResult" class="tile"></div>
+        &nbsp;
+    </div>
+</div>
+</div>
+@if (Model.Count > 0 && showTagsV1)
+{
+<div class="vue">
+<div class="vue-content">
+<div class="content">
+<div class="panels-container">
+
+    <section class="tagbox">
+        <div class="focusPage">
+            <div style="width:800px;margin-left:25em;">
+                <input id="searchTag" class="textbox filterBox" placeholder="@Lang.T("Rechercher")" type="text" onkeyup="searchTag()" />
+
+                <input class="textbox filterBox" type="text" placeholder="@Lang.T("Proche d'une ville")" id="tagsSearchLocationInput" list="tagsSuggestedLocations" value="@Model.UserLocation" />
+                <datalist id="tagsSuggestedLocations">
+                    @foreach (var item in Model.SuggestedPlaces)
+                    {
+                        <option value="@item" />
+                    }
+                </datalist>
+                <div class="space10"></div>
+
+                @Html.EditorFor(m => m.UsedCompanyTags, new { FilterCallback = "ThisPage.QueueTagSearch", })
+            </div>
+        </div>
+        <ul class="tags selectedFilters">
+        </ul>
+        <div class="all-skills" style="display:none"><input id="allSkills" type="checkbox" onclick="Search()" /><label for="allSkills" class="normal"> @Lang.T("Compétences cumulées (entreprise)")</label></div>
+
+        <div class="filter-content tagcloud">
+
+        <ul id="Tags" class="tags filters">
+@foreach (var skill in Model.SkillsGroup)
+{
+            <li tag="@skill.Name.RemoveDiacritics().ToLowerInvariant()" class="skill@(skill.Value)" tag-id="@(skill.Value)">
+                <a href="javascript:void(0)" onclick="SetSkill(@(skill.Value))"><span>@skill.Name</span>
+                    @if(skill.Weight > 1) { <span class="count">@skill.Weight</span> }
+                </a>
+            </li>  
+}
+        </ul>
+        </div>
+    </section>
+
+    <div class="container">
+        @*<div class="introducing-title">Choisissez des compétences</div>*@
+        @*<div class="introducing-subtitle accentColor">Les @Lang.T("CompaniesLabel") correspondantes apparaitront ici.</div>*@
+        @*<br />*@
+        @*<div class="small_shadow_bottom"></div>*@
+    </div>
+</div>
+</div>
+</div>
+</div>
+}
+<div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+
+<script type="text/javascript">
+
+    function searchTag() {
+        var query = removeDiacritics($('#searchTag').val());
+        query = query.trim();
+
+        if(query != '') { 
+            $('#Tags li').hide();
+            $("#Tags li[tag*='" + query + "']").show();
+
+        } else {
+            $('#Tags li').show();
+        }
+
+    }
+
+    function SetSkill(id) {
+
+        // side-bar filters display
+        if ($('ul.tags.selectedFilters li.skill' + id + ' a').length > 0) {
+            $('ul.tags.selectedFilters li.skill' + id).remove();
+            $('ul.tags.filters li.skill' + id + ' a').removeClass('selected');
+            $('ul.tags.filters li.skill' + id).fadeIn();
+        } else {
+            $('ul.tags.filters li.skill' + id + ' a').addClass('selected');
+            $('ul.tags.filters li.skill' + id).clone().appendTo($('ul.tags.selectedFilters')).fadeIn();
+            $('ul.tags.filters li.skill' + id).hide();
+        }
+
+        if($('ul.tags.selectedFilters li').length > 1){
+            $('.all-skills').slideDown();
+        }else{
+            $('.all-skills').slideUp();
+        }
+
+        // results
+        Search();
+    }
+
+    function Search(){
+        var filters = '';
+        $('ul.tags.selectedFilters li').each(function(index) {
+            filters = filters + $(this).attr('tag-id') + ',';
+        });
+
+        if (filters == '') {
+            return;
+        }
+
+        var mode = $('#allSkills').prop('checked');
+        var location = $('#tagsSearchLocationInput').val();
+        var selectedTags = $('#tagsSearchLocationInput').parent().find('select.select2block').select2('val');
+        var tagIds = selectedTags !== undefined && selectedTags != null ? selectedTags : [];
+        var accruedTags = $('#tagsSearchLocationInput').parent().find('input.accruedTags').is(':checked');
+        ThisPage.SetBusyUI(true);
+
+        $.ajax({
+            type: 'POST',
+            url: '/Companies/SearchBySkills',
+            contentType: 'application/json',
+            data: JSON.stringify({ networkId: @Model.Network.Id, filters: filters, accrued: mode, location: location, tagIds: tagIds, accruedTags: accruedTags }),
+            success: function (data) {
+                ThisPage.SetBusyUI(false);
+                $('.panels-container .container').html(data);
+            },
+            error: function (request, status, error) {
+                ThisPage.SetBusyUI(false);
+                var error = GetErrorMessageFromAjax(request);
+                DisplayErrorMessage(error);
+            }
+        });
+    }
+
+    // throttle section
+    var ThisPage = {
+        delay: 400,
+        dirty: false,
+        busy: false,
+        timeout: null,
+
+        RunDirectory: function () {
+            if (!ThisPage.busy) {
+                ThisPage.busy = true;
+                SparkleNetworks.Companies.FilterBoxSearch();
+
+                ThisPage.dirty = false;
+                ThisPage.busy = false;
+            }
+        },
+        RunTags: function () {
+            if (!ThisPage.busy) {
+                ThisPage.busy = true;
+                Search();
+
+                ThisPage.dirty = false;
+                ThisPage.busy = false;
+            }
+        },
+
+        QueueDirectorySearch: function () {
+            if (ThisPage.dirty) {
+                clearTimeout(ThisPage.timeout);
+                ThisPage.timeout = setTimeout(ThisPage.RunDirectory, ThisPage.delay);
+            }
+            else {
+                ThisPage.dirty = true;
+                ThisPage.timeout = setTimeout(ThisPage.RunDirectory, ThisPage.delay);
+            }
+        },
+        QueueTagSearch: function () {
+            if (ThisPage.dirty) {
+                clearTimeout(ThisPage.timeout);
+                ThisPage.timeout = setTimeout(ThisPage.RunTags, ThisPage.delay);
+            }
+            else {
+                ThisPage.dirty = true;
+                ThisPage.timeout = setTimeout(ThisPage.RunTags, ThisPage.delay);
+            }
+        },
+        SetBusyUI: function(isBusy){
+            var listContainer = $('#companiesList');
+            var busyContainer = $('#companiesListBusy');
+
+            if (isBusy){
+                listContainer.css('opacity', 0);
+                busyContainer.show();
+            }else{
+                busyContainer.hide();
+                listContainer.css('opacity', 1);
+            }
+        }
+    };
+    (function() {
+        $('#directorySearchQueryInput,#directorySearchLocationInput').on('keyup input', function(event) {
+            ThisPage.QueueDirectorySearch();
+        });
+        $('#tagsSearchLocationInput').on('keyup input', function(event) {
+            ThisPage.QueueTagSearch();
+        });
+    })();
+
+    $(document).ready(function () {
+        Spk.UI.AjaxTagPicker.Init(@Model.UsedCompanyTags.IsFilterBox.ToString().ToLower());
+    });
+
+    menu('mainNavCompanies');
+</script>
+

@@ -1,0 +1,45 @@
+﻿@model Sparkle.Models.BoxChooseContactsModel
+@{
+}
+<h3 class="accentBgColor">@Lang.T("Choisir une personne")</h3>
+@using (Html.BeginFormEx(new { id = "BoxInvitePeoplesForm", }, new { controller = "Home", action = "Invitations" }))
+{
+<input type="hidden" id="selectedContacts" value="" />
+<div class="focusPage">
+
+    <div style="padding:10px 0">
+        <input style="float:left" class="textbox" type="text" placeholder="@Lang.T("Rechercher")" onkeyup="ThisPage.SearchContacts(this.value)" />
+        <div class="clear"></div>
+    </div>
+</div>
+    
+    <div class="list">
+        <ul class="boxInvitePeople" id="selectorList" style="height:400px">
+    @if (Model.People.Count == 0)
+    {
+        <li>Aucun contact :(</li>
+    }
+        @foreach (var contact in Model.People)
+        {<li data-login="@contact.Login" data-term="@contact.Name @contact.CompanyName @contact.JobName" class="@Html.CssClass(contact.IsAdded, "selectContactItemAdded") @Html.CssClass(contact.IsContact, "isContact")">
+            <label for="selectContact@(contact.Login)">
+                <img class="avatar" src="@(contact.Picture)"/>
+                <span class="content">
+                    <span class="title ellipsis">@contact.Name</span>
+                </span>
+                <span style="clear:left;"></span>
+            </label>
+        </li>}
+    </ul>
+    </div>
+}
+
+<script type="text/javascript">
+
+    $('#selectorList li').on('click', function (event) {
+        var selectedLogin = $(this).data('login');
+        event.preventDefault();
+
+        var abc = Spk.UI.Box.GetActualOptions();
+        abc.OnSelected(selectedLogin);
+    });
+</script>

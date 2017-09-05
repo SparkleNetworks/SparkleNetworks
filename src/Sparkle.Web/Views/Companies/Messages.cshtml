@@ -1,0 +1,115 @@
+﻿@model Sparkle.Models.CompanyMessagesModel
+@{
+    ViewBag.Title = Lang.T("Messages");
+}
+@{ this.SetAccentColor(SparkleAccentColor.Companies); }
+<style type="text/css">
+    #Convs {
+        float:left;
+        width:240px;
+        margin-right:20px;
+        border-right:1px solid #aaa;
+        padding-right:5px;
+        overflow:auto;
+    }
+    #messagesContent {
+        overflow:auto;
+    }
+    .conv {
+        padding:10px;
+        cursor:pointer;
+    }
+    .conv:hover {
+        background:transparent url(/Content/Site/liveBubble.png);
+    }
+    .currentConv {
+        background:#33ab46 url(/Content/Site/liveBubble.png);
+    }
+    .selectedConv {
+        text-align:center;
+        font-size:18px;
+        color:#aaa;
+    }
+</style>
+
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title)
+}
+<div class="space20"></div>
+
+<div id="Convs">
+    @foreach (var item in Model.Conversations) {
+        <div class="conv" onclick="loadMessages(@item.Id); return false;">
+            @item.FromCompanyName
+            <div class="clear"></div>
+        </div>
+        <div class="separator"></div>
+    }
+    <input type="hidden" id="CurrentConversation" />
+</div>
+
+<div id="wait" style="position:absolute;width:700px;margin-top:-20px;text-align:center;color:#aaa;display:none">@Lang.T("Chargement...")</div>
+<div id="messagesContent">
+</div>
+
+<script type="text/javascript">
+    menu('mainNavMyCompany');
+
+    var p = $("#Convs");
+    var offset = p.offset();
+
+    var height = $(window).height() - offset.top - 10;
+    $('#Convs').height(height);
+    $('#messagesContent').height(height);
+    $('.selectedConv').css('line-height', height + 'px');
+
+    function loadMessages(id) {
+        $('.conv').removeClass('currentConv');
+        $('#Conv' + id).addClass('currentConv');
+
+        $("#messagesContent").fadeOut();
+        $('#wait').show();
+
+        $.ajax({
+            type: 'POST',
+            url: '/Companies/Conversation/',
+            data: { id: id },
+            success: function (data) {
+                if (data.contentType == null) {
+                    $('#messagesContent').html(data);
+
+                    var convHeight = $('#messagesContent')[0].scrollHeight + 100;
+                    $('#messagesContent').scrollTop(convHeight);
+
+                    $("#messagesContent").fadeIn();
+                    $('#Text').focus();
+                }
+                $('#wait').hide();
+            }
+        });
+    }
+
+    function SendMessage() {
+        var id = $('#IdForResponse').val();
+        var message = $('#Text').val();
+
+        $('#mi2').html("Envoi du message...");
+        $.ajax({
+            type: 'POST',
+            url: '/Companies/SendMessage/',
+            data: { id: id, message: message },
+            success: function (data) {
+                if (data.Success) {
+                    loadMessages(id);
+                } else {
+                    var error = GetErrorMessageFromAjax(data);
+                    $('#mi2').html(error);
+                }
+            },
+            error: function(a,b,c) {
+                var error = GetErrorMessageFromAjax(a);
+                $('#mi2').html(error);
+            }
+        });
+    }
+</script>

@@ -1,0 +1,46 @@
+﻿@model Sparkle.Models.Account.AccountRecoveryModel
+@using Sparkle.Services.Networks.Users
+@{
+    this.ViewBag.Title = Lang.T("Mot de passe oublié ?");
+    this.SetHelpPage("Features/UserAccount");
+    this.SetAccentColor(SparkleAccentColor.Account);
+    SendPasswordRecoveryEmailResult result = this.ViewBag.Result;
+}
+
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title)
+}
+<div class="space20"></div>
+
+<div class="center">
+<div class="inBox center">
+@using (Html.BeginFormEx(new { @class = "olddays", }))
+{
+<div class="padding center">
+    <h1>@Lang.T("Vous avez oublié votre mot de passe ?")<br />@Lang.T("Laissez nous vous aider...")</h1>
+
+    <label>@Lang.T("Adresse email")</label>
+    @Html.TextBoxFor(m => m.Email, new { placeholder = Lang.T("Entrez votre adresse email professionnelle"), @class = "textbox textboxEmail" })
+    @Html.ValidationMessageFor(m => m.Email)
+
+@if (result != null && result.Errors.Count > 0)
+{
+<aside class="NoticeBlock Error">
+    @foreach (var error in result.Errors)
+    {
+        <p>@error.DisplayMessage</p>
+    }
+</aside>
+}
+
+    <input class="button accentColor" type="submit" value="@Lang.T("A l'aide !")" />
+</div>
+}
+</div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Email').focus();
+    });
+</script>

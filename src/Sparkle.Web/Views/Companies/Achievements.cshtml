@@ -1,0 +1,11 @@
+﻿@model Sparkle.Models.CompanyAchievements
+@{
+    ViewBag.Title = Lang.T("Succès");
+}
+@{ this.SetAccentColor(SparkleAccentColor.Companies); }
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title)
+}
+<div class="space20"></div>
+
+@Html.Partial("Lists/AchievementsEdit", Model.EditList)

@@ -1,0 +1,111 @@
+﻿@model AdModel
+@using Sparkle.Services.Networks.Ads
+@{
+    this.ViewBag.Title = Model.Title;
+    this.SetAccentColor(SparkleAccentColor.Groups);
+
+    bool isPendingValidation = this.ViewBag.IsPendingValidation;
+    bool isPendingEdit = this.ViewBag.IsPendingEdit;
+    bool canEdit = this.ViewBag.CanEdit;
+    bool canModerate = this.ViewBag.IsModerator;
+}
+
+@section CustomFocus
+{
+    @*<div class="group-avatar-default">
+        <div class="group-avatar" style="background-image:url(@Model.PictureUrl)"></div>
+    </div>*@
+<div class="focusPageActions" >
+    @FocusPage.Custom(Model.Title)
+    <div class="secondaryInfos">
+    @Model.CategoryName
+    </div>
+        
+    <ul class="toolbox">
+        <li>@Html.ActionLink(Lang.T("Retour"), "Index", null, new { title = Lang.T("Retour"),  @class = "left26", })</li>
+    @if (canEdit)
+    {
+        <li>
+            @Html.ActionLink(Lang.T("Modifier"), "Edit", new { id = Model.Id, }, new { title = Lang.T("Modifier"), @class = "edit26", })
+            @*@Html.ActionLink(Lang.T("Supprimer"), "Delete", new { id = Model.Id }, new { title = Lang.T("Supprimer"), @class = "delete26", })*@
+            @*@Html.ActionLink(Lang.T("Create again"), "Edit", new { CopyFrom = this.Model.Id, }, new { title = Lang.T("Create this ad again (you can change the details)"), @class = "repeat26", })*@
+        </li>
+    }
+
+    </ul>
+</div>
+<div class="clear"></div>
+}
+<div class="space20"></div>
+
+<div class="column half first" style="background-image: url(/Content/images/Buttons/calendar-32.png);background-repeat: no-repeat; background-position: left center; padding-left: 50px; min-height:40px;">
+    @Lang.T("Date created: {0} (Ad)", Html.DisplayDate(Model.Date, false))<br />
+    @if (Model.CloseDateUtc != null)
+    {
+        @:@Lang.T("Date closed: {0} (Ad)", Html.DisplayDate(Model.Date, false))
+    }
+</div>
+<div class="column half" style="min-height:40px;">
+    <div class="avatar" style="background-image:url(@Model.Owner.SmallProfilePictureUrl); margin: 0 10px 0 0;"></div>
+    <a data-type="person" data-userid="@Model.Owner.Id" href="@Url.Action("People", "Peoples", new { id = Model.Owner.Username, })">@Model.Owner.FirstName @Model.Owner.LastName</a> <a href="javascript:void(0);" title="@Lang.T("Contacter")" class="button contactButton" onclick="BoxOption  ('BoxMessage', '@Model.Owner.Login')">&#9993;</a>
+    @if (Model.Owner.Job != null)
+    {
+    <span class="job" title="@Model.Owner.Job.Name">@Model.Owner.Job.Name</span>
+    }
+    @if (Model.Owner.Company != null && this.Services().AppConfigTree != null ? this.Services().AppConfigTree.Features.EnableCompanies : false)
+    {
+<span class="company" title="@Model.Owner.Company.Name">@Model.Owner.Company.Name</span>
+    }
+</div>
+<div class="clear"></div>
+<hr />
+
+@if (Model.IsValidated == false)
+{
+    <aside class="NoticeBlock Error">
+        <p>@Lang.T("This ad has been refused.")</p>
+    </aside>
+}
+
+@if (isPendingValidation && !canModerate)
+{
+    <aside class="NoticeBlock Warning">
+        <p>@Lang.T("This ad is pending validation.")</p>
+    </aside>
+}
+else if (isPendingEdit && !canModerate)
+{
+    <aside class="NoticeBlock Warning">
+        <p>@Lang.T("Modifications to this ad are waiting for validation.")</p>
+    </aside>
+}
+
+@if ((isPendingEdit || isPendingValidation) && canModerate)
+{
+    var pendingDate = Model.PendingEditDate != null ? Model.PendingEditDate.Value.ToString("o") : null;
+<div class="DashboardContext">
+    <h2 class="accentDashboardColor">@Lang.T(isPendingValidation ? "This ad is pending validation." : isPendingEdit ? "Modifications to this ad are waiting for validation." : "???")</h2>
+    @if (Model.PendingEditDate != null)
+    {
+    <p>@Lang.T("Date created: {0} (Ad)", Html.DisplayDateTime(Model.PendingEditDate.Value, false))</p>
+    <div><label>@Lang.T("Title: ")</label></div>
+    <div>@Model.PendingEditTitle</div>
+    <div><label>@Lang.T("Description: ")</label></div>
+    <div>@Html.Markdown(Model.PendingEditMessage, true, true, false)</div>
+    }
+    <p>
+        @Html.ActionLink(Lang.T("Accepter"), "Validate", new { PendingEditDate = pendingDate, id = Model.Id, Do = "Accept", }, new { @class = "button accentDashboardColor", })
+        @Html.ActionLink(Lang.T("Refuser"),  "Validate", new { PendingEditDate = pendingDate, id = Model.Id, Do = "Refuse", }, new { @class = "button accentDashboardColor", })
+    </p>
+</div>
+<div class="clear"></div>
+<hr />
+}
+
+
+<div class="group-details">
+    @Html.Markdown(Model.Content, true, true, false)
+</div>
+
+<div class="clear"></div>
+

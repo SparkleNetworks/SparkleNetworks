@@ -1,0 +1,48 @@
+﻿@model Sparkle.Services.Networks.Models.CompanyRequestModel
+@{
+    this.ViewBag.Title = Lang.T("Demande d'inscription pour") + " " + this.Model.RequestEntity.Name;
+    this.SetHelpPage("Features/Companies");
+    this.SetAccentColor(SparkleAccentColor.Companies);
+}
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title)
+}
+
+<p class="introducing-title">Le @Html.DisplayDate(this.Model.RequestEntity.CreatedDateUtc) vous avez demandé à inscrire l'entreprise @this.Model.RequestEntity.Name sur @Lang.T("AppName").</p>
+
+    <div class="tempData" style="display:block;"><ul>
+@if (this.Model.RequestEntity.Approved == null)
+{
+        <li class="Warning">@Lang.T("Nos équipes vérifient les coordonnées que vous avez indiqué. Vous recevrez une notification par email à") @this.Model.RequestEntity.Email.</li>
+}
+else if (this.Model.RequestEntity.Approved == true)
+{
+    <li class="Info">Votre demande a été acceptée le @Html.DisplayDate(this.Model.RequestEntity.ClosedDateUtc.GetValueOrDefault()). Connectez vous à votre profil, @(this.Model.PendingMembers + this.Model.RegisteredMembers) personnes sont inscrites (dont @this.Model.PendingMembers en attente de confirmation d'adresse email).</li>
+    if (this.Model.CompanyEntity == null)
+    {
+        <li class="Error">@Lang.T("Erreur : votre demande a été acceptée mais votre entreprise n'est pas inscrite pour autant.")</li>
+    }
+    if (this.Model.CompanyEntity != null && this.Model.CompanyEntity.EmailDomain != null)
+    {
+        <li>Si vous avez une adresse email terminant en <cite>@this.Model.CompanyEntity.EmailDomain</cite>, vous pouvez vous inscrire directement sur le site.</li>
+    }
+}
+else if (this.Model.RequestEntity.Approved == false)
+{
+    if (this.Model.RequestEntity.BlockedDateUtc != null)
+    {
+    <li class="Error">@Lang.T("Votre demande a été refusée.")</li>
+    }
+    else
+    {
+    <li class="Error">@Lang.T("Votre demande a été refusée. Utilisez la conversation ci-dessous pour réactiver votre demande.")</li>
+    }
+}
+    </ul></div>
+
+@*<h2>Conversation</h2>
+
+@if (this.Model.RequestEntity.BlockedDateUtc == null)
+{
+    <p>Répondre</p>
+}*@

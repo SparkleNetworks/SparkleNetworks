@@ -1,0 +1,301 @@
+﻿@model Sparkle.Models.CompanyManagementModel
+@{
+    this.ViewBag.Title = Lang.T("Collaborateurs");
+    this.SetHelpPage("Features/Companies");
+    this.SetAccentColor(SparkleAccentColor.Companies);
+    
+    var pendingRegisterRequests = this.Model.RegisterRequests
+        .Where(r => r.StatusCode == Sparkle.Entities.Networks.RegisterRequestStatus.New)
+        .Count();
+    var pendingApplyRequests = this.Model.ApplyRequests
+        .Where(o => o.IsPendingAccept)
+        .Count();
+    var pending = Model.MustBeValidate.Count + pendingRegisterRequests + pendingApplyRequests;
+    var peopleCount = this.Model.Administrators.Count + this.Model.CommunityManagers.Count + this.Model.CoWorkers.Count;
+
+    var viewDataNoRightsButton = new ViewDataDictionary(Model.NetworkDisabled);
+    viewDataNoRightsButton["ShowRightsButton"] = false;
+}
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title)
+}
+
+<style type="text/css">
+    table.dashboard.company-requests .unimportant {
+        color: #808080;
+    }
+    .hide-unimportant table.dashboard.company-requests .unimportant {
+        display:none;
+    }
+</style>
+
+<nav class="tabs">
+    <ul class="tabs">
+        <li><a href="#Tab-People" class="bottomAccentColor" onClick="Spk.UI.TabManager.Switch('Tab-People');">@Lang.T("CollaborateursB") <span class="accentColor">@(peopleCount)</span></a></li>
+        <li><a href="#Tab-Invitations" class="info" onClick="Spk.UI.TabManager.Switch('Tab-Invitations');">@Lang.T("Invitations envoyées") <span class="accentColor">@(Model.Invited.Count)</span></a></li>
+        @if(pending > 0) {
+        <li><a href="#Tab-Pending" class="info" onClick="Spk.UI.TabManager.Switch('Tab-Pending');">@Lang.T("Demandes") <span class="accentColor">@(pending)</span></a></li>
+        }
+    </ul>
+    <hr class="tabs clear" />
+</nav>
+
+<div id="vue">
+<div id="vues">
+<div class="vue">
+<div class="vue-content">
+    <div class="content">
+        <div>
+            @Html.ActionLink(Lang.T("Inviter des collègues"), "Invitations", "Account", new { id = "Team" }, new { @class = "button accentColor" })
+        </div>
+
+        <h3>@Lang.T("Administrateurs") @(Model.Administrators.Count > 0 ? ("("+Model.Administrators.Count+")") : "")</h3>
+        <div id="mCat3">
+            @if (Model.Administrators.Count > 0)
+            {
+                @Html.Partial("Lists/Management/UserItem", Model.Administrators)
+            }
+            else
+            {
+            <span>@Lang.T("Personne")</span>
+            }
+        </div>
+        <hr />
+
+        <h3>@Lang.T("Community Managers") (@Model.CommunityManagers.Count)</h3>
+        <div id="mCat2">
+            @if (Model.CommunityManagers.Count > 0)
+            {
+                @Html.Partial("Lists/Management/UserItem", Model.CommunityManagers)
+            }
+            else
+            {
+            <span>@Lang.T("Personne")</span>
+            }
+        </div>
+        <hr />
+
+        <h3>@Lang.T("PeopleLabel") (@Model.CoWorkers.Count)</h3>
+        <div id="mCat1">
+            @if (Model.CoWorkers.Count > 0)
+            {
+                @Html.Partial("Lists/Management/UserItem", Model.CoWorkers)
+            }
+            else
+            {
+            <span>@Lang.T("Personne")</span>
+            }
+        </div>
+        <hr />
+
+        <h3>@Lang.T("Comptes désactivés") (@Model.DisabledAccounts.Count)</h3>
+        <div id="mCat0">
+            @if (Model.DisabledAccounts.Count > 0)
+            {
+                @Html.Partial("Lists/Management/UserItem", Model.DisabledAccounts)
+            }
+            else
+            {
+            <span>@Lang.T("Personne")</span>
+            }
+        </div>
+        <hr />
+
+            @if (Model.NetworkDisabled.Count > 0)
+            {
+        <h3>@Lang.T("Comptes désactivés par les administrateurs du réseau") (@Model.NetworkDisabled.Count)</h3>
+        <div id="mCat0">
+                @Html.Partial("Lists/Management/UserItem", Model.NetworkDisabled, viewDataNoRightsButton)
+        </div>
+        <hr />
+            }
+
+    </div>
+</div>
+</div>
+<div class="vue">
+<div class="vue-content">
+    <div class="content">
+        <table class="dashboard full-width">
+            <thead>
+                <tr class="accentBgColor">
+                    <th>@Lang.T("Email")</th>
+                    <th>@Lang.T("Invité le")</th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (CompanyManagementInvitedModel item in Model.Invited)
+        {
+            <tr>
+                <td class="">@item.Email</td>
+                <td>@Html.DisplayDate(item.Date)</td>
+            </tr>
+        }
+            </tbody>
+        </table>
+        <br />
+        <div id="rc2" style="display:none">@Lang.T("Envoi en cours...")</div>
+        <div class="center">
+            <a class="button inviteButton" href="@Url.Action("Invitations", "Account")/People">@Lang.T("Inviter des personnes")</a>
+        </div>
+    </div>
+</div>
+</div>
+<div class="vue">
+<div class="vue-content">
+    <div class="content">
+        <div class="">
+
+@if (Model.MustBeValidate.Count > 0)
+{
+            <h3>@Lang.T("Collaborateur en attente de validation")</h3>
+    if (Model.MustBeValidate.Count > 0)
+    {
+@Html.Partial("Lists/Management/AccountClosedItem", Model.MustBeValidate)
+    }
+            <hr />
+}
+
+@if (Model.RegisterRequests.Count > 0 || Model.ApplyRequests.Count > 0)
+{
+    using (Html.BeginForm("UpdateRegisterRequests", "Companies", FormMethod.Post, new { @class = "olddays", id = "CompanyRequests", }))
+    {
+        int inputs = 0;
+        <p class="labelClear"><input type="checkbox" id="ShowHideUnimportant" /><label for="ShowHideUnimportant">@Lang.T("Afficher toutes les demandes")</label></p>
+            <table class="dashboard company-requests full-width">
+                <thead>
+                    <tr class="accentBgColor">
+                        <th>@Lang.T("Email")</th>
+                        <th>@Lang.T("Etat")</th>
+                        <th>@Lang.T("Date")</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+        @foreach (var item in Model.ApplyRequests)
+        {
+            if (item.Status != Sparkle.Services.Networks.Users.ApplyRequestStatus.New
+                && item.Status != Sparkle.Services.Networks.Users.ApplyRequestStatus.Unknown)
+            {
+                <tr class="@item.Status.ToString() @Html.CssClass(item.Status == Sparkle.Services.Networks.Users.ApplyRequestStatus.PendingAccept, "important", "unimportant")">
+                    <th>@item.UserDataModel.User.Email</th>
+                    <td>@item.StatusTitle</td>
+                    <td>@item.DateLastUpdateUtc</td>
+                    @if (item.Status == Sparkle.Services.Networks.Users.ApplyRequestStatus.PendingAccept)
+                    {
+                        <td>@Html.ActionLink(Lang.T("Accepter ou refuser"), "ApplyRequest", controllerName: "Dashboard", routeValues: new { id = item.Id, ReturnUrl = "/Companies/Management/" + Model.CompanyAlias + "#Tab-Pending", }, fragment: "Tab-Approve")</td>
+                    }
+                    else
+                    {
+                        <td>@Html.ActionLink(Lang.T("Voir"), "ApplyRequest", controllerName: "Dashboard", routeValues: new { id = item.Id, ReturnUrl = "/Companies/Management/" + Model.CompanyAlias + "#Tab-Pending", })</td>
+                    }
+                </tr>
+            }
+        }
+        @foreach (var item in Model.RegisterRequests)
+        {
+                <tr class="@item.StatusCode.ToString() @Html.CssClass(item.StatusCode == Sparkle.Entities.Networks.RegisterRequestStatus.New || item.StatusCode == Sparkle.Entities.Networks.RegisterRequestStatus.ExternalCommunication, "important", "unimportant")">
+                    <th>@item.EmailAddress</th>
+            @if (item.StatusCode == Sparkle.Entities.Networks.RegisterRequestStatus.Accepted && item.AcceptedInvitation != null && item.AcceptedInvitation.UserId != null)
+            {
+                if (item.AcceptedInvitation != null && item.AcceptedInvitation.User != null)
+                {
+                    <td>@Lang.T("utilisateur inscrit :") @Html.ActionLink(item.AcceptedInvitation.User.DisplayName, "People", "Peoples", new { id = item.AcceptedInvitation.User.Username, });</td>
+                }
+                else
+                {
+                    <td>@Lang.T("utilisateur inscrit")</td>
+                }
+            }
+            else
+            {
+                    <td>@Html.DisplayValue(item.StatusCode)</td>
+            }
+                    <td>@Html.DisplayDate(item.DateCreatedUtc)</td>
+                    
+            @if (item.StatusCode == Sparkle.Entities.Networks.RegisterRequestStatus.New || item.StatusCode == Sparkle.Entities.Networks.RegisterRequestStatus.ExternalCommunication)
+            {
+                inputs++;
+                    <td>
+                        <label title="@Lang.T("Inviter cette personne à rejoindre le réseau au sein de votre entreprise (envoie un email)")">@Html.RadioButton(item.Id.ToString(), "Accept") @Lang.T("Accepter")</label>
+                        <label title="@Lang.T("Refuser cette demande d'inscription (envoie un email)")">@Html.RadioButton(item.Id.ToString(), "Deny") @Lang.T("Refuser")</label>
+                    </td>
+            }
+            else if (item.StatusCode == Sparkle.Entities.Networks.RegisterRequestStatus.Accepted)
+            {
+                if (item.AcceptedInvitationId != null)
+                {
+                    if (item.AcceptedInvitation != null)
+                    {
+                        if (item.AcceptedInvitation.UserId != null)
+                        {
+                            if (item.AcceptedInvitation.User != null)
+                            {
+                    <td>@Lang.T("utilisateur inscrit :") @Html.ActionLink(item.AcceptedInvitation.User.DisplayName, "People", "Peoples", new { id = item.AcceptedInvitation.User.Username, }, null)</td>
+                            }
+                            else
+                            { 
+                    <td>@Lang.T("utilisateur inscrit")</td>
+                            }
+                        }
+                        else
+                        { 
+                    <td>@Lang.T("invitation en attente"), <a href="javascript:InviteAgain(@item.AcceptedInvitationId);">@Lang.T("envoyer à nouveau")</a></td>
+                        }
+                    }
+                    else
+                    {
+                    <td>@Lang.T("invité")</td>
+                    }
+                }
+                else
+                {
+                    <td>@Lang.T("non invité"), <a href="javascript:InviteAgain(@item.AcceptedInvitationId);">@Lang.T("inviter maintenant")</a></td>
+                }
+            }
+            else if (item.StatusCode == Sparkle.Entities.Networks.RegisterRequestStatus.Refused)
+            {
+                    <td></td>
+            }
+                </tr>
+        }
+                </tbody>
+            </table>
+        if (inputs > 0)
+        { 
+            <p class="center">
+            @Html.Submit("Appliquer", null, new { @class = "button accentColor", })
+            </p>
+        }
+    }
+}
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+    menu('mainNavMyCompany');
+
+    var ThisPage = {
+        ShowHideUnimportant: function () {
+            var me = $('#ShowHideUnimportant');
+            if (me.prop('checked')) {
+                $('#CompanyRequests').removeClass('hide-unimportant');
+            } else {
+                $('#CompanyRequests').addClass('hide-unimportant');
+            }
+        }
+    };
+
+    ThisPage.ShowHideUnimportant();
+
+    $(document).ready(function () {
+
+        $('#ShowHideUnimportant').on('change', function (evt) {
+            ThisPage.ShowHideUnimportant();
+        });
+    });
+</script>

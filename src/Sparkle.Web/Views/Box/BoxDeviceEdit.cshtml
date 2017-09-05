@@ -1,0 +1,32 @@
+﻿@model Sparkle.Models.BoxDeviceEditModel
+@{
+    Layout = null;
+}
+<h3 class="networkAccentBgColor">Modifier cet écran</h3>
+<br />
+
+@if (Model.Success)
+{
+    <label class="networkAccentColor">Nom</label>
+    @Html.TextBoxFor(m => m.Name, new { @class = "textbox" })<br />
+    <br />
+    
+    <label class="networkAccentColor">Type d'affichage</label>
+    <div class="labelOptions">
+        <input type="radio" /> Accueil<br />
+        <input type="radio" /> Patio<br />
+        <input type="radio" /> Salle de réunion<br />
+    </div>
+    <br />
+
+    <div style="text-align:center">
+        <input type="button" value="Valider" class="button networkAccentBgColor" />
+    </div> 
+    
+}
+else
+{ 
+<div style="text-align:center">
+    Identifiant non valide.
+</div>
+}

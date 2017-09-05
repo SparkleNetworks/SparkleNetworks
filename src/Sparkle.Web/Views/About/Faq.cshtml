@@ -1,0 +1,137 @@
+﻿@{
+    this.ViewBag.Title = Lang.T("En quoi pouvons-nous vous aider ?");
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+    
+    var pedro = new Dictionary<string, string>();
+    pedro.Add("AppName", Lang.T("AppName"));
+    pedro.Add("AppDomain", Lang.T("AppDomain"));
+    var filePath = this.Server.MapPath("/Content/NetworkDefaults/Documents/Faq.md");
+    var networkFilePath = this.Server.MapPath("/Content/Networks/" + this.Services().CurrentNetwork.Name + "/Documents/Faq.md");
+    if (File.Exists(networkFilePath))
+    {
+        filePath = networkFilePath;
+    }
+}
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title)
+}
+<div class="space20"></div>
+
+<div class="box"><div class="box-wrap">
+    <article class="text md faq" id="content">
+        @Html.FromMarkdownFile(filePath, pedro)
+    </article>
+
+    <div class="space20"></div>
+    <div class="space20"></div>
+</div></div>
+
+<div class="space20"></div>
+<div class="space20"></div>
+
+<style type="text/css">
+    h3 {
+        margin-top: 30px;
+        font-size:18px;
+    }
+    h2 {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+</style>
+
+<script type="text/javascript">
+    var FaqManager = function (containerSelector) {
+        var container = $(containerSelector)
+        var openCloseElement = function (element, delay, close) {
+            setTimeout(function() {
+                if (close) {
+                    $(element).slideUp()
+                } else {
+                    $(element).slideDown()
+                }
+            }, delay)
+        }
+        var setupSection = function (latestHeader) {
+            if (latestHeader != null) {
+                var html = latestHeader.innerHTML // text within
+                latestHeader.innerHTML = ''
+                var link = document.createElement("a")
+                link.href = "javascript:void(0);"
+                link.innerHTML = html
+                latestHeader.appendChild(link)
+
+                // map click
+                $(link).click(function (event) {
+                    var parent = this
+                    var header = null
+                    while (parent != null && parent.tagName.toUpperCase() != 'ARTICLE') {
+                        if (parent.tagName.toUpperCase() == 'H3')
+                            header = parent
+                        parent = parent.parentNode
+                    }
+                                
+                    if (parent != null && parent.tagName.toUpperCase() == 'ARTICLE') {
+                        var headerx = $(header)
+                        var children = $(parent).children()
+                        var found = false;
+                        var close = headerx.hasClass('open')
+                        if (close)
+                            headerx.removeClass('open')
+                        else
+                            headerx.addClass('open')
+                        var slideDuration = 150
+                        var j = 0
+
+                        for (var i = 0; i < children.length; i++) {
+                            if (header == children[i]) {
+                                found = true
+                            } else if (children[i].tagName.toUpperCase() == 'H3') {
+                                found = false
+                            } else if (found && children[i].tagName.toUpperCase() != 'H2') {
+                                openCloseElement(children[i], j++*slideDuration, close)
+                            }
+                        }
+                    }
+                })
+            }
+        }
+
+        return {
+            Initialize: function () {
+                var children = container.children()
+                var latestHeader = null;
+
+                // loop through children
+                for (var i = 0; i < children.length; i++) {
+                    var item = children[i]
+
+                    // found header
+                    if (item.tagName == 'H3') {
+
+                        // handle previous header
+                        setupSection(latestHeader)
+
+                        latestHeader = item;
+                    }
+
+                    // found something else
+                    //if (item.tagName == 'p') {
+                    else {
+                        if (latestHeader != null && item.tagName != 'H2') {
+                            $(item).hide()
+                        }
+                    }
+                }
+
+                // handle last header
+                setupSection(latestHeader)
+
+            }
+        }
+    }
+
+    var manager = FaqManager('#content')
+    manager.Initialize();
+</script>
+

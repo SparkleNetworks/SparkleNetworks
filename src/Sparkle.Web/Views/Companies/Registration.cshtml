@@ -1,0 +1,140 @@
+﻿@model Sparkle.Services.Networks.Companies.CreateCompanyRequest
+@{
+    this.ViewBag.Title = Lang.T("Inscription");
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+    this.SetAccentColor(SparkleAccentColor.Companies);
+    this.SetHelpPage("Features/Companies");
+
+    var companyCategories = new SelectList(Model.AvailableCategories.ToDictionary(o => o.Id, o => o.Name), "Key", "Value");
+}
+
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title)
+}
+
+@using (Html.BeginFormEx(new { @class = "olddays", }))
+{
+@Html.Hidden("OomanChallenge", (string)this.ViewBag.OomanChallenge)
+@Html.HiddenFor(m => m.ReturnUrl)
+@Html.HiddenFor(m => m.CreateRequestUniqueId)
+
+<h3>1. @Lang.T("Présentation")</h3>
+    
+<label>@Lang.T("Il s'agit")</label>
+<div class="labelInputs">
+    @Html.DropDownListFor(model => model.CategoryId, companyCategories, new { @class = "textbox", })  
+</div>
+<hr />    
+    
+@Html.LabelFor(m => m.Name)
+<div class="labelInputs">
+    @Html.TextBoxFor(m => m.Name, new { @class = "textbox", })
+    @Html.ValidationMessageFor(m => m.Name)
+</div>
+<hr />
+
+@Html.LabelFor(m => m.Baseline)
+<div class="labelInputs">
+    @Html.TextBoxFor(m => m.Baseline, new { @class = "textbox textboxLikeTextarea", })
+    @Html.ValidationMessageFor(m => m.Baseline)
+</div>
+<hr />
+
+@Html.LabelFor(m => m.About)
+<div class="labelInputs">
+    @Html.TextAreaFor(m => m.About, new { @class = "textarea", })<br />
+    @Html.ValidationMessageFor(m => m.About)
+</div>
+<hr />
+    
+<h3>2. @Lang.T("Informations de contact")</h3>
+    
+@Html.LabelFor(m => m.Phone)
+<div class="labelInputs">
+    @Html.EditorFor(m => m.Phone, new { @class = "textbox", })
+    @Html.ValidationMessageFor(m => m.Phone)
+</div>
+<hr />
+    
+@Html.LabelFor(m => m.Email)
+<div class="labelInputs">
+    @Html.TextBoxFor(m => m.Email, new { @class = "textbox" })
+    @Html.ValidationMessageFor(m => m.Email)
+</div>
+<hr />
+    
+@Html.LabelFor(m => m.Website)
+<div class="labelInputs">
+    @Html.TextBoxFor(m => m.Website, new { @class = "textbox" })
+    @Html.ValidationMessageFor(m => m.Website)
+</div>
+<hr />
+@*
+@Html.LabelFor(m => m.EmailDomain)
+<div class="labelInputs">
+    @Html.TextBoxFor(m => m.EmailDomain, new { @class = "textbox" })
+    @Html.ValidationMessageFor(m => m.EmailDomain)
+</div>
+<hr />
+*@
+<h3>3. @Lang.T("Collaborateurs")</h3>
+<p class="explication">@Lang.T("Merci de nous indiquer les personnes à inviter.")</p>
+    
+@Html.LabelFor(m => m.AdminEmails)
+<div>
+    @Html.TextAreaFor(m => m.AdminEmails, new { @class = "textarea emails", rows = 3, cols = 72, placeholder = Lang.T("Adresses email"),  })<br />
+    @Html.ValidationMessageFor(m => m.AdminEmails)
+</div>
+<p>@Lang.T("Ces personnes pourront modifier les informations de l'entreprise, publier en son nom et gérer les collaborateurs.")</p>
+<hr />
+    
+@Html.LabelFor(m => m.OtherEmails)
+<div>
+    @Html.TextAreaFor(m => m.OtherEmails, new { @class = "textarea emails", rows = 10, cols = 72, placeholder = Lang.T("Adresses email"), })
+    @Html.ValidationMessageFor(m => m.OtherEmails)
+</div>
+<p>@Lang.T("Ces personnes seront attachées à votre entreprise.")</p>
+<hr />
+    
+<div class="clear"></div>
+<div class="space20"></div>
+    
+    if (Model.CanApprove)
+    {
+<div>
+    @Html.CheckBoxFor(m => m.IsApproved)
+    @Html.LabelFor(m => m.IsApproved)
+    @Html.ValidationMessageFor(m => m.IsApproved)
+    <p>@Html.DescriptionFor(m => m.IsApproved)</p>
+</div>
+<hr />
+    }
+
+    if (this.Model.CanSetEmailDomain) {
+<div>
+    @Html.LabelFor(m => m.EmailDomain)
+    @Html.TextBoxFor(m => m.EmailDomain, new { @class = "textbox" })
+    @Html.ValidationMessageFor(m => m.EmailDomain)
+    <p>@Html.DescriptionFor(m => m.EmailDomain)</p>
+</div>
+<hr />
+    }
+    
+@Html.Label("OomanCheck", (string)this.ViewBag.OomanCheck)
+<div class="labelInputs OomanCheck-Hide">
+    <p>@Lang.T("Afin de vérifier que vous êtes humain(e) (et non un robot), veuillez copier le texte ci dessous dans la case en dessous.")</p>
+    <pre id="OomanCheck-Clue">@this.ViewBag.OomanClue</pre>
+    @Html.TextBox("OomanCheck", (string)this.ViewBag.OomanCheck, new { @class = "textbox textbox480" })<br />
+    @Html.ValidationMessage("OomanCheck")
+</div>
+    
+<div class="center">
+    <input type="submit" value="@Lang.T("Enregistrer")" class="button accentColor" />
+</div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        JavascriptIsOoman()
+    });
+</script>

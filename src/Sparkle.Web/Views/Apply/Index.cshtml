@@ -1,0 +1,476 @@
+﻿
+@model Sparkle.Services.Networks.Users.ApplyRequestRequest
+@{
+    ViewBag.Title = Lang.T("Inscription");
+    this.SetAccentColor(SparkleAccentColor.Default);
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+    this.WebDependencies().Include(MyWebDependencies.SparkleShow);
+    this.WebDependencies()
+        .Include(MyWebDependencies.SparkleApply)
+        .Include(MyWebDependencies.JqueryValidationEngine)
+        .Include(MyWebDependencies.Select2);
+
+    var countriesSelectList = new SelectList(Model.Countries, "ThreeLetterISORegionName", "NativeName");
+
+    var jobSelectList = Model.Jobs.All(x => x.GroupName == null) ? new SelectList(Model.Jobs, "Id", "Name", Model.JobId) : null;
+    var jobsGroupSelectList = Model.Jobs.Any(x => x.GroupName != null) ? Model.Jobs
+        .Select(x => new GroupedSelectListItem
+        {
+            GroupKey = x.Id == 0 ? "-1" : x.GroupName != null ? x.GroupName : "0",
+            GroupName = x.Id == 0 ? Lang.T("JobGroupName: Nothing") : x.GroupName != null ? Lang.T("JobGroupName: " + x.GroupName) : Lang.T("JobGroupName: Other"),
+            Text = x.Id == 0 ? Lang.T("JobName: Nothing") : Lang.T("JobName: " + x.Name).Replace("JobName: ", ""),
+            Value = x.Id.ToString(),
+            GroupSortOrder = x.Id == 0 ? -1 : x.GroupName == null ? 1 : 0,
+        })
+        .OrderBy(x => x.GroupName)
+        .OrderBy(x => x.GroupSortOrder)
+        .ToArray() : null;
+    
+    var industriesSelectList = new SelectList(Model.Industries, "SelecterId", "Value");
+    var culturesSelectList = new SelectList(Model.AvailableCultures, "Key", "Value");
+
+    var config = this.Services() != null ? this.Services().AppConfigTree : null;
+    var companiesEnabled = config != null ? config.Features.EnableCompanies : true;
+    
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}
+
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title)
+}
+<div class="space20"></div>
+
+@if (this.Model.IsLinkedInConfigured && string.IsNullOrWhiteSpace(this.Model.Firstname))
+{ 
+<section id="ApplyWelcome" class="SpkShow-Opening center">
+    @if (!string.IsNullOrEmpty(this.Model.ApplyProfilePictureUrl))
+    {
+    <img src="@this.Model.ApplyProfilePictureUrl" alt="" style="" />
+    <p>@Lang.T("Bienvenue {0}, votre compte LinkedIn est lié !", Model.Firstname)</p>
+    }
+    else
+    { 
+    <a href="@Url.Action("LinkedInConnect", "Apply", new { ReturnUrl = "/Apply?Key=" + this.Model.Key + (!string.IsNullOrEmpty(this.Model.CompanyCategory) ? "&CompanyCategory=" + this.Model.CompanyCategory : "") + (!string.IsNullOrEmpty(this.Model.InviterCode) ? "&InviterCode=" +  this.Model.InviterCode : ""), Key = this.Model.Key, })" class="button accentColor LinkedIn" style="padding:0"><span>@Lang.T("S'inscrire avec LinkedIn")</span></a>
+    <img class="LinkedInProgress" alt="@Lang.T("Vérifications en cours...")" src="/Content/icones/wait.gif" style="display:none" />
+    }
+    <span><p>@Lang.T("Ou")</p></span>
+    <hr />
+    <a href="javascript:void(0);" id="ClassicApply" class="button large ClassicApply" style="padding:0"><span>@Lang.T("S'inscrire avec une adresse email")</span></a>
+</section>
+<style type="text/css">
+    #view-tabs, #vue {
+        display: none;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#ClassicApply').on('click', function () {
+            $('#ApplyWelcome').hide();
+            $('#view-tabs').fadeIn();
+            $('#vue').fadeIn();
+        });
+    });
+</script>
+}
+
+<nav id="view-tabs" class="tabs">
+    <ul class="tabs">
+        <li><a href="#Tab-Contact" class="bottomAccentColor" onClick="Spk.UI.TabManager.Switch('Tab-Contact');">1. @Lang.T("Mon compte")</a></li>
+        <li><a href="#Tab-Profile" class="" onClick="Spk.UI.TabManager.Switch('Tab-Profile');">2. @Lang.T("Mon profil")</a></li>
+        @if (companiesEnabled) {
+        <li><a href="#Tab-Company" class="" onClick="Spk.UI.TabManager.Switch('Tab-Company');">3. @Lang.T("Mon entreprise")</a></li>
+        }
+    </ul>
+    <hr class="tabs clear" />
+</nav>
+
+@using (Html.BeginFormEx(new { @class = "ApplyForm", id = "ApplyForm", }))
+{
+    @Html.HiddenFor(m => m.Key)
+    @Html.HiddenFor(m => m.CompanyCategory)
+    @Html.HiddenFor(m => m.InviterCode)
+    @Html.HiddenFor(m => m.CreateCompanyRequest.IsFromApplyRequest)
+
+<div id="vue">
+<div id="vues">
+<div class="vue"><div class="vue-content">
+    <div class="content">
+
+        @*<p>Pour rejoindre le réseau @Lang.T("AppName"), merci de renseigner les champs ci-dessous et/ou activer le Linkedin Connect. Une fois votre candidature acceptée par @Lang.T("AppName"), vous pourrez finaliser votre inscription en réglant le membership de $599.40/an<br />
+        @Lang.T("Tous les champs sont obligatoires.")</p>*@
+
+    @if (this.Model.IsLinkedInConfigured)
+    { 
+            <div class="center">
+        @if (!string.IsNullOrEmpty(this.Model.ApplyProfilePictureUrl))
+        {
+            <img src="@this.Model.ApplyProfilePictureUrl" style="" />
+            <p>@Lang.T("Bienvenue {0}, votre compte LinkedIn est lié !", Model.Firstname)</p>
+        }
+        else
+        { 
+            <a href="@Url.Action("LinkedInConnect", "Apply", new { ReturnUrl = "/Apply?Key=" + this.Model.Key + (!string.IsNullOrEmpty(this.Model.CompanyCategory) ? "&CompanyCategory=" + this.Model.CompanyCategory : "") + (!string.IsNullOrEmpty(this.Model.InviterCode) ? "&InviterCode=" +  this.Model.InviterCode : ""), })" class="accentColor" style="padding:0"><span>@Lang.T("S'inscrire avec LinkedIn")</span></a>
+            <img class="LinkedInProgress" alt="" src="/Content/icones/wait.gif" style="display:none" />
+        }
+            </div>
+            <br />
+    }
+
+
+    @if (Lang.T("AppNameKey") == "LConnect")
+    {
+        @Html.HiddenFor(m => m.Gender)
+    }
+    else
+    {
+    <div class="center GenderSelector">
+        @Html.LabelFor(m => m.Gender)
+        @Html.EditorFor(m => m.Gender)
+        <hr />
+    </div>
+    }
+
+    <div class="form2col olddays">
+        <div class="form2col-item">
+            @Html.LabelFor(m => m.Firstname)
+            @Html.TextBoxFor(m => m.Firstname, new { @class = "textbox", })
+            @Html.ValidationMessageFor(m => m.Firstname)
+        </div>
+        <div class="form2col-item">
+            @Html.LabelFor(m => m.Lastname)
+            @Html.TextBoxFor(m => m.Lastname, new { @class = "textbox", })
+            @Html.ValidationMessageFor(m => m.Lastname)
+        </div>
+        <div class="form2col-item Email">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "textbox", })
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div class="form2col-item PersonalEmail">
+            @Html.LabelFor(m => m.PersonalEmail)
+            @Html.TextBoxFor(m => m.PersonalEmail, new { @class = "textbox", })
+            @Html.ValidationMessageFor(m => m.PersonalEmail)
+        </div>
+        <div class="form2col-item Phone">
+            @Html.LabelFor(m => m.Phone)
+            @Html.EditorFor(m => m.Phone, new { @class = "textbox", })
+            @Html.ValidationMessageFor(m => m.Phone)
+        </div>
+        @*<div class="form2col-item">
+            @Html.LabelFor(m => m.City)
+            @Html.TextBoxFor(m => m.City, new { @class = "textbox", })
+            @Html.ValidationMessageFor(m => m.City)
+            <hr />
+        </div>*@
+        <div class="form2col-item">
+            @Html.LabelFor(m => m.Country)
+            @Html.DropDownListFor(m => m.Country, countriesSelectList, new { @class = "textbox", })
+            @Html.ValidationMessageFor(m => m.Country)
+        </div>
+        <div class="form2col-item Culture">
+            @Html.LabelFor(m => m.Culture)
+            @Html.DropDownListFor(m => m.Culture, culturesSelectList, new { @class = "textbox", })
+            @Html.ValidationMessageFor(m => m.Culture)
+        </div>
+        <div class="form2col-item Timezone">
+            @Html.LabelFor(m => m.Timezone)
+            <select class="textbox valid" id="Timezone" name="Timezone" aria-invalid="false">
+        @foreach (var zone in Model.AvailableTimezones)
+        {
+                <option value="@zone.Key" @(Model.Timezone == zone.Key ? "selected=selected" : "")>@zone.Value</option>
+        }
+            </select>
+            @Html.ValidationMessageFor(m => m.Timezone)
+        </div>
+    </div>
+
+    <div class="center">
+        <input type="button" class="button large accentColor" value="@Lang.T("Continuer")"  id="Part1NextButton" />
+    </div>
+
+    </div>
+</div>
+</div>
+<div class="vue"><div class="vue-content">
+    <div class="content">
+        @*<p>@Lang.T("Merci de renseigner les champs ci-dessous afin de nous aider à mieux vous connaître.")
+        @Lang.T("Tous les champs sont obligatoires.")</p>*@
+    @if (Model.Model != null && Model.JobId == 0 && !string.IsNullOrEmpty(this.Model.Model.UserDataModel.JobTitleToCreate))
+    {
+            <aside class="NoticeBlock Warning">
+                @Lang.T("Aucun poste correspondant n'a été trouvé. Si vous ne le trouvez pas dans la liste ci-dessus ou que vous laissé la selection vide, une entrée sera créée à partir du libelle LinkedIn de votre poste : '{0}'", this.Model.Model.UserDataModel.JobTitleToCreate)
+            </aside>
+            <div class="space20"></div>
+    }
+
+        <div class="form2col olddays">
+            <div class="form2col-item">
+                @Html.LabelFor(m => m.JobId)
+    @if (jobsGroupSelectList != null)
+    {
+                @Html.DropDownGroupListFor(model => model.JobId, jobsGroupSelectList, new { @class = "textbox" })
+    }
+    else
+    {
+                @Html.DropDownListFor(model => model.JobId, jobSelectList, new { @class = "textbox" })
+    }
+                @Html.ValidationMessageFor(m => m.JobId)
+            </div>
+            <div class="form2col-item">
+                @Html.LabelFor(m => m.Industry)
+                @Html.DropDownListFor(m => m.Industry, industriesSelectList, new { @class = "textbox", })
+                @Html.ValidationMessageFor(m => m.Industry)
+            </div>
+            <div class="form2col-item">
+                @Html.LabelFor(m => m.LinkedInPublicUrl)
+                @Html.TextBoxFor(m => m.LinkedInPublicUrl, new { @class = "textbox", })
+                @Html.ValidationMessageFor(m => m.LinkedInPublicUrl)
+            </div>
+            <div class="form2col-item">
+                @Html.LabelFor(m => m.Twitter)
+                @Html.TextBoxFor(m => m.Twitter, new { @class = "textbox", })
+                @Html.ValidationMessageFor(m => m.Twitter)
+            </div>
+        </div>
+
+        <div class="center">
+            @Html.LabelFor(m => m.About)
+            @Html.TextAreaFor(m => m.About, new { @class = "textarea", })
+            @Html.ValidationMessageFor(m => m.About)
+        </div>
+
+        <div class="center">
+            <input type="button" class="button large" value="@Lang.T("Retour")" id="Part2BackButton" />
+            @if (companiesEnabled)
+            { 
+            <input type="button" class="button large accentColor" value="@Lang.T("Continuer")" id="Part2NextButton" />
+            }
+            else
+            {
+            @Html.Submit(Lang.T("Submit"), null, new { @class = "button accentColor", })
+            }
+        </div>
+
+    </div>
+</div>
+</div>
+@if (companiesEnabled)
+{
+<div class="vue"><div class="vue-content">
+<div class="content">
+    <p>@Lang.T("Indiquez sous quelle entreprise vous souhaitez rejoindre {0}", Lang.T("AppName"))</p>
+
+    <div id="CompanyChoices">
+    <p><input type="text" class="textbox" placeholder="@Lang.T("Rechercher une entreprise")" id="CompanySearch" /></p>
+    <hr />
+
+    <div id="ApplyCompany"></div>
+
+    <p><label id="CreateCompanyLabel"><input type="radio" name="CompanyId" value="0" id="CreateCompanyOption" /> @Lang.T("Inscrire une entreprise")</label></p>
+
+    <div id="CreateCompanyContent" class="olddays">
+
+        @Html.EditorFor(m => m.CreateCompanyRequest, new { EntityName = "ApplyRequestCompany", EntityIdentifier = this.Model.Key.ToString(), })
+    </div>
+    
+    <p class="center">
+        <input type="button" class="button large" value="@Lang.T("Retour")" id="Part3BackButton" />
+        @Html.Submit(Lang.T("Submit"), null, new { @class = "button large accentColor", })
+    </p>
+    </div>
+</div>
+</div>
+</div>
+}
+</div>
+</div>
+}
+
+<aside class="NoticeBlock Information">
+    <p>@Html.Raw(Lang.T(@"{0} est un réseau privé, ces informations ne seront visibles que par les membres et les équipes de {1}. Pour plus d'informations, vous pouvez consulter les {2}.", Lang.T("AppName"), Lang.T("CurrentPlaceAlone"), Html.ActionLink(Lang.T("conditions générales d'utilisation"), "Terms", "About").ToString()))</p>
+    <p>@Lang.T("Une fois inscrit vous recevrez des emails de notre part ; vous pourrez vous en désabonner dans les préférences de votre compte.")</p>
+</aside>
+
+<script type="text/javascript">
+
+    /// <reference path="~/Scripts/common.js" />
+    /// <reference path="~/Scripts/global.js" />
+    /// <reference path="~/Scripts/Sparkle/Apply.js" />
+
+    $(function () {
+        var companiesEnabled = '@(companiesEnabled)';
+
+        var SectionValidator = {
+            IsFirstSectionValid: function (errorList) {
+                var isValid = true;
+                errorList.forEach(function (item) {
+                    if (item.element.name == 'Firstname')
+                        isValid = false;
+                    else if (item.element.name == 'Lastname')
+                        isValid = false;
+                    else if (item.element.name == 'Email')
+                        isValid = false;
+                });
+
+                return isValid;
+            },
+            IsSecondSectionValid: function (errorList) {
+                var isValid = true;
+                errorList.forEach(function (item) {
+                    if (item.element.name == 'About')
+                        isValid = false;
+                });
+
+                return isValid;
+            }
+        };
+
+        var CompanyChanges = {
+            OnApplyCompanyAjaxReturn: function (data) {
+                if (data.Success) {
+                    Spk.Log.Info('ApplyManagerClass.Refresh', 'refreshed');
+                    $('#ApplyCompany').html(data.Data.Html);
+
+                    $('#CompanyChoices input[type=radio]').each(function () {
+                        var me = $(this);
+                        if (me.is(':checked')) {
+                            if (me.prop('id') == 'CreateCompanyOption')
+                                $('#CreateCompanyContent').slideDown();
+                            else
+                                $('#CreateCompanyContent').slideUp();
+                        }
+                    });
+
+                    if (data.Data.CanCreateCompany) {
+                        $('#CompanySearch').show();
+                        $('#CreateCompanyLabel').show();
+                    }
+                    else {
+                        $('#CompanySearch').hide();
+                        $('#CreateCompanyLabel').hide();
+                    }
+
+                    if (data.Data.HasLinkedInCompanies) {
+                        $('#CompanySearch').addClass('HasLinkedInCompanies');
+                        $('#CreateCompanyLabel').addClass('HasLinkedInCompanies');
+                    }
+                    else {
+                        $('#CompanySearch').removeClass('HasLinkedInCompanies');
+                        $('#CreateCompanyLabel').removeClass('HasLinkedInCompanies');
+                    }
+
+                }
+            },
+            OnInputChanges: function () {
+                $('#CompanyChoices input[type=radio]').change(function () {
+                    var input = $(this);
+                    if (input.is(':checked')) {
+                        if (input.prop('id') == 'CreateCompanyOption')
+                            $('#CreateCompanyContent').slideDown();
+                        else
+                            $('#CreateCompanyContent').slideUp();
+                    }
+                });
+            }
+        };
+
+        if (companiesEnabled == 'True') {
+
+            var manager = new ApplyManagerClass($, $('#Key').val(), '@Model.CompanyId');
+
+            manager.OnResult(function (data) {
+                if (data.Success) {
+
+                    CompanyChanges.OnApplyCompanyAjaxReturn(data);
+
+                    CompanyChanges.OnInputChanges();
+                }
+            });
+
+            $('#Email').on('change', function () {
+                var $me = $(this);
+                manager.SetEmailAddress($me.val());
+            });
+
+            $('#CompanySearch').on('change keyup', function () {
+                var $me = $(this);
+                manager.SetCompanySearch($me.val());
+            });
+
+            $(document).ready(function () {
+                CompanyChanges.OnInputChanges();
+            });
+
+            $('#CreateCompanyContent').slideUp();
+            manager.SetEmailAddress($('#Email').val());
+            //manager.Refresh();
+
+            $('#ApplyForm a.LinkedIn').on('click', function (event) {
+                event.preventDefault();
+                var $me = $(this);
+                var form = $('#ApplyForm');
+                var wait = $('.LinkedInProgress');
+                var data = form.serialize();
+
+                $me.hide();
+                wait.show();
+
+                $.ajax({
+                    method: 'POST',
+                    url: form.attr('action'),
+                    data: data,
+                    success: function (Data) {
+                        if (Data.Success) {
+                            window.location.href = $me.attr('href');
+                        } else {
+                            DisplayErrorMessage(GetErrorMessageFromAjax(Data));
+                            wait.hide();
+                            $me.show();
+                        }
+                    },
+                    error: function (request) {
+                        DisplayErrorMessage(GetErrorMessageFromAjax(request));
+                        wait.hide();
+                        $me.show();
+                    }
+                });
+            });
+
+            $('#Part2NextButton').on('click', function () {
+                var form = $('#ApplyForm');
+
+                var isValid = form.valid();
+                var validator = form.validate();
+                if (SectionValidator.IsSecondSectionValid(validator.errorList)) {
+                    Spk.UI.TabManager.Switch('Tab-Company');
+                    return true;
+                }
+
+                return false;
+            });
+
+            $('#Part3BackButton').on('click', function () {
+                Spk.UI.TabManager.Switch('Tab-Profile');
+            });
+        }
+
+        $('#Part1NextButton').on('click', function () {
+            var form = $('#ApplyForm');
+
+            var isValid = form.valid();
+            var validator = form.validate();
+            if (SectionValidator.IsFirstSectionValid(validator.errorList)) {
+                Spk.UI.TabManager.Switch('Tab-Profile');
+                return false;
+            }
+
+            return false;
+        });
+
+        $('#Part2BackButton').on('click', function () {
+            Spk.UI.TabManager.Switch('Tab-Contact');
+        });
+
+    });
+</script>

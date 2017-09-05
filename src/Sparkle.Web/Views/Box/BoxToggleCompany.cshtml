@@ -1,0 +1,91 @@
+﻿@model Sparkle.Services.Networks.Companies.ToggleCompanyRequest
+
+<h3 class="accentBgColor">@(Lang.T(this.Model.IsEnabled ? "Désactivation de {0}" : "Activation de {0}", this.Model.CompanyName))</h3>
+
+<div>
+    
+    @if (this.Model.IsEnabled)
+    {
+        <h4>@Lang.T("Vous allez désactiver {0} {1}.", Lang.T("TheCompanyLabel"), this.Model.CompanyName)</h4>
+        <aside class="NoticeBlock Warning">
+        @Html.Markdown(Lang.T("Voici ce qu'il va se passer :\n\n* ses utilisateurs ne pourront plus se connecter ;\n* elle ne sera plus visible."))
+        </aside>
+    }
+    else
+    { 
+        <h4>@Lang.T("Vous allez réactiver {0} {1} qui est actuellement désactivée.", Lang.T("TheCompanyLabel"), this.Model.CompanyName)</h4>
+        <aside class="NoticeBlock Warning">
+        @Html.Markdown(Lang.T("Voici ce qu'il va se passer :\n\n* ses utilisateurs seront de nouveau visibles ;\n* elle apparaîtra de nouveau."))
+        </aside>
+    }
+    <div class="space20"></div>
+
+    @using (Html.BeginFormEx(new { @class = "actionForm", id = "ToggleCompanyForm" }, new { controller = "Box", action = "BoxToggleCompany" }))
+    {
+        @Html.HiddenFor(m => m.CompanyAlias)
+        @Html.HiddenFor(m => m.IsEnabled)
+
+        <div class="olddays">
+            @Html.LabelFor(m => m.IsEnabledRemark)
+            <div class="labelInputs">
+                @Html.TextAreaFor(m => m.IsEnabledRemark, new { @class = "textaera", style = "height:80px; width:100%" })
+                @Html.ValidationMessageFor(m => m.IsEnabledRemark)
+            </div>
+        </div>
+        <div class="space20"></div>
+        <div class="center">
+            @Html.Submit((Lang.T(this.Model.IsEnabled ? "Désactiver {0}" : "Activer {0}", this.Model.CompanyName)), null, new { @class = "button accentColor" })
+        </div>
+    
+    }
+
+</div>
+
+<script type="text/javascript">
+
+    (function () {
+        $('#ToggleCompanyForm').submit(function (event) {
+            event.preventDefault();
+
+            var $me = $(this);
+            var action = $me.prop('action');
+
+            var formData = $me.serialize();
+
+            $.ajax({
+                type: 'POST',
+                url: action,
+                data: formData,
+                success: function (data, textStatus, xhr) {
+                    var contentType = xhr.getResponseHeader('Content-Type').split(';')[0];
+                    if (contentType == 'text/html')
+                        $('#MsgBoxLargeAjax').html(data);
+                    else {
+                        if (data.Success) {
+                            var alias = $('#CompanyAlias').val();
+                            var enabled = $('#IsEnabled').val();
+                            if (enabled == 'False') {
+                                $('#' + alias + 'Enable').css('display', 'none');
+                                $('#' + alias + 'Disable').css('display', 'block');
+                            }
+                            else {
+                                $('#' + alias + 'Enable').css('display', 'block');
+                                $('#' + alias + 'Disable').css('display', 'none');
+                            }
+                            CloseMsgBoxLarge();
+                            DisplayErrorMessage('Vos changements ont bien été pris en compte !');
+                        }
+                        else {
+                            var error = GetErrorMessageFromAjax(data);
+                            DisplayErrorMessage(error);
+                        }
+                    }
+                },
+                error: function (request, status, error) {
+                    DisplayErrorMessage(GetErrorMessageFromAjax(request));
+                }
+            });
+        });
+    })();
+
+</script>

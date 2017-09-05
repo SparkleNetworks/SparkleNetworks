@@ -1,0 +1,65 @@
+﻿@model Sparkle.Services.Networks.Places.PlacePickerModel
+@{
+    this.ViewBag.Title = Lang.T("Choisissez un lieu");
+}
+
+<h3 class="accentBgColor">@this.ViewBag.Title</h3>
+
+<div id="placePickerContainer"></div>
+
+<script id="rootTemplate" type="text/template">
+<div class="focusPage">
+    <form style="padding: 10px 0">
+        <input type="text" class="textbox" name="place" placeholder="@Lang.T("Lieu")" />
+        <input type="text" class="textbox" name="location" placeholder="@Lang.T("Ville, pays")" value="@this.Model.Location" />
+        <input type="submit" class="button accentColor" value="@Lang.T("Rechercher")" />
+        <input type="button" class="button accentColor" value="@Lang.T("Vider la recherche")" />
+        <a href="@Url.Action("Add", "Places")" target="_blank" class=" button accentColor">@Lang.T("Ajouter un lieu")</a>
+        <input type="hidden" name="actualCoordinates" value="@this.Model.Geography" />
+    </form>
+</div>
+<div class="placesLayer" style="overflow-y:scroll;height:390px;margin-top:4px;">
+    <div class="places"></div>
+    <p class="no-results" style="text-align:center;font-size:xx-large;display:none;">@Lang.T("Il n'y a aucun résultat à afficher.")</p>
+    <p class="import" style="text-align:center;font-size:xx-large;display:none;">@Lang.T("Importation depuis Foursquare, veuillez patienter...")</p>
+    <div class="center loading"><img src="/Content/icones/wait.gif" /></div>
+</div>
+</script>
+
+<script id="elementTemplate" type="text/template">
+<div class="contentPlace">
+    <div class="click">
+        <img class="avatar" style="height:50px;width:50px;" src="/Content/places/default.png" />
+        <div style="margin-left:60px;">
+            <div class="label" style="font-size:1.1em;"></div>
+            <div class="secondaryInfos">
+                <div class="about"></div>
+                <div class="address"></div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-left:60px;" class="secondaryInfos">
+        <div>
+            <span class="distance" data-template="@Lang.T("Distance : {0} Km")" data-template-null="@Lang.T("Distance inconnue")"></span>
+            <span class="details" data-template="@Lang.T("Détails")"></span>
+            <span class="source" data-template="@Lang.T("via Foursquare")"></span>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+</script>
+
+<script type="text/javascript">
+
+    (function () {
+        new PlacePickerClass(
+            $,
+            $('#placePickerContainer'),
+            $('#rootTemplate'),
+            $('#elementTemplate'),
+            'place',
+            'location',
+            Spk.UI.Box.GetActualOptions());
+    })();
+
+</script>

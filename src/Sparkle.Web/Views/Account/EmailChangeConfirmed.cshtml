@@ -1,0 +1,33 @@
+﻿@model Sparkle.Models.Account.EmailChangeConfirmedModel
+@{
+    this.ViewBag.Title = Lang.T("Confirmation de changement d'adresse email");
+    this.SetHelpPage("Features/UserAccount");
+}
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title)
+}
+
+@if (Model.IsValid)
+{
+    <p class="introducing-title">Voici l'état de votre demande de changement d'e-mail datée du @this.Model.CreateDateUtc</p>
+
+    if (Model.Status == UserEmailChangeRequestStatus.Canceled)
+    {
+        <p>Cette demande a été annulé le @this.Model.ValidateDateUtc. S'il s'agit d'une erreur, veuillez en refaire une auprès d'un administrateur.</p>
+    }
+    
+    else if (Model.Status == UserEmailChangeRequestStatus.Pending)
+    {
+        <p>Félicitations ! Vous venez de confirmer votre nouvelle adresse e-mail. Désormais toutes vos newsletters et/ou notifications seront envoyées à cette adresse.</p><br />
+        <p>Rappel de la procédure : ancienne adresse : @Model.OldEmail, nouvelle adresse : @Model.NewEmail</p>
+    }
+    
+    else if (Model.Status == UserEmailChangeRequestStatus.Succeed)
+    {
+        <p>Cette demande a déjà été validé le @Model.ValidateDateUtc !</p>
+    }
+}
+else
+{
+    <p class="introducing-title">@Lang.T("Votre demande est erronée ou le lien est invalide !")</p>
+}

@@ -1,0 +1,26 @@
+﻿@model EditAdRequest
+@using Sparkle.Services.Networks.Ads
+@{
+    this.ViewBag.Title = Model.Id > 0 ? Lang.T("Edit ad") : Lang.T("New ad");
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+    this.SetAccentColor(SparkleAccentColor.Groups);
+}
+
+@section Focus
+{
+    @FocusPage.Declare(this.ViewBag.Title)
+}
+<div class="space30"></div>
+
+@using (Html.BeginFormEx(new { @class = "olddays", }))
+{
+    @Html.EditorForModel()
+
+    <div class="center">
+        <input type="submit" class="button large accentColor" value="@Lang.T("Enregistrer")" />
+    </div>
+}
+
+<script type="text/javascript">
+    $('#Name').focus();
+</script>

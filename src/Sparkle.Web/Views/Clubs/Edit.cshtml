@@ -1,0 +1,19 @@
+﻿@model Sparkle.Services.Networks.Clubs.EditClubRequest
+@{
+    ViewBag.Title = Lang.T("Modifier");
+}
+@{ this.SetAccentColor("#038a9a"); }
+
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title)
+}
+<div class="space20"></div>
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+
+    <div class="center">
+        <input type="submit" class="button accentColor" value="@Lang.T("Enregistrer")" />
+    </div>
+}

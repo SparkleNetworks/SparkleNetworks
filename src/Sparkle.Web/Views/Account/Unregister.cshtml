@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Désinscription";
+}
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title, "Vos préférences d'emails en tant qu'invité")
+}
+
+
+@if (this.ViewBag.ErrorMessage != null)
+{
+    <p class="error">@this.ViewBag.ErrorMessage</p>
+}
+
+@if (this.ViewBag.Invitation != null && this.ViewBag.Invitation.UserId != null)
+{
+    if (this.ViewBag.Invitation.User != null)
+    {
+        <p>Vous êtes inscrit en tant que @(this.ViewBag.Invitation.User.Login).</p>
+    }
+    else
+    {
+        <p>Vous êtes inscrit en tant que @(this.ViewBag.Invitation.Email).</p>
+    }
+    
+    <p class="accentBorderColor">Connectez vous à votre compte pour changer vos options de notification.</p>
+}
+
+@if (this.ViewBag.Invitation != null && this.ViewBag.Invitation.UserId == null)
+{
+    <p class="accentBorderColor">
+        Vous êtes 
+        @Html.ActionLink("invité à rejoindre", "Register", new { controller = "Account", id = this.ViewBag.Invitation.Code, }) 
+        @Lang.T("AppName") 
+        @if (this.ViewBag.Invitation.Unregistred) {
+            @:et vous avez choisi de ne pas recevoir la newsletter hebdomadaire.
+        }else {
+            @:et vous recevez de ce fait la newsletter hebdomadaire.
+        }
+    </p>
+}
+
+@if (this.ViewBag.Confirmed)
+{
+    if (this.ViewBag.Invitation.Unregistred)
+    {
+        <p class="accentBorderColor">
+            C'est votre choix, certes il n'est pas bon, mais nous le respectons :-)<br />
+            <br />
+            Bonne continuation,<br />
+            L'équipe.
+        </p>
+    }else{
+        <p class="accentBorderColor">Vous voilà réabonné !</p>
+    }
+}
+
+@if (this.ViewBag.CanConfirm)
+{
+    <h3>Confirmer</h3>
+    <div>
+    @using (this.Html.BeginFormEx(new { @class = "olddays", }))
+    {
+        @Html.Hidden("id", (Guid)this.ViewBag.id)
+        @Html.Hidden("email", (string)this.ViewBag.email)
+
+        if (!this.ViewBag.Invitation.Unregistred){
+            <p>@Html.CheckBox("unregister") <label for="unregister" class="normal">se désinscrire de la newsletter</label></p>
+        }else{
+            <p>@Html.CheckBox("register") <label for="register" class="normal">se résinscrire à la newsletter</label></p>
+        }
+        
+        <input type="submit" class="flatButtonInline accentColor" value="Enregistrer" />
+    }
+    </div>
+}
+
+
+

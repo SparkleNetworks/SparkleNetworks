@@ -1,0 +1,92 @@
+﻿@model Sparkle.Models.CompanyContactModel
+@{
+    ViewBag.Title = Model.Company.Name;
+    this.SetAccentColor(SparkleAccentColor.Companies);
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+}
+
+@section Focus{
+    @FocusPage.Declare(Model.Company.Name)
+}
+
+<h3>@Lang.T("Message")</h3>
+@using (Html.BeginFormEx(new { @class = "olddays", }))
+{
+    @Html.HiddenFor(m => m.CompanyId)
+    @Html.HiddenFor(m => m.OomanChallenge)
+
+    @Html.LabelFor(m => m.FirstName)
+    <div class="labelInputs">
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "textbox" })
+        @Html.ValidationMessageFor(m => m.FirstName)
+    </div>
+    <hr />
+
+    @Html.LabelFor(m => m.LastName)
+    <div class="labelInputs">
+        @Html.TextBoxFor(m => m.LastName, new { @class = "textbox" })
+        @Html.ValidationMessageFor(m => m.LastName)
+    </div>
+    <hr />
+
+    @Html.LabelFor(m => m.Email)
+    <div class="labelInputs">
+        @Html.TextBoxFor(m => m.Email, new { @class = "textbox" })
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+    <hr />
+    
+    @Html.LabelFor(m => m.CompanyName)
+    <div class="labelInputs">
+        @Html.TextBoxFor(m => m.CompanyName, new { @class = "textbox" })
+        @Html.ValidationMessageFor(m => m.CompanyName)
+    </div>
+    <hr />
+    
+    @Html.LabelFor(m => m.Message)
+    <div class="labelInputs">
+        @Html.TextAreaFor(m => m.Message, new { @class = "textarea" })<br />
+        @Html.ValidationMessageFor(m => m.Message)
+    </div>
+    <hr />
+    
+    @Html.LabelFor(m => m.OomanCheck)
+    <div class="labelInputs OomanCheck-Hide">
+        <p>@Lang.T("Afin de vérifier que vous êtes humain(e) (et non un robot), veuillez copier le texte ci dessous dans la case en dessous.")</p>
+        <pre id="@Html.GetFullHtmlFieldName(m => m.OomanCheck)-Clue">@this.Model.OomanClue</pre>
+        @Html.TextBoxFor(m => m.OomanCheck, new { @class = "textbox textbox480" })<br />
+        @Html.ValidationMessageFor(m => m.OomanCheck)
+    </div>
+    <hr />
+    
+
+    <div class="labelInputs">
+        <input type="submit" class="button accentColor" value="@Lang.T("Envoyer")" />
+    </div>
+    
+<script type="text/javascript">
+    $(document).ready(function () {
+        JavascriptIsOoman()
+    });
+</script>
+
+}
+
+@if(Model.IsAuthenticated){
+<h3>@Lang.T("Historique")</h3>
+if (Model.Messages.Count == 0)
+{
+    <p>Vous n'avez aucun message avec @Html.ActionLink(Model.Company.Name, "Company", new { id = Model.Company.Alias }, new { @class = "accentCompanyColor" }).</p>
+}
+
+foreach (var item in Model.Messages)
+{
+    <div class="messageItem @((item.FromCompanyId == Model.Company.ID) ? "messageItemMe" : "messageItemOther")">
+        @Html.ActionLink(item.FromCompany.Name, "Company", new { id = item.FromCompany.Alias }, new { @class = "accentCompanyColor" })<br />
+        <span class="msg-date">Message envoyé le @item.Date.ToShortDateString() à @item.Date.ToShortTimeString() par @Html.ActionLink(item.FromUser.FirstName + " " + item.FromUser.LastName, "People", "Peoples", new { id = item.FromUser.Username}, new { @class = "accentProfileColor" }).</span><br />
+        <br />
+        @item.Message
+
+    </div>
+}
+}

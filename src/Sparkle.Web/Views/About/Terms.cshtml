@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = Lang.T("Conditions d'utilisation");
+    var pedro = new Dictionary<string, string>();
+    pedro.Add("AppName", Lang.T("AppName"));
+    pedro.Add("AppDomain", Lang.T("AppDomain"));
+
+    var customFilePath = (string)this.ViewBag.ExtraTermsFilePath;
+    var hasCustomFile = customFilePath != null;
+}
+
+@section CustomFocus{
+    @FocusPage.Custom(this.ViewBag.Title)
+<p class="explication">@Lang.T("Sur cette page :")</p>
+<ul class="ul explication">
+    <li><a href="#SparkleTerms">Conditions d'utilisation Sparkle Networks</a></li>
+    @if (hasCustomFile)
+    {
+    <li><a href="#CustomTerms">Conditions d'utilisation particulières @Lang.T("AppName")</a></li>
+    }
+</ul>
+}
+<div class="space20"></div>
+
+<hr />
+<div class="space20"></div>
+
+<article class="terms" id="SparkleTerms">
+    <h1>Conditions d'utilisation Sparkle Networks</h1>
+@Html.FromMarkdownFile("~/Views/About/Terms.md", pedro)
+</article>
+
+<hr />
+<div class="space20"></div>
+@if (hasCustomFile)
+{
+<article class="terms" id="CustomTerms">
+    <h1>Conditions d'utilisation particulières @Lang.T("AppName")</h1>
+@Html.FromMarkdownFile(customFilePath, pedro)
+</article>
+}
+

@@ -1,0 +1,116 @@
+﻿@model Sparkle.Services.Networks.Users.ApplyRequestModel
+@{
+    this.ViewBag.Title = Lang.T("Votre demande d'inscription");
+    this.SetAccentColor(SparkleAccentColor.Account);
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+}
+
+@section Focus{
+
+    @FocusPage.Declare(this.ViewBag.Title)
+}
+<div class="space20"></div>
+
+<div class="center">
+@if (Model.IsNew)
+{
+    <h2>@Lang.T("Your request is not complete.")</h2>
+    <p>@Html.ActionLink("Fill your request", "Index", new { Key = Model.Key, })</p>
+}
+else if (Model.IsPendingEmailConfirmation)
+{
+    if ((bool)this.ViewBag.SendAgainRequest)
+    {
+        <h2>@Lang.T("An email has been sent again to {0}.", Model.UserDataModel.User.Email)</h2>
+        <p>@Lang.T("Please wait for him/her to confirm the email address.")</p>
+    }
+    else
+    {
+        <h2>@Lang.T("We are waiting for you to confirm your email address.")</h2>
+        <br />
+        if (!this.ViewBag.EmailSent)
+        {
+        <p>@Lang.T("Received no email?")</p>
+        @Html.ActionLink(Lang.T("Send email again"), "Details", new { Key = Model.Key, SendEmailAgain = true, }, new { @class = "button large accentColor", })
+        }
+    }
+}
+else if (Model.IsPendingAccept)
+{ 
+    <h2>@Lang.T("Your request is being validated by the administrators.")</h2>
+    <p>@Lang.T("Please wait for an email from us.")</p>
+}
+else if (Model.IsAccepted)
+{
+    <h2>@Lang.T("Your request has been accepted.")</h2>
+    <p>@Lang.T("You shall now log-in to your account.") @Html.ActionLink("Se connecter", "LogOn", "Account", new { @class = "button", }).</p>
+}
+else if (Model.IsRefused)
+{ 
+    <h2>@Lang.T("Your request has been refused.")</h2>
+    if (!string.IsNullOrEmpty(Model.RefusedRemark))
+    {
+    <blockquote>
+        <p>@Model.RefusedRemark</p>
+    </blockquote>
+    }
+}
+else
+{ 
+    <h2>@Lang.T("Your request is in a invalid state.")</h2>
+}
+</div>
+
+<script type="text/javascript">
+    var ThisPage = {
+        dirty: false,
+        busy: false,
+        timeout: null,
+        delay: 120000,
+
+        key: '@Model.Key',
+        currentState: '@Model.Status',
+
+        Queue: function () {
+            if (ThisPage.dirty) {
+                clearTimeout(ThisPage.timeout);
+                ThisPage.timeout = setTimeout(ThisPage.Run, ThisPage.delay);
+            }
+            else {
+                ThisPage.dirty = true;
+                ThisPage.timeout = setTimeout(ThisPage.Run, ThisPage.delay);
+            }
+        },
+        Run: function () {
+            if (ThisPage.busy)
+                return;
+            ThisPage.busy = true;
+
+            $.ajax({
+                type: 'GET',
+                url: '/Apply/GetApplyCurrentStatus/' + ThisPage.key,
+                data: {},
+                success: function (data) {
+                    if (data != undefined && data.Data != undefined && data.Data.Status != undefined) {
+                        Spk.Log.Info('coucou');
+                        if (data.Data.Status != ThisPage.currentState) {
+                            location.reload();
+                        }
+                    }
+                },
+                error: function (request) {
+                    var error = GetErrorMessageFromAjax(request);
+                    DisplayErrorMessage(error);
+                }
+            });
+
+            ThisPage.busy = false;
+            ThisPage.dirty = false;
+            ThisPage.Queue();
+        }
+    };
+
+    (function () {
+        ThisPage.Queue();
+    })();
+</script>

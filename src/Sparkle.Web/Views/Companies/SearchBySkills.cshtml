@@ -1,0 +1,17 @@
+﻿@model Sparkle.Models.CompaniesListModel
+@{
+    Layout = null;
+}
+
+<ul class="companies">
+@foreach (var company in Model) {
+    <li class="tile">
+        <a href="@Url.Action("Company", "Companies", new { id = company.Alias })"><img class="avatar" alt="" src='@company.Picture' /></a>
+        <a class="companyName accentCompanyColor" href="@Url.Action("Company", "Companies", new { id = company.Alias })"><h2>@company.Name</h2></a>
+        <div style="padding-left:110px;">
+        <div class="companyBaseline">@company.Baseline</div>
+        </div>
+        <div class="clear"></div>
+    </li>
+}
+</ul>

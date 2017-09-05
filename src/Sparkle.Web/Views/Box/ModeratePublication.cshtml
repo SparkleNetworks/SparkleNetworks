@@ -1,0 +1,213 @@
+﻿@model ModerateWallModel
+@{
+    
+}
+
+<h3 class="accentBgColor">Modérer une publication</h3>
+
+<div id="ModeratePublication-TabViews" style="height:450px;">
+    <ul id="ModeratePublication-Tabs">
+        <li><a href="#ModeratePublication-TabDelete"><span>SUPPRIMER</span></a></li>
+    @if (this.Model.IsImportedWithoutUser) {
+        <li><a href="#ModeratePublication-ChangeOwner"><span>CH. AUTEUR</span></a></li>
+    }
+    </ul>
+    <div id="ModeratePublication-TabDelete">
+        @DeleteForm()
+    </div>
+    @if (this.Model.IsImportedWithoutUser) {
+    <div id="ModeratePublication-ChangeOwner">
+        @ChangeOwnerForm()
+    </div>
+    }
+</div>
+
+<script type="text/ecmascript">
+    //(function() {
+    //})();
+</script>
+
+@helper DeleteForm()
+{
+    using (Html.BeginFormEx(new { @class = "actionform", id = "ModeratePublicationDeleteForm-" + this.Model.WallItem.Id, }, new { controller = "Ajax", action = "ModeratePublication" }))
+    {
+        @Html.Hidden("id", this.Model.WallItem.Id)
+        @Html.Hidden("command", "Delete")
+    
+    <p>Sélectionnez la raison de la suppression</p>
+    <div class="choiceList col2">
+        @foreach (var item in this.Model.DeleteReasons)
+        {
+    <div class="choiceItem">
+        <input type="radio" name="DeleteReason" value="@item.Value" id="DeleteReason_@(item.Value)" />
+        <label for="DeleteReason_@(item.Value)">@item.Text</label>
+    </div>
+        }
+    </div>
+    
+    <p>@Html.Submit("Valider", null, new { @class = "button accentColor", })</p>
+    }
+}
+
+@helper ChangeOwnerForm()
+{
+    <h4>Changer l'auteur</h4>
+    if (this.Model.IsImportedWithoutUser)
+    {
+        var sep = "";
+        <p>Il est possible de changer l'auteur de ce message. D'autres messages du même auteur @(this.Model.OwnerChange != null ? ("'" + this.Model.OwnerChange.UserIdentifier + "'") : "") seront aussi altérés. </p>
+        if (this.Model.OwnerChange != null)
+        {
+        <p>Cette opération sera effective sur : 
+            @if (this.Model.OwnerChange.TimelineItems != null)
+            {
+                @:@sep@this.Model.OwnerChange.TimelineItems.Count  publications
+                sep = ", ";
+            }
+            @if (this.Model.OwnerChange.TimelineComments != null)
+            {
+                @:@sep@this.Model.OwnerChange.TimelineComments.Count commentaires
+                sep = ", ";
+            }
+.
+        </p>
+        }
+    }
+    if (!this.Model.IsImportedWithoutUser)
+    {
+        <p>Aucune action spéciale n'est disponible.</p>
+    }
+
+    using (Html.BeginFormEx(new { @class = "", id = "ModeratePublicationChangeOwnerForm-" + this.Model.WallItem.Id, }, new { controller = "Ajax", action = "ChangePublicationOwner" }))
+    {
+        var users = this.Model.AvailableNewOwners.ToSelectList(x => x.Id.ToString(), x => x.FirstName + " " + x.LastName + " (" + x.CompanyName + ")", x => false);
+        @Html.Hidden("id", this.Model.WallItem.Id)
+        <p>
+            @Html.Label("UserId", "Nouvel auteur : ")
+            @Html.DropDownList("UserId", users, "Sélectionnez un utilisateur", new { @class = "textbox", })
+            @Html.Submit("Valider", null, new { @class = "button accentColor", })
+        </p>
+    }
+    
+    <h4>Publications et commentaires concernés</h4>
+    <div style="overflow-y:scroll;height: 220px;position:absolute;overflow-x:hidden;">
+    @foreach (var item in this.Model.OwnerChange.TimelineItems)
+    {
+        var author = item.ImportedId;
+        if (author != null && author.IndexOf("||||") > 0){
+            author = author.Substring(author.IndexOf("||||") + 4);
+            if (author.IndexOf("[{}]") > 0) {
+                author = author.Substring(0, author.IndexOf("[{}]"));
+            }
+        }
+        <div class="borders">
+            <p>@item.Text</p>
+            <p>Le @Html.DisplayDateTime(item.CreateDate) par @author. @Html.ActionLink("Ouvrir", "Item", "Ajax", new { id = item.Id, }, new { target = "_blank", @class = "external", })</p>
+        </div>
+    }
+    @foreach (var item in this.Model.OwnerChange.TimelineComments)
+    {
+        var author = item.ImportedId;
+        if (author != null && author.IndexOf("||||") > 0)
+        {
+            author = author.Substring(author.IndexOf("||||") + 4);
+            if (author.IndexOf("[{}]") > 0)
+            {
+                author = author.Substring(0, author.IndexOf("[{}]"));
+            }
+        }
+        <div class="borders">
+            <p>@item.Text</p>
+            <p>Le @Html.DisplayDateTime(item.CreateDate) par @author. @Html.ActionLink("Ouvrir", "Item", "Ajax", new { id = item.TimelineItemId, }, new { target = "_blank", @class = "external", })</p>
+        </div>
+    }
+    </div>
+}
+
+<script type="text/javascript">
+
+    $('#ModeratePublication-TabViews').tabs({
+        heightStyle: 'fill'
+    }).on('tabsactivate', function( event, ui ) {
+    });
+
+(function () {
+    $('#@("ModeratePublicationDeleteForm-" + this.Model.WallItem.Id)').submit(function(event) {
+        event.preventDefault();
+
+        var $me = $(this);
+        var action = $me.prop('action');
+
+        if ($me.hasClass('busy'))
+            return;
+
+        // validate
+
+        // submit
+        var formData = $me.serialize();
+        $me.addClass('busy');
+        $me.find('input[type=submit]').attr('disabled', 'disabled');
+        $.ajax({
+            type: 'POST',
+            url: action,
+            data: formData,
+            success: function (data) {
+                if (data != null && data.Success) {
+                    CloseMsgBoxLarge();
+                    var $elem = $('#publication' + @this.Model.WallItem.Id);
+                    if ($elem)
+                        $elem.addClass('obscured').slideUp();
+                } else {
+                    var error = GetErrorMessageFromAjax(data);
+                    DisplayErrorMessage(error);
+                }
+                $me.removeClass('busy');
+                $me.find('input[type=submit]').removeAttr('disabled');
+            },
+            error: function (request, status, error) {
+                var error = GetErrorMessageFromAjax(request);
+                DisplayErrorMessage(error);
+                $me.removeClass('busy');
+                $me.find('input[type=submit]').removeAttr('disabled');
+            }
+        });
+    });
+
+    $('#@("ModeratePublicationChangeOwnerForm-" + this.Model.WallItem.Id)').submit(function(event) {
+        event.preventDefault();
+
+        var $me = $(this);
+        var action = $me.prop('action');
+        
+        if ($me.hasClass('busy'))
+            return;
+
+        // submit
+        var formData = $me.serialize();
+        $me.addClass('busy');
+        $me.find('input[type=submit]').attr('disabled', 'disabled');
+        $.ajax({
+            type: 'POST',
+            url: action,
+            data: formData,
+            success: function (data) {
+                if (data != null && data.Success) {
+                    DisplayCOnfirmationMessage('Les changements ont été effectués. Ils ne seront visibles qu\'après rafraichissement de la page.');
+                    CloseMsgBoxLarge();
+                } else {
+                    var error = GetErrorMessageFromAjax(data);
+                    DisplayErrorMessage(error);
+                }
+                $me.removeClass('busy');
+                $me.find('input[type=submit]').removeAttr('disabled');
+            },
+            error: function (request, status, error) {
+                var error = GetErrorMessageFromAjax(request);
+                DisplayErrorMessage(error);
+                $me.removeClass('busy');
+                $me.find('input[type=submit]').removeAttr('disabled');
+            }
+        });
+    });
+})();
+</script>

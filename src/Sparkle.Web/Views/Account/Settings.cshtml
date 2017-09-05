@@ -1,0 +1,123 @@
+﻿@model Sparkle.Models.SettingsModel
+@{
+    this.ViewBag.Title = Lang.T("Paramètres");
+    this.SetHelpPage("Features/UserAccount");
+    this.SetAccentColor(SparkleAccentColor.Account);
+}
+
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title)
+}
+<div class="space20"></div>
+
+@using (Html.BeginFormEx(new { @class = "vue olddays form2col", }))
+{
+@Html.ValidationSummary(true)
+    @Html.HiddenFor(m => m.OnPublication)
+    @Html.HiddenFor(m => m.IsBannedFromMailChimp)
+    @Html.HiddenFor(m => m.IsPendingMailChimp)
+    @Html.HiddenFor(m => m.NotifyOnPersonalEmailAddress)
+    @Html.HiddenFor(m => m.UserKey)
+    
+<div class="form2col-item formOfCheckboxes">
+    <h3>@Lang.T("Notifications par email")</h3>
+    <ul class="settings">
+        <li>
+            @Html.CheckBoxFor(m => m.OnContactRequest)
+            @Html.LabelFor(m => m.OnContactRequest, new { @class = "" })
+            @Html.DescriptionFor(m => m.OnContactRequest)
+        </li>
+        <li>
+            @Html.CheckBoxFor(m => m.OnMessage)
+            @Html.LabelFor(m => m.OnMessage, new { @class = "" })
+            @Html.DescriptionFor(m => m.OnMessage)
+        </li>
+        <li>
+            @Html.CheckBoxFor(m => m.OnComment)
+            @Html.LabelFor(m => m.OnComment, new { @class = "" })
+            @Html.DescriptionFor(m => m.OnComment)
+        </li>
+        <li>
+            @Html.CheckBoxFor(m => m.OnEventInvitation)
+            @Html.LabelFor(m => m.OnEventInvitation, new { @class = "" })
+            @Html.DescriptionFor(m => m.OnEventInvitation)
+        </li>
+        <li>
+            @Html.CheckBoxFor(m => m.OnPrivateGroupJoinRequest)
+            @Html.LabelFor(m => m.OnPrivateGroupJoinRequest, new { @class = "" })
+            @Html.DescriptionFor(m => m.OnPrivateGroupJoinRequest)
+        </li>
+        <li>
+            @Html.CheckBoxFor(m => m.MainTimelineItems)
+            @Html.LabelFor(m => m.MainTimelineItems, new { @class = "" })
+            @Html.DescriptionFor(m => m.MainTimelineItems)
+        </li>
+        <li>
+            @Html.CheckBoxFor(m => m.MainTimelineComments)
+            @Html.LabelFor(m => m.MainTimelineComments, new { @class = "" })
+            @Html.DescriptionFor(m => m.MainTimelineComments)
+        </li>
+        @if (this.Services().AppConfigTree.Features.EnableCompanies)
+        {
+            <li>
+                @Html.CheckBoxFor(m => m.CompanyTimelineItems)
+                @Html.LabelFor(m => m.CompanyTimelineItems)
+                @Html.DescriptionFor(m => m.CompanyTimelineItems)
+            </li>
+            <li>
+                @Html.CheckBoxFor(m => m.CompanyTimelineComments)
+                @Html.LabelFor(m => m.CompanyTimelineComments)
+                @Html.DescriptionFor(m => m.CompanyTimelineComments)
+            </li>
+        }
+    </ul>
+    <div class="">
+    <p>
+    
+    </p>@*<p>
+    @Html.CheckBoxFor(m => m.OnPublication)
+    @Html.LabelFor(m => m.OnPublication, new { @class = "normal" })<br />
+    </p>*@<p>
+    </div>
+</div>
+    
+<div class="form2col-item formOfCheckboxes">
+    <h3>Newsletters</h3>
+    <ul class="settings">
+    <li>
+    @Html.CheckBoxFor(m => m.onNewsletter)
+    @Html.LabelFor(m => m.onNewsletter, new { @class = "" })
+    @Html.DescriptionFor(m => m.onNewsletter)
+    </li>
+    <li>
+    @Html.CheckBoxFor(m => m.OnDailyNewsletter)
+    @Html.LabelFor(m => m.OnDailyNewsletter, new { @class = "" })
+    @Html.DescriptionFor(m => m.OnDailyNewsletter)
+    </li>
+    <li>
+        @Html.CheckBoxFor(m => m.MailChimp, new { @class = "", })
+        @Html.LabelFor(m => m.MailChimp, new { @class = "", })
+        @Html.DescriptionFor(m => m.MailChimp)
+    </li>
+    </ul>
+
+    <div class="tempData"><ul>
+    @if (Model.IsBannedFromMailChimp)
+    {
+        <li class="Warning" style="padding-left:20px;">Votre adresse email a été bannie de notre fournisseur MailChimp.</li>
+    }
+    @if (Model.IsPendingMailChimp)
+    {
+        <li class="Warning" style="padding-left:20px;">Vous avez reçu un email pour confirmer votre adhésion.</li>
+    }
+    </ul></div>
+</div>
+<div class="clear"></div>
+<div class="center">
+    <input type="submit" value="@Lang.T("Enregistrer")" class="button large accentColor" />
+</div>
+}
+
+<script type="text/javascript">
+    menu('mainNavMyProfile');
+</script>

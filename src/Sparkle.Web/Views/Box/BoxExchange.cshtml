@@ -1,0 +1,64 @@
+﻿
+<style type="text/css">
+.exchangeMode
+{
+    display:none;
+}
+.exchangeP
+{
+    display:none;
+}
+</style>
+
+<h3 class="networkAccentBgColor">Nouvel échange</h3>
+
+<div style="margin:auto; width:600px; text-align:left">
+    <br />
+    <br />
+
+    <h5>Je cherche</h5>
+    <div style="float:right; width:300px; border-left:1px solid #ddd; padding-left:10px; font-size:11px; color:#424242">
+        <div class="exchangeP" id="p1">Vous cherchez une compétence spécifique pour une période définie.</div>
+        <div class="exchangeP" id="p2">Vous cherchez du matériel de prêt le temps d'un projet ou d'un évènement.</div>
+        <div class="exchangeP" id="p3">Vous cherchez une surface disponible pour une période définie.</div>
+    </div>
+
+    <input type="radio" name="type" id="t1" onclick="changeType(1)" checked="checked" /><label for="t1" class="normal"> une compétence</label><br />
+    <input type="radio" name="type" id="t2" onclick="changeType(2)" /><label for="t2" class="normal"> du matériel</label><br />
+    <input type="radio" name="type" id="t3" onclick="changeType(3)" /><label for="t3" class="normal"> une surface</label><br />
+    <br />
+
+    <h5>Je propose</h5>
+    <div style="float:right; width:300px; border-left:1px solid #ddd; padding-left:10px; font-size:11px; color:#424242">
+        <div class="exchangeP" id="p4">Vous avez une compétence que vous pouvez mettre à disposition d'une autre entreprise.</div>
+        <div class="exchangeP" id="p5">Vous avez du matériel que vous pouvez prêter à d'autres entreprises.</div>
+        <div class="exchangeP" id="p6">Vous avez une surface disponible que vous pouvez mettre à disposition d'une entreprise.</div>
+    </div>
+
+    <input type="radio" name="type" id="t4" onclick="changeType(4)" /><label for="t4" class="normal"> une compétence</label><br />
+    <input type="radio" name="type" id="t5" onclick="changeType(5)" /><label for="t5" class="normal"> du matériel</label><br />
+    <input type="radio" name="type" id="t6" onclick="changeType(6)" /><label for="t6" class="normal"> une surface</label><br />
+    <input type="hidden" id="esType" />
+
+    <br />
+    <input type="hidden" id="exchangeMode" value="1" />
+
+    <br />
+
+</div>
+
+<div class="small_shadow_bottom"></div>
+<a href="javascript:void(0)" class="button networkAccentBgColor" onclick="MsgBoxEdit()">Continuer</a>
+
+<script type="text/javascript">
+    BoxLargeBack('BoxExchangeEdit');
+    changeType(1);
+    function changeType(val) {
+        $('#exchangeMode').val(val);
+        $('.exchangeMode').hide();
+        $('.exchangeMode' + val).show();
+
+        $('.exchangeP').hide();
+        $('#p' + val).fadeIn();
+    }
+</script>

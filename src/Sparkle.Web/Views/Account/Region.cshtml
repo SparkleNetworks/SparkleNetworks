@@ -1,0 +1,48 @@
+﻿@model Sparkle.Services.Networks.Users.RegionSettingsRequest
+@{
+    ViewBag.Title = Lang.T("Changer mes options régionales");
+    this.SetAccentColor(SparkleAccentColor.Account);
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+    this.SetHelpPage("Features/UserAccount");
+
+    var culturesSelectList = new SelectList(Model.AvailableCultures, "Key", "Value");
+}
+
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title, Lang.T("Cette page vous permet de changer votre fuseau horaire et votre culture."))
+}
+
+@using (Html.BeginFormEx(new { @class = "olddays", }))
+{
+    @Html.HiddenFor(m => m.ReturnUrl)
+
+    <div class="space20"></div>
+    <p>
+        @Lang.T("Ces deux informations nous permettent de vous proposer une meilleur expérience utilisateur, si vous choisissez de ne rien spécifier des valeurs par défaut seront utilisées.")<br />
+        @Lang.T("La culture prise en compte sera celle de votre navigateur, tandis que le fuseau horaire sera celui par défaut de {0} : '{1}'.", Lang.T("AppName"), Model.DefaultTimezone.DisplayName)
+    </p>
+    <div class="space20"></div>
+
+    <div class="form2col" style="display:flex;">
+        <div class="form2col-item Culture">
+            @Html.LabelFor(m => m.CultureName)
+            @Html.DropDownListFor(m => m.CultureName, culturesSelectList, new { @class = "textbox", })
+            @Html.ValidationMessageFor(m => m.CultureName)
+        </div>
+
+        <div class="form2col-item Timezone">
+            @Html.LabelFor(m => m.TimezoneId)
+            <select class="textbox valid" id="TimezoneId" name="TimezoneId" aria-invalid="false">
+                @foreach (var tz in Model.AvailableTimezones)
+                {
+                    <option value="@tz.Key" @(tz.Key == Model.TimezoneId ? "selected=selected" : "")>@tz.Value</option>
+                }
+            </select>
+            @Html.ValidationMessageFor(m => m.TimezoneId)
+        </div>
+    </div>
+
+    <div class="center">
+        @Html.Submit(Lang.T("Appliquer"), Lang.T("Appliquer"), new { @class = "button large accentColor", })
+    </div>
+}

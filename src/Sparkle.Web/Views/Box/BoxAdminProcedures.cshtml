@@ -1,0 +1,247 @@
+﻿@model Sparkle.Services.Networks.Users.AdminProceduresRequest
+@{
+    var user = (User)this.ViewBag.User;
+
+    var canDisplayRecoverLink = this.ViewBag.CanDisplayRecoverLink is bool ? (bool)this.ViewBag.CanDisplayRecoverLink : false;
+    var canChangeEmail = this.ViewBag.CanChangeEmail is bool ? (bool)this.ViewBag.CanChangeEmail : false;
+    var canChangeCompany = this.ViewBag.CanChangeCompany is bool ? (bool)this.ViewBag.CanChangeCompany : false;
+    var isThereNoProcedure = !canDisplayRecoverLink && !canChangeEmail && !canChangeCompany;
+}
+<h3 class="accentBgColor">Procédures liées à @user.FirstName @user.LastName</h3>
+
+<div id="AdminProcedures-TabViews" class="" style="height:450px;">
+    <nav class="tabs">
+    <ul id="AdminProcedures-Tabs" class="tabs">
+        @if (canDisplayRecoverLink)
+        {<li><a href="#AdminProcedures-ResetPasswordLink">LIEN RESET MDP</a></li>}
+        @if (canChangeEmail)
+        {<li><a href="#AdminProcedures-ChangeEmailForm">CHANGEMENT EMAIL</a></li>}
+        @if (canChangeCompany)
+        {<li><a href="#AdminProcedures-ChangeCompanyForm">CHANGEMENT ENTREPRISE</a></li>}
+        @if (isThereNoProcedure)
+        {<li><a href="#AdminProcedures-NoProcedure">...</a></li>}
+    </ul>
+    </nav>
+
+@if (canDisplayRecoverLink) {
+    <div id="AdminProcedures-ResetPasswordLink" style="max-height:20em;">
+        @ResetPasswordLink(user)
+    </div>
+}
+@if (canChangeEmail) {
+    <div id="AdminProcedures-ChangeEmailForm" style="max-height:20em">
+        @ChangeEmailForm()
+    </div>
+}
+@if (canChangeCompany) {
+    <div id="AdminProcedures-ChangeCompanyForm" style="max-height:20em;">
+        @ChangeCompanyForm()
+    </div>
+}
+@if (isThereNoProcedure)
+{
+    <div id="AdminProcedures-NoProcedure">
+        <p>Aucune procédure n'est disponible pour cet utilisateur.</p>
+    </div>
+}
+@helper ResetPasswordLink(User user)
+{
+    <div>
+        <p>Voici le lien de récupération de mot de passe pour @user.FirstName @user.LastName avec l'adresse <code>@user.Email</code>.</p>
+        <pre>@this.ViewBag.PasswordRecoveryLink</pre>
+        <p>L'utilisateur sera invité à saisir un nouveau mot de passe puis à s'identifier à l'aide de son adresse email et de son nouveau mot de passe.</p><br />
+        <p>La dernière modification du mot de passe de @user.FirstName date du @Html.DisplayDate((DateTime)this.ViewBag.LastPasswordChangeDate) à @Html.DisplayTime((DateTime)this.ViewBag.LastPasswordChangeDate)</p>
+        @if (this.ViewBag.PasswordIsLockedOut)
+        {
+            <ul><li class="Warning">Le mot de passe de @user.FirstName est bloqué ou n'est pas valide, il/elle doit impérativement utiliser le lien ci-dessus pour pouvoir se connecter à nouveau.</li></ul>
+        }
+    </div>
+}
+
+@helper ChangeEmailForm()
+{
+    using (Html.BeginFormEx(new { @class = "actionform", id = "ChangeEmailForm", }, new { controller = "Box", action = "BoxAdminProcedures" }))
+    {
+        @Html.Hidden("PostAction", Sparkle.Services.Networks.Users.AdminProceduresPostAction.ChangeEmail)
+        @Html.HiddenFor(m => m.Login)
+        @Html.HiddenFor(m => m.FirstName)
+        @Html.HiddenFor(m => m.LastName)
+        @Html.HiddenFor(m => m.HasAlreadyPending)
+    
+    <div class="olddays">
+        <label>Email actuel</label>
+        <div class="labelInputs">
+            @Html.TextBoxFor(m => m.ActualEmail, new { @class = "textbox textboxLikeTextarea", @readonly = "readonly" })
+        </div>
+        @Html.LabelFor(m => m.Email)
+        <div class="labelInputs">
+        @Html.TextBoxFor(m => m.Email, new { @class = "textbox textboxLikeTextarea" })
+        @Html.ValidationMessageFor(m => m.Email)
+        </div><br />
+    </div>
+        
+        <div class="choiceItem">
+        @if (Model.HasAlreadyPending)
+        {
+                @Html.CheckBoxFor(m => m.OverwritePending)
+                <label for="OverwritePending">@Model.FirstName @Model.LastName a déjà un nouvel email en attente de validation, cochez cette case pour supprimer cette demande avant.</label>
+            <div>
+                Rappel de la demande : changement vers "@Html.DisplayFor(m => m.PendingEmail)"
+                @if (Model.PendingRemark != null)
+                { 
+                    @:, raison : "@Model.PendingRemark" 
+                }
+                @if (Model.ForbidNewEmail)
+                {
+                    @:, avec blocage de l'ancienne adresse
+                }
+            </div>
+            <br />
+        }
+        
+        @Html.CheckBoxFor(m => m.ForbidNewEmail)
+        @Html.LabelFor(m => m.ForbidNewEmail)
+        </div><br />
+        
+    <div class="olddays">
+        @Html.LabelFor(m => m.Remark)
+        <div class="labelInputs">
+        @Html.TextAreaFor(m => m.Remark, new { @class = "textarea", style = "height:80px;", })
+        @Html.ValidationMessageFor(m => m.Remark)
+        </div>
+    </div>
+        <br />
+        <div class="center">
+            @Html.Submit("Envoyer", null, new { @class = "button accentColor", })
+        </div>
+        <p>L'utilisateur devra confirmer la nouvelle adresse email en suivant le lien qui lui sera envoyé.</p>
+    }
+}
+
+@helper ChangeCompanyForm()
+{
+    using (Html.BeginFormEx(new { @class = "actionform", id = "ChangeCompanyForm", }, new { controller = "Box", action = "BoxAdminProcedures" }))
+    {
+        var companiesSelectList = new SelectList(Model.Companies, "Key", "Value");
+        var rightsSelectList = new SelectList(Model.CompaniesRights, "Key", "Value");
+        
+        @Html.Hidden("PostAction", Sparkle.Services.Networks.Users.AdminProceduresPostAction.ChangeCompany)
+        @Html.HiddenFor(m => m.Login)
+        @Html.HiddenFor(m => m.FirstName)
+        @Html.HiddenFor(m => m.LastName)
+
+        <div class="olddays">
+            <label>Entreprise actuel</label>
+            <div class="labelInputs">
+                @Model.ActualCompany
+            </div><br />
+        </div>
+
+        <div class="choiceItem">
+            <label>Nouvelle entreprise</label>
+            <div class="labelInputs">
+                @Html.DropDownListFor(m => m.NewCompanyId, companiesSelectList, new { @class = "textbox", })
+            </div><br />
+
+            <label>Droits dans la nouvelle entreprise</label>
+            <div class="labelInputs">
+                @Html.DropDownListFor(m => m.NewRight, rightsSelectList, new { @class = "textbox", })
+            </div><br />
+        </div><br />
+
+        <div class="center">
+            @Html.Submit("Envoyer", null, new { @class = "button accentColor", })
+        </div>
+    }
+}
+</div>
+
+<script type="text/javascript">
+    
+    $('#AdminProcedures-TabViews').tabs({
+        heightStyle: 'fill'
+    }).on('tabsactivate', function (event, ui) {
+    });
+
+    (function () {
+        $('#ChangeEmailForm').submit(function (event) {
+            event.preventDefault();
+            
+            var $me = $(this);
+            var action = $me.prop('action');
+
+            var formData = $(this).serialize();
+            //var dic = {};
+            //jQuery.each(formData, function (i, data) {
+            //    dic[data.name] = data.value;
+            //});
+            //Spk.Admin.ChangeEmail(dic['Login'], dic['Text'], dic['OverwritePending']);
+
+            $.ajax({
+                type: 'POST',
+                url: action,
+                data: formData,
+                success: function (data, textStatus, xhr) {
+                    var contentType = xhr.getResponseHeader('Content-Type').split(';')[0];
+                    if (contentType == 'text/html')
+                        $('#MsgBoxLargeAjax').html(data);
+                    else {
+                        if (data.Success) {
+                            CloseMsgBoxLarge();
+                            DisplayErrorMessage('Un e-mail a été envoyé à la nouvelle adresse. ' + data.Data.FirstName + ' doit suivre le lien à l\'intérieur pour valider son changement d\'e-mail.');
+                        }
+                        else {
+                            var error = GetErrorMessageFromAjax(data);
+                            DisplayErrorMessage(error);
+                        }
+                    }
+                },
+                error: function (request, status, error) {
+                    var error1 = GetErrorMessageFromAjax(request);
+                    DisplayErrorMessage(error1);
+                }
+            });
+        });
+        $('#ChangeCompanyForm').submit(function (event) {
+            event.preventDefault();
+
+            var $me = $(this);
+            var action = $me.prop('action');
+
+            var formData = $(this).serialize();
+            //var dic = {};
+            //jQuery.each(formData, function (i, data) {
+            //    dic[data.name] = data.value;
+            //});
+            //Spk.Admin.ChangeEmail(dic['Login'], dic['Text'], dic['OverwritePending']);
+
+            $.ajax({
+                type: 'POST',
+                url: action,
+                data: formData,
+                success: function (data, textStatus, xhr) {
+                    var contentType = xhr.getResponseHeader('Content-Type').split(';')[0];
+                    if (contentType == 'text/html')
+                        $('#MsgBoxLargeAjax').html(data);
+                    else {
+                        if (data.Success) {
+                            CloseMsgBoxLarge();
+                            DisplayErrorMessage('L\'entreprise de ' + data.Data.FirstName + ' a été modifié avec succès !');
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 2000);
+                        }
+                        else {
+                            var error = GetErrorMessageFromAjax(data);
+                            DisplayErrorMessage(error);
+                        }
+                    }
+                },
+                error: function (request, status, error) {
+                    DisplayErrorMessage(error);
+                }
+            });
+        });
+    })();
+
+</script>

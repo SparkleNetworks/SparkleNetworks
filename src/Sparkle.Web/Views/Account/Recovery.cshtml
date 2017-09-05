@@ -1,0 +1,61 @@
+﻿@model Sparkle.Models.Account.RecoverPasswordModel
+@{
+    Html.EnableUnobtrusiveJavaScript(false); // there is an error without that
+    if (this.ViewBag.IsPasswordReset) {
+        this.ViewBag.Title = "Réinitialisation du mot de passe";
+    }else{
+        this.ViewBag.Title = Lang.T("Activer votre compte");
+    }
+    this.SetAccentColor(SparkleAccentColor.Account);
+    this.SetHelpPage("Features/UserAccount");
+}
+
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title, "Votre nouveau mot de passe doit contenir au moins " + ViewData["PasswordLength"] + " caractères.")
+}
+<div class="space20"></div>
+
+<div class="center">
+<div class="inBox">
+@if (Model.IsValid) 
+{
+    using (Html.BeginFormEx(new { @class = "olddays", }))
+    {
+    <label>@Lang.T("Adresse email")</label>
+    <div class="labelInputs">
+        <input type="text" value="@this.ViewBag.Email" disabled="disabled" class="textbox textbox-networkAccentColor" />
+    </div>
+     
+    <label>@Lang.T("Identifiant")</label>
+    <div class="labelInputs">
+        <input type="text" value="@this.Model.Username" disabled="disabled" class="textbox textbox-networkAccentColor" />
+    </div>
+        
+    <label>@Lang.T("Nouveau mot de passe")</label>
+    <div class="labelInputs">
+        @Html.HiddenFor(m => m.Username)
+        @Html.HiddenFor(m => m.Key)
+        @Html.PasswordFor(m => m.NewPassword, new { @class = "textbox textbox-networkAccentColor" })
+        @Html.ValidationMessageFor(m => m.NewPassword)
+    </div>
+    <div>
+        @Html.CheckBoxFor(m => m.RememberMe, new { @checked = "checked" })
+        <label for="RememberMe" style="display:inline-block;float:none">@Lang.T("Se souvenir de moi")</label>
+    </div>
+    <div class="labelInputs" style="text-align:center;">
+        @Html.Submit(this.ViewBag.IsPasswordReset ? Lang.T("Changer") : Lang.T("Activer"), null, new { @class = "button accentColor", })
+    </div>
+    }
+}
+else
+{
+<p>@Lang.T("Jeton invalide ou expiré.")</p>
+}
+</div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#NewPassword').focus();
+    });
+</script>

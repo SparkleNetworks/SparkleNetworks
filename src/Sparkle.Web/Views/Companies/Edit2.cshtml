@@ -1,0 +1,291 @@
+﻿@model EditProfileFieldsRequest
+@using Sparkle.Services.Networks.Models.Profile
+@using Sparkle.Services.Networks.Models
+@using Sparkle.Services.Networks.Lang
+@{
+    this.ViewBag.Title = Lang.T("Modifier le profil de mon entreprise");
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+    this.SetAccentColor(SparkleAccentColor.Companies);
+    this.SetHelpPage("Features/Companies");
+    
+    dynamic variable = System.Configuration.ConfigurationManager.GetSection("system.web/httpRuntime");
+    var limit = (int)variable.MaxRequestLength * 1000;
+    var inputId = Guid.NewGuid();
+
+    User user = null;
+    Sparkle.Services.Networks.Models.NetworkModel network = this.Services().CurrentNetwork;
+    var sessionService = this.Services() != null ? this.Services().Session : null;
+    if (sessionService != null)
+    {
+        user = sessionService.User;
+    }
+
+    var company = (Sparkle.Services.Networks.Models.CompanyModel)this.ViewBag.Company;
+    ////var categories = new SelectList(this.Model.Categories, "Id", "Name");
+    var singleTypes = new ProfileFieldType[] { ProfileFieldType.About, };
+    var optionalTypes = new ProfileFieldType[] { ProfileFieldType.AngelList, ProfileFieldType.Country, };
+    var obsoleteTypes = new ProfileFieldType[] { ProfileFieldType.City, ProfileFieldType.Location, ProfileFieldType.ZipCode, };
+    var indexes = Enumerable.Range(0, Model.Values.Count).ToList();
+    var nextIndex = new Func<int>(() =>
+    {
+        var max = indexes.Max();
+        var value = max + 1;
+        indexes.Add(value);
+        return value;
+    });
+}
+
+@section CustomFocus
+{
+    @FocusPage.Custom(company.Name)
+    <ul class="toolbox">
+        <li>@Html.ActionLink(Lang.T("Retour"), "Company", new { id = company.Alias, }, new { title = Lang.T("Retour"), @class = "left26", })</li>
+    </ul>
+    <div class="clear"></div>
+}
+
+<div class="space30"></div>
+
+@using (Html.BeginFormEx(new { @class = "olddays hasphonefield", }))
+{
+foreach (var field in Model.Fields)
+{
+    if (obsoleteTypes.Contains(field.KnownFieldType)) { continue; }
+
+    bool isSingle = singleTypes.Contains(field.KnownFieldType);
+    bool isOptional = optionalTypes.Contains(field.KnownFieldType);
+    var values = Model.Values.Where(v => v.ProfileFieldId.Equals(field.Id)).ToArray();
+    string fieldLabel = field.Name;
+
+    if (field.KnownFieldType == ProfileFieldType.About) { fieldLabel = NetworksLabels.About; }
+    else if (field.KnownFieldType == ProfileFieldType.Email) { fieldLabel = NetworksLabels.Email; }
+    else if (field.KnownFieldType == ProfileFieldType.Phone) { fieldLabel = NetworksLabels.Phone; }
+    else if (field.KnownFieldType == ProfileFieldType.Site) { fieldLabel = NetworksLabels.Website; }
+    else
+    {
+        fieldLabel = Lang.T("ProfileField: " + field.Name);
+    }
+
+
+
+    bool canAdd = !isSingle;
+    bool canDelete = !isSingle;
+    
+<div data-FieldId="@field.Id" class="">
+    <h2 class="accentColor">@field.Name</h2>
+    
+    @foreach (var value in values)
+    {
+        int i = Model.Values.IndexOf(value);
+        @FieldEditor(field, value, i, canDelete);
+    }
+    
+    @if (isSingle && values.Length == 0)
+    {
+        int i = nextIndex();
+        var value = new ProfileFieldValueModel(field, null);
+        @FieldEditor(field, value, i, canDelete);
+    }
+    <div class="space20"></div>
+</div>
+}
+
+<p class="center">
+    <input type="submit" class="button large accentColor" name="Save" value="@Lang.T("Enregistrer")" />
+</p>
+}
+
+@helper FieldEditor(ProfileFieldModel field, ProfileFieldValueModel value, int index, bool canDelete)
+{
+    string namePrefix = "Item[" + index + "].";
+    string editor = "text";
+
+    if (field.KnownFieldType == ProfileFieldType.About) { editor = "textarea"; }
+        
+    <div data-ValueId="@value.ProfileFieldValueId">
+        <input type="hidden" name="@(namePrefix)FieldId" value="@field.Id" />
+        <input type="hidden" name="@(namePrefix)ValueId" value="@value.ProfileFieldValueId" />
+    @if (editor == "textarea")
+    {
+        <textarea name="@(namePrefix)Value" class="textbox" cols="20" rows="3">@value.Value</textarea>
+    }
+    else
+    {
+        <input type="text" name="@(namePrefix)Value" value="@value.Value" class="textbox textboxLikeTextarea" />
+    }
+
+    @if (canDelete)
+    {
+        string name = namePrefix + "Delete";
+        <input type="checkbox" class="checkbox" name="@name" id="@name" />
+        <label class="normal" for="@name"> @Lang.T("Supprimer")</label>
+    }
+
+    </div>
+}
+
+
+
+@*<div class="column half first">
+<label>@Lang.T("Logo")</label>
+<div class="labelInputs">
+
+    <script src="/Scripts/ajaxupload.js" type="text/javascript" charset="utf-8"></script>
+    <div class="loadingPicture">@Lang.T("Chargement...")</div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.Spk.UI.CompanyPicture.SetupUploader({
+                PictureContainerSelector: '.companyLogo',
+                UploadFormSelector: '#newHotnessForm',
+                UploadInputId: 'imageUpload',
+                MaxFileSize: @(limit),
+                UploadProgressSelector: '.loadingPicture',
+                CompanyAlias: '@this.Model.Alias',
+                InputId: '@inputId'
+            });
+        });
+    </script>
+    <div class="avatar avatarShadow companyLogo" style='width:100px;height:100px;background-image:url(@Model.PictureUrl)'></div>
+
+    <div style="float:left;margin-left:20px">
+    <form id="newHotnessForm" action="/Companies/UploadPicture" enctype="multipart/form-data">
+        <input class="uploadFileObject" type="file" id="imageUpload" name="imageUpload" size="20" style="width:0px;height:0px"/>
+        <label for="@inputId" class="button accentColor" style="margin-left:-5px">@Lang.T("Choisir le logo")</label>
+        <button type="submit" style="display:none">Save</button>
+    </form>
+    </div>
+    <div class="clear"></div>
+</div>
+</div>
+@using (Html.BeginFormEx(new { @class = "olddays", }))
+{
+    if (user != null && user.NetworkAccess.HasAnyFlag(NetworkAccessLevel.ManageCompany))
+    {
+<div class="column half">
+    <label class="accentAdminColor">@Model.Name @Lang.T("est")</label>
+    <div class="labelInputs">
+        @Html.DropDownListFor(model => model.CategoryId, categories, new { @class = "textbox" })
+        @Html.ValidationMessageFor(m => m.CategoryId)
+    </div>
+</div>
+    }
+<div class="clear"></div>
+    
+@Html.HiddenFor(m => m.Alias)<br />
+@Html.ValidationSummaryEx()
+
+<div class="column half first">
+    @Html.LabelFor(m => m.Name)
+    <div class="labelInputs">
+        @Html.TextBoxFor(m => m.Name, new { @class = "textbox" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+</div>
+
+<div class="column half">
+    @Html.LabelFor(m => m.Baseline)
+    <div class="labelInputs">
+        @Html.TextBoxFor(m => m.Baseline, new { @class = "textbox textboxLikeTextarea" })
+        @Html.ValidationMessageFor(m => m.Baseline)
+    </div>
+</div>
+
+@Html.LabelFor(m => m.About)
+<div class="labelInputs">
+    @Html.TextAreaFor(m => m.About, new { @class = "textarea" })
+    @Html.ValidationMessageFor(m => m.About)
+</div>
+
+if (Model.Skills != null)
+{
+<label class="accentColor">@Lang.T("CompanySkills")</label>
+<div class="labelInputs">
+    @Html.Partial("Lists/SkillsEditList", Model.Skills)
+    <div style="clear:both"></div>
+    @Html.Partial("AddMembers", new Sparkle.Models.AddMemberModel(0, "/Account/GetSkills", "skill", "SkillClass", Lang.T("AddCompanySkill"), this.Model.CompanyId, 0))
+    @Html.HiddenFor(m => m.RemoveSkillsString)
+    @Html.ValidationMessageFor(m => m.Skills)
+</div>
+@Html.HiddenFor(m => m.NewsSkills)
+}
+
+<div class="column half first">
+    @Html.LabelFor(m => m.Phone)
+    <div class="labelInputs">
+        @Html.EditorFor(m => m.Phone, new { @class = "textbox" })<br />
+        @Html.ValidationMessageFor(m => m.Phone)
+    </div>
+
+    @Html.LabelFor(m => m.Email)
+    <div class="labelInputs">
+        @Html.TextBoxFor(m => m.Email, new { @class = "textbox", placeholder = "Ex : contact@sparklenetworks.com" })<br />
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+
+    @Html.LabelFor(m => m.Facebook)
+    <div class="labelInputs">
+        @Html.TextBoxFor(m => m.Facebook, new { @class = "textbox", placeholder = "Ex : facebook.com/SparkleNetworks" })
+        @Html.ValidationMessageFor(m => m.Facebook)
+    </div>
+
+    <div id="emailDomain">
+    @Html.LabelFor(m => m.EmailDomain)
+    <div class="labelInputs">
+    @Html.TextBoxFor(m => m.EmailDomain, new { @class = "textbox", placeholder = "Ex : sparklenetworks.com" })
+    @Html.ValidationMessageFor(m => m.EmailDomain)
+    </div>
+    </div>
+</div>
+
+<div class="column half">
+@Html.LabelFor(m => m.Site)
+<div class="labelInputs">
+    @Html.TextBoxFor(m => m.Site, new { @class = "textbox", placeholder = "Ex : http://sparklenetworks.com" })
+    @Html.ValidationMessageFor(m => m.Site)
+</div>
+</div>
+    
+<div class="column half">
+@Html.LabelFor(m => m.Twitter)
+<div class="labelInputs">
+    @Html.TextBoxFor(m => m.Twitter, new { @class = "textbox", placeholder = "Ex : twitter.com/SparkleNetworks" })
+    @Html.ValidationMessageFor(m => m.Twitter)
+</div>
+    
+@Html.LabelFor(m => m.AngelList)
+<div class="labelInputs">
+    @Html.TextBoxFor(m => m.AngelList, new { @class = "textbox", placeholder = "Ex : angel.co/sparklenetworks" })
+    @Html.ValidationMessageFor(m => m.AngelList)
+</div>
+</div>
+<div class="clear"></div>
+
+<div class="center">
+    <input type="submit" class="button large accentColor" value="@Lang.T("Enregistrer")" />
+</div>
+}
+
+<script type="text/javascript">
+    menu('mainNavMyCompany');
+
+    var oldSkill = "";
+    function SelectBuilding() {
+        var value = $('#Buildings').val();
+        var text = $("#Buildings option[value = '"+value+"']").text();
+        $('#Building').val(text);
+    }
+    function skills() {
+        var newSkill = "";
+        $('#NewsSkills').val();
+        $('.tagS').each(function () {
+            var test = $(this).attr('name');
+            newSkill += test + ";";
+        });
+        if (newSkill != oldSkill) {
+            $('#NewsSkills').val(newSkill);
+            oldSkill = newSkill;
+        }
+        setTimeout("skills()", 1000);
+    }
+    setTimeout("skills()", 3000);
+</script>*@

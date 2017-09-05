@@ -1,0 +1,156 @@
+﻿@model Sparkle.Services.Networks.Models.UserRoleFormModel
+@{
+    this.ViewBag.Title = "Rôles de " + this.Model.User.FullName;
+    this.SetAccentColor(SparkleAccentColor.Dashboard);
+
+    var checkAllBoxName = "checkAll";
+    var isDevicesEnabled = this.Services() != null ? this.Services().AppConfigTree != null ? this.Services().AppConfigTree.Features.SparkleTV.IsEnabled : false : false;
+    var isSubscriptionsEnabled = this.Services() != null ? this.Services().AppConfigTree != null ? this.Services().AppConfigTree.Features.Subscriptions.IsEnabled : false : false;
+    var isPartnerResourcesEnabled = this.Services() != null ? this.Services().AppConfigTree != null ? this.Services().AppConfigTree.Features.PartnerResources.IsEnabled : false : false;
+}
+@section CustomFocus{
+    @FocusPage.Custom(ViewBag.Title)
+    <ul class="toolbox">
+        <li>@Html.ActionLink(Lang.T("Retour"), "People", "Peoples", new { id = this.Model.User.Login }, new { @class = "left26" })</li>
+    </ul>
+    <div class="clear"></div>
+}
+<div class="space20"></div>
+
+<div class="vue">
+<div class="vue-content">
+    <div class="content">
+@if (this.Model != null && this.Model.User.NetworkAccess != NetworkAccessLevel.Disabled)
+{
+if (this.Services().AppConfigTree.Features.EnableCompanies)
+{
+    <h3>Rôles dans @this.Model.User.Company.Name</h3>
+<ul>
+    @foreach (Sparkle.Entities.Networks.CompanyAccessLevel item in Enum.GetValues(typeof(Sparkle.Entities.Networks.CompanyAccessLevel)))
+    {
+        if ((this.Model.User.CompanyAccess & item) == item && item != 0)
+        {
+        <li>@item</li>
+        }
+    }
+</ul>
+     <hr />
+}
+
+<h3>Rôles dans @Lang.T("AppName")</h3>
+using (Html.BeginFormEx(new { @class = "olddays", }))
+{
+        @Html.HiddenFor(m => m.UserId)
+        
+        @Html.ValidationSummary(true)
+    
+        <p>
+        @Html.CheckBox(checkAllBoxName)
+        @Html.Label(checkAllBoxName, "Tout cocher/décocher", new { @class = "normal" })</p>
+        
+        <p>
+            @Html.CheckBoxFor(m => m.AddCompany, new { name = "check" })
+            @Html.LabelFor(m => m.AddCompany, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.AddCompany)</p>
+        <p>
+            @Html.CheckBoxFor(m => m.ReadNetworkStatistics)
+            @Html.LabelFor(m => m.ReadNetworkStatistics, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.ReadNetworkStatistics)</p>
+        if (isDevicesEnabled)
+        {<p>
+            @Html.CheckBoxFor(m => m.ReadDevices)
+            @Html.LabelFor(m => m.ReadDevices, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.ReadDevices)</p>
+        <p>
+            @Html.CheckBoxFor(m => m.ManageDevices)
+            @Html.LabelFor(m => m.ManageDevices, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.ManageDevices)</p>
+        <p>
+            @Html.CheckBoxFor(m => m.ValidatePublications)
+            @Html.LabelFor(m => m.ValidatePublications, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.ValidatePublications)</p>}
+        <p>
+            @Html.CheckBoxFor(m => m.ManageInformationNotes)
+            @Html.LabelFor(m => m.ManageInformationNotes, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.ManageInformationNotes)</p>
+        <p>
+            @Html.CheckBoxFor(m => m.ManageRegisterRequests)
+            @Html.LabelFor(m => m.ManageRegisterRequests, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.ManageRegisterRequests)</p>
+        <p>
+            @Html.CheckBoxFor(m => m.ManageCompany)
+            @Html.LabelFor(m => m.ManageCompany, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.ManageCompany)</p>
+        <p>
+            @Html.CheckBoxFor(m => m.ValidatePendingUsers)
+            @Html.LabelFor(m => m.ValidatePendingUsers, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.ValidatePendingUsers)</p>
+        <p>
+            @Html.CheckBoxFor(m => m.ModerateNetwork)
+            @Html.LabelFor(m => m.ModerateNetwork, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.ModerateNetwork)</p>
+        <p>
+            @Html.CheckBoxFor(m => m.ManageClubs)
+            @Html.LabelFor(m => m.ManageClubs, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.ManageClubs)</p>
+        if (isSubscriptionsEnabled) {
+        <p>
+            @Html.CheckBoxFor(m => m.ManageSubscriptions)
+            @Html.LabelFor(m => m.ManageSubscriptions, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.ManageSubscriptions)</p>}
+        if (isPartnerResourcesEnabled) {
+        <p>
+            @Html.CheckBoxFor(m => m.ManagePartnerResources)
+            @Html.LabelFor(m => m.ManagePartnerResources, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.ManagePartnerResources)</p>}
+        <p>
+            @Html.CheckBoxFor(m => m.NetworkAdmin)
+            @Html.LabelFor(m => m.NetworkAdmin, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.NetworkAdmin)</p>
+    if (this.Model.IsCurrentUserSparkleStaff)
+    {
+        <p>
+            @Html.CheckBoxFor(m => m.SparkleStaff)
+            @Html.LabelFor(m => m.SparkleStaff, new { @class = "normal" })<br />
+            @Html.DescriptionFor(m => m.SparkleStaff)</p>
+    }
+        
+        <hr />
+        <div class="center">
+            <a href="@Url.Action("People", "Peoples", new { id = this.Model.User.Login })" class="button large">@Lang.T("Retour")</a>
+            @Html.Submit(Lang.T("Enregistrer"), "Enregistrer", new { @class = "button large accentColor" })
+        </div>
+}
+        
+}
+else if (this.Model != null && this.Model.User.NetworkAccess == NetworkAccessLevel.Disabled)
+{
+    <aside class="NoticeBlock Error">
+        <p>Cet utilisateur est désactivé.</p>
+    </aside>
+}
+    </div>
+</div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        check = true;
+        $('input[type=checkbox]').each(function () {
+            if (this.id != '@checkAllBoxName' && this.checked === false) {
+                check = false;
+            }
+        });
+        document.getElementById('@checkAllBoxName').checked = check;
+    });
+
+    $('input[type=checkbox][name=@checkAllBoxName]').click(function () {
+        check = true;
+        if (this.checked === true) { check = true; }
+        else if (this.checked === false) { check = false; }
+
+        $('input[type=checkbox]').each(function () {
+            this.checked = check;
+        });
+    });
+</script>

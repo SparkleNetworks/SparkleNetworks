@@ -1,0 +1,66 @@
+﻿@model Sparkle.Models.Box.ManageTagModel
+@{
+    
+}
+<h3 class="accentBgColor">Tag @this.Model.Tag.Name (@this.Model.Tag.Type)</h3>
+
+<div id="AdminProcedures-TabViews" class="" style="height:450px; margin:0px -10px -10px -10px;">
+<nav class="tabs">
+    <ul id="ManageTags-Tabs" class="tabs">
+        <li><a href="#ManageTags-Informations">Informations</a></li>
+        <li><a href="#ManageTags-Rename">Renommer</a></li>
+        <li><a href="#ManageTags-Merge">Fusionner</a></li>
+    </ul>
+</nav>
+
+<div id="ManageTags-Informations">
+    <table class="dashboard">
+        <thead>
+            <tr class="accentBgColor">
+                <th>Usage</th>
+                <th>Réseau</th>
+                <th>Autres réseaux</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Entreprises</th>
+                <td>@this.Model.Tag.Numbers["CompanyProfiles"]</td>
+                <td>@this.Model.Tag.Numbers["ExtCompanyProfiles"]</td>
+            </tr>
+            <tr>
+                <th>Utilisateurs</th>
+                <td>@this.Model.Tag.Numbers["UserProfiles"]</td>
+                <td>@this.Model.Tag.Numbers["ExtUserProfiles"]</td>
+            </tr>
+            <tr>
+                <th>Timelines</th>
+                <td>@this.Model.Tag.Numbers["TimelineItems"]</td>
+                <td>@this.Model.Tag.Numbers["ExtTimelineItems"]</td>
+            </tr>
+            <tr>
+                <th>Groupes</th>
+                <td>@this.Model.Tag.Numbers["Groups"]</td>
+                <td>@this.Model.Tag.Numbers["ExtGroups"]</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    
+<div id="ManageTags-Rename">
+@Html.Partial("~/Views/Shared/EditorTemplates/RenameTagRequest.cshtml", this.Model.Rename)
+</div>
+
+<div id="ManageTags-Merge">
+</div>
+
+</div>
+
+<script type="text/javascript">
+    
+    $('#AdminProcedures-TabViews').tabs({
+        heightStyle: 'fill'
+    }).on('tabsactivate', function (event, ui) {
+    });
+
+</script>

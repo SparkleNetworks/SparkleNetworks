@@ -1,0 +1,57 @@
+﻿@model Sparkle.Models.BoxChooseContactsModel
+<h3 class="accentBgColor">@Model.Title</h3>
+<input type="hidden" id="selectedContacts" value="" />
+
+<div style="padding:10px">
+    <input class="textbox" type="text" placeholder="Trouver une personne" onkeyup="searchContacts(this.value)" />
+</div>
+
+
+<ul class="people" id="selectorList" style="list-style:none;margin-bottom:10px;padding:0;height:350px; overflow:auto;">
+@if (Model.People.Count == 0)
+{
+    <li>Aucun contact :(</li>
+}
+@foreach (var contact in Model.People)
+{
+    <li data-login="@contact.Login" data-term="@contact.Name" class="jobChoice @Html.CssClass(contact.IsAdded, "selectContactItemAdded") @Html.CssClass(contact.IsContact, "isContact")">
+        <div class="avatar" style="background:url(@contact.Picture)"></div>
+        <div>
+        <input type="checkbox" @Html.Raw(contact.IsAdded ? "disabled=\"disabled\"" : "") class="selectContactItem" id="selectContact@(contact.Login)" data-login="@contact.Login" onclick="selectedContacts()" />
+        <label for="selectContact@(contact.Login)" class="normal @Html.CssClass(contact.IsAdded, "networkAccentColor")">@contact.Name</label><br />
+            @if (contact.IsAdded) { <div style="margin-left:74px; color:#777">Déjà présent</div> }
+        </div>
+    </li>
+}
+</ul>
+<a href="javascript:void(0)" class="button accentColor" onclick="SendInvitations('@Model.Type', document.getElementById('selectedContacts').value); CloseMsgBoxLarge(); return false;">Valider</a>
+
+<script type="text/javascript">
+    function selectedContacts() {
+        var list = "";
+        $('.selectContactItem').each(function (index) {
+            var o = $(this).attr('data-login');
+            if ($(this).attr('checked') == "checked") list += o + ";";
+        });
+
+        $('#selectedContacts').val(list);
+    }
+
+    function searchContacts(term) {
+        $('#selectorList li').each(function (index) {
+            var login = $(this).attr('data-term').toLowerCase();
+            if (login.indexOf(term.toLowerCase()) > -1) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    }
+
+    $('li.jobChoice').click(function () {
+        var input = $(this).find('input[type=checkbox]');
+        if (input.length == 1) {
+            input[0].checked = !input[0].checked;
+        }
+    });
+</script>

@@ -1,0 +1,15 @@
+﻿@{
+    this.ViewBag.Title = Lang.T("Parfait, c'est enregistré !");
+    this.SetHelpPage("Features/Companies");
+    this.SetAccentColor(SparkleAccentColor.Companies);
+}
+
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title)
+}
+<div class="clear space20"></div>
+
+<div class="introducing-title">@Lang.T("Nos équipes vont valider sous 24h ces informations.")</div>
+<div class="introducing-subtitle accentColor">@Lang.T("Vous receverez ensuite vos invitations :) A très bientôt !")</div>
+<br />
+<div class="small_shadow_bottom"></div>

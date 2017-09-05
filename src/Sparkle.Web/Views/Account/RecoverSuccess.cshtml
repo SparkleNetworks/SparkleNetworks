@@ -1,0 +1,26 @@
+﻿@{
+    this.ViewBag.Title = Lang.T("Mot de passe oublié ?");
+    this.SetHelpPage("Features/UserAccount");
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+}
+
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title)
+}
+<div class="space20"></div>
+
+<aside class="NoticeBlock @(ViewBag.ErrorMessage != null ? "Error" : "Confirmation")">
+@if (ViewBag.ErrorMessage != null)
+{
+    <p class="validation-summary-errors">@ViewBag.ErrorMessage</p>
+}
+else
+{
+    <p>@Lang.T("Un email a été envoyé à l'adresse spécifiée, il contient les instructions pour retrouver votre mot de passe.")</p>
+}
+
+</aside>
+
+<aside class="NoticeBlock Information">
+<p>@Lang.T("Si vous ne recevez pas l'email,") @Html.ActionLink(Lang.T("contactez-nous"), "Contact", new { controller = "About" }, new { @class = "accentColor" }).</p>
+</aside>

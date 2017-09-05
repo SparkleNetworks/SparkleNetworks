@@ -1,0 +1,24 @@
+﻿
+@using (Html.BeginFormEx(new { @class = "", id = "LostItemForm", }))
+{
+
+<h3 class="networkAccentBgColor">Déclarer un objet perdu</h3>
+<br />
+<label class="networkAccentColor">Titre</label>
+<input id="liTitle" class="textbox" style="width:590px" type="text" /><br />
+
+<br />
+
+<label class="networkAccentColor">Messages</label>
+<textarea id="liMessage" class="textarea"></textarea><br />
+    
+    @Html.Submit("Publier", null, new { @class = "button accentColor", })
+}
+
+<script type="text/javascript">
+    $('#LostItemForm').submit(function (event){
+        event.preventDefault();
+
+        SendLostItem(document.getElementById('liTitle').value, document.getElementById('liMessage').value);
+    });
+</script>

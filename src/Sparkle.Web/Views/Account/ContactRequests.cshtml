@@ -1,0 +1,35 @@
+﻿@model Sparkle.Models.ContactRequetsModel
+@{
+    this.ViewBag.Title = Lang.T("Demandes de contact");
+    this.SetHelpPage("Features/UserContacts");
+}
+
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title)
+}
+<div class="space30"></div>
+
+@if(this.Model.ContactRequests.Count > 0) {
+foreach (var request in Model.ContactRequests)
+{
+    <div id="request@(request.UserId)" style="margin-bottom:5px">
+        <a href="/Person/@request.Login"><div class="avatar" style="background:url(@request.SmallProfilePicturePath)"></div></a>
+        <div style="padding-left:67px">
+            <a href="/Person/@request.Login" class="accentProfileColor">@request.FirstName @request.LastName</a><br />
+            @request.JobName @(this.Services().AppConfigTree.Features.EnableCompanies ? ("chez "+request.CompanyName) : "")<br />
+            <div style="padding-top:3px" class="request-actions">
+                <a class="button accentProfileColor" href="@Url.Action("Person", "Peoples", new { id = request.Login, })" onclick="SparkleNetworks.People.AcceptContactRequest('@request.UserId'); return false;">@Lang.T("Accepter")</a>
+                <a class="button accentProfileColor" href="@Url.Action("Person", "Peoples", new { id = request.Login, })" onclick="SparkleNetworks.People.RefuseContactRequest('@request.UserId'); return false;">@Lang.T("Refuser")</a>
+                @*@Ajax.ActionLink("Accepter", "AcceptContact", "Profile", new { id = request.UserId, },
+                    new AjaxOptions() { UpdateTargetId = "request" + request.UserId, OnSuccess = "Contact accepté !", OnBegin = "En cours...", OnFailure = "Oops, une erreur est survenue :'(", }, new { @class = "flatButtonInline accentColor" })
+                @Ajax.ActionLink("Ignorer", "RefuseContact", "Profile", new { id = request.UserId, },
+                    new AjaxOptions() { UpdateTargetId = "request" + request.UserId, OnSuccess = "Demande ignorée...", OnBegin = "En cours...", OnFailure = "Oops, une erreur est survenue :'(", }, new { @class = "flatButtonInline accentColor" })*@
+            </div>
+            <div class="button accentProfileColor processing" style="display: none">...</div>
+        </div>
+        <div class="clear"></div>
+    </div>
+}
+} else {
+    <div class="introducing-title">@Lang.T("Aucune demande de contact en attente. Tout va bien.")</div>
+}

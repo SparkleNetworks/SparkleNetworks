@@ -1,0 +1,76 @@
+﻿@model Sparkle.Services.Networks.Models.RegisterRequestModel
+@{
+    this.ViewBag.Title = Lang.T("Votre demande d'inscription");
+    this.SetAccentColor(SparkleAccentColor.Account);
+    this.SetHelpPage("Features/UserAccount");
+}
+
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title, "Suivre l'avancement de votre demande.")
+}
+<div class="space20"></div>
+
+<p class="introducing-title">Le @Html.DisplayDate(this.Model.DateCreatedUtc) vous avez demandé à vous inscrire dans l'entreprise @this.Model.DisplayCompanyName sur @Lang.T("AppName").</p>
+
+@if (this.Model.StatusCode == Sparkle.Entities.Networks.RegisterRequestStatus.New || this.Model.StatusCode == Sparkle.Entities.Networks.RegisterRequestStatus.ExternalCommunication)
+{
+    <div class="tempData" style="display:block;"><ul>
+        <li class="Warning">Les responsables de @this.Model.DisplayCompanyName vérifient les coordonnées que vous avez indiqué. Vous recevrez une notification par email à @this.Model.EmailAddress.</li>
+    </ul></div>
+}
+else if (this.Model.StatusCode == Sparkle.Entities.Networks.RegisterRequestStatus.Accepted)
+{
+    <div class="tempData" style="display:block;"><ul>
+        <li class="Confirmation">@Lang.T("Votre demande a été acceptée.") @if (this.Model.AcceptedInvitation != null)
+        {
+            if (this.Model.AcceptedInvitation.UserId != null)
+            {
+                if (this.Model.AcceptedInvitation.User.Email != null)
+                { 
+                    @:@Html.ActionLink(Lang.T("Connexion"), "LogOn", new { UserName = this.Model.AcceptedInvitation.User.Email, }).
+                }
+                else { 
+                    @:@Html.ActionLink(Lang.T("Connexion"), "LogOn").
+                }
+            }
+            else
+            {
+                if (this.Model.AcceptedInvitation != null)
+                { 
+                @:Vous avez reçu @Html.ActionLink("une invitation à vous inscrire", "Register", new { id = this.Model.AcceptedInvitation.Code.ToString(), }).
+                }
+                else
+                {
+                @Lang.T("Vous avez reçu une invitation à vous inscrire à l'adresse {0}.", this.Model.EmailAddress)
+                }
+            }
+        }
+        </li>
+    </ul></div>
+    
+}
+else if (this.Model.StatusCode == Sparkle.Entities.Networks.RegisterRequestStatus.Refused)
+{
+    <div class="tempData" style="display:block;"><ul>
+        @if (this.Model.DateUpdatedUtc.HasValue)
+        {
+        <li class="Error">@Lang.T("Votre demande a été refusée le ") @Html.DisplayDate(this.Model.DateUpdatedUtc.Value).</li>
+        }
+        else
+        {
+        <li class="Error">@Lang.T("Votre demande a été refusée.")</li>
+        }
+    </ul></div>
+}
+else
+{
+    <div class="tempData" style="display:block;"><ul>
+        <li class="Error">@Lang.T("Votre demande est dans un état invalide.")</li>
+    </ul></div>
+}
+
+
+
+
+
+

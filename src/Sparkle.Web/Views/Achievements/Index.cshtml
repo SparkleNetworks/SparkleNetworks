@@ -1,0 +1,11 @@
+﻿@model AchievementsModel
+@{
+    ViewBag.Title = Lang.T("Tous les succès");
+}
+
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title)
+}
+<div class="space20"></div>
+
+@Html.Partial("Lists/Achievements", Model.Achievements);

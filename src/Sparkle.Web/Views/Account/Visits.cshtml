@@ -1,0 +1,25 @@
+﻿@model Sparkle.Models.VisitsModel
+@{
+    this.ViewBag.Title = Lang.T("Visites sur mon profil");
+    this.SetHelpPage("Features/Users");
+    this.SetAccentColor(SparkleAccentColor.Account);
+}
+
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title)
+}
+<div class="space30"></div>
+
+<div class="peopleTiles center">
+@foreach (var item in Model.Visits)
+{
+    <div class="contentItem">
+    <div class="large-avatar" style="background-image:url(@item.Picture)"></div>
+    <div class="infos">
+        <a class="accentProfileColor" href="/Person/@item.Login">@item.Name</a>
+        @item.Date.ToLongDateString()
+    </div>
+        <div style="clear:both"></div>
+    </div>
+}
+</div>

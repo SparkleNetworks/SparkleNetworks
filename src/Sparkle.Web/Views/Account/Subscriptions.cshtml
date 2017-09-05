@@ -1,0 +1,85 @@
+﻿@model IList<Sparkle.Services.Networks.Subscriptions.SubscriptionModel>
+@{
+    this.ViewBag.Title = Lang.T("Mes abonnements");
+    var me = this.Services().Session.User;
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
+    var tz = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+    this.SetAccentColor(SparkleAccentColor.Account);
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+    var jsonSettings = new Newtonsoft.Json.JsonSerializerSettings
+    {
+        NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+    };
+}
+
+@section CustomFocus{
+    @FocusPage.Custom(this.ViewBag.Title)
+    @if (Model.Any(o => o.IsPast))
+    {
+        <div class="space20"></div>
+        <input type="checkbox" id="showInactiveItems" /><label for="showInactiveItems">@Lang.T("Montrer les abonnements passés")</label>
+    }
+}
+<div class="space20"></div>
+
+@if (this.Model.Count == 0 || !this.Model.Any(o => o.IsActive)) {
+    <p class="introducing-title" id="noAboTitle">@Lang.T("Aucun abonnement n'est lié à votre compte.")</p>
+}
+
+@foreach (var item in Model)
+{
+    <div class="@(!item.IsPast ? "" : "inactive")" style="@(!item.IsPast ? "" : "display:none;")">
+        <h2 class="headFont center">@item.Name (@Html.CssClass(item.IsActive, Lang.T("(Abonnement) ACTIF"), Lang.T("(Abonnement) inactif")))</h2>
+        @{Html.RenderPartial("DisplayTemplates/SubscriptionModel", item);}
+        @*
+        <p>From @Html.DisplayDate(item.DateBeginUtc.Value) to @Html.DisplayDate(item.DateEndUtc.Value)</p>
+        <p>Paid @Html.DisplayDate(item.DateCreatedUtc)</p>
+        <p>Paid by @Html.ActionLink(item.OwnerUser.DisplayName, "People", "Peoples", new { id = item.OwnerUser.Login, })</p>
+        if (item.PriceEurWithVat.HasValue) { 
+            <p>€ @Html.DisplayAmount(item.PriceEurWithVat.Value, AmountCurrency.EUR)</p>
+        }
+        else if (item.PriceUsdWithVat.HasValue) { 
+            <p>€ @Html.DisplayAmount(item.PriceUsdWithVat.Value, AmountCurrency.EUR)</p>
+        }
+        else if (item.PriceUsdWithVat.HasValue) {
+            <p>@Html.DisplayAmount(item.PriceUsdWithVat.Value, AmountCurrency.USD)</p>
+        }
+        else if (item.PriceUsdWithoutVat.HasValue) {
+            <p>@Html.DisplayAmount(item.PriceUsdWithoutVat.Value, AmountCurrency.USD)</p>
+        }
+        else { 
+            <p>@Lang.T("Gratuit")</p>
+        }
+        <div class="clear"></div>*@
+        <div class="center no-print-block">
+        <p>@Html.ActionLink(Lang.T("Détails"), "Details", "Subscriptions", new { id = item.Id, }, new { @class = "button", })</p>
+        </div>
+        <hr />
+    </div>
+}
+
+@if (Model.Any(s => s.IsActive))
+{
+<p class="center no-print-block">@Lang.T("Vous avez déjà un abonnement actif.") @Html.ActionLink(Lang.T("S'abonner quand même"), "Subscribe", "Account", null, new { @class = "button", })</p>
+}
+else
+{
+<p class="center no-print-block">@Html.ActionLink(Lang.T("S'abonner"), "Subscribe", "Account", null, new { @class = "button accentColor", })</p>
+}
+
+
+<script type="text/javascript">
+    $('#showInactiveItems').click(function () {
+        if ($(this).is(':checked')) {
+            $('#noAboTitle').hide();
+            $('.inactive').fadeIn();
+        }
+        else {
+            if ('@this.Model.Any(o => o.IsActive)' == 'False')
+                $('.inactive').hide();
+            else
+                $('.inactive').fadeOut();
+            $('#noAboTitle').fadeIn();
+        }
+    });
+</script>

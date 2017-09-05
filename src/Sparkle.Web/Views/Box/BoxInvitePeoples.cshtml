@@ -1,0 +1,142 @@
+﻿@model Sparkle.Models.BoxChooseContactsModel
+@{
+    var inviteEveryoneTitle = Lang.T("Inviter tout le monde ({0})", Lang.T((Model.NonInvitedPeopleCount > 0 ? "{0} personnes seront invitées" : "il n'y a plus personne à inviter"), Model.NonInvitedPeopleCount));
+    var inviteMyContactsTitle = Lang.T("Inviter tout mes contacts ({0})", Lang.T((Model.NonInvitedContactsCount > 0 ? "{0} personnes seront invitées" : "il n'y a plus personne à inviter"), Model.NonInvitedContactsCount));
+}
+<h3 class="accentBgColor">@Model.Title</h3>
+@using (Html.BeginFormEx(new { id = "BoxInvitePeoplesForm", }, new { controller = "Home", action = "Invitations" }))
+{
+<input type="hidden" id="selectedContacts" value="" />
+<div class="focusPage">
+
+    <div style="padding:10px 0">
+        <input style="float:left" class="textbox" type="text" placeholder="@Lang.T("Rechercher")" onkeyup="ThisPage.SearchContacts(this.value)" />
+    @if (this.Model.Type.ToLower().StartsWith("e"))
+    {
+        if (this.ViewBag.MayInviteAll)
+        {
+        <input style="float:right" type="button" class="button accentColor" onclick="ThisPage.InviteAllNetwork()" title="@inviteEveryoneTitle" value="@Lang.T("Inviter tout le monde ({0})", Model.NonInvitedPeopleCount)" />
+        }
+        if (Model.NonInvitedContactsCount > 0)
+        {
+            <input style="float:right;margin-right:4px;" type="button" class="button accentColor" onclick="ThisPage.InviteMyContacts()" title="@inviteMyContactsTitle" value="@Lang.T("Inviter tout mes contacts ({0})", Model.NonInvitedContactsCount)" />
+        }
+    }
+    else
+    {
+        <input style="float:right" type="button" class="button accentColor" onclick="inviteEveryone()" value="Inviter tout le monde" />
+    }
+    <div class="clear"></div>
+    </div>
+</div>
+    <div id="sending" style="display:none" class="introducing-title"><br />Envoi des invitations...</div>
+    
+    <ul class="boxInvitePeople" id="selectorList">
+    @if (Model.People.Count == 0)
+    {
+        <li>Aucun contact :(</li>
+    }
+        @foreach (var contact in Model.People)
+        {<li data-login="@contact.Login" data-term="@contact.Name @contact.CompanyName @contact.JobName" class="@Html.CssClass(contact.IsAdded, "selectContactItemAdded") @Html.CssClass(contact.IsContact, "isContact")">
+            <label for="selectContact@(contact.Login)">
+                <img src="@(contact.Picture)"/>
+                <span class="input">
+                    <input name="userId" value="@(contact.Login)" type="checkbox" @Html.Raw(contact.IsAdded ? "disabled=\"disabled\"" : "") id="selectContact@(contact.Login)" data-login="@contact.Login" style="position:relative;left:auto;" />
+                </span>
+                <span class="content">
+                    <span class="title ellipsis"@(contact.IsAdded ? " style=color:#B1C800" : "")>@contact.Name</span>
+                    <span class="desc ellipsis" title="@contact.AddedReason">@(contact.IsAdded ? contact.AddedReason : "")</span>
+                </span>
+                <span style="clear:left;"></span>
+            </label>
+        </li>}
+    </ul>
+    <div class="center">
+    <p>@Html.Submit(Lang.T("Valider"), null, new { id = "SubmitInvitations", @class = "button large accentColor", })</p>
+    </div>
+}
+
+<script type="text/javascript">
+    var ThisPage = {
+        me: {},
+
+        AjaxInvite: function (inviteAll) {
+            var $me = ThisPage.me;
+            var action = $me.prop('action');
+
+            var data = $me.serializeArray();
+            if (data.length > 0 || inviteAll != undefined) {
+                $('#BoxInvitePeoplesForm').fadeOut();
+                $('#sending').fadeIn();
+                var dataString = "";
+                for (var i = 0; i < data.length; i++) {
+                    dataString += data[i].value + ";";
+                }
+
+                var formData = { id: "@(Model.Type)", users: dataString, inviteAll: inviteAll };
+                $.ajax({
+                    type: 'POST',
+                    url: action,
+                    data: formData,
+                    success: function (data) {
+                        if (data != null && data.Success) {
+                            $('#sending').fadeOut();
+                            DisplayErrorMessage("Vos invitations ont été transmises !");
+                            CloseMsgBoxLarge();
+                        }
+                        else {
+                            var error = GetErrorMessageFromAjax(data);
+                            DisplayErrorMessage(error);
+                            $('#BoxInvitePeoplesForm').fadeIn();
+                            $('#sending').fadeOut();
+                        }
+                    },
+                    error: function (request, status, error) {
+                        var error = GetErrorMessageFromAjax(request);
+                        DisplayErrorMessage(error);
+                        $('#BoxInvitePeoplesForm').fadeIn();
+                        $('#sending').fadeOut();
+                    }
+                });
+                BoxInvitePeople();
+            }
+        },
+
+        InviteAllNetwork: function () {
+            if (@Model.NonInvitedPeopleCount != 0)
+                ThisPage.AjaxInvite(true);
+        },
+
+        InviteMyContacts: function () {
+            if (@Model.NonInvitedContactsCount != 0)
+                ThisPage.AjaxInvite(false);
+        },
+
+        SearchContacts: function (term) {
+            $('#selectorList li').each(function (index) {
+                var login = $(this).attr('data-term').toLowerCase();
+                if (login.indexOf(term.toLowerCase()) > -1) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+    };
+
+    function inviteEveryone() {
+        $('#BoxInvitePeoplesForm label').click();
+        $('#BoxInvitePeoplesForm').submit();
+    }
+
+    (function () {
+        var form = $('#BoxInvitePeoplesForm');
+
+        ThisPage.me = form;
+        form.submit(function (event) {
+            event.preventDefault();
+
+            ThisPage.AjaxInvite();
+        });
+    })();
+</script>

@@ -1,0 +1,134 @@
+﻿@model Sparkle.Models.SocialNetworksModel
+@{
+    var displayName = "";
+    if (this.ViewBag.UserFullname is string)
+    {
+        displayName = (string)this.ViewBag.UserFullname;
+    }
+        
+    ViewBag.Title = Lang.T("Gérer les réseaux sociaux") + (string.IsNullOrEmpty(displayName) ? "" : " - " + displayName);
+    
+    var isTwitterUsersEnabled = this.Services() != null && this.Services().AppConfigTree != null ? this.Services().AppConfigTree.Features.Users.SocialPull.IsEnabled : false;
+}
+@{ this.SetAccentColor(SparkleAccentColor.Account); }
+<style type="text/css">
+    .socialNetworkOptions {
+        display: none;
+    }
+</style>
+
+
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title, Lang.T("Lier votre compte {0} permet d'afficher vos publications des autres réseaux sociaux.", Lang.T("AppName")))
+}
+
+@using (Html.BeginFormEx(new { @class = "olddays", }))
+{
+@*<h3>Facebook</h3>
+<label class="accentColor">Facebook</label>
+<div class="labelInputs">
+    Lier votre compte permet de :
+    <ul>
+        <li>vous connecter sur @Lang.T("AppName") via Facebook</li>
+    </ul>
+
+    @if(Model.Facebook.IsConnected){
+        <img alt="" src="/Content/Site/Dashboard/marks_yes.gif" />
+    } else {
+        @Html.ActionLink("Lier mon compte Facebook", "ConfigureTwitter", null, new { @class = "flatButtonInline accentColor" })
+    }
+</div>
+<div class="separator"></div>*@
+
+if (isTwitterUsersEnabled)
+{
+    <h3>Twitter</h3>
+    @*@if (!this.Model.IsTwitterAvailable)
+    {
+        <ul>
+        <li class="Warn">La connectivité Twitter n'est pas disponible dans ce réseau.</li>
+        </ul>
+    }*@
+
+    if (!Model.Twitter.IsConnected && Model.UserId.HasValue)
+    {
+        <div>
+            @Html.HiddenFor(m => m.UserId)
+            @Html.LabelFor(m => m.Twitter.AdminInput, Lang.T("Spécifier le nom du compte twitter a utilisé pour cet utilisateur. Il doit s'agir d'un compte valide !"), new { @class = "normal", })<br />
+            @@@Html.TextBoxFor(m => m.Twitter.AdminInput, new { @class = "textbox", style = "width:100px;" })<br /><br />
+            <input type="submit" class="flatButtonInline accentColor" value="@Lang.T("Enregistrer")" />
+        </div>
+    }
+    else if (Model.Twitter.IsConnected)
+    {
+        <div>
+            <img alt="" class="tutoPicRight" src="/Content/images/Companies/SyncTwitter.jpg" />
+            <p class="tutoText">@Lang.T("ConfigureTwitter: Le compte")<b><a target="_blank" class="accentColor" href="https://twitter.com/@(Model.Twitter.Username)">@@@Model.Twitter.Username</a></b>@Lang.T("ConfigureTwitter: vous est lié.") <img alt="" src="/Content/Site/Dashboard/marks_yes.gif" /></p>
+            @if (string.IsNullOrEmpty(Model.Twitter.Hashtag))
+            {
+                <p class="tutoText">@Lang.T("ConfigureTwitter: Tous les tweets sont également publiés sur {0}.", Lang.T("AppName"))</p>
+            }
+            else
+            {
+                <p class="tutoText">@Lang.T("ConfigureTwitter: Tous les tweets avec le hashtag")<b>#@Model.Twitter.Hashtag</b>@Lang.T("ConfigureTwitter: sont publiés sur {0}.", Lang.T("AppName"))</p>
+            }
+            <a class="TwitterOptions flatButtonInline accentColor" href="javascript:void(0)" onclick="ShowOptions('TwitterOptions')">@Lang.T("Modifier ce choix")</a>
+            <br />
+            <div id="TwitterOptions" class="socialNetworkOptions">
+                <input id="TwitterAllTweets" type="radio" name="a" onclick="HashtagSelection(0)" @(string.IsNullOrEmpty(Model.Twitter.Hashtag) ? "checked=checked" : "") /><label for="TwitterAllTweets" class="normal">@Lang.T("Afficher tout mes tweets")</label><br />
+                <input id="TwitterSelectedTweets" type="radio" name="a" onclick="HashtagSelection(1)" @(!string.IsNullOrEmpty(Model.Twitter.Hashtag) ? "checked=checked" : "") /><label for="TwitterSelectedTweets" class="normal">@Lang.T("Afficher uniquement mes tweets avec le hashtag #")</label>
+                @Html.HiddenFor(m => m.UserId)
+                @Html.TextBoxFor(m => m.Twitter.Hashtag, new { @class = "textbox", style = "width:100px" })<br />
+                <br />
+                @Html.CheckBoxFor(m => m.Twitter.ToDelete)
+                @Html.LabelFor(m => m.Twitter.ToDelete, Lang.T("Supprimer"), new { @class = "normal", })<br />
+                <input type="submit" class="flatButtonInline accentColor" value="@Lang.T("Enregistrer")" />
+            </div>
+        </div>
+    }
+    else
+    {
+        <div>
+            <img alt="" class="tutoPicRight" src="/Content/images/Companies/SyncTwitter.jpg" />
+            <p class="tutoText">@Lang.T("Lier votre compte Twitter permet d'afficher vos tweets sur {0}. Il sera alors possible d'aimer et de commenter les tweets.", Lang.T("AppName"))</p>
+            @Html.ActionLink(Lang.T("Lier le compte Twitter"), "ConfigureTwitter", null, new { @class = "flatButtonInline accentColor" })
+        </div>
+    }
+    <div class="clear"></div>
+    <hr />
+}
+
+@*<h3>LinkedIn</h3>
+<label class="accentColor">LinkedIn</label>
+<div class="labelInputs">
+    @Html.ActionLink("Lier mon compte LinkedIn", "ConfigureTwitter", null, new { @class = "flatButtonInline accentColor" })
+</div>
+<div class="separator"></div>
+
+<h3>Foursquare</h3>
+<label class="accentColor">Foursquare</label>
+<div class="labelInputs">
+    @Html.ActionLink("Lier mon compte Foursquare", "ConfigureTwitter", null, new { @class = "flatButtonInline accentColor" })
+</div>
+<div class="separator"></div>*@
+}
+
+<script type="text/javascript">
+    function ShowOptions(id) {
+        $('.' + id).hide();
+        $('#' + id).show();
+    }
+
+    var hashtag = '@Model.Twitter.Hashtag'
+    function HashtagSelection(state) {
+        if (state == 0) {
+            hashtag = $('#Twitter_Hashtag').val();
+            $('#Twitter_Hashtag').val('');
+        } else {
+            if ($('#Twitter_Hashtag').val() == '') {
+                $('#Twitter_Hashtag').val(hashtag);
+            }
+        }
+    }
+
+</script>

@@ -1,0 +1,75 @@
+﻿
+<h3 class="networkAccentBgColor">Bienvenue !</h3>
+
+<script type="text/javascript">
+    function MsgBoxEdit() {
+        $('#MsgBoxLarge-content').addClass('flip');
+    }
+
+    function MsgBoxSubmit() {
+        $('#MsgBoxLarge-content').removeClass('flip');
+    }
+</script>
+<h4>Bienvenue sur @Lang.T("AppName")  !</h4>
+
+@Lang.T("AppName")  vous permet de communiquer facilement avec toutes les personnes @Lang.T("CurrentPlace") , d'en rencontrer de nouvelles en rejoignant des groupes professionnels ou sportifs et en participant aux évènements organisés par les entreprises.<br />
+<br />
+Par où commencer ?<br /><a href="javascript:void(0)" onclick="MsgBoxEdit(); return false;">eeeee</a>
+
+<style type="text/css">
+.w_style
+{
+    float:left;
+    width:204px;
+    margin:20px;
+    padding-top:120px;
+    text-align:center;
+    border:1px solid #ddd;
+}
+.w_companies
+{
+    background:url(/Content/Site/Welcome/welcome_companies.png) no-repeat center 10px;
+}
+.w_peoples
+{
+    background:url(/Content/Site/Welcome/welcome_peoples.png) no-repeat center 10px;
+}
+.w_groups
+{
+    background:url(/Content/Site/Welcome/welcome_groups.png) no-repeat center 10px;
+}
+.w_calendar
+{
+    background:url(/Content/Site/Welcome/welcome_calendar.png) no-repeat center 10px;
+}
+</style>
+
+<div class="w_style w_companies">
+    <h4>Entreprises</h4>
+    <a class="networkAccentColor" href="/Companies">Parcourir les entreprises</a><br/>
+    <br />
+</div>  
+<div class="w_style w_peoples">
+    <h4>Personnes</h4>
+    <a class="networkAccentColor" href="/Peoples">Parcourir les personnes</a><br />
+    <br />
+
+</div>
+<div class="w_style w_groups">
+    <h4>Groupes</h4>
+    <a class="networkAccentColor" href="/Groups">Parcourir les groupes</a><br />
+    <br />
+
+</div>
+<div class="w_style w_calendar">
+    <h4>Agenda</h4>
+    <a class="networkAccentColor" href="/Events">Parcourir l'agenda</a><br />
+    <br />
+
+</div>
+
+<div style="clear:both"></div>
+<div style="text-align:center">
+    <h4>Vous pouvez également découvrir</h4>
+    <a class="button networkAccentBgColor" href="/">l'actualité @Lang.T("CurrentPlace") </a> <a class="button networkAccentBgColor" href="/Home/Network">l'actualité de votre entreprise</a>
+</div>

@@ -1,0 +1,21 @@
+﻿@model ConfirmFormModel<int, Sparkle.Services.Networks.Models.ClubModel>
+@{
+    ViewBag.Title = Model.Model.Name;
+}
+@{ this.SetAccentColor(SparkleAccentColor.Groups); }
+
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title)
+}
+<div class="space30"></div>
+
+<div class="rightBox eventBox" style="float:right;width:300px;padding:10px;">
+    <div style="color:#777">@Lang.T("Titre")</div>
+    <div style="font-size:17px">@Model.Model.Name</div>
+    <br />
+</div>
+
+@RenderPage("../Shared/_ConfirmDelete.cshtml")
+
+
+

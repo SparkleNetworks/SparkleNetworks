@@ -1,0 +1,14 @@
+﻿@model ConfirmFormModel
+
+@using (Html.BeginFormEx(new { @class = "delete" }))
+{
+    @Html.HiddenFor(m => m.Identifier)
+    @Html.HiddenFor(m => m.CancelUri)
+    @Html.HiddenFor(m => m.SuccessUri)
+
+    <h2>@(Model.Message ?? "Are you sure you want to delete this?")</h2>
+    <p>
+        <a href="@(Model.CancelUri ?? "Index")" class="button accentColor">@Lang.T("Annuler")</a>
+        <input type="submit" name="Continue" value="@Lang.T("Continuer")" class="button accentColor" />
+    </p>
+}

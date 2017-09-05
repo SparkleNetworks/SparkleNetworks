@@ -1,0 +1,17 @@
+﻿@model Sparkle.Models.VisitsModel
+@{
+    this.ViewBag.Title = Lang.T("Visites");
+    this.SetHelpPage("Features/Companies");
+    this.SetAccentColor(SparkleAccentColor.Companies);
+}
+
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title, Lang.T("Ils ont visité le profil de l'entreprise..."))
+}
+<div class="space20"></div>
+
+<p>In the future, this page will allow users to change a company name.</p>
+<ul>
+    <li>Choose a new name</li>
+    <li>Choose a new alias (this will change the company URL)</li>
+</ul>

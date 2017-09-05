@@ -1,0 +1,116 @@
+﻿@model Sparkle.Models.ResumeViewListModel
+@{
+    this.ViewBag.Title = Lang.T("Talents à saisir");
+    this.SetHelpPage("Features/WorkHere");
+    this.SetAccentColor(SparkleAccentColor.People);
+}
+
+@section Focus{
+    @FocusPage.Declare(Lang.T("Talents à saisir"), "Ces personnes souhaitent travailler à " + Lang.T("CurrentPlaceAlone") + " !")
+}
+
+@*<nav class="tabs">
+    <ul class="tabs">
+        <li><a href="#Tab-List" class="bottomAccentColor" onClick="Spk.UI.TabManager.Switch('Tab-List');">Liste</a></li>
+        <li><a href="#Tab-Skills" class="info" onClick="Spk.UI.TabManager.Switch('Tab-Skills');">Recherche par tags</a></li>
+    </ul>
+    <hr class="tabs clear" />
+</nav>*@
+
+<!-- Vues -->
+<div id="vue">
+<div id="vues">
+<div class="vue">
+<div class="vue-content">
+<div class="content">
+@if (Model.Resumes.Where(r => r.IsForMyCompany).Count() > 0)
+{
+<h3>Les talents qui vous correspondent</h3>
+    foreach (var item in Model.Resumes.Where(r => r.IsForMyCompany))
+    {
+    @ShowResume(item)
+    }
+}
+
+<h3>Tous les talents</h3>
+@foreach (var item in Model.Resumes)
+{
+    @ShowResume(item)
+}
+</div>
+</div>
+</div>
+<div class="vue">
+<div class="vue-content">
+<div class="content">
+<div class="panels-container">
+    <div class="side-bar">
+        
+    </div>
+    <div class="container">
+@if (Model.Resumes.Where(r => r.IsForMyCompany).Count() > 0)
+{
+        <h3>Les talents qui vous correspondent</h3>
+    foreach (var item in Model.Resumes.Where(r => r.IsForMyCompany))
+    {
+        @ShowResume(item)
+    }
+}
+
+        <h3>Tous les talents</h3>
+@foreach (var item in Model.Resumes)
+{
+        @ShowResume(item)
+}
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+@helper ShowResume(ResumeViewModel item)
+{
+<div>
+    <div style="float:left">
+        <div class="largeAvatarBackground">
+            <div class="largeAvatar" style='background-image:url(@item.Picture)'>
+                <div style="padding-top:80px">@Html.ActionLink("Découvrir", "Resume", "WorkHere", new { id = item.Resume.Id }, new { @class = "button accentColor" })</div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-left:210px">
+        <ul class="company-stats">
+    @if (item.Age.HasValue)
+    { 
+            <li>
+                <span class="count">@item.Age.Value</span>
+                <span class="title">ans</span>
+            </li>
+    }
+            <li>
+                <span class="count">@item.ResumeSkills.Count</span>
+                <span class="title">compétences</span>
+            </li>
+            <li>
+                <span class="count">@item.RequestLabel</span>
+                <span class="title">souhaité</span>
+            </li>
+        </ul>
+        
+        @Html.ActionLink(item.Resume.FirstName + " " + item.Resume.LastName, "Resume", "WorkHere", new { id = item.Resume.Id }, new { @class = "accentProfileColor", style = "font-size:17px" }) 
+        <div style="font-size:15px;color:#777">@item.Resume.Objective</div>
+        <div style="margin-top:20px">
+            @Tags.List(item.ResumeSkills)
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<hr />
+}
+
+<script type="text/javascript">
+    menu('mainNavNews');
+</script>

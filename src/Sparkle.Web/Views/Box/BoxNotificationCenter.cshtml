@@ -1,0 +1,49 @@
+﻿@model Sparkle.Models.BoxNotificationCenterModel
+
+<div class="ncGroup">
+    <h5>Contacts &amp; Messages</h5>
+    @if (Model.HasLastMessage) {
+    <div class="contentItem">
+        <a class="networkAccentColor" href="/Person/@Model.LastMessage.Login">@Model.LastMessage.FirstName + " " + Model.LastMessage.LastName</a> vous a envoyé un message :
+        <a class="networkAccentColor" href="/Conversations/@Model.LastMessage.Login">@Model.LastMessage.Text</a><br />
+        <div style="clear:both"></div>
+    </div>
+    <br />
+    }
+
+    @if (Model.Contacts.Count > 0) {
+        @Html.Partial("Lists/MyReceivedRequests", Model.Contacts)
+    } else {
+        <p>Aucune notification</p>
+    }
+</div>
+
+<div class="ncGroup">
+    <h5>&Eacute;vènements</h5>
+    @if (Model.Events.Count > 0) {
+        foreach (NotificationCenterItemModel item in Model.Events) {
+    <div>
+        <a class="networkAccentColor" href="/Person/@item.Contact.Login">@item.Contact.FirstName + " " + item.Contact.LastName</a> vous invite à l'évènement <a class="networkAccentColor" href="/Event/@item.Event.Id">@item.Event.Name</a>
+    </div>
+        }
+
+    } else {
+        <p>Aucune notification</p>
+    }
+</div>
+
+
+<div class="ncGroup">
+    <h5>Groupes</h5>
+    @if (Model.Groups.Count > 0) {
+        foreach (NotificationCenterItemModel item in Model.Groups) {
+    <div>
+        <a class="networkAccentColor" href="/Person/@item.Contact.Login">@item.Contact.FirstName + " " + item.Contact.LastName</a> vous invite à rejoindre le groupe <a class="networkAccentColor" href="/Group/@(item.Group.Alias ?? item.Group.Id.ToString())">@item.Group.Name</a>
+    </div>
+        }
+    } else {
+        <p>Aucune notification</p>
+    }
+</div>
+
+<div style="clear:both"></div>

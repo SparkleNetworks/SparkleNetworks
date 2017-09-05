@@ -1,0 +1,335 @@
+﻿@model Sparkle.Models.InvitationsModel
+@{
+    this.SetPageLayoutMode(PageLayoutMode.Center);
+    this.SetAccentColor((SparkleAccentColor)this.ViewBag.AccentColor);
+    this.WebDependencies().Include(MyWebDependencies.SparkleShow);
+    this.WebDependencies().Include(MyWebDependencies.AjaxUpload);
+    this.SetHelpPage("Features/Users");
+
+    dynamic variable = System.Configuration.ConfigurationManager.GetSection("system.web/httpRuntime");
+    var limit = (int)variable.MaxRequestLength * 1000;
+    var inputId = Guid.NewGuid();
+
+    var isAdmin = false;
+    if (this.ViewBag.IsAdmin is bool)
+    {
+        isAdmin = (bool)this.ViewBag.IsAdmin;
+    }
+
+    int? selectRelationship = null;
+    if (this.ViewBag.RelationshipSelected is int)
+    {
+        selectRelationship = (int)this.ViewBag.RelationshipSelected;
+    }
+
+    var enableCompanies = this.Services() != null && this.Services().AppConfigTree != null ? this.Services().AppConfigTree.Features.EnableCompanies : false;
+}
+
+@section Focus{
+    @FocusPage.Declare(this.ViewBag.Title)
+}
+
+@if(this.Model.DisplayCompanyCategoriesChoice)
+{
+<div id="CompanyCategories" class="SpkShow-Opening two-choices center">
+<div class="space30"></div>
+    <a id="InsideCompanies" class="button large accentColor" href="@Url.Action("Invitations", "Account", new { id = "Ecosystem" })">@string.Format(Lang.T("Inviter les entreprises de {0}"), this.ViewBag.CompanyName)</a>
+    <span><p>@Lang.T("Ou")</p></span>
+    <hr />
+    <a id="OutsideCompanies" class="button large accentColor" href="@Url.Action("Invitations", "Account", new { id = "Others" })">@string.Format(Lang.T("Inviter des entreprises hors de {0}"), this.ViewBag.CompanyName)</a>
+</div>
+    <style type="text/css">
+        #InvitationTabs, #vue {
+            display: none;
+        }
+    </style>
+}
+<input type="hidden" name="IsCompanyAccelerator" value="@this.ViewBag.IsCompanyAccelerator" />
+
+<nav id="InvitationTabs" class="tabs">
+    <ul class="tabs">
+@if(this.Model.DisplayEmailTab)
+{
+        <li><a href="#Tab-Emails" class="bottomAccentColor" onclick="Spk.UI.TabManager.Switch('Tab-Emails');">@Lang.T("Invite with emails")</a></li>
+}
+@if(this.Model.DisplayLinkedInTab)
+{
+        <li><a href="#Tab-LinkedIn" class="" onclick="Spk.UI.TabManager.Switch('Tab-LinkedIn');">@Lang.T("Invite with LinkedIn")</a></li>
+}
+    </ul>
+    <hr class="tabs clear" />
+</nav>
+
+<!-- Vues -->
+<div id="vue" class="SpkShow-Opening">
+<div id="vues">
+<div class="vue">
+<div class="vue-content">
+    <div class="center" id="InvitationBox">
+        <label>@Lang.T("Entrez les emails des personnes que vous souhaitez inviter.")</label><br />
+        <form method="post" action="@Url.Action("Invitation")><div>
+            <input type="hidden" name="ReturnUrl" value="@this.Request.Url.PathAndQuery" />
+            <textarea id="emails" name="emails" class="textarea" style="height:135px"></textarea><br />
+            <p style="color:#aaa; font-size:.9em">@Lang.T("Séparez simplement les adresses emails par un espace, une virgule, un point-virgule ou tout autre caractère de séparation.")</p>
+@if (this.Model.DisplayAdminControls)
+{
+            <div class="space20"></div>
+            <div>
+                @Html.CheckBox("noNeedApproval", false, new { @id = "approvalInput", })
+                <label for="approvalInput">@Lang.T("Pas besoin d'approbation")</label>
+            </div>
+            <div class="space20"></div>
+    if (enableCompanies)
+    {
+            <div>
+                <label for="selectCompanyCategory">@Lang.T("Préselection catégorie d'entreprise")</label>
+                <select class="textbox" id="selectCompanyCategory" name="companyCategoryAlias">
+                    <option selected="selected">&nbsp;</option>
+        @foreach (var item in this.Model.CompanyCategories)
+        {
+                    <option value="@item.Alias">@item.Name</option>
+        }
+                </select>
+            </div>
+            <div class="space20"></div>
+
+            <div>
+                <label for="selectCompanyRelationshipType">@Lang.T("Préselection type de relation d'entreprise")</label>
+                <select class="textbox" id="selectCompanyRelationshipType" name="companyRelationshipTypeId">
+                    <option @(selectRelationship.HasValue ? "" : "selected=selected")>&nbsp;</option>
+        @foreach (var item in this.Model.CompanyRelationshipTypes)
+        {
+                    <option @(selectRelationship.HasValue && selectRelationship.Value == item.Id ? "selected=\"selected\"" : "") value="@item.Id">@item.Name</option>
+        }
+                </select>
+            </div>
+    }
+    else if (selectRelationship.HasValue)
+    {
+            <input type="hidden" value="@selectRelationship.Value" name="companyRelationshipTypeId" />
+    }
+}
+else
+{
+    if (this.Model.PreselectedNoNeedApproval.HasValue && this.Model.PreselectedNoNeedApproval.Value == true)
+    {
+            <input type="hidden" name="noNeedApproval" value="true" />
+    }
+            <input type="hidden" name="companyCategoryAlias" value="" />
+            <input type="hidden" name="companyRelationshipTypeId" value="@this.Model.PreselectedCompanyRelationshipTypeId" />
+}
+            <div class="space20"></div>
+            <div class="center">
+                <input type="submit" href="javascript:void(0)" onclick="ThisPage.DoInvite(this); return false" class="button large accentColor" value="@Lang.T("Continuer")" />
+            </div>
+        </div></form>
+        <div class="space20"></div>
+    </div>
+    <div class="boxPostBack" style="text-align:center">
+        <div class="spkIcon spkPeople"></div>
+        <div class="spkIcon spkPeople"></div>
+        <div class="spkIcon spkPeople"></div>
+        <div class="spkIcon spkPeople"></div>
+        <div class="boxPostBackMessage">@Lang.T("Envoi des invitations...")</div>
+    </div>
+
+    @if (this.Model.DisplayPersonalizedInvitationLink)
+    {
+    <section class="center">
+        <hr />
+        <div class="space20"></div>
+        <label>@Lang.T("Partager un lien d'invitation personnalisé.")</label><br />
+        @Lang.T("Il contient votre code parrain.")<br />
+        <br />
+        <input id="InvitationLink" class="textbox" style="width:90%" type="text" value="@Model.ApplyInvitationLink" />
+        <div class="share-invitations-link">
+            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@(Model.ApplyInvitationLink)"><img alt="via Facebook" src="/Content/images/Buttons/facebook-26.png" /></a>
+            <a target="_blank" href="http://www.twitter.com/home?status=@(Model.ApplyInvitationLink)"><img alt="via Twitter" src="/Content/images/Buttons/twitter-26.png" /></a>
+            <a target="_blank" href="https://plus.google.com/share?url=@(Model.ApplyInvitationLink)"><img alt="via Google+" src="/Content/images/Buttons/google_plus-26.png" /></a>
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=@(Model.ApplyInvitationLink)&title=@Lang.T("AppName")"><img alt="via LinkedIn" src="/Content/images/Buttons/linkedin-26.png" /></a>
+        </div>
+    </section>
+    }
+</div>
+</div>
+
+<div class="vue">
+<div class="vue-content">
+    <div id="lInContacts" class="center">
+        <div class="inBox left">
+            <div>
+                <h3>1. @Lang.T("Récupérer vos contacts")</h3>
+                <p class="">@Lang.T("Cliquez ci-dessus pour télécharger vos contacts.")</p>
+                <p class="">@Lang.T("Vous devrez être authentifié pour cela.")</p>
+                <a href="http://www.linkedin.com/addressBookExport?exportNetwork=Export&outputType=vcard" class="button LinkedIn accentColor" style="margin: 0" target="_blank"><span>@Lang.T("Exporter vos contacts")</span></a>
+                    
+                <div class="space20"></div>
+                <h3>2. @Lang.T("Importer vos contacts")</h3>
+
+                <p>@Lang.T("Chargez votre fichier de contact (.vcf) en cliquant ci-après.")</p>
+                <div class="loadingFile" style="display:none;">@Lang.T("Chargement...")</div>
+                <div style="">
+                    <form id="newHotnessForm" action="/Account/ParseContactsVCard" enctype="multipart/form-data">
+                        <input class="uploadFileObject" type="file" id="contactsUpload" name="contactsUpload" style="width:0;height:0;" />
+                        <label for="@inputId" class="button large accentColor" style="margin: 0">@Lang.T("Importer vos contacts")</label>
+                        <button type="submit" style="display:none">Save</button>
+                    </form>
+                    <br />
+                </div>
+            </div>
+        </div>
+
+    @using (Html.BeginFormEx(new { @style = "display:none;", @class = "olddays", }))
+    {
+        <section class="tagbox">
+            <div class="focusPage">
+                <input class="textbox filterBox" type="text" id="PeopleFilterInput" placeholder="@Lang.T("Rechercher")" />
+                <img src="/Content/icones/wait.gif" alt="" id="PeopleFilterProgress" style="display: none; position:absolute; right:0; top:0;" />
+            </div>
+            <ul id="contactsList" style="overflow-y:scroll"></ul>
+
+            @Html.Submit(Lang.T("Inviter"), Lang.T("Inviter"), new { @class = "button large accentColor", })
+            <div class="space20"></div>
+        </section>
+    }
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<script type="text/html" id="template">
+    <li class="contactItem" data-filter="{DataFilter}">
+        <input type="checkbox" id="{InputGuid}" value="{Guid}" name="id" />
+        <label for="{InputGuid}">
+                {DisplayValue} {IsOnNetwork}<br />
+                
+        </label>
+        <div class="secondaryInfos">
+            {DescriptionValue}
+        </div>
+    </li>
+</script>
+
+<script type="text/javascript">
+
+    
+
+    var ThisPage = {
+        Template: '',
+        Contacts: [],
+
+        PeopleFilter: {},
+        FilterPeople: function () {
+            var value = $('#PeopleFilterInput').val();
+            ThisPage.PeopleFilter.Filter(value);
+        },
+
+        DoInvite: function (submit) {
+            var button = $(submit);
+            button.prop('disabled', true);
+            var form = $(submit).parents('form');
+            var formData = $(form).serialize();
+
+            $('.boxForm').hide();
+            $('.boxPostBack').fadeIn();
+            $.ajax({
+                type: 'POST',
+                url: '/Account/Invitation',
+                data: formData,
+                success: function (data) {
+                    button.prop('disabled', false);
+                    $('#InvitationBox').html(data);
+                    $('.boxPostBack').hide();
+                    $('.boxForm').fadeIn();
+                },
+                error: function (request, status, error) {
+                    button.prop('disabled', false);
+                    var error = GetErrorMessageFromAjax(request);
+                    DisplayErrorMessage(error);
+                }
+            });
+        },
+
+        DisplayElem: function (contact) {
+            var template = this.Template
+                .replace(/{Guid}/g, contact.UniqueId)
+                .replace(/{InputGuid}/g, 'input' + contact.UniqueId)
+                .replace(/{DisplayValue}/g, contact.DisplayName)
+                .replace(/{Email}/g, contact.Email)
+                .replace(/{DescriptionValue}/g, contact.Headline ? contact.Headline : "")
+                .replace(/{DataFilter}/g, contact.DisplayName + " " + contact.Email + " " + contact.Headline)
+                .replace(/{IsOnNetwork}/g, contact.IsOnNetwork ? "*" : "");
+
+            ThisPage.Contacts.push($(template));
+        },
+
+        SuccessCallback: function (data) {
+            ThisPage.Contacts = [];
+            for (var i = 0; i < data.Contacts.length; i++) {
+                ThisPage.DisplayElem(data.Contacts[i]);
+            }
+
+            ThisPage.PeopleFilter = new DomAttributeFilterClass($, ThisPage.Contacts, 'contactItem', 'data-filter', true);
+            ThisPage.PeopleFilter.SetDelay(200);
+            ThisPage.PeopleFilter.OnStateChange(function (state) {
+                $progress = $('#PeopleFilterProgress');
+                if (state == 'idle') {
+                    $progress.hide();
+                } else if (state == 'busy') {
+                    $progress.show();
+                } else if (state == 'wait') {
+                    $progress.show();
+                } else {
+                    $progress.hide();
+                }
+            });
+
+            $('.inBox').hide();
+            $('#contactsList').html(ThisPage.Contacts);
+            $('#contactsList').parent().parent().show();
+            OnWindowResize()
+        }
+    };
+
+    $(document).ready(function () {
+        $('#emails').focus();
+
+        ThisPage.Template = $('#template').text();
+        $('#PeopleFilterInput').on('change keyup', function () {
+            ThisPage.FilterPeople();
+        });
+
+        @if (this.Model.LinkedInContactsImport != null)
+        {
+            @:ThisPage.SuccessCallback(JSON.parse('@Html.Raw(Json.Encode(this.Model.LinkedInContactsImport))'));
+        }
+
+        window.Spk.UI.InviteLinkedInContacts.SetupUploader({
+            ContactsContainerSelector: '.contactsList',
+            UploadFormSelector: '#newHotnessForm',
+            UploadInputId: 'contactsUpload',
+            MaxFileSize: '@limit',
+            UploadProgressSelector: '.loadingFile',
+            InputId: '@inputId',
+            SuccessDataCallback: ThisPage.SuccessCallback
+        });
+    });
+    $('#InvitationLink').focus(function () {
+        $(this).select();
+    });
+
+    // layout
+    function OnWindowResize() {
+        var p = $("#contactsList");
+        var offset = p.offset();
+        var height = $(window).height() - offset.top - 100;
+        $('#contactsList').height(height);
+    }
+
+    $(window).resize(function () {
+        OnWindowResize();
+    });
+</script>

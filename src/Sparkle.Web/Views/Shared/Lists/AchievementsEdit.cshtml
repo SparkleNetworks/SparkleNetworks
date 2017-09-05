@@ -1,0 +1,93 @@
+﻿@model Sparkle.Models.AchievementsEditListModel
+@{
+    Layout = null;
+}
+<div class="center">
+<ul class="achievements">
+@foreach (var item in Model.Items) {
+        <li class="@Html.CssClass(!item.Unlocked, "locked-editable", "")">
+        <span>@item.Title</span>
+            @if(item.Unlocked) {
+        <div class="achievement-info">@item.DateEarned.ToShortDateString()</div>
+            } else {
+        <div class="achievement-info">Bloqué</div>   
+            }
+            <div class="achievement-flag">
+                <img alt="" src="/Content/images/Achievements/@(item.Key).png" />
+            </div>
+
+    <input type="button" data-achievementId="@item.Id" data-companyId="@Model.CompanyId" class="add-achievement button adminColor @Html.CssClass(item.Unlocked, "hide", "")" value="Attribuer" />
+    <input type="button" data-achievementId="@item.Id" data-companyId="@Model.CompanyId" class="remove-achievement button @Html.CssClass(!item.Unlocked, "hide", "")" value="Retirer" />
+</li>
+}
+</ul>
+</div>
+
+<script type="text/javascript">
+    $('.add-achievement').click(function () {
+        var element = $(this);
+        var achievementId = element.attr('data-achievementId');
+        var companyId = element.attr('data-companyId');
+        
+        element.parent().find('.add-achievement').addClass('hide');
+
+        $.ajax({
+            type: 'POST',
+            url: '/Ajax/AddCompanyAchievement',
+            data: { achievementId: achievementId, companyId: companyId },
+            success: function (data) {
+                if (data.Success) {
+                    
+                    element.parent().removeClass('locked-editable');
+                    element.parent().find('.add-achievement').addClass('hide');
+                    element.parent().find('.remove-achievement').removeClass('hide');
+                    element.parent().find('.achievement-info').text('Gagné !');
+
+                } else {
+                    var error = GetErrorMessageFromAjax(data);
+                    DisplayErrorMessage(error);
+                    element.parent().find('.add-achievement').removeClass('hide');
+                }
+            },
+            error: function (request, status, error) {
+                var error = GetErrorMessageFromAjax(request);
+                DisplayErrorMessage(error);
+                element.parent().find('.add-achievement').removeClass('hide');
+            }
+        });
+
+    });
+
+    $('.remove-achievement').click(function () {
+        var element = $(this);
+        var achievementId = element.attr('data-achievementId');
+        var companyId = element.attr('data-companyId');
+
+        element.parent().find('.remove-achievement').addClass('hide');
+
+        $.ajax({
+            type: 'POST',
+            url: '/Ajax/RemoveCompanyAchievement',
+            data: { achievementId: achievementId, companyId: companyId },
+            success: function (data) {
+                if (data.Success) {
+
+                    element.parent().addClass('locked-editable');
+                    element.parent().find('.add-achievement').removeClass('hide');
+                    element.parent().find('.achievement-info').text('Bloqué');
+
+                } else {
+                    var error = GetErrorMessageFromAjax(data);
+                    DisplayErrorMessage(error);
+                    element.parent().find('.remove-achievement').removeClass('hide');
+                }
+            },
+            error: function (request, status, error) {
+                var error = GetErrorMessageFromAjax(request);
+                DisplayErrorMessage(error);
+                element.parent().find('.remove-achievement').removeClass('hide');
+            }
+        });
+
+    });
+</script>

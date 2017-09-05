@@ -1,0 +1,19 @@
+﻿@model Sparkle.Services.Networks.Users.CreateEmailPassordAccountRequest
+@{
+    ViewBag.Title = Lang.T("Rejoindre {0}", Lang.T("AppName"));
+    this.WebDependencies().Include(MyWebDependencies.JqueryValidationEngine);
+    this.SetAccentColor(SparkleAccentColor.Account);
+    this.SetHelpPage("Features/UserAccount");
+}
+
+@section Focus{
+    @FocusPage.Declare(ViewBag.Title, Lang.T("Bienvenue !"))
+}
+
+<div class="center">
+@Html.EditorForModel()
+</div>
+
+<aside class="NoticeBlock Information">
+    <p>@Html.Raw(Lang.T(@"{0} est un réseau privé, ces informations ne seront visibles que par les membres et les équipes de {1}. Pour plus d'informations, vous pouvez consulter les {2}.", Lang.T("AppName"), Lang.T("CurrentPlaceAlone"), Html.ActionLink(Lang.T("conditions générales d'utilisation"), "Terms", "About").ToString()))</p>
+</aside>
