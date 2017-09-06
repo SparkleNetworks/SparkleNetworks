@@ -4,6 +4,8 @@ Sparkle Networks is making the move the open-source world. Here shall be put the
 
 Here you will find some parts of Sparkle Networks that are already under the new license. 
 
+Have any question? You may reach the authors on the dedicated chat room [![Join the chat at https://gitter.im/SparkleNetworksProject/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/SparkleNetworksProject/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
+
 
 ## Repository status
 
